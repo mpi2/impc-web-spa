@@ -1,0 +1,10 @@
+.visx-glyph-diamond, .visx-glyph-circle {
+  transition-duration: 0.3s;
+}
+.axis-link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.visx-heatmap-rect.hasData {
+  cursor: pointer;
+}

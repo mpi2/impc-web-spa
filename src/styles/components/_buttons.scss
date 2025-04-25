@@ -1,0 +1,79 @@
+@mixin button-common-styles {
+  --bs-btn-padding-y: 0.6rem;
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-border-radius: 4px;
+}
+
+@mixin small-button-styles {
+  --bs-btn-padding-y: 0.4rem;
+  --bs-btn-padding-x: 0.6rem;
+}
+@mixin x-small-button-styles {
+  --bs-btn-padding-y: 0.25rem;
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: var(--bs-border-radius-sm);
+}
+
+.impc-base-button {
+  @include button-common-styles;
+  &.small {
+    @include small-button-styles;
+  }
+  &.xs-small {
+    @include x-small-button-styles;
+  }
+}
+$primaryBgc: #008484;
+.impc-primary-button {
+  @include button-common-styles;
+  background-color: $primaryBgc;
+  color: #FFF !important;
+
+  &.small {
+    @include small-button-styles;
+  }
+  &.xs-small {
+    @include x-small-button-styles;
+  }
+  &:hover {
+    background-color: darken($primaryBgc, 5%);
+  }
+  &:active {
+    background-color: darken($primaryBgc, 10%);
+  }
+  &:focus, &:focus-visible {
+    background-color: darken($primaryBgc, 10%);
+    outline: 2px solid #2491FF;
+  }
+}
+
+.impc-secondary-button {
+  @include button-common-styles;
+  border: 1px solid #102A5C;
+  color: #102A5C;
+  background-color: #FFF;
+
+  &.small {
+    @include small-button-styles;
+  }
+  &.xs-small {
+    @include x-small-button-styles;
+  }
+  &:hover {
+    border: 1px solid #1A4480;
+    color: #1A4480;
+    background-color: #FFF;
+  }
+  &:active {
+    border: 1px solid #005EA2;
+    color: #005EA2;
+    background-color: #FFF !important;
+  }
+  &:focus {
+    border: 1px solid #102A5C;
+    color: #102A5C;
+    outline: 2px solid #2491FF;
+    background-color: #FFF;
+  }
+}

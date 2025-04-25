@@ -1,0 +1,101 @@
+$orange: #ed7b25;
+$orange-light: #fdf0e5;
+$orange-dark: #b65a15;
+$blue: #00b0b0;
+$blue-light: #e1f6f6;
+$blue-dark: #138181;
+$red: #dc3545;
+$navy: #2962ff;
+$navy-light: #ebf0ff;
+$purple: #750065;
+$lime: #97cd2a;
+$grey: #6F6F6F;
+$grey-light: #ececec;
+$bg: #ececec;
+$white: #fff;
+$black: #000;
+$dark: #212529;
+
+$primary: #C9510C;
+$secondary: $blue;
+
+$font-md: 1rem;
+$font-sm: 0.875rem;
+
+$spacing: 0.5rem;
+
+//spacing
+$xxl: $spacing * 15;
+$xl: $spacing * 8;
+$lg: $spacing * 6;
+$md: $spacing * 4;
+$sm: $spacing * 3;
+$xs: $spacing * 2;
+$xxs: $spacing;
+$searchOffset: 80px;
+
+$colors: (
+  "orange": $orange,
+  "orange-light": $orange-light,
+  "orange-dark": $orange-dark,
+  "blue": $blue,
+  "blue-light": $blue-light,
+  "blue-dark": $blue-dark,
+  "red": $red,
+  "navy": $navy,
+  "navy-light": $navy-light,
+  "purple": $purple,
+  "lime": $lime,
+  "grey": $grey,
+  "grey-light": $grey-light,
+  "bg": $bg,
+  "white": $white,
+  "black": $black,
+  "primary": $primary,
+  "secondary": $secondary,
+);
+
+@each $name, $color in $colors {
+  .#{$name} {
+    color: $color;
+  }
+  .#{$name}-x {
+    color: $color !important;
+  }
+  .bg-#{$name} {
+    background-color: $color;
+  }
+  .bg-#{$name}-x {
+    background-color: $color !important;
+  }
+}
+
+$body-bg: $bg;
+
+// Bootstrap override scss variables
+
+$theme-colors: (
+  "primary": #C9510C,
+  "primary-dark": $orange-dark,
+  "secondary": $blue,
+  "danger": $red,
+  "success": $lime,
+  "blue": $navy,
+  "indigo": #6610f2,
+  "purple": #6f42c1,
+  "pink": #e83e8c,
+  "red": $red,
+  "orange": $orange,
+  "yellow": #ffc107,
+  "green": $lime,
+  "teal": $blue,
+  "grey": $grey-light,
+  "dark": $dark,
+  "warning": #FFE6A3
+);
+
+
+
+$container-max-widths: (
+  "": 1440px,
+);

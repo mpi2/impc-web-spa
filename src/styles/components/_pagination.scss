@@ -1,0 +1,18 @@
+.paginationNav {
+  margin-bottom: 0;
+  align-items: center;
+  gap: 1rem;
+
+  .pagNavBtn {
+    outline: none;
+    border: 0;
+    background: transparent;
+    padding: 5px;
+    border-radius: 4px;
+    color: #6F6F6F;
+    &.active {
+      color: #FFFFFF;
+      background: #008484;
+    }
+  }
+}

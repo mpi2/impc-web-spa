@@ -1,0 +1,12 @@
+@import "../vars.scss";
+.bg-badge-secondary {
+  color: #102A5C;
+  background-color: #FFF;
+  border: 1px solid #102A5C;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  &.active {
+    background-color: #008484;
+    color: #FFF;
+    border-color: #008484;
+  }
+}

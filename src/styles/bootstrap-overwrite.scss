@@ -1,0 +1,41 @@
+// Bootstrap override css variables
+.row {
+  --bs-gutter-x: 2.5rem;
+}
+
+.nav-tabs .nav-link {
+  background-color: $grey-light;
+  color: $black;
+  border-top-width: 2px;
+  &:hover {
+    background-color: $orange-light;
+    border-color: $orange-light;
+    color: $orange-dark;
+  }
+}
+
+.nav-tabs .nav-item:not(:last-child) .nav-link:not(.active) {
+  border-right-color: rgba($grey, 0.5);
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom-color: white;
+  background: white;
+  border-top-color: $primary;
+  color: $black;
+}
+
+.breadcrumb .breadcrumb-item.active {
+  color: #8E8E8E;
+}
+
+.form-select:disabled {
+  background-color: var(--bs-secondary-bg) !important;
+}
+
+.alert-landing-page {
+  --bs-alert-color: #000;
+  --bs-alert-bg: #f1f1f1;
+  --bs-alert-border-color: #CCC;
+  --bs-alert-link-color: #000
+}

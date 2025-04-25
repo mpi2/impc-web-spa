@@ -1,0 +1,14 @@
+table.data-comparison-table {
+  tbody > tr {
+    cursor: pointer;
+  }
+  tbody > tr > td {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+  }
+  & > tbody > tr:hover > td {
+    --bs-table-bg-type: #d4f3f3 !important;
+  }
+  tbody > tr.highlighted-row > td {
+    --bs-table-bg-type: #FDF0E5 !important;
+  }
+}
