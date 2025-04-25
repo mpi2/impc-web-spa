@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router";
+import RootLayout from "./layout.tsx";
 import SearchResults from "./pages/search/search-page.tsx";
 
 
@@ -8,7 +9,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SearchResults />} />
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<SearchResults data={{ numResults: -1, results: []}} />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
