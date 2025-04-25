@@ -130,7 +130,7 @@ const Header = () => {
                 >
                   <img
                     className="header__logo"
-                    src="/data/logo.svg"
+                    src="/images/logo.svg"
                     alt="International Mouse Phenotyping Consortium Office Logo"
                     width={355}
                     height={105}

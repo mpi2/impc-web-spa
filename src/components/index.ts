@@ -5,10 +5,7 @@ export { default as DownloadData } from "./DownloadData";
 export { default as FilterBox } from "./FilterBox/FilterBox";
 export { default as PublicationDataAlert } from "./PublicationDataAlert/PublicationDataAlert";
 export { default as ZoomButtons } from "./ZoomButtons/ZoomButtons";
-export {
-  default as PublicationsList,
-  NonSSRPublicationsList,
-} from "./PublicationsList";
+export { default as PublicationsList, } from "./PublicationsList";
 export type { PublicationListProps } from "./PublicationsList";
 export { default as Pagination } from "./Pagination";
 export { default as SortableTable } from "./SortableTable";
