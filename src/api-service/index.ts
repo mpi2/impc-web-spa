@@ -1,23 +1,21 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_ROOT || "";
+export const API_URL = import.meta.env.VITE_API_ROOT || "";
 export const PROXY_ENABLED =
-  process.env.NEXT_PUBLIC_PROXY_ENABLED === "TRUE" || false;
+  import.meta.env.VITE_PROXY_ENABLED === "TRUE" || false;
 export const STATS_DATASETS_URL =
-  process.env.NEXT_PUBLIC_STATS_DATASETS_URL || "";
-export const MH_PLOT_DATA_URL = process.env.NEXT_PUBLIC_MH_PLOT_DATA_URL || "";
+  import.meta.env.VITE_STATS_DATASETS_URL || "";
+export const MH_PLOT_DATA_URL = import.meta.env.VITE_MH_PLOT_DATA_URL || "";
 export const LANDING_PAGE_DATA_URL =
-  process.env.NEXT_PUBLIC_LANDING_PAGE_DATA_URL || "";
+  import.meta.env.VITE_LANDING_PAGE_DATA_URL || "";
 export const PROTOTYPE_API_URL =
-  process.env.NEXT_PUBLIC_PROTOTYPE_API_ROOT || "";
-export const DEV_API_ROOT = process.env.NEXT_PUBLIC_DEV_API_ROOT || "";
-export const PROD_API_ROOT = process.env.NEXT_PUBLIC_PROD_API_ROOT || "";
+  import.meta.env.VITE_PROTOTYPE_API_ROOT || "";
+export const DEV_API_ROOT = import.meta.env.VITE_DEV_API_ROOT || "";
+export const PROD_API_ROOT = import.meta.env.VITE_PROD_API_ROOT || "";
 export const DATA_RELEASE_VERSION =
-  process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
+  import.meta.env.VITE_DATA_RELEASE_VERSION || "";
 export const PUBLICATIONS_ENDPOINT_URL =
-  process.env.NEXT_PUBLIC_PUBLICATIONS_ENDPOINT_URL || "";
+  import.meta.env.VITE_PUBLICATIONS_ENDPOINT_URL || "";
 
-const WEBSITE_ENV = process.env.WEBSITE_ENV || "production";
-
-export * from "./server";
+const WEBSITE_ENV = import.meta.env.WEBSITE_ENV || "production";
 
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
 
@@ -60,7 +58,7 @@ export async function fetchAPI<T>(query: string): Promise<T> {
 }
 
 export async function fetchAPIFromServer<T>(query: string): Promise<T> {
-  const SERVER_API_ROOT = process.env.SERVER_API_ROOT;
+  const SERVER_API_ROOT = import.meta.env.SERVER_API_ROOT;
   const DOMAIN_URL = SERVER_API_ROOT ? SERVER_API_ROOT : API_URL;
   let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : DOMAIN_URL;
   const endpointURL = domain + query;

@@ -38,7 +38,7 @@ import Select from "react-select";
 import { SortType } from "@/models";
 import { Metadata } from "next";
 
-const BATCH_QUERY_API_ROOT = process.env.NEXT_PUBLIC_BATCH_QUERY_API_ROOT || "";
+const BATCH_QUERY_API_ROOT = import.meta.env.VITEyarn_BATCH_QUERY_API_ROOT || "";
 
 type Phenotype = {
   id: string;

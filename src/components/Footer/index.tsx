@@ -12,7 +12,7 @@ import { Container, Row } from "react-bootstrap";
 import footerCss from "./styles.module.scss";
 import { Link } from "react-router";
 
-export const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
+export const DR_VERSION = import.meta.env.VITE_DATA_RELEASE_VERSION || "";
 
 const Footer = () => {
   return (

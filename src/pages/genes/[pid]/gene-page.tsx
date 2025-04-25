@@ -27,7 +27,7 @@ import {
 } from "@/models/gene";
 import { useParams } from "next/navigation";
 
-const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
 type GenePageProps = {
   gene: GeneSummary;

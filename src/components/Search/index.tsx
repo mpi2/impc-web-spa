@@ -51,7 +51,7 @@ const Search = ({
     },
     {
       name: "Help, news, blog",
-      link: `${process.env.NEXT_PUBLIC_NEWS_SEARCH}/?s=`,
+      link: `${import.meta.env.VITE_NEWS_SEARCH}/?s=`,
       external: true,
       type: "blog",
     },

@@ -28,7 +28,7 @@ import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import { AlleleSummary } from "@/models";
 
-const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
 const ProductItem = ({
   name,

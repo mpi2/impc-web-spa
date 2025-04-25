@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "react-bootstrap";
 import Card from "@/components/Card";
 import {
@@ -15,7 +13,7 @@ import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
 import { useMemo } from "react";
 
-const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
 type PhenotypePageProps = {
   phenotypeId: string;
