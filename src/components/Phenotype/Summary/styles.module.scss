@@ -1,0 +1,49 @@
+@import "../../../styles/vars.scss";
+.subheadingCont {
+  margin-top: $xs;
+  margin-bottom: $xs;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+}
+.subheadingSection {
+  font-size: 70%;
+}
+
+.stats {
+  display: flex;
+  gap: $md;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.chart {
+  width: 100px;
+}
+
+.progressCircleText {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.summaryContent {
+  display: flex;
+  padding-bottom: 2.5rem;
+}

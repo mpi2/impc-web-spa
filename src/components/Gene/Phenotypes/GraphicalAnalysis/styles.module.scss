@@ -1,0 +1,102 @@
+.inlineButton {
+  background: none;
+  appearance: none;
+  border: none;
+  padding: 0;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+
+  button {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    appearance: none;
+    border: 0;
+    outline: none;
+    background-color: #CCC;
+    border-radius: 5px;
+  }
+}
+
+$iconsSize: 15px;
+.labels {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  &.icons {
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .icon {
+    display: inline-flex;
+    width: 1em;
+    height: 1em;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 3px;
+    &.circle {
+      border-radius: 50%;
+    }
+    &.diamond {
+      transform: rotate(45deg);
+    }
+    &.phenotype {
+      width: 1.4em;
+      min-height: 1.4em;
+      border-radius: 3px;
+    }
+  }
+  .figureContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 80%;
+  }
+  .circle {
+    display: inline-block;
+    width: $iconsSize;
+    height: $iconsSize;
+    border-radius: 50%;
+    background-color: #CCC;
+    margin-right: 0.3rem;
+  }
+  .triangle {
+    --b:5px;
+
+    width: 15px;
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(50% 0,100% 100%,0 100%,50% 0,50% var(--b), calc(var(--b)*cos(30deg)) calc(100% - var(--b)/2),calc(100% - var(--b)*cos(30deg)) calc(100% - var(--b)/2),50% var(--b));
+    background: #CCC;
+  }
+}
+
+.bottomLabels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashedLine {
+  border: none;
+  border-top: 3px dashed #000;
+  height: 3px;
+  width: 50px;
+  display: inline-block;
+  margin: 0 0.4rem 0 0;
+  opacity: 1;
+}
+
+.chartContainer {
+  position: relative;
+  width: 100%;
+  height: 700px;
+}

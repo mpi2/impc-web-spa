@@ -1,0 +1,44 @@
+
+.verticalHeader {
+  margin-bottom: 0;
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: lr-tb;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.heatmap {
+  th, td {
+    font-size: 12px;
+  }
+  .dataCell {
+    border-width: 1px !important;
+  }
+  .geneCell {
+    max-width: 60px;
+    width: 60px;
+    word-break: normal;
+  }
+}
+
+.significant {
+  background-color: #ce6212;
+  color: #ce6212;
+  border: 1px solid #fff;
+}
+.notSignificant {
+  background-color: #15a2b8;
+  color: #15a2b8;
+  border: 1px solid #fff;
+}
+.noData {
+  background-color: #c2c2c2;
+  color: #c2c2c2;
+  border: 1px solid #fff;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}

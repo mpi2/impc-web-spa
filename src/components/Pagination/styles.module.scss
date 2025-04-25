@@ -1,0 +1,54 @@
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: 550px) {
+    flex-wrap: wrap;
+  }
+  &.top {
+    margin-top: 0;
+  }
+
+  &.withControls {
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+  &:empty {
+    margin-top: 0;
+  }
+}
+
+.bottomPaginationControls {
+  display: flex;
+  gap: 0.5rem;
+  @media screen and (max-width: 550px) {
+    flex-wrap: wrap;
+  }
+}
+
+.additionalWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  &.bottomControls {
+    align-items: center;
+  }
+  & > * {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @media screen and (max-width: 550px) {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    & input,
+    & select {
+      flex-grow: 1;
+      width: 100% !important;
+    }
+  }
+}

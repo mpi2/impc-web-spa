@@ -1,0 +1,24 @@
+
+.geneTable {
+  --bs-body-bg: '#FFF';
+
+  tr td {
+    border-width: 1px;
+  }
+
+  tr td:first-child {
+    border-width: 0;
+    text-align: right;
+    cursor: initial;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .dataCell {
+    cursor: pointer;
+    transition: 0.5s background-color;
+    &:hover {
+      background-color: rgb(176, 216, 230);
+    }
+  }
+}

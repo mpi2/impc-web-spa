@@ -1,0 +1,30 @@
+@import "../../../../styles/vars.scss";
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #767676;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+}
+
+.dataCollection {
+  // color: $secondary;
+  font-weight: bold;
+  margin-bottom: $xs;
+  display: inline-block;
+  margin-right: $md;
+  padding-right: $md;
+  svg {
+    margin-right: $xxs;
+  }
+  &:not(:last-child) {
+    border-right: 1px solid $grey;
+  }
+}
+
+.dataCollectionInactive {
+  @extend .dataCollection;
+  // color: $grey;
+}

@@ -20,7 +20,52 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/app/*": [
+        "app/*"
+      ],
+      "@/api-service": [
+        "api-service/index.ts"
+      ],
+      "@/components": [
+        "components/index.ts"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/contexts": [
+        "shared/contexts/index.ts"
+      ],
+      "@/eventChannels": [
+        "shared/eventChannels/index.ts"
+      ],
+      "@/hoc/*": [
+        "shared/high-order-components/*"
+      ],
+      "@/hooks": [
+        "shared/hooks/index.ts"
+      ],
+      "@/hooks/*": [
+        "shared/hooks/*"
+      ],
+      "@/models": [
+        "shared/models/index.ts"
+      ],
+      "@/models/*": [
+        "shared/models/*"
+      ],
+      "@/shared/*": [
+        "shared/*"
+      ],
+      "@/utils": [
+        "utils/index.tsx"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ]
+    }
+
   },
   "include": ["src"]
 }

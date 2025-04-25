@@ -1,0 +1,39 @@
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.controlsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.selectorContainer {
+  flex-grow: 0.5;
+}
+.labelsContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.colorLabelContainer {
+  display: flex;
+  align-items: center;
+  .baseLabel {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+  .noData {
+    background-color: rgb(236, 236, 236);
+  }
+  .imagesAvailable {
+    background-color: rgb(23, 162, 184);
+  }
+  .volumetricAnalysisAvailable {
+    background-color: rgb(237, 123, 37);
+  }
+}

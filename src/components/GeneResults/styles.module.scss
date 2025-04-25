@@ -1,0 +1,79 @@
+@import "../../styles/vars.scss";
+.subheadingCont {
+  margin-bottom: $xs;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.result {
+  padding-top: $sm;
+  padding-bottom: $sm;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  align-items: center;
+  &:hover {
+    background-color: $bg;
+  }
+  &:nth-child(2n) {
+  }
+  p {
+    margin-bottom: $xxs / 2;
+  }
+  .addToCompareBtn {
+    display: none;
+  }
+  &:hover {
+    .addToCompareBtn {
+      display: inline-block;
+    }
+    .shortcuts {
+      opacity: 1;
+      pointer-events: unset;
+    }
+  }
+}
+
+.row {
+  &:hover {
+    .shortcuts > * {
+      pointer-events: unset;
+      display: block;
+    }
+  }
+}
+
+.shortcuts {
+  // transition: 0.3s ease all;
+  margin-top: $spacing * 3;
+  & > * {
+    display: none;
+  }
+}
+
+.addedToComparison {
+  display: block !important;
+}
+
+.addToCompareBtn {
+  border-radius: 1rem;
+  color: $white;
+  font-size: 0.75rem;
+  padding: 3px 6px 3px 3px;
+  line-height: 1em;
+  margin-right: 1em;
+  vertical-align: middle;
+}

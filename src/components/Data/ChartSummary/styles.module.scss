@@ -1,0 +1,10 @@
+.details {
+  display: grid;
+  grid-template-columns: 2fr 9fr;
+  row-gap: 1rem;
+}
+.label {
+  color: #212529;
+  flex-grow: 1;
+  font-weight: bold;
+}

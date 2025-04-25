@@ -1,0 +1,9 @@
+@import "../../../styles/vars.scss";
+.table {
+  width: 100%;
+  td {
+    vertical-align: middle;
+    line-height: 1.5;
+    padding: 1rem;
+  }
+}

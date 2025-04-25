@@ -1,0 +1,158 @@
+@import "../../styles/vars.scss";
+.subheadingCont {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 0.9rem;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.howLink {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
+  svg {
+    margin-left: $xxs;
+  }
+}
+
+.gap {
+  gap: $md;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $xxs;
+  color: $grey;
+}
+
+.progressContainer {
+  height: $spacing;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: $spacing;
+  background-color: $grey-light;
+  margin-bottom: $sm;
+}
+
+.progressSegment {
+  height: $spacing * 2;
+  width: 0;
+  background-color: $secondary;
+}
+
+.progressSegmentPrimary {
+  @extend .progressSegment;
+  background-color: $primary;
+}
+
+.bodySystemGroup {
+  padding: $xs $xs 0;
+  border-radius: $spacing;
+  margin-bottom: $xs;
+}
+
+.bodySystemGroupSignificant {
+  @extend .bodySystemGroup;
+  background-color: $orange-light;
+  padding-bottom: $xs;
+}
+
+.bodySystemGroupSummary {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bodySystems {
+  margin-bottom: -$xs;
+}
+
+.pill {
+  height: 1rem;
+  width: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  border-radius: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.progressCircleCont {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.progressCircleText {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  margin-bottom: $xs;
+}
+
+.dataCollection {
+  color: $black;
+  // font-weight: bold;
+  margin-bottom: $xs;
+  display: inline-block;
+  svg:first-child {
+    color: $secondary;
+    margin-right: $xxs;
+  }
+}
+
+.dataCollectionInactive {
+  @extend .dataCollection;
+  color: $grey !important;
+  svg:first-child {
+    color: $grey;
+  }
+}
+
+.purchaseBanner {
+  background-color: #e9f3f3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  width: calc(100% + 0.75rem);
+  bottom: -$md;
+  left: 0;
+  color: $grey;
+  border-bottom-right-radius: $spacing;
+  overflow: hidden;
+}
+
+.purchaseButton {
+  background-color: $secondary;
+  color: $white !important;
+  padding: $xs $md;
+  margin-left: $xs;
+  &:hover {
+    background-color: darken($color: $secondary, $amount: 5);
+  }
+  svg {
+    margin-right: $xxs;
+  }
+}

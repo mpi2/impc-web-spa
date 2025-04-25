@@ -1,0 +1,34 @@
+import { PhenotypeRef } from "@/models/phenotype-ref";
+
+export type GenePhenotypeHits = {
+  alleleAccessionId: string;
+  alleleName: string;
+  alleleSymbol: string;
+  datasetId: string;
+  effectSize: number;
+  intermediatePhenotypes: PhenotypeRef[];
+  lifeStageName: string;
+  mgiGeneAccessionId: string;
+  pValue: number;
+  parameterName: string;
+  parameterStableId: string;
+  phenotype: PhenotypeRef;
+  phenotypingCentre: string;
+  pipelineStableId: string;
+  procedureName: string;
+  procedureStableId: string;
+  projectName: string;
+  sex: string;
+  topLevelPhenotypes: PhenotypeRef[];
+  zygosity: string;
+  topLevelPhenotypeName?: null | string;
+  phenotypeName?: null | string;
+  id?: null | string;
+  phenotypeId?: null | string;
+  pValue_male?: number;
+  pValue_female?: number;
+  pValue_not_considered?: number;
+  datasetsIds?: Array<string>;
+  dataType: string;
+  assertionType: string;
+};

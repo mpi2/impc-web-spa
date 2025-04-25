@@ -1,0 +1,315 @@
+@import "../../styles/vars";
+
+.header {
+  --border-color: #{$grey};
+  background-color: white;
+  position: relative;
+  @media screen and (max-width: 992px) {
+    height: 79px;
+    line-height: 79px;
+  }
+  // top links
+  :global(.header__nav-top) {
+    color: black;
+    background-color: #efefef;
+    font-size: $font-sm;
+    height: 40px;
+    line-height: 40px;
+  }
+  :global(.header__logo) {
+    width: 140px;
+    height: auto;
+    display: block;
+    @media (min-width: 768px) {
+      width: 168px;
+    }
+  }
+  ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-left: 20px;
+      a {
+        color: #000;
+        font-size: $font-sm;
+        font-weight: 700;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding-bottom: 7px;
+        padding-top: 15px;
+        &:hover {
+          border-bottom: 5px solid var(--border-color);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  :global(.menu-top-nav-container) {
+    display: inline;
+  }
+  :global(.text-right) {
+    text-align: right;
+  }
+  :global(.container) {
+    position: relative;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    & > :global(.row) {
+      margin-left: 0;
+      margin-right: 0;
+      --bs-gutter-x: 2.5rem;
+    }
+  }
+
+  //  nav bar
+  :global(.navbar-toggler) {
+    color: #000000;
+    font-size: 18px;
+    border: none;
+    background: transparent !important;
+    padding: 0;
+    border-radius: 0;
+
+    &:global(.more-button) {
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: black;
+      background-color: #9f147b !important;
+      height: 79px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-left: 5px;
+      i {
+        margin-left: 8px;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      &:global(.collapsed) {
+        color: #6e757a;
+        background-color: white !important;
+        height: 73px;
+        i {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+      }
+      &:global(.navbar-toggler.more-button.collapsed) {
+        color: #6e757a;
+        background-color: white !important;
+        height: 73px;
+      }
+      @media (min-width: 1124px) {
+        margin-left: 25px;
+      }
+    }
+
+    &:global(.collapsed) {
+      :global(.top-bar) {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        background-color: black;
+      }
+      :global(.middle-bar) {
+        opacity: 1;
+        background-color: black;
+      }
+      :global(.bottom-bar) {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        background-color: black;
+      }
+    }
+
+    :global(.top-bar) {
+      -webkit-transform: translate(3px) rotate(45deg);
+      transform: translate(3px) rotate(45deg);
+      -webkit-transform-origin: 10% 10%;
+      transform-origin: 10% 10%;
+    }
+    :global(.middle-bar) {
+      opacity: 0;
+    }
+
+    :global(.bottom-bar) {
+      -webkit-transform: translate(3px) rotate(-45deg);
+      transform: translate(3px) rotate(-45deg);
+      -webkit-transform-origin: 10% 90%;
+      transform-origin: 10% 90%;
+    }
+
+    :global(.icon-bar) {
+      width: 22px;
+      height: 2px;
+      background-color: $orange;
+      display: block;
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+  }
+  :global(.header__nav) {
+    li {
+      display: inline-block;
+      padding: 1.5625rem 0;
+      margin-left: 1.5625rem;
+      a {
+        color: inherit;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1rem;
+      }
+      &:global(.about-impc) {
+        --border-color: #{$orange};
+      }
+      &:global(.data) {
+        --border-color: #{$blue};
+      }
+      &:global(.human-diseases) {
+        --border-color: #{$red};
+      }
+      &:global(.publications) {
+        --border-color: #{$navy};
+      }
+      &:global(.news) {
+        --border-color: #{$purple};
+      }
+      &:global(.blog) {
+        --border-color: #{$lime};
+      }
+    }
+  }
+
+  :global(.sub-menu) {
+    max-height: 0px;
+    overflow: hidden;
+    --bg: white;
+    background: var(--bg);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transition: all 1s cubic-bezier(0.02, 0.01, 0.47, 1);
+    z-index: 0;
+    font-weight: bold;
+    line-height: 1.5rem;
+    &:global(.active) {
+      height: auto;
+      max-height: 500px;
+      z-index: 1;
+    }
+    :global(.sub-menu__inside) {
+      padding: 2.1875rem 0;
+    }
+    &:global(.about-menu) {
+      --bg: #{$orange-light};
+    }
+    &:global(.data-menu) {
+      --bg: #{$blue-light};
+    }
+    &:global(.publications-menu) {
+      --bg: #{$navy-light};
+    }
+    p {
+      font-size: $font-sm;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+  }
+
+  :global(.mobile-nav) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    color: #FFF;
+    z-index: 999;
+    padding: 80px 20px 20px;
+    min-height: 80px;
+    overflow-y: scroll;
+    :global(.navbar-toggler) {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 79px;
+    }
+    :global(.mobile-nav__search) {
+      background-color: #fff;
+      height: 52px;
+      width: 100%;
+      padding: 0 15px;
+      font-size: 16px;
+      line-height: 52px;
+      font-style: italic;
+      :global(.form-control) {
+        border: none;
+        background: none;
+        height: 52px;
+        width: 100%;
+      }
+      :global(button) {
+        font-style: italic;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+      }
+      :global(.fa-magnifying-glass) {
+        margin-left: 5px;
+        color: #ed7b25;
+      }
+    }
+    :global(h3 a) {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding-bottom: 5px;
+      border-bottom: 4px solid #FFF;
+      text-decoration: none;
+    }
+    :global(h3 a.about-impc) {
+      border-color: #ed7b25;
+    }
+    :global(h3 a.data) {
+      border-color: #00b0b0;
+    }
+    :global(p) {
+      margin: 0;
+      line-height: var(--bs-body-line-height);
+    }
+    :global(p a) {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFF;
+    }
+    :global(.sub-pages) {
+      text-align: left;
+      margin-left: 20px;
+      :global(p a) {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}

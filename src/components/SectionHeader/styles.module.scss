@@ -1,0 +1,29 @@
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  & > * {
+    margin-bottom: 0;
+  }
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #FFF;
+  transition: all 0.3s;
+  padding: 2rem;
+  z-index: 2;
+
+  .closeBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+}

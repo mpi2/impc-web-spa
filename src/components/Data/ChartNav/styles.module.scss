@@ -1,0 +1,22 @@
+@import "../../../styles/vars.scss";
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 0.9rem;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.link {
+  text-transform: none;
+  font-weight: normal;
+  letter-spacing: normal;
+  font-size: 1.15rem;
+}

@@ -1,0 +1,42 @@
+@import "../../../styles/vars.scss";
+.cardImage {
+  height: 160px;
+  background-position: center;
+  border-radius: $xxs;
+  position: relative;
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-size: 50%;
+}
+
+.cardImageOverlay {
+  position: absolute;
+  background-color: #007c7c;
+  opacity: 0;
+  transition: opacity 0.3s;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+}
+
+.cardText {
+  padding-top: $xs;
+}
+
+.card {
+  margin-bottom: 2rem;
+  border-radius: $xxs;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    .cardImageOverlay {
+      opacity: 0.8;
+    }
+  }
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}

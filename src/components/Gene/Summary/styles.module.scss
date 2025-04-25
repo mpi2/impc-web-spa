@@ -1,0 +1,225 @@
+@import "../../../styles/vars.scss";
+
+.subheadingCont {
+  margin-bottom: 1rem;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.howLink {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0;
+  svg {
+    margin-left: $xxs;
+  }
+}
+
+.headingCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  h1 {
+    flex-grow: 1;
+  }
+}
+
+.gap {
+  // gap: $md;
+  & > div:first-child {
+    padding-right: $md;
+  }
+}
+
+.progressHeader {
+  margin-bottom: $xxs;
+  color: $grey;
+}
+
+.progressContainer {
+  height: $spacing;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: $spacing;
+  background-color: $grey-light;
+  margin-bottom: $sm;
+}
+
+.progressSegment {
+  height: $spacing * 2;
+  width: 0;
+  background-color: $secondary;
+}
+
+.progressSegmentPrimary {
+  @extend .progressSegment;
+  background-color: $primary;
+}
+
+.bodySystemGroup {
+  padding: $xs;
+  border-radius: $spacing;
+}
+
+.bodySystemGroupSignificant {
+  @extend .bodySystemGroup;
+  padding-bottom: $xs;
+}
+
+.bodySystemGroupSummary {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bodySystemWrapper {
+  border: 1px solid rgba(208, 211, 212, 0.5);
+  margin-bottom: 1rem;
+}
+
+.bodySystems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+$pillSize: 1.8rem;
+.pill {
+  height: $pillSize;
+  width: $pillSize;
+  font-size: 80%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  border: 2px solid;
+}
+
+.progressCircleCont {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.progressCircleText {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  margin-bottom: $xs;
+}
+
+.dataCollection {
+  margin-bottom: $xs;
+  display: inline-block;
+  span:first-child {
+    margin-right: $xxs;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $secondary;
+  }
+}
+
+.dataCollectionInactive {
+  @extend .dataCollection;
+}
+
+.geneMetricsBanner {
+  background-color: #e9f3f3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: center;
+  width: calc(100% + 4rem);
+  color: #000;
+  border-bottom-right-radius: $spacing;
+  border-bottom-left-radius: $spacing;
+  min-height: 56px;
+  margin-left: -2rem;
+  padding: 0 2rem;
+  border-top: 1px solid #D0D3D4;
+  @media screen and (max-width: 1112px) {
+    padding: 1rem 2rem;
+  }
+  strong {
+    color: #102A5C;
+  }
+  .single {
+    display: flex;
+    gap: 0.8rem;
+  }
+}
+
+.synonyms-tooltip {
+  .tooltip-inner {
+    max-width: none;
+  }
+}
+
+.btnOrder {
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: #102A5C;
+  --bs-btn-hover-border-color: #102A5C;
+  --bs-border-radius: 2px;
+  color: #102A5C;
+  font-weight: 500;
+  padding: 0.5rem 2rem;
+}
+
+@mixin call-to-action-styles {
+  font-weight: 500;
+  font-size: 120%;
+}
+
+.allelesAvailablesBtn {
+  @include call-to-action-styles;
+}
+.disabledAllelesBtn {
+  @include call-to-action-styles;
+  cursor: initial;
+}
+.overlayContainer {
+  position: relative;
+  max-width: fit-content;
+}
+.skeletonOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  font-size: 0;
+  transition: opacity 400ms;
+  &.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .skeleton {
+    --base-color: rgba(235, 235, 235, 0.5);
+    --highlight-color: rgba(245, 245, 245, 0.5);
+  }
+}

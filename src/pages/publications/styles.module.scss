@@ -1,0 +1,21 @@
+
+.chartContainer {
+  position: relative;
+  max-height: 450px;
+  height: 450px;
+}
+.expandTableContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.changeViewWrapper {
+  display: flex;
+  column-gap: 2rem;
+  justify-content: center;
+  padding-bottom: 2rem;
+  align-items: center;
+  button > svg {
+    margin-right: 0.5rem;
+  }
+}

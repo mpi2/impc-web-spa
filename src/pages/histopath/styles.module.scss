@@ -1,0 +1,62 @@
+.topControls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  position: relative;
+}
+.labelContainer {
+  display: flex;
+  align-items: center;
+}
+.heatmapLabel {
+  width: 20px;
+  height: 20px;
+  border: solid 1px black;
+  display: inline-block;
+}
+
+.heatMap {
+  font-size: 10px;
+  margin-bottom: 0;
+  thead tr, tfoot tr {
+    height: 80px;
+  }
+  thead tr th, tfoot tr th {
+    font-size: 10px;
+    vertical-align: bottom;
+    cursor: pointer;
+  }
+  .geneCell {
+    position: sticky;
+    left: -1px;
+  }
+  .header {
+    display: inline-block;
+    font-size: 12px;
+    line-height: initial;
+    &.top {
+      transform: rotate(-45deg) translateX(5%);
+    }
+    &.bottom {
+      transform: rotate(-45deg) translateX(20%);
+    }
+    &.noTransform {
+      transform: initial;
+    }
+    &.eyeOpticNerveCol {
+      min-width: 60px;
+    }
+  }
+  em {
+    background: yellow;
+    font-weight: bold;
+    font-size: 14px;
+  }
+}
+.cellData {
+  width: 40px;
+  height: 40px;
+}

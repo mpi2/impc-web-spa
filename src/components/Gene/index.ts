@@ -1,0 +1,9 @@
+export { default as Summary } from "./Summary";
+export { default as ExternalLinks } from "./ExternalLinks";
+export { default as Phenotypes } from "./Phenotypes";
+export { default as Images } from "./Images";
+export { default as Publications } from "./Publications";
+export { default as Histopathology } from "./Histopathology";
+export { default as Expressions } from "./Expressions";
+export { default as Order } from "./Order";
+export { default as HumanDiseases } from "./HumanDiseases";

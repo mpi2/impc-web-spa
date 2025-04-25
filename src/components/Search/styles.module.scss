@@ -1,0 +1,66 @@
+@import "../../styles/vars";
+.container {
+  display: flex;
+  justify-content: center;
+}
+.banner {
+  background-image: url("/data/understanding.png");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: $searchOffset;
+}
+
+.tabs {
+  text-align: center;
+}
+
+.tab {
+  padding: 15px 20px;
+  background: $grey-light;
+  display: inline-block;
+  box-shadow: inset 7px -7px 9px -7px rgb(0, 0, 0, 50%);
+  text-transform: uppercase;
+  font-weight: bold;
+  &:first-child {
+    box-shadow: none;
+  }
+  &,
+  a {
+    color: $black !important;
+  }
+}
+
+.tab__active {
+  @extend .tab;
+  box-shadow: none;
+  background: $white;
+}
+
+.inputCont {
+  display: flex;
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 3px 6px rgb(0, 0, 0, 20%);
+}
+
+.input {
+  padding: 15px;
+  flex: 1;
+  display: block;
+  border: 0;
+  outline: none;
+  font-size: 20px;
+}
+
+.searchBtn {
+  appearance: none;
+  border: 0;
+  background-color: $white;
+  color: $orange;
+  font-size: 25px;
+  width: 60px;
+  height: 60px;
+  &:hover {
+    background-color: $grey-light;
+  }
+}

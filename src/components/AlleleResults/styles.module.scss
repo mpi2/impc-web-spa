@@ -1,0 +1,36 @@
+@import "../../styles/vars.scss";
+.subheadingCont {
+  margin-bottom: $xs;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subheading {
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $grey;
+}
+
+.subheadingSection {
+  margin-right: $md;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.result {
+  padding-top: $xs;
+  padding-bottom: $xs;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  align-items: center;
+  &:hover {
+    background-color: $bg;
+  }
+  &:nth-child(2n) {
+  }
+  p {
+    margin-bottom: $xxs / 2;
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../../styles/vars.scss";
+.table {
+  margin-top: $xs;
+  td {
+    vertical-align: middle;
+    line-height: 2rem;
+  }
+}
+
+.scale {
+  width: 33px;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  & > span {
+    display: block;
+    width: 5px;
+    height: 100%;
+    background-color: $grey;
+    flex-grow: 0;
+    flex-shrink: 0;
+    &:nth-child(1) {
+      height: 20%;
+    }
+    &:nth-child(2) {
+      height: 40%;
+    }
+    &:nth-child(3) {
+      height: 60%;
+    }
+    &:nth-child(4) {
+      height: 80%;
+    }
+  }
+}
+
+.selected {
+  background-color: $primary !important;
+}
