@@ -1,4 +1,3 @@
-"use client";
 import styles from "./styles.module.scss";
 import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import {
@@ -8,8 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link, useNavigate } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
@@ -45,7 +43,7 @@ const GeneResult = ({
       humanSymbolSynonyms,
     },
   } = gene;
-  const router = useRouter();
+  const navigate = useNavigate();
   const synonymsArray =
     synonyms.includes(";") || synonyms !== "" ? synonyms.split(";") : [];
   const humanSynonymsArray =
@@ -59,7 +57,7 @@ const GeneResult = ({
           sm={8}
           className={styles.result}
           onClick={() => {
-            router.push(`/genes/${mgiGeneAccessionId}`);
+            navigate(`/genes/${mgiGeneAccessionId}`);
           }}
         >
           <h4 className="mb-2">
@@ -134,7 +132,7 @@ const GeneResult = ({
           </h5>
           <p className="grey">
             <Link
-              href={`/genes/${mgiGeneAccessionId}/#order`}
+              to={`/genes/${mgiGeneAccessionId}/#order`}
               scroll={false}
               className="link"
             >

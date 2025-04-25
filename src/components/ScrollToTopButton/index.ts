@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
+import ScrollToTopButton from "./ScrollToTopButton.tsx";
 
-export default dynamic(() => import("./ScrollToTopButton"), {
-  ssr: false,
-});
+export default ScrollToTopButton;

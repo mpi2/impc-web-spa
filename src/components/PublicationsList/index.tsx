@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from "./styles.module.scss";
@@ -26,9 +26,8 @@ import {
 import Pagination from "../Pagination";
 import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
-import Link from "next/link";
 import { AlleleSymbol } from "@/components";
-import dynamic from "next/dynamic";
+import { Link } from "react-router";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -313,7 +312,7 @@ const PublicationsList = (props: PublicationListProps) => {
                             <>
                               <Link
                                 className="primary link"
-                                href={`/genes/${allele.mgiGeneAccessionId}`}
+                                to={`/genes/${allele.mgiGeneAccessionId}`}
                               >
                                 <AlleleSymbol
                                   symbol={allele.alleleSymbol}
@@ -370,7 +369,7 @@ const PublicationsList = (props: PublicationListProps) => {
                 </tr>
               ))}
               {!!isFetching &&
-                [...Array(10)].map((e, i) => (
+                [...Array(10)].map((_, i) => (
                   <tr key={i} className={styles.pubLoader}>
                     <td>
                       <Skeleton count={9} />
@@ -386,8 +385,3 @@ const PublicationsList = (props: PublicationListProps) => {
 };
 
 export default PublicationsList;
-
-export const NonSSRPublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"),
-  { ssr: false },
-);

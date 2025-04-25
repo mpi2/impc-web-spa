@@ -1,11 +1,10 @@
-"use client";
 import { Fragment, useState } from "react";
 import headerCss from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { Collapse } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { Link } from "react-router";
 
 export interface MenuItem {
   name: string;
@@ -160,7 +159,7 @@ const Header = () => {
                             onFocus={() => setActiveMenu(menuItem.id || -1)}
                             onMouseLeave={() => setActiveMenu(-1)}
                           >
-                            <Link href={menuItem.link}>{menuItem.name}</Link>
+                            <Link to={menuItem.link}>{menuItem.name}</Link>
                           </li>
                         );
                       })}
@@ -221,7 +220,7 @@ const Header = () => {
                                   key={subMenuItem.link}
                                   className="col col-auto text-left"
                                 >
-                                  <Link href={subMenuItem.link}>
+                                  <Link to={subMenuItem.link}>
                                     {subMenuItem.name}
                                   </Link>
                                   <div className="sub-pages">
@@ -230,7 +229,7 @@ const Header = () => {
                                       .map((subMenutItemChild) => {
                                         return (
                                           <p key={subMenutItemChild.link}>
-                                            <Link href={subMenutItemChild.link}>
+                                            <Link to={subMenutItemChild.link}>
                                               {subMenutItemChild.name}
                                             </Link>
                                           </p>
@@ -251,7 +250,7 @@ const Header = () => {
                                   key={subMenuItem.link}
                                   className="col col-auto text-left"
                                 >
-                                  <Link href={subMenuItem.link}>
+                                  <Link to={subMenuItem.link}>
                                     {subMenuItem.name}
                                   </Link>
                                 </div>
@@ -318,7 +317,7 @@ const Header = () => {
               {menuItems?.map((menuItem, i) => (
                 <Fragment key={i}>
                   <h3 className="mt-2">
-                    <Link href={menuItem.link} className={menuItem.classes}>
+                    <Link to={menuItem.link} className={menuItem.classes}>
                       {menuItem.name}
                     </Link>
                   </h3>
@@ -328,7 +327,7 @@ const Header = () => {
                       .map((subMenuItem, i) => (
                         <Fragment key={i}>
                           <p>
-                            <Link href={subMenuItem.link}>
+                            <Link to={subMenuItem.link}>
                               {subMenuItem.name}
                             </Link>
                           </p>
@@ -338,7 +337,7 @@ const Header = () => {
                                 .sort((a, b) => a.sort - b.sort)
                                 .map((subMenuItemChild) => (
                                   <p>
-                                    <Link href={subMenuItemChild.link}>
+                                    <Link to={subMenuItemChild.link}>
                                       {subMenuItemChild.name}
                                     </Link>
                                   </p>

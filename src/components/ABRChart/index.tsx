@@ -1,5 +1,3 @@
-"use client";
-
 import { mutantChartColors, wildtypeChartColors } from "@/utils/chart";
 import { Chart } from "react-chartjs-2";
 import errorbarsPlugin from "@/utils/chart/errorbars.plugin";

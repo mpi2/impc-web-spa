@@ -1,4 +1,3 @@
-"use client";
 import styles from "./styles.module.scss";
 import {
   Alert,
@@ -17,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
@@ -67,14 +66,14 @@ const PhenotypeResult = ({
   },
   query,
 }: Props) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const synonymsArray = synonyms.split(";");
   return (
     <>
       <Row
         className={styles.result}
         onClick={() => {
-          router.push(`/phenotypes/${mpId}`);
+          navigate(`/phenotypes/${mpId}`);
         }}
       >
         <Col>

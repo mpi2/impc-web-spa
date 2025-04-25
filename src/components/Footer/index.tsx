@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row } from "react-bootstrap";
 import footerCss from "./styles.module.scss";
-import Link from "next/link";
+import { Link } from "react-router";
 
 export const DR_VERSION = process.env.NEXT_PUBLIC_DATA_RELEASE_VERSION || "";
 
@@ -160,7 +160,7 @@ const Footer = () => {
           </div>
           <div className="col-12 col-md-6 text-right">
             <h6>
-              <Link href="/release">
+              <Link to="/release">
                 <small>
                   Access Data Release <span id="data-no">{DR_VERSION}</span>
                   &nbsp;Data

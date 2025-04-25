@@ -1,4 +1,3 @@
-"use client";
 import {
   CSSProperties,
   memo,
@@ -16,7 +15,7 @@ import { Text } from "@visx/text";
 import { ScaleBand, ScaleQuantize } from "d3-scale";
 import { clamp, truncate } from "lodash";
 import classNames from "classnames";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router";
 
 const binHeight = 25;
 const scalePadding = 0.05;
@@ -125,7 +124,7 @@ const LateAdultHeatmap = (props: Props) => {
     isFetchingParamData,
   } = props;
 
-  const router = useRouter();
+  const navigate = useNavigate();
   const numOfCols = data.columns.length;
   const binWidth = width / numOfCols;
   const maxWidth = width - 50;
@@ -192,9 +191,9 @@ const LateAdultHeatmap = (props: Props) => {
         url += `&dataSearch=${selectedParam}&dataQuery=${columnName}`;
       }
       url += "#data";
-      router.push(url);
+      navigate(url);
     },
-    [router, selectedParam],
+    [navigate, selectedParam],
   );
 
   return (

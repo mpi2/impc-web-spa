@@ -1,6 +1,6 @@
 import { Model, TableCellProps } from "@/models";
 import _ from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 
 type Props<T> = {
   prefix: string;
@@ -15,7 +15,7 @@ const LinkCell = <T extends Model>(props: TableCellProps<T> & Props<T>) => {
     classes.push('primary');
   }
   return (
-    <Link className={classes.join(' ')} href={`${props.prefix}/${urlValue}`} style={props.style}>
+    <Link className={classes.join(' ')} to={`${props.prefix}/${urlValue}`} style={props.style}>
       {_.get(props.value, props.field) as string}
     </Link>
   )

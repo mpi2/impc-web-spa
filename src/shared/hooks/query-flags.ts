@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 
 type EnabledFlags = {
@@ -29,7 +29,7 @@ const listOfFlags: Array<Flag> = [
 ];
 
 export const useQueryFlags = () => {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [flags, setFlags] = useState<EnabledFlags>({
     isNNumbersFootnoteAvailable: false,

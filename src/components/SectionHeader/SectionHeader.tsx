@@ -1,8 +1,8 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleQuestion, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
-import Link from "next/link";
+import { Link } from "react-router";
 
 type Props = {
   containerId: string;
@@ -19,7 +19,7 @@ const SectionHeader = (props: PropsWithChildren<Props>) => {
         <h2 dangerouslySetInnerHTML={{ __html: props.title }}></h2>
         {!!href && (
           <Link
-            href={href}
+            to={href}
             className="btn"
             aria-label={`${props.title} documentation`}
           >

@@ -1,8 +1,6 @@
-"use client";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { Link, useNavigate, useSearchParams, useLocation } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
@@ -25,9 +23,9 @@ const Search = ({
   onChange?: (val: string) => void;
   updateURL?: boolean;
 }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
   const [query, setQuery] = useState<string>(searchParams.get("term") || "");
 
   const handleInput = (val: string) => {
@@ -85,7 +83,7 @@ const Search = ({
           searchParams.toString(),
         );
         updatedSearchParams.set("term", query);
-        router.push(`${pathname}?${updatedSearchParams.toString()}`);
+        navigate(`${pathname}?${updatedSearchParams.toString()}`);
       }
     }
   }, [query]);
@@ -110,7 +108,7 @@ const Search = ({
               } else {
                 return (
                   <Link
-                    href={tab.link}
+                    to={tab.link}
                     key={`tab-${tab.name}`}
                     className={isActive ? styles.tab__active : styles.tab}
                   >
@@ -142,13 +140,13 @@ const Search = ({
                     if (tabIndex === 1) {
                       url += "&type=pheno";
                     }
-                    router.push(url);
+                    navigate(url);
                   } else {
                     const updatedSearchParams = new URLSearchParams(
                       searchParams.toString(),
                     );
                     updatedSearchParams.set("term", e.currentTarget.value);
-                    router.push(
+                    navigate(
                       `${pathname}?${updatedSearchParams.toString()}`,
                     );
                   }

@@ -31,6 +31,6 @@
   &:nth-child(2n) {
   }
   p {
-    margin-bottom: $xxs / 2;
+    margin-bottom: calc($xxs / 2);
   }
 }

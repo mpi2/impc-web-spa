@@ -1,5 +1,5 @@
 import { Alert } from "react-bootstrap";
-import Link from "next/link";
+import { Link } from "react-router";
 import { PropsWithChildren } from "react";
 
 type Props = {
@@ -22,7 +22,7 @@ const PublicationDataAlert = (props: PropsWithChildren<Props>) => {
       <hr/>
       <Link
         className="link primary"
-        href={`https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-0${dataReleaseVersion}/`}>
+        to={`https://ftp.ebi.ac.uk/pub/databases/impc/all-data-releases/release-0${dataReleaseVersion}/`}>
         Link to FTP site
       </Link>
     </Alert>

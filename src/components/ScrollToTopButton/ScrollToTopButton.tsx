@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import { useScroll } from "@/hooks";
 import { AnimatePresence, motion } from "framer-motion";

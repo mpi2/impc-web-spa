@@ -23,7 +23,7 @@ import { Bar } from "react-chartjs-2";
 import { Card, Search } from "@/components";
 import { groupBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
-import Link from "next/link";
+import { Link } from "react-router";
 import moment from "moment";
 import remarkBreaks from "remark-breaks";
 import {
@@ -651,7 +651,7 @@ const ReleaseNotesPage = (props: Props) => {
                 summaryCounts[dataReleaseVersion].phenotypedLines,
                 true,
                 <Link
-                  href="https://www.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
+                  to="https://www.mousephenotype.org/help/mouse-production/faqs/what-is-a-phenotyped-line/"
                   className="btn"
                   aria-label="What is a line?"
                   target="_blank"
@@ -949,7 +949,7 @@ const ReleaseNotesPage = (props: Props) => {
                 <Link
                   className="link primary"
                   target="_blank"
-                  href={
+                  to={
                     parseFloat(releaseVersion) <= 21.1
                       ? `https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`
                       : `/release/${releaseVersion}`
