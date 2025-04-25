@@ -22,50 +22,55 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
-      "@/app/*": [
-        "app/*"
-      ],
       "@/api-service": [
-        "api-service/index.ts"
-      ],
-      "@/components": [
-        "components/index.ts"
+        "./src/api-service/index.ts"
       ],
       "@/components/*": [
-        "components/*"
+        "./src/components/*"
+      ],
+      "@/components": [
+        "./src/components/index.ts"
       ],
       "@/contexts": [
-        "shared/contexts/index.ts"
+        "./src/shared/contexts/index.ts"
       ],
       "@/eventChannels": [
-        "shared/eventChannels/index.ts"
+        "./src/shared/eventChannels/index.ts"
       ],
       "@/hoc/*": [
-        "shared/high-order-components/*"
+        "./src/shared/high-order-components/*"
       ],
       "@/hooks": [
-        "shared/hooks/index.ts"
+        "./src/shared/hooks/index.ts"
       ],
       "@/hooks/*": [
-        "shared/hooks/*"
+        "./src/shared/hooks/*"
       ],
       "@/models": [
-        "shared/models/index.ts"
+        "./src/shared/models/index.ts"
       ],
       "@/models/*": [
-        "shared/models/*"
+        "./src/shared/models/*"
       ],
       "@/shared/*": [
-        "shared/*"
+        "./src/shared/*"
+      ],
+      "@/pages/*" : [
+        "./src/pages/*"
       ],
       "@/utils": [
-        "utils/index.tsx"
+        "./src/utils/index.tsx"
       ],
       "@/utils/*": [
-        "utils/*"
+        "./src/utils/*"
+      ],
+      "@/utils/chart": [
+        "./src/utils/chart/index.ts"
+      ],
+      "@/utils/results-page": [
+        "./src/utils/results-page.tsx"
       ]
     }
-
   },
   "include": ["src"]
 }
