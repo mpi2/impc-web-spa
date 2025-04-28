@@ -5,7 +5,6 @@ import { GeneSummary } from "@/models/gene";
 export const useGeneSummaryQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
-  geneFromServer?: GeneSummary | null,
 ) => {
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "summary"],

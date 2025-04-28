@@ -85,11 +85,7 @@ const Image = ({
   );
 };
 
-type ImagesProps = {
-  initialData: Array<GeneImage>;
-};
-
-const Images = ({ initialData }: ImagesProps) => {
+const Images = () => {
   const gene = useContext(GeneContext);
   const { isLoading, isError, data } = useQuery<Array<GeneImage>>({
     queryKey: ["genes", gene.mgiGeneAccessionId, "images"],

@@ -18,11 +18,7 @@ import {
 } from "@/components";
 import { SortType } from "@/models";
 
-type GeneHistopathologyProps = {
-  initialData: Array<GeneHistopathology>;
-};
-
-const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
+const Histopathology = () => {
   const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>([]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);

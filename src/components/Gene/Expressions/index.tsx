@@ -8,11 +8,7 @@ import { ExpressionCell, ImagesCell } from "./custom-cells";
 import { Card, DownloadData, SectionHeader } from "@/components";
 import { SortType } from "@/models";
 
-type ExpressionProps = {
-  initialData: Array<GeneExpression>;
-};
-
-const Expressions = ({ initialData }: ExpressionProps) => {
+const Expressions = () => {
   const gene = useContext(GeneContext);
   const [tab, setTab] = useState("adultExpressions");
   const [sortOptions, setSortOptions] = useState<string>("");
@@ -21,7 +17,6 @@ const Expressions = ({ initialData }: ExpressionProps) => {
     gene.mgiGeneAccessionId,
     !!gene.mgiGeneAccessionId,
     sortOptions,
-    initialData,
   );
 
   const adultData = data?.filter((x) => x.lacZLifestage === "adult") ?? [];

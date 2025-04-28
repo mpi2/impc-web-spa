@@ -5,16 +5,6 @@ import RootLayout from "./layout.tsx";
 import SearchResults from "@/pages/search/search-page.tsx";
 import GenePage from "@/pages/genes/[pid]/gene-page.tsx";
 
-const genePageProps = {
-  gene: null,
-  significantPhenotypes: [],
-  orderData: [],
-  expressionData: [],
-  imageData: [],
-  histopathologyData: [],
-  humanDiseasesData: [],
-};
-
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -22,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<SearchResults data={{ numResults: -1, results: []}} />} />
-          <Route path="genes/:pid" element={<GenePage {...genePageProps} />} />
+          <Route path="genes/:pid" element={<GenePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

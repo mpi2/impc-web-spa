@@ -16,25 +16,19 @@ import {
 } from "@/components";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneOrderQuery } from "@/hooks";
-import { GeneOrder } from "@/models/gene";
 import { SortType } from "@/models";
 
 type OrderProps = {
   allelesStudied: Array<string>;
   allelesStudiedLoading: boolean;
-  orderDataFromServer: Array<GeneOrder>;
 };
 
 const Order = ({
   allelesStudied,
   allelesStudiedLoading,
-  orderDataFromServer,
 }: OrderProps) => {
   const gene = useContext(GeneContext);
   const { setNumAllelesAvailable } = useContext(AllelesStudiedContext);
-  const [sorted, setSorted] = useState<any[]>(
-    orderBy(orderDataFromServer, "alleleSymbol", "asc"),
-  );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const {
     isFetching,
@@ -53,7 +47,10 @@ const Order = ({
     return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
-  const orderData = orderDataFromServer || filtered;
+  const orderData = filtered;
+  const [sorted, setSorted] = useState<any[]>(
+    orderBy(orderData, "alleleSymbol", "asc"),
+  );
 
   useEffect(() => {
     if (orderData) {

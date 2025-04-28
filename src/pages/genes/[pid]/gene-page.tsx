@@ -14,37 +14,9 @@ import {
 import { useEffect, useState } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import {
-  GeneDisease,
-  GeneExpression,
-  GeneHistopathology,
-  GeneImage,
-  GeneOrder,
-  GenePhenotypeHits,
-  GeneSummary,
-} from "@/models/gene";
 import { useParams } from "react-router";
 
-type GenePageProps = {
-  gene: GeneSummary | null;
-  significantPhenotypes: Array<GenePhenotypeHits>;
-  orderData: Array<GeneOrder>;
-  expressionData: Array<GeneExpression>;
-  imageData: Array<GeneImage>;
-  histopathologyData: Array<GeneHistopathology>;
-  humanDiseasesData: Array<GeneDisease>;
-};
-
-const GenePage = (props: GenePageProps) => {
-  const {
-    gene: geneFromServer,
-    significantPhenotypes: sigPhenotypesFromServer,
-    orderData: orderDataFromServer,
-    expressionData: expressionDataFromServer,
-    imageData: imageDataFromServer,
-    histopathologyData: histopathologyDataFromServer,
-    humanDiseasesData: associatedDiseasesDataFromServer,
-  } = props;
+const GenePage = () => {
   const params = useParams<{ pid: string }>();
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [numAllelesAvailable, setNumAllelesAvailable] = useState(-1);
@@ -62,8 +34,7 @@ const GenePage = (props: GenePageProps) => {
 
   const { data: gene } = useGeneSummaryQuery(
     params.pid,
-    !!params.pid && !geneFromServer,
-    geneFromServer,
+    !!params.pid
   );
 
   const geneData = gene;
@@ -79,27 +50,25 @@ const GenePage = (props: GenePageProps) => {
     }
   }, [geneData]);
 
-
   return (
     <>
       <GeneContext.Provider value={geneData}>
         <AllelesStudiedContext.Provider value={allelesStudiedContextValue}>
           <Search />
           <Container className="page">
-            <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
+            <Summary numOfAlleles={numAllelesAvailable ?? 0} />
             {!!geneData && (
               <>
-                <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
-                <Expressions initialData={expressionDataFromServer} />
-                <Images initialData={imageDataFromServer} />
-                <HumanDiseases initialData={associatedDiseasesDataFromServer} />
-                <Histopathology initialData={histopathologyDataFromServer} />
+                <Phenotypes />
+                <Expressions />
+                <Images />
+                <HumanDiseases />
+                <Histopathology />
                 <Publications />
                 <ExternalLinks />
                 <Order
                   allelesStudied={allelesStudied}
                   allelesStudiedLoading={allelesStudiedLoading}
-                  orderDataFromServer={orderDataFromServer}
                 />
               </>
             )}

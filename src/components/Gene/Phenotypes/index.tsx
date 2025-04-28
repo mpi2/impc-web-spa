@@ -4,7 +4,6 @@ import SignificantPhenotypes from "./SignificantPhenotypes";
 import GraphicalAnalysis from "./GraphicalAnalysis";
 import AllelePhenotypeDiagram from "./AllelePhenotypeDiagram";
 import { useSearchParams } from "react-router";
-import { GenePhenotypeHits } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
 import {
@@ -60,10 +59,6 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
   return <div className="mt-3">{children}</div>;
 };
 
-type PhenotypesProps = {
-  sigPhenotypesFromServer: Array<GenePhenotypeHits>;
-};
-
 type DataFilters = {
   procedureName: string | undefined;
   topLevelPhenotypeName: string | undefined;
@@ -72,7 +67,7 @@ type DataFilters = {
   alleleSymbol: string | undefined;
 };
 
-const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
+const Phenotypes = () => {
   const gene = useContext(GeneContext);
   const [searchParams] = useSearchParams();
   const [tabKey, setTabKey] = useState<string>("significantPhenotypes");
@@ -95,7 +90,7 @@ const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
     fetchStatus: sigPhenotypeFetchStatus,
   } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, !!gene);
 
-  const sigPhenotypes = sigPhenotypesFromServer || phenotypeData;
+  const sigPhenotypes = phenotypeData;
 
   useEffect(() => {
     const unsubscribeOnSystemSelection = summarySystemSelectionChannel.on(

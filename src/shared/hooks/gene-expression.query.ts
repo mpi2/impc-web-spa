@@ -13,7 +13,6 @@ export const useGeneExpressionQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
   sortOptions: string,
-  initialData: Array<GeneExpression>,
 ) => {
   return useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "expression"],
