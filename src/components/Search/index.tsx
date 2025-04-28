@@ -135,8 +135,8 @@ const Search = ({
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  if (pathname !== "/search") {
-                    let url = `/search?term=${e.currentTarget.value}`;
+                  if (pathname !== "/") {
+                    let url = `/?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += "&type=pheno";
                     }
