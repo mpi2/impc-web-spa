@@ -12,7 +12,7 @@ import { SortType, TableCellProps } from "@/models";
 import { AlleleSymbol, DownloadData } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
 import { get, orderBy } from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { Alert } from "react-bootstrap";
 
@@ -50,7 +50,7 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
       <small>
         <Link
           className="link"
-          href={`/genes/${props.value.mgiGeneAccessionId}`}
+          to={`/genes/${props.value.mgiGeneAccessionId}`}
         >
           <i>{allele[0]}</i>
         </Link>
@@ -76,7 +76,7 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
       "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
   return (
-    <Link href={url}>
+    <Link to={url}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
   );

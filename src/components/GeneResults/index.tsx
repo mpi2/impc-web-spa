@@ -133,7 +133,6 @@ const GeneResult = ({
           <p className="grey">
             <Link
               to={`/genes/${mgiGeneAccessionId}/#order`}
-              scroll={false}
               className="link"
             >
               <FontAwesomeIcon icon={faShoppingCart} />

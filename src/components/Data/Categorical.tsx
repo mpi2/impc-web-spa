@@ -8,7 +8,7 @@ import { formatPValue, getDownloadData } from "@/utils";
 import { capitalize, sortBy } from "lodash";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
@@ -201,7 +201,7 @@ const Categorical = ({
                 <span>
                   <Link
                     className="link primary"
-                    href="https://www.immunophenotype.org/threei/#/methods/statistical-design"
+                    to="https://www.immunophenotype.org/threei/#/methods/statistical-design"
                     target="_blank"
                   >
                     Statistical design
@@ -221,7 +221,7 @@ const Categorical = ({
                 <span>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+                    to="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
                     target="_blank"
                   >
                     Pain sensitivity publication

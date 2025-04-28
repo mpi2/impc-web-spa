@@ -2,7 +2,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
-import Link from "next/link";
+import { Link } from "react-router";
 import _ from "lodash";
 import { fetchAPI } from "@/api-service";
 import { useQuery } from "@tanstack/react-query";
@@ -68,7 +68,7 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link
             className="primary link"
-            href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+            to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
           >
             Click here to see the raw data
           </Link>
@@ -106,7 +106,7 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
         Full histopathology data table, including submitted images,&nbsp;
         <Link
           className="link primary"
-          href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+          to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
         >
           can be accessed by clicking this link
         </Link>
@@ -136,10 +136,9 @@ const Histopathology = ({ initialData }: GeneHistopathologyProps) => {
                 <tr key={index}>
                   <td>
                     <Link
-                      href={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
+                      to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
-                      legacyBehavior
                     >
                       <strong className="link">{`${p.parameterName} ${p.mpathTermName}`}</strong>
                     </Link>

@@ -2,7 +2,7 @@ import { Modal, Table } from "react-bootstrap";
 import Card from "@/components/Card";
 import { formatAlleleSymbol, formatPValue, getSmallestPValue } from "@/utils";
 import { PropsWithChildren, ReactNode, useMemo, useState } from "react";
-import Link from "next/link";
+import { Link } from "react-router";
 import { Dataset } from "@/models";
 import styles from "./styles.module.scss";
 
@@ -120,9 +120,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             <div className={styles.label}>Associated phenotype</div>
             <div className="content">
               {!!datasetSummary["significantPhenotype"]?.["id"] ? (
-                <Link
-                  href={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
-                >
+                <Link to={`/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}>
                   <span className="link primary">
                     {datasetSummary["significantPhenotype"]?.["name"]}
                   </span>
@@ -141,7 +139,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
         <div className="content">
           <Link
             className="link primary"
-            href={`https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=${datasetSummary.procedureStableKey}&pipeID=${datasetSummary.pipelineStableKey}`}
+            to={`https://www.mousephenotype.org/impress/ProcedureInfo?action=list&procID=${datasetSummary.procedureStableKey}&pipeID=${datasetSummary.pipelineStableKey}`}
           >
             {datasetSummary["procedureName"]}
           </Link>

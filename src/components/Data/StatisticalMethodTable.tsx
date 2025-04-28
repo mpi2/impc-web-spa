@@ -2,10 +2,10 @@ import SortableTable from "@/components/SortableTable";
 import { formatPValue } from "@/utils";
 import Card from "@/components/Card";
 import { Dataset } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import React, { Fragment, useMemo } from "react";
+import { Fragment } from "react";
 
 type Props = {
   datasetSummary: Dataset;
@@ -28,7 +28,7 @@ const StatisticalMethodTable = ({
         <span>
           <Link
             className="link primary"
-            href="https://www.immunophenotype.org/threei/#/methods/statistical-design"
+            to="https://www.immunophenotype.org/threei/#/methods/statistical-design"
             target="_blank"
           >
             Statistical design
@@ -51,7 +51,7 @@ const StatisticalMethodTable = ({
         <span>
           <Link
             className="link primary"
-            href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
+            to="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/"
             target="_blank"
           >
             Pain sensitivity publication

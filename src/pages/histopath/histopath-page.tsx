@@ -1,4 +1,3 @@
-"use client";
 import { Breadcrumb, Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { Suspense, useMemo, useState } from "react";
@@ -18,7 +17,7 @@ import {
   Card,
   PaginationControls,
 } from "@/components";
-import Link from "next/link";
+import { Link } from "react-router";
 import { kebabCase } from "lodash";
 
 const geneMap = new Map();
@@ -503,7 +502,7 @@ const HistopathLandingPage = () => {
               to inquiry about genes with no fixed tissue from&nbsp;
               <Link
                 className="link primary"
-                href="http://www.mousephenotype.org/contact-us/"
+                to="http://www.mousephenotype.org/contact-us/"
               >
                 our Contact page
               </Link>

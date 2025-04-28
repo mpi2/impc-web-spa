@@ -1,12 +1,8 @@
 import { Card, Search } from "@/components";
-import { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "react-router";
 import { Col, Container, Row } from "react-bootstrap";
 import { Suspense } from "react";
 
-export const metadata: Metadata = {
-  title: "Page not found | International Mouse Phenotyping Consortium",
-};
 export default function NotFound() {
   return (
     <>
@@ -25,19 +21,19 @@ export default function NotFound() {
               </p>
               <ul className="list-links-404">
                 <li>
-                  <Link className="link primary" href="/search">
+                  <Link className="link primary" to="/search">
                     Gene search
                   </Link>
                 </li>
                 <li>
-                  <Link className="link primary" href="/search?type=pheno">
+                  <Link className="link primary" to="/search?type=pheno">
                     Phenotype search
                   </Link>
                 </li>
                 <li>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/about-impc/"
+                    to="https://www.mousephenotype.org/about-impc/"
                   >
                     About the IMPC
                   </Link>
@@ -45,7 +41,7 @@ export default function NotFound() {
                 <li>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/understand/accessing-the-data/"
+                    to="https://www.mousephenotype.org/understand/accessing-the-data/"
                   >
                     Accessing the Data
                   </Link>
@@ -53,7 +49,7 @@ export default function NotFound() {
                 <li>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/understand/the-data/"
+                    to="https://www.mousephenotype.org/understand/the-data/"
                   >
                     Understanding Our Data
                   </Link>
@@ -61,7 +57,7 @@ export default function NotFound() {
                 <li>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/about-impc/consortium-members/"
+                    to="https://www.mousephenotype.org/about-impc/consortium-members/"
                   >
                     Consortium Members
                   </Link>
@@ -69,7 +65,7 @@ export default function NotFound() {
                 <li>
                   <Link
                     className="link primary"
-                    href="https://www.mousephenotype.org/understand/research-highlights/"
+                    to="https://www.mousephenotype.org/understand/research-highlights/"
                   >
                     Research Highlights
                   </Link>

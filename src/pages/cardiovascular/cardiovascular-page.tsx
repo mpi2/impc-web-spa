@@ -1,10 +1,8 @@
-"use client";
-
 import { Alert, Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/cardiovascular.json";
 import styles from "./styles.module.scss";
 import { Fragment, Suspense, useState } from "react";
-import Link from "next/link";
+import { Link } from "react-router";
 import {
   Card,
   ChordDiagram,
@@ -89,7 +87,7 @@ const CardiovascularLandingPage = () => {
                 Release.
               </p>
               <hr />
-              <Link className="link primary" href="#">
+              <Link className="link primary" to="#">
                 Link to FTP site
               </Link>
             </Alert>

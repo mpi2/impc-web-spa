@@ -3,7 +3,7 @@ import { TableCellProps } from "@/models";
 import styles from "@/components/Gene/Phenotypes/AllData/styles.module.scss";
 import { get } from "lodash";
 import { BodySystem } from "@/components/BodySystemIcon";
-import Link from "next/link";
+import { Link } from "react-router";
 import { formatPValue } from "@/utils";
 import { useQueryFlags } from "@/hooks";
 import { useMemo } from "react";
@@ -92,7 +92,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     url += `&metadataGroup=${metadataGroup}`;
   }
   return (
-    <Link href={url} title={`view supporting data for ${parameterName}`}>
+    <Link to={url} title={`view supporting data for ${parameterName}`}>
       <span className="link primary small float-right">Supporting data</span>
     </Link>
   );

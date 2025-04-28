@@ -1,5 +1,5 @@
 import { orderBy } from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { formatAlleleSymbol } from "@/utils";
@@ -169,7 +169,7 @@ const Order = ({
                           <Skeleton inline />
                         ) : allelesStudied.includes(d.alleleSymbol) ? (
                           <Link
-                            href="#data"
+                            to="#data"
                             className="primary link"
                             onClick={() =>
                               orderPhenotypedSelectionChannel.emit(
@@ -201,7 +201,7 @@ const Order = ({
                             <Fragment key={`${product}-${index}`}>
                               <Link
                                 key={index}
-                                href={getProductURL(allele[1], product)}
+                                to={getProductURL(allele[1], product)}
                                 className="primary link"
                                 title={`view ${product} details for gene ${allele[0]}, allele ${allele[1]} `}
                               >

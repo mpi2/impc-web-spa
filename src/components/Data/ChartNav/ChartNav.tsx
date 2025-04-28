@@ -1,6 +1,6 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
@@ -21,7 +21,7 @@ const ChartNav = (props: ChartNavProps) => {
         data-testid="back-to-gene-page-link"
       >
         <Link
-          href={`/genes/${mgiGeneAccessionId}`}
+          to={`/genes/${mgiGeneAccessionId}`}
           className={classNames("mb-3", styles.link)}
         >
           <FontAwesomeIcon icon={faArrowLeft} />

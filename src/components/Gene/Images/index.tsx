@@ -1,7 +1,7 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 import { Alert, Col, Row } from "react-bootstrap";
 import Card from "../../Card";
 import styles from "./styles.module.scss";
@@ -57,7 +57,7 @@ const Image = ({
   }
 
   return (
-    <Link href={url}>
+    <Link to={url}>
       <div className={styles.card}>
         <div
           className={styles.cardImage}

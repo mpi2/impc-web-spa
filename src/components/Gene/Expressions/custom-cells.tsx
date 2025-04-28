@@ -1,6 +1,6 @@
 import { GeneExpression } from "@/models/gene";
 import { TableCellProps } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
@@ -17,7 +17,7 @@ export const ImagesCell = <T extends GeneExpression>(
         <Fragment key={index}>
           <Link
             className="primary small"
-            href={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}?anatomyTerm=${anatomyTerm}`}
+            to={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}?anatomyTerm=${anatomyTerm}`}
           >
             <FontAwesomeIcon icon={faImage} style={{ marginRight: "0.5rem" }} />
             {p.parameterName === "lacz images section"

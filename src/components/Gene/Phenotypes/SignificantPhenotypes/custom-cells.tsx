@@ -1,5 +1,5 @@
 import { TableCellProps } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import { get } from "lodash";
 
 type Props<T> = {
@@ -20,7 +20,7 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   }
   return (
     <Link
-      href={url}
+      to={url}
       title={`view ${numOfDatasets} supporting datasets for ${phenotypeName} phenotype`}
     >
       <span className="link primary small float-right">

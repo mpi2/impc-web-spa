@@ -1,8 +1,7 @@
-"use client";
 import { useEmbryoLandingQuery } from "@/hooks";
-import { Suspense, useMemo, useState, useEffect } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { SortType } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import Search from "@/components/Search";
 import {
   Breadcrumb,
@@ -65,7 +64,7 @@ const EmbryoLandingPage = () => {
     }
     const mpId = value === "Lethal" ? "MP:0011100" : "MP:0011110";
     return (
-      <Link className="link primary" href={`/phenotypes/${mpId}`}>
+      <Link className="link primary" to={`/phenotypes/${mpId}`}>
         {value}
       </Link>
     );

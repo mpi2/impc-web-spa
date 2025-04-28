@@ -2,7 +2,7 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import Link from "next/link";
+import { Link } from "react-router";
 import { summarySystemSelectionChannel } from "@/eventChannels";
 import { allBodySystems } from "@/utils";
 import { Card, Check, ScrollToTopButton } from "@/components";
@@ -32,7 +32,7 @@ const CollectionItem = ({
 }) =>
   hasData ? (
     <Link
-      href={link}
+      to={link}
       className={`link ${styles.dataCollection}`}
       data-testid={name}
       title={`view ${name}`}

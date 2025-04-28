@@ -1,5 +1,3 @@
-"use client";
-
 import Search from "@/components/Search";
 import { Container, Form, Spinner, Tabs, Tab, Alert } from "react-bootstrap";
 import {
@@ -20,7 +18,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { groupBy, orderBy, uniq } from "lodash";
 import { maybe } from "acd-utils";
-import Link from "next/link";
+import { Link } from "react-router";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { allBodySystems, formatAlleleSymbol } from "@/utils";
 import {
@@ -36,7 +34,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { SortType } from "@/models";
-import { Metadata } from "next";
 
 const BATCH_QUERY_API_ROOT = import.meta.env.VITEyarn_BATCH_QUERY_API_ROOT || "";
 
@@ -114,7 +111,7 @@ const DataRow = ({ geneData }) => {
     <>
       <tr>
         <td>
-          <Link className="link primary" href={`/genes/${geneData.geneId}`}>
+          <Link className="link primary" to={`/genes/${geneData.geneId}`}>
             {geneData.geneId}
           </Link>
         </td>
@@ -166,7 +163,7 @@ const DataRow = ({ geneData }) => {
                     <td>
                       <Link
                         className="link primary"
-                        href={`alleles/${geneData.geneId}/${
+                        to={`alleles/${geneData.geneId}/${
                           formatAlleleSymbol(alleleData.allele)[1]
                         }`}
                       >

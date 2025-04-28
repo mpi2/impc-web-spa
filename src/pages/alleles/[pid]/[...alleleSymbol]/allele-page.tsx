@@ -1,10 +1,8 @@
-"use client";
-
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -146,7 +144,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
           <div className="subheading">
             <span className="subheadingSection primary">
               <Link
-                href={`/genes/${pid}`}
+                to={`/genes/${pid}`}
                 className="mb-3"
                 style={{
                   textTransform: "none",
@@ -217,7 +215,7 @@ const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
         )}
         <Card>
           <Link
-            href={`/genes/${pid}/#order`}
+            to={`/genes/${pid}/#order`}
             scroll={false}
             className="primary link"
           >

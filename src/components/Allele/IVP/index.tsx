@@ -5,7 +5,7 @@ import Card from "../../Card";
 import Pagination from "../../Pagination";
 import _ from "lodash";
 import SortableTable from "../../SortableTable";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 
@@ -80,8 +80,7 @@ const IntermediateVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/designs/${p.designLink.split(":")[2]}`}
-                        scroll={false}
+                        to={`/designs/${p.designLink.split(":")[2]}`}
                         className="link primary"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}

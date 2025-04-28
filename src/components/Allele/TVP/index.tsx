@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import {
   faCartShopping,
   faExternalLinkAlt,
@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import _ from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
@@ -138,8 +138,7 @@ const TargetingVector = ({
                   <tr>
                     <td>
                       <Link
-                        href={`/designs/${p.designLink.split(":")[2]}`}
-                        scroll={false}
+                        to={`/designs/${p.designLink.split(":")[2]}`}
                         className="primary link"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}

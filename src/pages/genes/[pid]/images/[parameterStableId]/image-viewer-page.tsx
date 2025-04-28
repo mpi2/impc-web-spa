@@ -1,5 +1,3 @@
-"use client";
-
 import {
   faVenus,
   faMars,
@@ -12,7 +10,7 @@ import {
   faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { Link } from "react-router";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
@@ -36,7 +34,6 @@ import {
   useParams,
   useRouter,
 } from "next/navigation";
-import { Metadata } from "next";
 
 type Filters = {
   selectedCenter: string;
@@ -558,7 +555,7 @@ const ImagesCompare = ({
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${pid}#images`}
+                to={`/genes/${pid}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

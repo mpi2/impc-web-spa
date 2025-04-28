@@ -1,9 +1,7 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
-import Link from "next/link";
+import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Button, Container } from "react-bootstrap";
@@ -116,7 +114,7 @@ const DownloadImagesPage = ({
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${pid}#images`}
+                to={`/genes/${pid}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

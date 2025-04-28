@@ -1,9 +1,7 @@
-"use client";
-
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/hearing.json";
 import { SmartTable, PlainTextCell } from "@/components/SmartTable";
-import Link from "next/link";
+import { Link } from "react-router";
 import {
   AlleleSymbol,
   Card,
@@ -246,7 +244,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
                   <Link
                     className="primary link"
-                    href={`/genes/${data.adgrb1.mgiGeneAccessionId}`}
+                    to={`/genes/${data.adgrb1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.adgrb1.alleleSymbol}
@@ -261,7 +259,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
                   <Link
                     className="primary link"
-                    href={`/genes/${data.elmod1.mgiGeneAccessionId}`}
+                    to={`/genes/${data.elmod1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.elmod1.alleleSymbol}
@@ -280,7 +278,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    href={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}
+                    to={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.ccdc88c.alleleSymbol}
@@ -297,7 +295,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    href={`/genes/${data.zfp719.mgiGeneAccessionId}`}
+                    to={`/genes/${data.zfp719.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.zfp719.alleleSymbol}

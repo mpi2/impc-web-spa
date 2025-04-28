@@ -1,4 +1,3 @@
-"use client";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Card, Search } from "@/components";
 import {
@@ -10,7 +9,7 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import Link from "next/link";
+import { Link } from "react-router";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -94,13 +93,13 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   highlight the different phenotyping procedures centres employ
                   to phenotype embryonic lethal or subviable nulls. For more
                   information on the pipeline refer to the:&nbsp;
-                  <Link className="link primary" href="/embryo">
+                  <Link className="link primary" to="/embryo">
                     IMPC Embryo Pipeline Introduction
                   </Link>
                   , or read more in our paper&nbsp;
                   <Link
                     className="link primary"
-                    href="https://europepmc.org/articles/PMC5295821"
+                    to="https://europepmc.org/articles/PMC5295821"
                   >
                     High-throughput discovery of novel developmental phenotypes,
                     Nature 2016
@@ -109,7 +108,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   to:&nbsp;
                   <Link
                     className="link primary"
-                    href="/embryo#embryo-data-grid"
+                    to="/embryo#embryo-data-grid"
                   >
                     IMPC 3D Embryo Data
                   </Link>
@@ -154,7 +153,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1913761&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1913761&mpTermId=MP:0011100"
                         >
                           Complete preweaning lethality
                         </Link>
@@ -163,7 +162,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1913761#data"
+                          to="/genes/MGI:1913761#data"
                         >
                           Table
                         </Link>
@@ -209,21 +208,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                       <br />
                       The gene is expressed in&nbsp;
                       <Link
-                        href="https://www.ebi.ac.uk/gxa/experiments/E-MTAB-3358?accessKey=&serializedFilterFactors=DEVELOPMENTAL_STAGE:adult&queryFactorType=ORGANISM_PART&rootContext=&heatmapMatrixSize=50&displayLevels=false&displayGeneDistribution=false&geneQuery=KLHDC2&exactMatch=true&_exactMatch=on&_queryFactorValues=1&specific=true&_specific=on&cutoff=0.5"
+                        to="https://www.ebi.ac.uk/gxa/experiments/E-MTAB-3358?accessKey=&serializedFilterFactors=DEVELOPMENTAL_STAGE:adult&queryFactorType=ORGANISM_PART&rootContext=&heatmapMatrixSize=50&displayLevels=false&displayGeneDistribution=false&geneQuery=KLHDC2&exactMatch=true&_exactMatch=on&_queryFactorValues=1&specific=true&_specific=on&cutoff=0.5"
                         className="link primary"
                       >
                         heart
                       </Link>
                       &nbsp;(expression atlas link) and has been implicated in{" "}
                       <Link
-                        href="http://www.ncbi.nlm.nih.gov/pubmed/16008511"
+                        to="http://www.ncbi.nlm.nih.gov/pubmed/16008511"
                         className="link primary"
                       >
                         endothelial differentation
                       </Link>
                       &nbsp;and&nbsp;
                       <Link
-                        href="http://www.ncbi.nlm.nih.gov/pubmed/16860314"
+                        to="http://www.ncbi.nlm.nih.gov/pubmed/16860314"
                         className="link primary"
                       >
                         myoblast differentation
@@ -237,14 +236,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1916804&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1916804&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1916804&alleleAccessionId=MGI:5548587&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1916804&alleleAccessionId=MGI:5548587&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
@@ -253,7 +252,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1916804/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1916804/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -262,7 +261,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804"
                         >
                           Images
                         </Link>
@@ -271,7 +270,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1916804#data"
+                          to="/genes/MGI:1916804#data"
                         >
                           Table
                         </Link>
@@ -286,7 +285,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                     />
                     <Link
                       className="link primary"
-                      href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804"
+                      to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1916804"
                     >
                       E18.5 Klhdc2 null embryo
                     </Link>
@@ -320,14 +319,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:102806&mpTermId=MP:0011110"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:102806&mpTermId=MP:0011110"
                         >
                           Adult Homozygous - Subviable
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:102806&alleleAccessionId=MGI:5548333&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:102806&alleleAccessionId=MGI:5548333&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
                         >
                           E15.5 Homozygous - Viable
                         </Link>
@@ -347,7 +346,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:102806/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:102806/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -356,7 +355,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:102806/images/IMPC_GEO_050_001"
+                          to="/genes/MGI:102806/images/IMPC_GEO_050_001"
                         >
                           E15.5 Images
                         </Link>
@@ -365,7 +364,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:102806"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:102806"
                         >
                           3D Viewer
                         </Link>
@@ -374,7 +373,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:102806#data"
+                          to="/genes/MGI:102806#data"
                         >
                           Table
                         </Link>
@@ -427,21 +426,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1195985&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1195985&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=TCP"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1195985&alleleAccessionId=MGI:5548407&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
                         >
                           E15.5 Homozygous - Viable
                         </Link>
@@ -450,7 +449,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1195985"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1195985"
                         >
                           3D Viewer
                         </Link>
@@ -459,7 +458,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1195985#data"
+                          to="/genes/MGI:1195985#data"
                         >
                           Table
                         </Link>
@@ -520,14 +519,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1915138&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1915138&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1915138&alleleAccessionId=MGI:5548552&zygosity=homozygote&parameterStableId=IMPC_EVL_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVL_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1915138&alleleAccessionId=MGI:5548552&zygosity=homozygote&parameterStableId=IMPC_EVL_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVL_001&phenotypingCentre=TCP"
                         >
                           E9.5 Homozygous - Viable
                         </Link>
@@ -536,7 +535,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1915138/images/IMPC_GEL_044_001"
+                          to="/genes/MGI:1915138/images/IMPC_GEL_044_001"
                         >
                           E9.5 Images
                         </Link>
@@ -545,7 +544,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1915138"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1915138"
                         >
                           3D Viewer
                         </Link>
@@ -554,7 +553,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1915138#data"
+                          to="/genes/MGI:1915138#data"
                         >
                           Table
                         </Link>
@@ -599,21 +598,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1337104&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1337104&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1337104&alleleAccessionId=MGI:5548437&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1337104&alleleAccessionId=MGI:5548437&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=TCP"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
                         ,&nbsp;
                         <Link
                           className="primary link"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1337104&alleleAccessionId=MGI:5548437&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1337104&alleleAccessionId=MGI:5548437&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=TCP_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=TCP"
                         >
                           E15.5 Homozygous - Viable
                         </Link>
@@ -644,7 +643,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1337104"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1337104"
                         >
                           3D Viewer
                         </Link>
@@ -653,7 +652,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1337104#data"
+                          to="/genes/MGI:1337104#data"
                         >
                           Table
                         </Link>
@@ -701,7 +700,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:3039593&mpTermId=MP:0011110"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:3039593&mpTermId=MP:0011110"
                         >
                           Adult Homozygous - Subviable
                         </Link>
@@ -732,7 +731,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:3039593#data"
+                          to="/genes/MGI:3039593#data"
                         >
                           Table
                         </Link>
@@ -780,7 +779,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1922814&mpTermId=MP:0011110"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1922814&mpTermId=MP:0011110"
                         >
                           Adult Homozygous - Subviable
                         </Link>
@@ -800,7 +799,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1922814#data"
+                          to="/genes/MGI:1922814#data"
                         >
                           Table
                         </Link>
@@ -863,7 +862,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:97491&alleleAccessionId=MGI:5505636&zygosity=homozygote&parameterStableId=IMPC_VIA_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_VIA_001&phenotypingCentre=JAX"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:97491&alleleAccessionId=MGI:5505636&zygosity=homozygote&parameterStableId=IMPC_VIA_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_VIA_001&phenotypingCentre=JAX"
                         >
                           Adult Homozygous - Subviable
                         </Link>
@@ -872,7 +871,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:97491/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:97491/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -881,7 +880,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:97491"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:97491"
                         >
                           3D Viewer
                         </Link>
@@ -890,7 +889,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:97491#data"
+                          to="/genes/MGI:97491#data"
                         >
                           Table
                         </Link>
@@ -944,14 +943,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1928849&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1928849&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1928849&alleleAccessionId=MGI:5509058&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=JAX"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1928849&alleleAccessionId=MGI:5509058&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=JAX"
                         >
                           E12.5 Homozygous - Subviable
                         </Link>
@@ -960,7 +959,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1928849/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1928849/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -969,14 +968,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1928849/images/IMPC_GEP_064_001"
+                          to="/genes/MGI:1928849/images/IMPC_GEP_064_001"
                         >
                           E18.5 Images
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1928849/images/IMPC_GEO_050_001"
+                          to="/genes/MGI:1928849/images/IMPC_GEO_050_001"
                         >
                           E15.5 Images
                         </Link>
@@ -985,7 +984,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1928849"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1928849"
                         >
                           3D Viewer
                         </Link>
@@ -994,7 +993,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1928849#data"
+                          to="/genes/MGI:1928849#data"
                         >
                           Table
                         </Link>
@@ -1049,14 +1048,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:2151064&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:2151064&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:2151064&alleleAccessionId=MGI:5468974&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=JAX"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:2151064&alleleAccessionId=MGI:5468974&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=JAX"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
@@ -1065,7 +1064,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:2151064/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:2151064/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1074,7 +1073,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:2151064/images/IMPC_GEO_050_001"
+                          to="/genes/MGI:2151064/images/IMPC_GEO_050_001"
                         >
                           E15.5 Images
                         </Link>
@@ -1083,7 +1082,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:2151064"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:2151064"
                         >
                           3D Viewer
                         </Link>
@@ -1092,7 +1091,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:2151064#data"
+                          to="/genes/MGI:2151064#data"
                         >
                           Table
                         </Link>
@@ -1136,14 +1135,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:104606&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:104606&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:104606&alleleAccessionId=MGI:5520180&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=JAX"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:104606&alleleAccessionId=MGI:5520180&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=JAX_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=JAX"
                         >
                           E15.5 Homozygous - Viable
                         </Link>
@@ -1152,7 +1151,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:104606/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:104606/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1161,21 +1160,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:104606/images/IMPC_GEP_064_001"
+                          to="/genes/MGI:104606/images/IMPC_GEP_064_001"
                         >
                           E18.5 Images
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:104606/images/IMPC_GEO_050_001"
+                          to="/genes/MGI:104606/images/IMPC_GEO_050_001"
                         >
                           E15.5 Images
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:104606/images/IMPC_GEM_049_001"
+                          to="/genes/MGI:104606/images/IMPC_GEM_049_001"
                         >
                           E12.5 Images
                         </Link>
@@ -1184,7 +1183,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:104606"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:104606"
                         >
                           3D Viewer
                         </Link>
@@ -1193,7 +1192,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:104606#data"
+                          to="/genes/MGI:104606#data"
                         >
                           Table
                         </Link>
@@ -1234,7 +1233,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:103226&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:103226&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
@@ -1243,7 +1242,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:103226/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:103226/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1252,21 +1251,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:103226/images/IMPC_GEP_064_001"
+                          to="/genes/MGI:103226/images/IMPC_GEP_064_001"
                         >
                           E18.5 Images
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:103226/images/IMPC_GEO_050_001"
+                          to="/genes/MGI:103226/images/IMPC_GEO_050_001"
                         >
                           E15.5 Images
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:103226/images/IMPC_GEM_049_001"
+                          to="/genes/MGI:103226/images/IMPC_GEM_049_001"
                         >
                           E12.5 Images
                         </Link>
@@ -1275,7 +1274,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:103226"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:103226"
                         >
                           3D Viewer
                         </Link>
@@ -1284,7 +1283,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:103226#data"
+                          to="/genes/MGI:103226#data"
                         >
                           Table
                         </Link>
@@ -1336,7 +1335,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1920939&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1920939&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
@@ -1346,7 +1345,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Gross Morphology:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1920939/images/IMPC_GEM_049_001"
+                          to="/genes/MGI:1920939/images/IMPC_GEM_049_001"
                         >
                           E12.5 Images
                         </Link>
@@ -1355,7 +1354,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1920939"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1920939"
                         >
                           3D Viewer
                         </Link>
@@ -1364,7 +1363,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1920939#data"
+                          to="/genes/MGI:1920939#data"
                         >
                           Table
                         </Link>
@@ -1409,14 +1408,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:95698&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:95698&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:95698&alleleAccessionId=MGI:5637207&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:95698&alleleAccessionId=MGI:5637207&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
                         >
                           E12.5 Homozygous - Lethal
                         </Link>
@@ -1425,7 +1424,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:95698/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:95698/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1434,7 +1433,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:95698"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:95698"
                         >
                           3D Viewer
                         </Link>
@@ -1443,7 +1442,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:95698#data"
+                          to="/genes/MGI:95698#data"
                         >
                           Table
                         </Link>
@@ -1487,21 +1486,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1915091&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1915091&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=MRC%20Harwell"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1915091&alleleAccessionId=MGI:5548550&zygosity=homozygote&parameterStableId=IMPC_EVO_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVO_001&phenotypingCentre=MRC%20Harwell"
                         >
                           E14.5 Homozygous - Viable
                         </Link>
@@ -1510,7 +1509,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1915091/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1915091/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1519,7 +1518,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1915091"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1915091"
                         >
                           3D Viewer
                         </Link>
@@ -1528,7 +1527,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1915091#data"
+                          to="/genes/MGI:1915091#data"
                         >
                           Table
                         </Link>
@@ -1573,7 +1572,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1924285&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1924285&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
@@ -1582,7 +1581,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1924285/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1924285/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1591,7 +1590,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1924285"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1924285"
                         >
                           3D Viewer
                         </Link>
@@ -1600,7 +1599,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1924285#data"
+                          to="/genes/MGI:1924285#data"
                         >
                           Table
                         </Link>
@@ -1641,14 +1640,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1914797&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1914797&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1914797&alleleAccessionId=MGI:5548544&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1914797&alleleAccessionId=MGI:5548544&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=HRWL_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=MRC%20Harwell"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
@@ -1657,7 +1656,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1914797/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1914797/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1666,7 +1665,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1914797"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1914797"
                         >
                           3D Viewer
                         </Link>
@@ -1675,7 +1674,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1914797#data"
+                          to="/genes/MGI:1914797#data"
                         >
                           Table
                         </Link>
@@ -1712,7 +1711,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                       Polyglucosan Body Myopathy 2 (
                       <Link
                         className="link primary"
-                        href="http://www.omim.org/entry/603942"
+                        to="http://www.omim.org/entry/603942"
                       >
                         OMIM
                       </Link>
@@ -1730,14 +1729,14 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1351614&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1351614&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:1351614&alleleAccessionId=MGI:5548475&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:1351614&alleleAccessionId=MGI:5548475&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM"
                         >
                           E18.5 Homozygous - Viable
                         </Link>
@@ -1746,7 +1745,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1351614/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:1351614/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1755,7 +1754,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1351614"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:1351614"
                         >
                           3D Viewer
                         </Link>
@@ -1764,7 +1763,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:1351614#data"
+                          to="/genes/MGI:1351614#data"
                         >
                           Table
                         </Link>
@@ -1809,21 +1808,21 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Viability:&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:2147810&mpTermId=MP:0011100"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:2147810&mpTermId=MP:0011100"
                         >
                           Adult Homozygous - Lethal
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=BCM"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVM_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVM_001&phenotypingCentre=BCM"
                         >
                           E12.5 Homozygous - Viable
                         </Link>
                         ,&nbsp;
                         <Link
                           className="link primary"
-                          href="/supporting-data?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM"
+                          to="/supporting-data?mgiGeneAccessionId=MGI:2147810&alleleAccessionId=MGI:5548753&zygosity=homozygote&parameterStableId=IMPC_EVP_001_001&pipelineStableId=BCM_001&procedureStableId=IMPC_EVP_001&phenotypingCentre=BCM"
                         >
                           E18.5 Homozygous - Viable
                         </Link>
@@ -1832,7 +1831,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         Embryo LacZ Expression:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:2147810/images/IMPC_ELZ_064_001"
+                          to="/genes/MGI:2147810/images/IMPC_ELZ_064_001"
                         >
                           Images
                         </Link>
@@ -1841,7 +1840,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         3-D Imaging:&nbsp;
                         <Link
                           className="link primary"
-                          href="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:2147810"
+                          to="https://www.mousephenotype.org/embryoviewer/?mgi=MGI:2147810"
                         >
                           3D Viewer
                         </Link>
@@ -1850,7 +1849,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                         All adult and embryo phenotypes:&nbsp;
                         <Link
                           className="link primary"
-                          href="/genes/MGI:2147810#data"
+                          to="/genes/MGI:2147810#data"
                         >
                           Table
                         </Link>

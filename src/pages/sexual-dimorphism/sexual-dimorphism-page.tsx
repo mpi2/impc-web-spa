@@ -1,5 +1,3 @@
-"use client";
-
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
 import data from "../../mocks/data/landing-pages/sexual-dimorphism.json";
 import {
@@ -24,7 +22,7 @@ import {
   faVenus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { Link } from "react-router";
 import {
   AlleleSymbol,
   Card,
@@ -49,7 +47,7 @@ ChartJS.register(
 
 const GeneLink = ({ gene }) => {
   return (
-    <Link className="primary link" href={`/genes/${gene.mgiGeneAccessionId}`}>
+    <Link className="primary link" to={`/genes/${gene.mgiGeneAccessionId}`}>
       <AlleleSymbol symbol={gene.alleleSymbol} withLabel={false} />
     </Link>
   );

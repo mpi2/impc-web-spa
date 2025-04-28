@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { orderBy } from "lodash";
-import React, {
+import {
   forwardRef,
   useContext,
   useEffect,
@@ -29,7 +29,7 @@ import {
 } from "@/components";
 import { isIframeLoaded } from "@/utils";
 import { SortType } from "@/models";
-import Link from "next/link";
+import { Link } from "react-router";
 import { GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 
@@ -289,7 +289,7 @@ const HumanDiseases = ({ initialData }: HumanDiseasesProps) => {
         extraContent: (
           <>
             <Link
-              href="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
+              to="https://www.mousephenotype.org/help/data-visualization/gene-pages/disease-models/"
               className="btn"
               aria-label="Human diseases documentation"
               style={{ paddingTop: 0, paddingBottom: 0 }}

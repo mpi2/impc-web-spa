@@ -1,5 +1,3 @@
-"use client";
-
 import { Breadcrumb, Col, Container, Row, Image, Table } from "react-bootstrap";
 import {
   Card,
@@ -28,7 +26,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import Link from "next/link";
+import { Link } from "react-router";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { usePagination } from "@/hooks";
@@ -97,7 +95,7 @@ const getLinksToGenePage = (gene: Gene) => {
         <Link
           className="link primary"
           style={{ padding: 0, backgroundColor: "initial" }}
-          href={href}
+          to={href}
         >
           {value}
         </Link>
@@ -217,7 +215,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
                 <span className={styles.verticalHeader}>
                   <Link
                     className="primary link"
-                    href={`/phenotypes/${phenotype.id}`}
+                    to={`/phenotypes/${phenotype.id}`}
                   >
                     {phenotype.name}
                   </Link>
@@ -230,7 +228,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
           <tr>
             <td className={styles.geneCell}>
               <Link
-                href={`/genes/${gene.mgi_accession_id}`}
+                to={`/genes/${gene.mgi_accession_id}`}
                 className="primary link"
                 style={{ backgroundColor: "initial", padding: 0 }}
               >
@@ -295,7 +293,7 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
               <td>
                 <Link
                   className="link primary"
-                  href={`/genes/${gene.mgi_accession_id}`}
+                  to={`/genes/${gene.mgi_accession_id}`}
                 >
                   {gene.marker_symbol}
                 </Link>

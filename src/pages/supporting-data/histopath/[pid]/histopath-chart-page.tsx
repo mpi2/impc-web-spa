@@ -1,5 +1,3 @@
-"use client";
-
 import { AlleleSymbol, Search } from "@/components";
 import styles from "../../styles.module.scss";
 import {
@@ -19,7 +17,7 @@ import {
   SortType,
   TableCellProps,
 } from "@/models";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -34,7 +32,7 @@ import {
   useSearchParams,
 } from "next/navigation";
 import _ from "lodash";
-import Link from "next/link";
+import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { GeneSummary } from "@/models/gene";
 
@@ -131,7 +129,7 @@ const HistopathChartPage = ({
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                href={`/genes/${mgiGeneAccessionId}#images`}
+                to={`/genes/${mgiGeneAccessionId}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

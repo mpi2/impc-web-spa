@@ -8,7 +8,7 @@ import { GrossPathologyDataset, SortType } from "@/models";
 import { useGrossPathologyChartQuery } from "@/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useMemo } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 
@@ -26,7 +26,6 @@ const GrossPathChartPage = () => {
   );
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 
-  console.log(data);
   return (
     <>
       <Search />
@@ -35,7 +34,7 @@ const GrossPathChartPage = () => {
           <Col>
             <Card style={{ marginTop: "-80px" }}>
               <Link
-                href={`/genes/${mgiGeneAccessionId}/#data`}
+                to={`/genes/${mgiGeneAccessionId}/#data`}
                 className="grey mb-3 small"
               >
                 <FontAwesomeIcon icon={faArrowLeftLong} />

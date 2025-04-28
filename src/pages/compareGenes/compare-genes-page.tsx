@@ -1,12 +1,10 @@
-"use client";
-
 import { faArrowLeftLong, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "../../components/Card";
 import Search from "../../components/Search";
 import { BodySystem } from "@/components/BodySystemIcon";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { allBodySystems } from "@/utils";
@@ -49,7 +47,7 @@ const GeneColumn = ({
         </Button>
       </p>
       <h3>
-        <Link href={`/genes/${geneId}`} legacyBehavior>
+        <Link to={`/genes/${geneId}`} legacyBehavior>
           {data.geneName}
         </Link>
       </h3>
