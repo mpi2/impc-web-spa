@@ -40,12 +40,12 @@ const Search = ({
   const tabs: Tab[] = [
     {
       name: "Genes",
-      link: "/search",
+      link: "/",
       type: null,
     },
     {
       name: "Phenotypes",
-      link: "/search?type=pheno",
+      link: "/?type=pheno",
       type: "pheno",
       altType: "phenotype",
     },
