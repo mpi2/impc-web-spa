@@ -32,8 +32,7 @@ import {
   useSearchParams,
 } from "react-router";
 import _ from "lodash";
-import Skeleton from "react-loading-skeleton";
-import { GeneSummary } from "@/models/gene";
+import Skeleton from "react-loading-skeleton";;
 
 const DescriptionCell = <T extends Histopathology>(
   props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
@@ -58,15 +57,7 @@ const DescriptionCell = <T extends Histopathology>(
   );
 };
 
-type HistopathChartPageProps = {
-  gene: GeneSummary;
-  histopathologyData: HistopathologyResponse;
-};
-
-const HistopathChartPage = ({
-  gene: geneFromServer,
-  histopathologyData,
-}: HistopathChartPageProps) => {
+const HistopathChartPage = () => {
   const navigate = useNavigate();
   const params = useParams<{ pid: string }>();
   const { pathname: pathName } = useLocation();
@@ -78,12 +69,10 @@ const HistopathChartPage = ({
   const { data: gene } = useGeneSummaryQuery(
     mgiGeneAccessionId,
     !!mgiGeneAccessionId,
-    geneFromServer,
   );
   const { data, isLoading } = useHistopathologyQuery(
     mgiGeneAccessionId,
     !!mgiGeneAccessionId && !!gene,
-    histopathologyData,
   );
   const anatomyParam = searchParams.get("anatomy");
 

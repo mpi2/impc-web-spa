@@ -40,7 +40,6 @@ type HistopathologyImage = {
 export const useHistopathologyQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
-  initialData: HistopathologyResponse,
 ) => {
   return useQuery({
     queryKey: ["histopathology", mgiGeneAccessionId],

@@ -263,15 +263,7 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
   );
 };
 
-type ImagesCompareProps = {
-  mutantImagesFromServer: Array<GeneImageCollection>;
-  controlImagesFromServer: Array<GeneImageCollection>;
-};
-
-const ImagesCompare = ({
-  mutantImagesFromServer,
-  controlImagesFromServer,
-}: ImagesCompareProps) => {
+const ImagesCompare = () => {
   const navigate = useNavigate();
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const [searchParams] = useSearchParams();

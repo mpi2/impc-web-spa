@@ -30,7 +30,6 @@ export const useDatasetsQuery = (
   mgiGeneAccessionId: string,
   params: ChartPageParamsObj,
   enabled: boolean,
-  initialDatasets: Array<Dataset>,
 ) => {
   const apiUrl = generateDatasetsEndpointUrl(mgiGeneAccessionId, params);
   const { data, ...rest } = useQuery({

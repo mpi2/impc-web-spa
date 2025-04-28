@@ -44,15 +44,7 @@ const DownloadButtonCell = <T extends Image>(props: TableCellProps<T>) => {
   );
 };
 
-type DownloadImagesProps = {
-  mutantImagesFromServer: Array<GeneImageCollection>;
-  controlImagesFromServer: Array<GeneImageCollection>;
-};
-
-const DownloadImagesPage = ({
-  mutantImagesFromServer,
-  controlImagesFromServer,
-}: DownloadImagesProps) => {
+const DownloadImagesPage = () => {
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);

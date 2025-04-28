@@ -44,11 +44,7 @@ const generateParamsObject = (
   return result as Record<ChartPageParams, string>;
 };
 
-type GeneralChartPageProps = {
-  initialDatasets: Array<Dataset>;
-};
-
-const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
+const GeneralChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
   const [additionalSummaries, setAdditionalSummaries] = useState<
     Array<Dataset>
@@ -81,8 +77,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
   const { datasetSummaries, isFetching, isError } = useDatasetsQuery(
     mgiGeneAccessionId,
     generateParamsObject(searchParams),
-    !!mgiGeneAccessionId && initialDatasets?.length === 0,
-    initialDatasets,
+    !!mgiGeneAccessionId
   );
 
   const {
