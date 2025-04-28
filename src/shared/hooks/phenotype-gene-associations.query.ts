@@ -47,7 +47,6 @@ export const usePhenotypeGeneAssociationsQuery = (
   phenotypeId: string,
   routerIsReady: boolean,
   sortOptions: string,
-  initialData: Array<PhenotypeGenotypes>,
 ) => {
   return useQuery({
     queryKey: ["phenotype", phenotypeId, "genotype-hits"],
@@ -55,7 +54,7 @@ export const usePhenotypeGeneAssociationsQuery = (
       fetchAPI(
         `/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`,
       ),
-    enabled: routerIsReady,
+    enabled: routerIsReady && !!phenotypeId,
     select: (data: Array<PhenotypeGenotypes>) =>
       processGenotypeHitsByPhenotype(data, sortOptions),
     placeholderData: [],

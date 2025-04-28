@@ -82,11 +82,7 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
   );
 };
 
-type AssociationsProps = {
-  initialData: Array<PhenotypeGenotypes>;
-};
-
-const Associations = ({ initialData }: AssociationsProps) => {
+const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
   const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
@@ -95,7 +91,6 @@ const Associations = ({ initialData }: AssociationsProps) => {
     phenotype?.phenotypeId,
     !!phenotype,
     sortOptions,
-    initialData,
   );
 
   const filterPhenotype = (
