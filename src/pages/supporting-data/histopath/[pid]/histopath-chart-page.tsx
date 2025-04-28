@@ -24,15 +24,14 @@ import {
   faExternalLinkAlt,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-
 import {
+  Link,
   useParams,
-  usePathname,
-  useRouter,
+  useLocation,
+  useNavigate,
   useSearchParams,
-} from "next/navigation";
+} from "react-router";
 import _ from "lodash";
-import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { GeneSummary } from "@/models/gene";
 
@@ -68,10 +67,10 @@ const HistopathChartPage = ({
   gene: geneFromServer,
   histopathologyData,
 }: HistopathChartPageProps) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const params = useParams<{ pid: string }>();
-  const pathName = usePathname();
-  const searchParams = useSearchParams();
+  const { pathname: pathName } = useLocation();
+  const [searchParams] = useSearchParams();
   const mgiGeneAccessionId = decodeURIComponent(params.pid);
   const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
@@ -107,7 +106,7 @@ const HistopathChartPage = ({
     setSelectedAnatomy(null);
     const searchParamsTemp = new URLSearchParams(searchParams?.toString());
     searchParamsTemp.delete("anatomy");
-    router.replace(`${pathName}${searchParamsTemp}`, undefined);
+    navigate(`${pathName}${searchParamsTemp}`, undefined);
   };
 
   const filterHistopathology = (

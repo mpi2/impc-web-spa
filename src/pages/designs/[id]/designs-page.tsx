@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
@@ -8,10 +6,10 @@ import { fetchAPI } from "@/api-service";
 import { Card, Search, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useRouter, useParams } from "next/navigation";
+import { useNavigate, useParams } from "react-router";
 
 const Oligo = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const params = useParams();
 
   const { data, isLoading } = useQuery({
@@ -36,7 +34,7 @@ const Oligo = () => {
                     color: "inherit",
                   }}
                   onClick={() => {
-                    router.back();
+                    navigate(-1);
                   }}
                 >
                   <FontAwesomeIcon icon={faArrowLeft} />
@@ -72,7 +70,7 @@ const Oligo = () => {
                   color: "inherit",
                 }}
                 onClick={() => {
-                  router.back();
+                  navigate(-1);
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />

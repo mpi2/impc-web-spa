@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import Search from "@/components/Search";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Button, Container } from "react-bootstrap";
@@ -16,7 +16,6 @@ import {
 import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
-import { useParams } from "next/navigation";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
 import { GeneImageCollection } from "@/models/gene";
 

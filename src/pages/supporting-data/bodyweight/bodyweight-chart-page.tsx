@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { useBodyWeightQuery } from "@/hooks";
 import { Card, Search } from "@/components";
@@ -10,10 +8,10 @@ import {
   ChartNav,
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router";
 
 const BodyWeightChartPage = () => {
-  const params = useSearchParams();
+  const [params] = useSearchParams();
   const [selectedKey, setSelectedKey] = useState("");
   const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 

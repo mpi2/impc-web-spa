@@ -10,7 +10,6 @@ import {
   faCamera,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Badge, Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
@@ -29,11 +28,12 @@ import { getIcon } from "@/utils";
 import moment from "moment";
 import { uniq } from "lodash";
 import {
-  usePathname,
+  Link,
+  useLocation,
   useSearchParams,
   useParams,
-  useRouter,
-} from "next/navigation";
+  useNavigate,
+} from "react-router";
 
 type Filters = {
   selectedCenter: string;
@@ -263,10 +263,6 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
   );
 };
 
-export const metadata: Metadata = {
-  title: "Image Comparator | International Mouse Phenotyping Consortium",
-};
-
 type ImagesCompareProps = {
   mutantImagesFromServer: Array<GeneImageCollection>;
   controlImagesFromServer: Array<GeneImageCollection>;
@@ -276,10 +272,10 @@ const ImagesCompare = ({
   mutantImagesFromServer,
   controlImagesFromServer,
 }: ImagesCompareProps) => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const params = useParams<{ pid: string; parameterStableId: string }>();
-  const searchParams = useSearchParams();
-  const pathName = usePathname();
+  const [searchParams] = useSearchParams();
+  const { pathname: pathName } = useLocation();
   const [selectedWTImage, setSelectedWTImage] = useState(0);
   const [selectedMutantImage, setSelectedMutantImage] = useState(0);
   const [appliedAnatomyTerm, setAppliedAnatomyTerm] = useState(null);
@@ -544,7 +540,7 @@ const ImagesCompare = ({
     setAppliedAnatomyTerm(null);
     const searchParamsTemp = new URLSearchParams(searchParams?.toString());
     searchParamsTemp.delete("anatomyTerm");
-    router.replace(`${pathName}${searchParamsTemp}`, undefined);
+    navigate(`${pathName}${searchParamsTemp}`, undefined);
   };
 
   return (

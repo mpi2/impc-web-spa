@@ -25,12 +25,12 @@ import {
   GenePhenotypeHits,
   GeneSummary,
 } from "@/models/gene";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router";
 
 const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
 type GenePageProps = {
-  gene: GeneSummary;
+  gene: GeneSummary | null;
   significantPhenotypes: Array<GenePhenotypeHits>;
   orderData: Array<GeneOrder>;
   expressionData: Array<GeneExpression>;

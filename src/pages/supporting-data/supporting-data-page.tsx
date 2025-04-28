@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import {
   ABR,
@@ -28,7 +28,7 @@ import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
 
 const generateParamsObject = (
-  searchParams: ReadonlyURLSearchParams,
+  searchParams: URLSearchParams,
 ): Record<ChartPageParams, string> => {
   const params = [
     "mpTermId",
@@ -61,7 +61,7 @@ const GeneralChartPage = ({ initialDatasets }: GeneralChartPageProps) => {
     specialChartLoading,
     500,
   );
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const mgiGeneAccessionId: string = searchParams.get("mgiGeneAccessionId");
 
   const getPageTitle = (summaries: Array<Dataset>, isError: boolean) => {

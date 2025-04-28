@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import Card from "@/components/Card";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -63,9 +63,10 @@ const ProductItem = ({
   </div>
 );
 
-const AllelePage = ({ alleleData: alleleFromServer, alleleSymbol }) => {
-  const params = useParams<{ pid: string; alleleSymbol: Array<string> }>();
+const AllelePage = ({ alleleData: alleleFromServer }) => {
+  const params = useParams<{ pid: string; alleleSymbol: string }>();
   const pid = decodeURIComponent(params.pid);
+  const alleleSymbol = params.alleleSymbol;
 
   const { data: allele } = useQuery<AlleleSummary>({
     queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],

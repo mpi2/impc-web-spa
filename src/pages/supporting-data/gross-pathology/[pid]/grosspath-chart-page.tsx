@@ -1,5 +1,3 @@
-"use client";
-
 import { Search } from "@/components";
 import { Col, Container, Row } from "react-bootstrap";
 import Card from "@/components/Card";
@@ -10,11 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
 import { useMemo } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "react-router";
 
 const GrossPathChartPage = () => {
   const params = useParams<{ pid: string }>();
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const mgiGeneAccessionId = decodeURIComponent(params.pid);
   const grossPathParameterStableId =
     searchParams.get("grossPathParameterStableId") ?? "";

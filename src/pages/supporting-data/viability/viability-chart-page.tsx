@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { useViabilityQuery } from "@/hooks";
 import { Card, Search } from "@/components";
@@ -11,11 +9,11 @@ import {
   ViabilityDataComparison,
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router";
 
 const ViabilityChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
-  const params = useSearchParams();
+  const [params] = useSearchParams();
   const mgiGeneAccessionId: string = params.get("mgiGeneAccessionId");
 
   const { viabilityData, isViabilityLoading } = useViabilityQuery(
