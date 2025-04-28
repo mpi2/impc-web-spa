@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "react-bootstrap";
 import Search from "@/components/Search";
 import {
@@ -26,8 +24,6 @@ import {
   GeneSummary,
 } from "@/models/gene";
 import { useParams } from "react-router";
-
-const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
 
 type GenePageProps = {
   gene: GeneSummary | null;
@@ -70,7 +66,7 @@ const GenePage = (props: GenePageProps) => {
     geneFromServer,
   );
 
-  const geneData = geneFromServer || gene;
+  const geneData = gene;
 
   useEffect(() => {
     if (gene) {
@@ -83,22 +79,6 @@ const GenePage = (props: GenePageProps) => {
     }
   }, [geneData]);
 
-  const jsonLd = {
-    "@type": "Dataset",
-    "@context": "http://schema.org",
-    name: `Mouse gene ${gene.geneSymbol}`,
-    description: `Phenotype data for mouse gene ${gene.geneSymbol}. Includes ${gene.geneSymbol}'s significant phenotypes, expression, images, histopathology and more.`,
-    creator: [
-      {
-        "@type": "Organization",
-        name: "International Mouse Phenotyping Consortium",
-      },
-    ],
-    citation: "https://doi.org/10.1093/nar/gkac972",
-    isAccessibleForFree: true,
-    url: `${WEBSITE_URL}/data/genes/${gene.mgiGeneAccessionId}`,
-    license: "https://creativecommons.org/licenses/by/4.0/",
-  };
 
   return (
     <>
@@ -107,22 +87,22 @@ const GenePage = (props: GenePageProps) => {
           <Search />
           <Container className="page">
             <Summary numOfAlleles={orderDataFromServer?.length ?? 0} />
-            <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
-            <Expressions initialData={expressionDataFromServer} />
-            <Images initialData={imageDataFromServer} />
-            <HumanDiseases initialData={associatedDiseasesDataFromServer} />
-            <Histopathology initialData={histopathologyDataFromServer} />
-            <Publications />
-            <ExternalLinks />
-            <Order
-              allelesStudied={allelesStudied}
-              allelesStudiedLoading={allelesStudiedLoading}
-              orderDataFromServer={orderDataFromServer}
-            />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
+            {!!geneData && (
+              <>
+                <Phenotypes sigPhenotypesFromServer={sigPhenotypesFromServer} />
+                <Expressions initialData={expressionDataFromServer} />
+                <Images initialData={imageDataFromServer} />
+                <HumanDiseases initialData={associatedDiseasesDataFromServer} />
+                <Histopathology initialData={histopathologyDataFromServer} />
+                <Publications />
+                <ExternalLinks />
+                <Order
+                  allelesStudied={allelesStudied}
+                  allelesStudiedLoading={allelesStudiedLoading}
+                  orderDataFromServer={orderDataFromServer}
+                />
+              </>
+            )}
           </Container>
         </AllelesStudiedContext.Provider>
       </GeneContext.Provider>

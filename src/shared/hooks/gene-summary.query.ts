@@ -12,6 +12,5 @@ export const useGeneSummaryQuery = (
     queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/summary`),
     enabled: routerIsReady && !!mgiGeneAccessionId,
     select: (data) => data as GeneSummary,
-    initialData: geneFromServer,
   });
 };

@@ -80,10 +80,10 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
           <strong>
-            <i>{gene.geneSymbol}</i>
+            <i>{gene?.geneSymbol ?? <Skeleton style={{ width: "50px"}} inline />}</i>
           </strong>
           &nbsp;
-          <span>|</span>&nbsp;{gene.geneName}
+          <span>|</span>&nbsp;{gene?.geneName ?? <Skeleton style={{ width: "50px"}} inline />}
         </h1>
       </div>
       <div className={styles.subheadingCont}>
@@ -91,11 +91,11 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
           <span>Gene</span>
           <a
             className="primary"
-            href={`http://www.informatics.jax.org/marker/${gene.mgiGeneAccessionId}`}
+            href={`http://www.informatics.jax.org/marker/${gene?.mgiGeneAccessionId}`}
             target="_blank"
-            title={`visit MGI site to view details for gene ${gene.geneSymbol}`}
+            title={`visit MGI site to view details for gene ${gene?.geneSymbol}`}
           >
-            {gene.mgiGeneAccessionId}
+            {gene?.mgiGeneAccessionId ?? <Skeleton style={{ width: "50px"}} inline />}
             <FontAwesomeIcon
               icon={faExternalLinkAlt}
               className="grey"
@@ -240,19 +240,19 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
               <CollectionItem
                 link="#expressions"
                 name="LacZ expression"
-                hasData={gene.hasLacZData}
+                hasData={gene?.hasLacZData}
               />
               <br />
               <CollectionItem
                 link="#histopathology"
                 name="Histopathology"
-                hasData={gene.hasHistopathologyData}
+                hasData={gene?.hasHistopathologyData}
               />
               <br />
               <CollectionItem
                 link="#images"
                 name="Images"
-                hasData={gene.hasImagingData}
+                hasData={gene?.hasImagingData}
               />
               <br />
               <Link
@@ -265,21 +265,21 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
             </Col>
             <Col md={6}>
               <CollectionItem
-                link={`/supporting-data/viability?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
+                link={`/supporting-data/viability?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Viability data"
-                hasData={gene.hasViabilityData}
+                hasData={gene?.hasViabilityData}
               />
               <br />
               <CollectionItem
-                link={`/supporting-data/bodyweight?mgiGeneAccessionId=${gene.mgiGeneAccessionId}`}
+                link={`/supporting-data/bodyweight?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Body weight measurements"
-                hasData={gene.hasBodyWeightData}
+                hasData={gene?.hasBodyWeightData}
               />
               <br />
               <CollectionItem
-                link={`https://www.mousephenotype.org/embryoviewer/?mgi=${gene.mgiGeneAccessionId}`}
+                link={`https://www.mousephenotype.org/embryoviewer/?mgi=${gene?.mgiGeneAccessionId}`}
                 name="Embryo imaging data"
-                hasData={gene.hasEmbryoImagingData}
+                hasData={gene?.hasEmbryoImagingData}
               />
             </Col>
           </Row>
@@ -344,22 +344,22 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
           <span>
             <strong>Gene metrics:</strong>
           </span>
-          <strong>{gene.significantPhenotypesCount || 0}</strong>
+          <strong>{gene?.significantPhenotypesCount ?? 0}</strong>
           Significant phenotypes
         </div>
         <div className={styles.single}>
-          <strong>{gene.associatedDiseasesCount || 0}</strong>
+          <strong>{gene?.associatedDiseasesCount ?? 0}</strong>
           Associated diseases
         </div>
         <div className={styles.single}>
           <span>
             <strong>Expression examined in:</strong>
           </span>
-          <strong>{gene.adultExpressionObservationsCount || 0}</strong>
+          <strong>{gene?.adultExpressionObservationsCount ?? 0}</strong>
           Adult tissues
         </div>
         <div className={styles.single}>
-          <strong>{gene.embryoExpressionObservationsCount || 0}</strong>
+          <strong>{gene?.embryoExpressionObservationsCount ?? 0}</strong>
           Embryo tissues
         </div>
       </div>
