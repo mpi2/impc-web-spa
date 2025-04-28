@@ -25,8 +25,7 @@ import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import { AlleleSummary } from "@/models";
-
-const WEBSITE_URL = import.meta.env.VITE_WEBSITE_URL;
+import Skeleton from "react-loading-skeleton";
 
 const ProductItem = ({
   name,
@@ -63,7 +62,7 @@ const ProductItem = ({
   </div>
 );
 
-const AllelePage = ({ alleleData: alleleFromServer }) => {
+const AllelePage = () => {
   const params = useParams<{ pid: string; alleleSymbol: string }>();
   const pid = decodeURIComponent(params.pid);
   const alleleSymbol = params.alleleSymbol;
@@ -72,29 +71,12 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
     queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],
     queryFn: () =>
       fetchAPI(`/api/v1/alleles/${pid}/${encodeURIComponent(alleleSymbol)}`),
-    enabled: !!pid && !alleleFromServer,
+    enabled: !!pid,
   });
 
   const [qcData, setQcData] = useState<any[]>([]);
 
-  const alleleData: AlleleSummary = allele || alleleFromServer;
-  const allelePageURL = `${WEBSITE_URL}/data/alleles/${pid}/${alleleData.alleleName}`;
-  const jsonLd = {
-    "@type": "Dataset",
-    "@context": "http://schema.org",
-    name: `Mouse allele ${alleleData.geneSymbol}<${alleleData.alleleName}>`,
-    description: `Discover mouse allele ${alleleData.alleleName} of ${alleleData.geneSymbol} gene, view all available products and tissues with their detailed information.`,
-    creator: [
-      {
-        "@type": "Organization",
-        name: "International Mouse Phenotyping Consortium",
-      },
-    ],
-    citation: "https://doi.org/10.1093/nar/gkac972",
-    isAccessibleForFree: true,
-    url: allelePageURL,
-    license: "https://creativecommons.org/licenses/by/4.0/",
-  };
+  const alleleData: AlleleSummary = allele;
 
   useEffect(() => {
     if (alleleData) {
@@ -107,33 +89,22 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
     }
   }, [alleleData]);
 
-  const {
-    mgiGeneAccessionId,
-    alleleDescription,
-    doesMiceProductsExist,
-    doesEsCellProductsExist,
-    doesCrisprProductsExist,
-    doesIntermediateVectorProductsExist,
-    doesTargetingVectorProductsExist,
-    emsembleUrl,
-  } = alleleData;
-
   const productTypes = [
-    { name: "Mice", link: "#mice", hasData: doesMiceProductsExist },
+    { name: "Mice", link: "#mice", hasData: alleleData?.doesMiceProductsExist },
     {
       name: "Targeted ES cells",
       link: "#esCell",
-      hasData: doesEsCellProductsExist,
+      hasData: alleleData?.doesEsCellProductsExist,
     },
     {
       name: "Targeting vectors",
       link: "#targetingVector",
-      hasData: doesTargetingVectorProductsExist,
+      hasData: alleleData?.doesTargetingVectorProductsExist,
     },
     {
       name: "Intermediate vectors",
       link: "#intermediateVector",
-      hasData: doesIntermediateVectorProductsExist,
+      hasData: alleleData?.doesIntermediateVectorProductsExist,
     },
   ];
 
@@ -155,69 +126,72 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
                 }}
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
-                &nbsp; Go Back to <i>{alleleData.geneSymbol}</i>
+                &nbsp; Go Back to <i>{alleleData?.geneSymbol}</i>
               </Link>
             </span>
           </div>
           <p className={`${styles.subheading} mt-2`}>ALLELE</p>
           <h1 className="mb-2 mt-2">
-            <AlleleSymbol
-              symbol={`${alleleData.geneSymbol}<${alleleData.alleleName}>`}
-              withLabel={false}
-            ></AlleleSymbol>
+            {!!alleleData ? (
+              <AlleleSymbol
+                symbol={`${alleleData.geneSymbol}<${alleleData.alleleName}>`}
+                withLabel={false}
+              ></AlleleSymbol>
+            ) : (
+              <Skeleton style={{ width: "50px"}} inline />
+            )}
           </h1>
-          <p className="mb-4 grey">{alleleDescription}</p>
+          <p className="mb-4 grey">{alleleData?.alleleDescription}</p>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {productTypes.map((productType) => (
               <ProductItem {...productType} />
             ))}
           </div>
         </Card>
-        {doesEsCellProductsExist && (
+        {alleleData?.doesEsCellProductsExist && (
           <AlleleMap
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
-            emsembleUrl={emsembleUrl}
+            emsembleUrl={alleleData?.emsembleUrl}
           />
         )}
-        {doesMiceProductsExist && (
+        {alleleData?.doesMiceProductsExist && (
           <Mice
-            isCrispr={doesCrisprProductsExist}
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            isCrispr={alleleData?.doesCrisprProductsExist}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
             setQcData={setQcData}
           />
         )}
-        {doesEsCellProductsExist && (
+        {alleleData?.doesEsCellProductsExist && (
           <ESCell
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
             setQcData={setQcData}
           />
         )}
-        {doesTargetingVectorProductsExist && (
+        {alleleData?.doesTargetingVectorProductsExist && (
           <TargetingVector
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
         )}
-        {doesIntermediateVectorProductsExist && (
+        {alleleData?.doesIntermediateVectorProductsExist && (
           <IntermediateVector
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
         )}
 
-        {doesCrisprProductsExist && (
+        {alleleData?.doesCrisprProductsExist && (
           <Crispr
-            mgiGeneAccessionId={mgiGeneAccessionId}
+            mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
         )}
         <Card>
           <Link
             to={`/genes/${pid}/#order`}
-            scroll={false}
             className="primary link"
           >
             See all alleles for the gene{" "}
@@ -230,10 +204,6 @@ const AllelePage = ({ alleleData: alleleFromServer }) => {
           setQcData([]);
         }}
         qcData={qcData}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </>
   );
