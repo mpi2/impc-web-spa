@@ -1,11 +1,8 @@
-"use client";
 import { Container, Tab, Tabs } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPublicationEndpoint } from "@/api-service";
-
-import dynamic from "next/dynamic";
-import { Card, PublicationListProps, Search } from "@/components";
+import { Card, Search, PublicationsList } from "@/components";
 import {
   PublicationsIncreaseChart,
   PublicationsByYearChart,
@@ -13,11 +10,6 @@ import {
 } from "./charts";
 import { PublicationAggregationDataResponse } from "@/models";
 import { Suspense } from "react";
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"),
-  { ssr: false },
-);
 
 const PublicationsPage = () => {
   const { data } = useQuery({

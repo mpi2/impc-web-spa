@@ -1,8 +1,9 @@
 import { Alert, Spinner, Tab, Tabs } from "react-bootstrap";
 import AllData from "./AllData";
 import SignificantPhenotypes from "./SignificantPhenotypes";
-import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
+import GraphicalAnalysis from "./GraphicalAnalysis";
+import AllelePhenotypeDiagram from "./AllelePhenotypeDiagram";
+import { useSearchParams } from "react-router";
 import { GenePhenotypeHits } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { useSignificantPhenotypesQuery } from "@/hooks";
@@ -22,15 +23,6 @@ import { Variant } from "react-bootstrap/types";
 import { Card, SectionHeader } from "@/components";
 import { ErrorBoundary } from "react-error-boundary";
 import { GeneContext } from "@/contexts";
-
-const GraphicalAnalysis = dynamic(() => import("./GraphicalAnalysis"), {
-  ssr: false,
-});
-
-const AllelePhenotypeDiagram = dynamic(
-  () => import("./AllelePhenotypeDiagram"),
-  { ssr: false },
-);
 
 type TabContentProps = {
   errorMessage: ReactNode;
@@ -82,7 +74,7 @@ type DataFilters = {
 
 const Phenotypes = ({ sigPhenotypesFromServer }: PhenotypesProps) => {
   const gene = useContext(GeneContext);
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [tabKey, setTabKey] = useState<string>("significantPhenotypes");
   const [allDataCount, setAllDataCount] = useState<number>(0);
   const [allDataFilters, setAllDataFilters] = useState<DataFilters>({

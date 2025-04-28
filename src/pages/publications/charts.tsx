@@ -1,5 +1,3 @@
-"use client";
-
 import { Bar, Line } from "react-chartjs-2";
 import dataLabelsPlugin from "chartjs-plugin-datalabels";
 import {
@@ -25,12 +23,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   LoadingProgressBar,
   Pagination,
-  PublicationListProps,
   SortableTable,
+  PublicationsList,
 } from "@/components";
 import styles from "./styles.module.scss";
 import { Modal } from "react-bootstrap";
-import dynamic from "next/dynamic";
 import {
   PublicationsByGrantAgency,
   PublicationsByQuarter,
@@ -47,11 +44,6 @@ ChartJS.register(
   Tooltip,
   Legend,
   Colors,
-);
-
-const PublicationsList = dynamic<PublicationListProps>(
-  () => import("@/components/PublicationsList"),
-  { ssr: false },
 );
 
 export function PublicationsIncreaseChart({ data: yearlyIncrementData }) {
