@@ -13,7 +13,10 @@ config.autoAddCss = false;
 export default function RootLayout() {
   return (
     <html lang="en">
-    <head />
+    <head>
+      <title>International Mouse Phenotype Consortium</title>
+      <link rel="icon" href="/favicon.ico" />
+    </head>
     <body>
     <script>
       {` // Google Tag Manager
