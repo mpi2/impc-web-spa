@@ -51,7 +51,7 @@ export async function fetchAPI<T>(query: string): Promise<T> {
   } else if (location.hostname === "mousephenotype.org") {
     domain = PROD_API_ROOT;
   } else {
-    domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : API_URL;
+    domain = PROXY_ENABLED ? "http://localhost:5173/proxy" : API_URL;
   }
   const endpointURL = domain + query;
   return await fetchURL(endpointURL);
@@ -60,7 +60,7 @@ export async function fetchAPI<T>(query: string): Promise<T> {
 export async function fetchAPIFromServer<T>(query: string): Promise<T> {
   const SERVER_API_ROOT = import.meta.env.SERVER_API_ROOT;
   const DOMAIN_URL = SERVER_API_ROOT ? SERVER_API_ROOT : API_URL;
-  let domain = PROXY_ENABLED ? "http://localhost:8010/proxy" : DOMAIN_URL;
+  let domain = PROXY_ENABLED ? "http://localhost:5173/proxy" : DOMAIN_URL;
   const endpointURL = domain + query;
   return await fetchURL(endpointURL);
 }
