@@ -83,7 +83,7 @@ const Oligo = () => {
             <strong>Design Oligos - High Throughput Gene Targeting</strong>
             <span> | Design Id: {params.id}</span>
           </h1>
-          <Image src="/data/images/target_design_trimmed.png" fluid alt="" />
+          <Image src="/images/target_design_trimmed.png" fluid alt="" />
         </Card>
         <Card>
           <h2>Oligos</h2>

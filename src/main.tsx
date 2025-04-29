@@ -12,6 +12,7 @@ import ImageDownloader from "@/pages/genes/[pid]/download-images/[parameterStabl
 import HistopathChartPage from "@/pages/supporting-data/histopath/[pid]/histopath-chart-page.tsx";
 import ViabilityChartPage from "@/pages/supporting-data/viability/viability-chart-page.tsx";
 import BodyweightChartPage from "@/pages/supporting-data/bodyweight/bodyweight-chart-page.tsx";
+import DesignsPage from "@/pages/designs/[id]/designs-page.tsx";
 
 
 createRoot(document.getElementById('root')!).render(
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="supporting-data/viability" element={<ViabilityChartPage />} />
           <Route path="supporting-data/bodyweight" element={<BodyweightChartPage />} />
           <Route path="phenotypes/:id" element={<PhenotypePage />} />
+          <Route path="designs/:id" element={<DesignsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
