@@ -7,7 +7,7 @@ import {
   PieChart,
 } from "@/components";
 import ChordDiagram from "@/components/ChordDiagram";
-import data from "../../../mocks/data/landing-pages/idg.json";
+import data from "@/static-data/landing-pages/idg.json";
 import {
   useMemo,
   useRef,

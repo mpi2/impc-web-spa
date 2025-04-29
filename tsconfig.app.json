@@ -55,6 +55,9 @@
       "@/shared/*": [
         "./src/shared/*"
       ],
+      "@/static-data/*": [
+        "./src/static-data/*"
+      ],
       "@/pages/*" : [
         "./src/pages/*"
       ],

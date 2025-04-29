@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Breadcrumb,
   Col,
@@ -22,9 +20,8 @@ import {
   LateAdultDataParsed,
   LateAdultRowResponse,
 } from "@/models";
-import React, { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
-import { Metadata } from "next";
 
 type AllGeneList = Array<LateAdultRowResponse>;
 

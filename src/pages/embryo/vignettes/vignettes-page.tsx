@@ -9,7 +9,7 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,8 +54,10 @@ const genePositions = {
   Tmem132a: 19,
 };
 
-const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
+const EmbryoVignettesPage = () => {
   const slickRef = useRef<Slider>(null);
+  const [searchParams] = useSearchParams();
+  const gene = searchParams.get("gene");
   const [selectedFile, setSelectedFile] = useState<undefined | string>(
     undefined,
   );
@@ -171,7 +173,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/chtopPink.jpg"
+                      src="/images/landing-pages/chtopPink.jpg"
                       fluid
                       alt=""
                     />
@@ -279,7 +281,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Kldhc2.png"
+                      src="/images/landing-pages/Kldhc2.png"
                       fluid
                       alt=""
                     />
@@ -393,7 +395,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Acvr2aMicroCT.png"
+                      src="/images/landing-pages/Acvr2aMicroCT.png"
                       fluid
                       alt=""
                     />
@@ -480,7 +482,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/cbx4.png"
+                      src="/images/landing-pages/cbx4.png"
                       fluid
                       alt=""
                     />
@@ -562,7 +564,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/tmem100.png"
+                      src="/images/landing-pages/tmem100.png"
                       fluid
                       alt=""
                     />
@@ -661,7 +663,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/eye4.png"
+                      src="/images/landing-pages/eye4.png"
                       fluid
                       alt=""
                     />
@@ -740,7 +742,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/tox3MRI.png"
+                      src="/images/landing-pages/tox3MRI.png"
                       fluid
                       alt=""
                     />
@@ -819,7 +821,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Rsph9Slides.png"
+                      src="/images/landing-pages/Rsph9Slides.png"
                       fluid
                       alt=""
                     />
@@ -898,7 +900,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Pax7.png"
+                      src="/images/landing-pages/Pax7.png"
                       fluid
                       alt=""
                     />
@@ -1002,7 +1004,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Svep1.jpg"
+                      src="/images/landing-pages/Svep1.jpg"
                       fluid
                       alt=""
                     />
@@ -1100,7 +1102,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Strn3.jpg"
+                      src="/images/landing-pages/Strn3.jpg"
                       fluid
                       alt=""
                     />
@@ -1201,7 +1203,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Rab34.jpg"
+                      src="/images/landing-pages/Rab34.jpg"
                       fluid
                       alt=""
                     />
@@ -1292,7 +1294,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Cox7c.jpg"
+                      src="/images/landing-pages/Cox7c.jpg"
                       fluid
                       alt=""
                     />
@@ -1372,7 +1374,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Cox7c.jpg"
+                      src="/images/landing-pages/Cox7c.jpg"
                       fluid
                       alt=""
                     />
@@ -1451,7 +1453,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/gfpt1.png"
+                      src="/images/landing-pages/gfpt1.png"
                       fluid
                       alt=""
                     />
@@ -1536,7 +1538,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Atg3.png"
+                      src="/images/landing-pages/Atg3.png"
                       fluid
                       alt=""
                     />
@@ -1608,7 +1610,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Kdm8.png"
+                      src="/images/landing-pages/Kdm8.png"
                       fluid
                       alt=""
                     />
@@ -1683,7 +1685,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Slc39a8.png"
+                      src="/images/landing-pages/Slc39a8.png"
                       fluid
                       alt=""
                     />
@@ -1772,7 +1774,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Gygmutants.png"
+                      src="/images/landing-pages/Gygmutants.png"
                       fluid
                       alt=""
                     />
@@ -1882,7 +1884,7 @@ const EmbryoVignettesPage = ({ gene }: { gene: string }) => {
                   </Col>
                   <Col xs={4}>
                     <Image
-                      src="/data/images/landing-pages/Tmem132a.png"
+                      src="/images/landing-pages/Tmem132a.png"
                       fluid
                       alt=""
                     />

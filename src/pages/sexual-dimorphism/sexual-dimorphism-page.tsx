@@ -1,5 +1,5 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from "../../mocks/data/landing-pages/sexual-dimorphism.json";
+import data from "@/static-data/landing-pages/sexual-dimorphism.json";
 import {
   Chart as ChartJS,
   LinearScale,

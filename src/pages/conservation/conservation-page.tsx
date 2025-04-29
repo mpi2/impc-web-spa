@@ -11,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import data from "../../mocks/data/landing-pages/conservation.json";
+import data from "@/static-data/landing-pages/conservation.json";
 import { chartColors } from "@/utils/chart";
 import { Card, PublicationDataAlert, Search } from "@/components";
 import PublicationsList from "@/components/PublicationsList";

@@ -13,6 +13,17 @@ import HistopathChartPage from "@/pages/supporting-data/histopath/[pid]/histopat
 import ViabilityChartPage from "@/pages/supporting-data/viability/viability-chart-page.tsx";
 import BodyweightChartPage from "@/pages/supporting-data/bodyweight/bodyweight-chart-page.tsx";
 import DesignsPage from "@/pages/designs/[id]/designs-page.tsx";
+import CardiovascularLandingPage from "@/pages/cardiovascular/cardiovascular-page.tsx";
+import ConservationLandingPage from "@/pages/conservation/conservation-page.tsx";
+import EmbryoLandingPage from "@/pages/embryo/embryo-page.tsx";
+import EmbryoVignettesPage from "@/pages/embryo/vignettes/vignettes-page.tsx";
+import HearingLandingPage from "@/pages/hearing/hearing-page.tsx";
+import HistopathLandingPage from "@/pages/histopath/histopath-page.tsx";
+import LateAdultDataLandingPage from "@/pages/late-adult-data/late-adult-page.tsx";
+import MetabolismLandingPage from "@/pages/metabolism/metabolism-page.tsx";
+import PublicationsPage from "@/pages/publications/publications-page.tsx";
+import IDGPage from "@/pages/secondaryproject/idg/idg-page.tsx";
+import SexualDimorphismLandingPage from "@/pages/sexual-dimorphism/sexual-dimorphism-page.tsx";
 
 
 createRoot(document.getElementById('root')!).render(
@@ -31,6 +42,17 @@ createRoot(document.getElementById('root')!).render(
           <Route path="supporting-data/bodyweight" element={<BodyweightChartPage />} />
           <Route path="phenotypes/:id" element={<PhenotypePage />} />
           <Route path="designs/:id" element={<DesignsPage />} />
+          <Route path="cardiovascular" element={<CardiovascularLandingPage />} />
+          <Route path="conservation" element={<ConservationLandingPage />} />
+          <Route path="embryo" element={<EmbryoLandingPage />} />
+          <Route path="embryo/vignettes" element={<EmbryoVignettesPage />} />
+          <Route path="hearing" element={<HearingLandingPage />} />
+          <Route path="histopath" element={<HistopathLandingPage />} />
+          <Route path="late-adult-data" element={<LateAdultDataLandingPage />} />
+          <Route path="metabolism" element={<MetabolismLandingPage />} />
+          <Route path="publications" element={<PublicationsPage />} />
+          <Route path="secondaryproject/idg" element={<IDGPage />} />
+          <Route path="sexual-dimorphism" element={<SexualDimorphismLandingPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,6 @@
-"use client";
-
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from "../../mocks/data/landing-pages/metabolism.json";
-import metabolismTableData from "../../mocks/data/landing-pages/metabolism-table.json";
+import data from "@/static-data/landing-pages/metabolism.json";
+import metabolismTableData from "@/static-data/landing-pages/metabolism-table.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVenus, faMars } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
@@ -23,7 +21,6 @@ import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 import { SortType } from "@/models";
-import { Metadata } from "next";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -356,7 +353,7 @@ const MetabolismLandingPage = () => {
             <Row>
               <Col>
                 <img
-                  src="/data/images/more-cassette.png"
+                  src="/images/more-cassette.png"
                   alt="Illustration of the action of MORE cassettes in regulatory networks"
                   width="100%"
                 />

@@ -402,7 +402,7 @@ const EmbryoLandingPage = () => {
                   <li>
                     <a
                       className="link primary"
-                      href="https://beta.mousephenotype.org/data/embryo_imaging"
+                      href="https://www.mousephenotype.org/data/embryo_imaging"
                     >
                       Embryo Images: interactive heatmap
                     </a>
@@ -413,7 +413,7 @@ const EmbryoLandingPage = () => {
                     our external partners' embryo images.
                   </li>
                   <li>
-                    <Link className="link primary" href="embryo/vignettes">
+                    <Link className="link primary" to="/embryo/vignettes">
                       Embryo Vignettes
                     </Link>
                     &nbsp;Showcase of best embryo images with detailed

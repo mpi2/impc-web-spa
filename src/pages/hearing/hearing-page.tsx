@@ -1,5 +1,5 @@
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import data from "../../mocks/data/landing-pages/hearing.json";
+import data from "@/static-data/landing-pages/hearing.json";
 import { SmartTable, PlainTextCell } from "@/components/SmartTable";
 import { Link } from "react-router";
 import {
