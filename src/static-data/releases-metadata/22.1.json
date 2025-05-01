@@ -1,0 +1,4574 @@
+{
+    "dataReleaseVersion": "22.1",
+    "dataReleaseDate": "11-12-2024",
+    "dataReleaseNotes": "\"**Release notes**\\n   \\nRepresents a minor data release.\\n\\nThis release:\\n  - Removes a number of duplicated images.\\n  - In all other respects the release is identical to DR22.0.\\n\"",
+    "statisticalAnalysisPackage": {
+        "name": "OpenStats",
+        "version": "1.18.0"
+    },
+    "genomeAssembly": {
+        "species": "Mus musculus",
+        "version": "GRCm38"
+    },
+    "summaryCounts": {
+        "22.1": {
+            "phenotypedGenes": 9073,
+            "phenotypedLines": 9774,
+            "phentoypeCalls": 111485
+        },
+        "22.0": {
+            "phenotypedGenes": 9073,
+            "phenotypedLines": 9774,
+            "phentoypeCalls": 111485
+        },
+        "1.0": {
+            "phenotypedGenes": 294,
+            "phenotypedLines": 301,
+            "phenotypeCalls": 1069
+        },
+        "1.1": {
+            "phenotypedGenes": 470,
+            "phenotypedLines": 484,
+            "phenotypeCalls": 2732
+        },
+        "2.0": {
+            "phenotypedGenes": 518,
+            "phenotypedLines": 535,
+            "phenotypeCalls": 2182
+        },
+        "3.0": {
+            "phenotypedGenes": 1458,
+            "phenotypedLines": 1528,
+            "phenotypeCalls": 6114
+        },
+        "3.1": {
+            "phenotypedGenes": 1468,
+            "phenotypedLines": 1540,
+            "phenotypeCalls": 5974
+        },
+        "3.2": {
+            "phenotypedGenes": 1468,
+            "phenotypedLines": 1540,
+            "phenotypeCalls": 6064
+        },
+        "3.3": {
+            "phenotypedGenes": 1466,
+            "phenotypedLines": 1537,
+            "phenotypeCalls": 6278
+        },
+        "3.4": {
+            "phenotypedGenes": 1466,
+            "phenotypedLines": 1537,
+            "phenotypeCalls": 6382
+        },
+        "4.0": {
+            "phenotypedGenes": 2218,
+            "phenotypedLines": 2340,
+            "phenotypeCalls": 12159
+        },
+        "4.2": {
+            "phenotypedGenes": 2432,
+            "phenotypedLines": 2577,
+            "phenotypeCalls": 13008
+        },
+        "4.3": {
+            "phenotypedGenes": 2432,
+            "phenotypedLines": 2562,
+            "phenotypeCalls": 21667
+        },
+        "5.0": {
+            "phenotypedGenes": 3328,
+            "phenotypedLines": 3532,
+            "phenotypeCalls": 28406
+        },
+        "6.0": {
+            "phenotypedGenes": 4364,
+            "phenotypedLines": 4745,
+            "phenotypeCalls": 52461
+        },
+        "6.1": {
+            "phenotypedGenes": 4364,
+            "phenotypedLines": 4745,
+            "phenotypeCalls": 52656
+        },
+        "7.0": {
+            "phenotypedGenes": 4820,
+            "phenotypedLines": 5186,
+            "phenotypeCalls": 60670
+        },
+        "8.0": {
+            "phenotypedGenes": 5115,
+            "phenotypedLines": 5505,
+            "phenotypeCalls": 59407
+        },
+        "9.1": {
+            "phenotypedGenes": 5570,
+            "phenotypedLines": 5957,
+            "phenotypeCalls": 57797
+        },
+        "9.2": {
+            "phenotypedGenes": 5614,
+            "phenotypedLines": 6006,
+            "phenotypeCalls": 58107
+        },
+        "10.0": {
+            "phenotypedGenes": 5861,
+            "phenotypedLines": 6255,
+            "phenotypeCalls": 69982
+        },
+        "10.1": {
+            "phenotypedGenes": 5861,
+            "phenotypedLines": 6255,
+            "phenotypeCalls": 70692
+        },
+        "11.0": {
+            "phenotypedGenes": 6440,
+            "phenotypedLines": 6900,
+            "phenotypeCalls": 75844
+        },
+        "12.0": {
+            "phenotypedGenes": 7022,
+            "phenotypedLines": 7606,
+            "phenotypeCalls": 98621
+        },
+        "13.0": {
+            "phenotypedGenes": 7360,
+            "phenotypedLines": 7970,
+            "phenotypeCalls": 86536
+        },
+        "14.0": {
+            "phenotypedGenes": 7590,
+            "phenotypedLines": 8221,
+            "phenotypeCalls": 89329
+        },
+        "15.0": {
+            "phenotypedGenes": 7824,
+            "phenotypedLines": 8457,
+            "phenotypeCalls": 93706
+        },
+        "15.1": {
+            "phenotypedGenes": 7824,
+            "phenotypedLines": 8457,
+            "phenotypeCalls": 90010
+        },
+        "16.0": {
+            "phenotypedGenes": 8093,
+            "phenotypedLines": 8741,
+            "phenotypeCalls": 93235
+        },
+        "17.0": {
+            "phenotypedGenes": 8267,
+            "phenotypedLines": 8916,
+            "phenotypeCalls": 97294
+        },
+        "18.0": {
+            "phenotypedGenes": 8368,
+            "phenotypedLines": 9018,
+            "phenotypeCalls": 99148
+        },
+        "19.0": {
+            "phenotypedGenes": 8481,
+            "phenotypedLines": 9138,
+            "phenotypeCalls": 102805
+        },
+        "19.1": {
+            "phenotypedGenes": 8483,
+            "phenotypedLines": 9135,
+            "phenotypeCalls": 102926
+        },
+        "20.0": {
+            "phenotypedGenes": 8707,
+            "phenotypedLines": 9393,
+            "phenotypeCalls": 104530
+        },
+        "20.1": {
+            "phenotypedGenes": 8707,
+            "phenotypedLines": 9393,
+            "phenotypeCalls": 104530
+        },
+        "21.0": {
+            "phenotypedGenes": 8901,
+            "phenotypedLines": 9594,
+            "phenotypeCalls": 106561
+        },
+        "21.1": {
+            "phenotypedGenes": 8901,
+            "phenotypedLines": 9594,
+            "phenotypeCalls": 106511
+        }
+    },
+    "dataPointCount": {
+        "22.1": [
+            {
+                "dataType": "categorical",
+                "count": 27569636
+            },
+            {
+                "dataType": "time_series",
+                "count": 28688694
+            },
+            {
+                "dataType": "image_record",
+                "count": 834196
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 24085684
+            },
+            {
+                "dataType": "ontological",
+                "count": 2025264
+            },
+            {
+                "dataType": "text",
+                "count": 643552
+            }
+        ],
+        "22.0": [
+            {
+                "dataType": "categorical",
+                "count": 27569636
+            },
+            {
+                "dataType": "time_series",
+                "count": 28688694
+            },
+            {
+                "dataType": "image_record",
+                "count": 1619781
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 24085684
+            },
+            {
+                "dataType": "ontological",
+                "count": 2025264
+            },
+            {
+                "dataType": "text",
+                "count": 643552
+            }
+        ],
+        "1.0": [
+            {
+                "dataType": "categorical",
+                "count": 149194
+            },
+            {
+                "dataType": "image_record",
+                "count": 0
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 2387
+            },
+            {
+                "dataType": "time_series",
+                "count": 63773
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 381406
+            }
+        ],
+        "1.1": [
+            {
+                "dataType": "categorical",
+                "count": 958957
+            },
+            {
+                "dataType": "image_record",
+                "count": 5623
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 12803
+            },
+            {
+                "dataType": "time_series",
+                "count": 1451844
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 1011637
+            }
+        ],
+        "2.0": [
+            {
+                "dataType": "categorical",
+                "count": 1173776
+            },
+            {
+                "dataType": "image_record",
+                "count": 10765
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 15355
+            },
+            {
+                "dataType": "time_series",
+                "count": 1798263
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 988022
+            }
+        ],
+        "3.0": [
+            {
+                "dataType": "categorical",
+                "count": 3935293
+            },
+            {
+                "dataType": "image_record",
+                "count": 106682
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 51283
+            },
+            {
+                "dataType": "time_series",
+                "count": 7237320
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 2782486
+            }
+        ],
+        "3.1": [
+            {
+                "dataType": "categorical",
+                "count": 3956068
+            },
+            {
+                "dataType": "image_record",
+                "count": 107059
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 51611
+            },
+            {
+                "dataType": "time_series",
+                "count": 7415471
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 2970851
+            }
+        ],
+        "3.2": [
+            {
+                "dataType": "categorical",
+                "count": 3956068
+            },
+            {
+                "dataType": "image_record",
+                "count": 107059
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 51611
+            },
+            {
+                "dataType": "time_series",
+                "count": 7415471
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 2970851
+            }
+        ],
+        "3.3": [
+            {
+                "dataType": "categorical",
+                "count": 3956543
+            },
+            {
+                "dataType": "image_record",
+                "count": 107044
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 51597
+            },
+            {
+                "dataType": "time_series",
+                "count": 7383933
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 2981261
+            }
+        ],
+        "3.4": [
+            {
+                "dataType": "categorical",
+                "count": 3956543
+            },
+            {
+                "dataType": "image_record",
+                "count": 107044
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 51597
+            },
+            {
+                "dataType": "time_series",
+                "count": 7383933
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 2981261
+            }
+        ],
+        "4.0": [
+            {
+                "dataType": "categorical",
+                "count": 5827451
+            },
+            {
+                "dataType": "image_record",
+                "count": 186464
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 81962
+            },
+            {
+                "dataType": "time_series",
+                "count": 8721563
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 4399848
+            }
+        ],
+        "4.2": [
+            {
+                "dataType": "categorical",
+                "count": 6431595
+            },
+            {
+                "dataType": "image_record",
+                "count": 208924
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 89172
+            },
+            {
+                "dataType": "time_series",
+                "count": 9138387
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 4797248
+            }
+        ],
+        "4.3": [
+            {
+                "dataType": "categorical",
+                "count": 6597532
+            },
+            {
+                "dataType": "image_record",
+                "count": 211801
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 89429
+            },
+            {
+                "dataType": "time_series",
+                "count": 9077104
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 4543845
+            }
+        ],
+        "5.0": [
+            {
+                "dataType": "categorical",
+                "count": 8107737
+            },
+            {
+                "dataType": "image_record",
+                "count": 270804
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 111319
+            },
+            {
+                "dataType": "time_series",
+                "count": 8772128
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 5938585
+            }
+        ],
+        "6.0": [
+            {
+                "dataType": "categorical",
+                "count": 11129732
+            },
+            {
+                "dataType": "image_record",
+                "count": 327658
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 143003
+            },
+            {
+                "dataType": "time_series",
+                "count": 12001974
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 8151407
+            }
+        ],
+        "6.1": [
+            {
+                "dataType": "categorical",
+                "count": 11129868
+            },
+            {
+                "dataType": "image_record",
+                "count": 315223
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 143004
+            },
+            {
+                "dataType": "time_series",
+                "count": 12002305
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 8150815
+            }
+        ],
+        "7.0": [
+            {
+                "dataType": "categorical",
+                "count": 12225255
+            },
+            {
+                "dataType": "image_record",
+                "count": 358288
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 154731
+            },
+            {
+                "dataType": "time_series",
+                "count": 12778993
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 9099910
+            }
+        ],
+        "8.0": [
+            {
+                "dataType": "categorical",
+                "count": 13047108
+            },
+            {
+                "dataType": "image_record",
+                "count": 366858
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 160354
+            },
+            {
+                "dataType": "time_series",
+                "count": 12844228
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 9463677
+            }
+        ],
+        "9.1": [
+            {
+                "dataType": "categorical",
+                "count": 13312831
+            },
+            {
+                "dataType": "image_record",
+                "count": 396400
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 180098
+            },
+            {
+                "dataType": "time_series",
+                "count": 12236102
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 10063922
+            }
+        ],
+        "9.2": [
+            {
+                "dataType": "categorical",
+                "count": 13312831
+            },
+            {
+                "dataType": "image_record",
+                "count": 396400
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 180098
+            },
+            {
+                "dataType": "time_series",
+                "count": 12236110
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 10094468
+            }
+        ],
+        "10.0": [
+            {
+                "dataType": "categorical",
+                "count": 14917863
+            },
+            {
+                "dataType": "image_record",
+                "count": 469960
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 192176
+            },
+            {
+                "dataType": "time_series",
+                "count": 13444019
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 11068097
+            }
+        ],
+        "10.1": [
+            {
+                "dataType": "categorical",
+                "count": 14917864
+            },
+            {
+                "dataType": "image_record",
+                "count": 469960
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 192175
+            },
+            {
+                "dataType": "time_series",
+                "count": 13444019
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 11116529
+            }
+        ],
+        "11.0": [
+            {
+                "dataType": "categorical",
+                "count": 17290216
+            },
+            {
+                "dataType": "image_record",
+                "count": 519670
+            },
+            {
+                "dataType": "ontological",
+                "count": 0
+            },
+            {
+                "dataType": "text",
+                "count": 239514
+            },
+            {
+                "dataType": "time_series",
+                "count": 15043961
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 12660671
+            }
+        ],
+        "12.0": [
+            {
+                "dataType": "categorical",
+                "count": 19587640
+            },
+            {
+                "dataType": "image_record",
+                "count": 538628
+            },
+            {
+                "dataType": "ontological",
+                "count": 1142459
+            },
+            {
+                "dataType": "text",
+                "count": 383858
+            },
+            {
+                "dataType": "time_series",
+                "count": 16917206
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 14377881
+            }
+        ],
+        "13.0": [
+            {
+                "dataType": "categorical",
+                "count": 20780695
+            },
+            {
+                "dataType": "image_record",
+                "count": 572772
+            },
+            {
+                "dataType": "ontological",
+                "count": 1240938
+            },
+            {
+                "dataType": "text",
+                "count": 415798
+            },
+            {
+                "dataType": "time_series",
+                "count": 18293301
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 15584538
+            }
+        ],
+        "14.0": [
+            {
+                "dataType": "categorical",
+                "count": 21255224
+            },
+            {
+                "dataType": "image_record",
+                "count": 599052
+            },
+            {
+                "dataType": "ontological",
+                "count": 1340729
+            },
+            {
+                "dataType": "text",
+                "count": 449449
+            },
+            {
+                "dataType": "time_series",
+                "count": 20057483
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 16650398
+            }
+        ],
+        "15.0": [
+            {
+                "dataType": "categorical",
+                "count": 22185336
+            },
+            {
+                "dataType": "image_record",
+                "count": 623331
+            },
+            {
+                "dataType": "ontological",
+                "count": 1535242
+            },
+            {
+                "dataType": "text",
+                "count": 475896
+            },
+            {
+                "dataType": "time_series",
+                "count": 22148393
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 18032421
+            }
+        ],
+        "15.1": [
+            {
+                "dataType": "categorical",
+                "count": 22185336
+            },
+            {
+                "dataType": "image_record",
+                "count": 623331
+            },
+            {
+                "dataType": "ontological",
+                "count": 1535242
+            },
+            {
+                "dataType": "text",
+                "count": 475896
+            },
+            {
+                "dataType": "time_series",
+                "count": 22148393
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 18032421
+            }
+        ],
+        "16.0": [
+            {
+                "dataType": "categorical",
+                "count": 23074548
+            },
+            {
+                "dataType": "image_record",
+                "count": 738538
+            },
+            {
+                "dataType": "ontological",
+                "count": 1726712
+            },
+            {
+                "dataType": "text",
+                "count": 521859
+            },
+            {
+                "dataType": "time_series",
+                "count": 23855539
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 19173924
+            }
+        ],
+        "17.0": [
+            {
+                "dataType": "categorical",
+                "count": 24041093
+            },
+            {
+                "dataType": "image_record",
+                "count": 786081
+            },
+            {
+                "dataType": "ontological",
+                "count": 1805447
+            },
+            {
+                "dataType": "text",
+                "count": 542097
+            },
+            {
+                "dataType": "time_series",
+                "count": 24878391
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 20309782
+            }
+        ],
+        "18.0": [
+            {
+                "dataType": "categorical",
+                "count": 24660090
+            },
+            {
+                "dataType": "image_record",
+                "count": 737960
+            },
+            {
+                "dataType": "ontological",
+                "count": 1826470
+            },
+            {
+                "dataType": "text",
+                "count": 552346
+            },
+            {
+                "dataType": "time_series",
+                "count": 25287130
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 20653136
+            }
+        ],
+        "19.0": [
+            {
+                "dataType": "categorical",
+                "count": 24969697
+            },
+            {
+                "dataType": "image_record",
+                "count": 756662
+            },
+            {
+                "dataType": "ontological",
+                "count": 1857303
+            },
+            {
+                "dataType": "text",
+                "count": 558603
+            },
+            {
+                "dataType": "time_series",
+                "count": 26134856
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 21538759
+            }
+        ],
+        "19.1": [
+            {
+                "dataType": "categorical",
+                "count": 24973889
+            },
+            {
+                "dataType": "image_record",
+                "count": 756754
+            },
+            {
+                "dataType": "ontological",
+                "count": 1857850
+            },
+            {
+                "dataType": "text",
+                "count": 558656
+            },
+            {
+                "dataType": "time_series",
+                "count": 26137391
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 21547750
+            }
+        ],
+        "20.0": [
+            {
+                "dataType": "categorical",
+                "count": 25648927
+            },
+            {
+                "dataType": "image_record",
+                "count": 779372
+            },
+            {
+                "dataType": "ontological",
+                "count": 1919099
+            },
+            {
+                "dataType": "text",
+                "count": 583002
+            },
+            {
+                "dataType": "time_series",
+                "count": 26929803
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 22387315
+            }
+        ],
+        "20.1": [
+            {
+                "dataType": "categorical",
+                "count": 25648927
+            },
+            {
+                "dataType": "image_record",
+                "count": 779372
+            },
+            {
+                "dataType": "ontological",
+                "count": 1919099
+            },
+            {
+                "dataType": "text",
+                "count": 583002
+            },
+            {
+                "dataType": "time_series",
+                "count": 26929803
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 22387315
+            }
+        ],
+        "21.0": [
+            {
+                "dataType": "categorical",
+                "count": 27007526
+            },
+            {
+                "dataType": "image_record",
+                "count": 794481
+            },
+            {
+                "dataType": "ontological",
+                "count": 1982542
+            },
+            {
+                "dataType": "text",
+                "count": 600819
+            },
+            {
+                "dataType": "time_series",
+                "count": 27943516
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 23321419
+            }
+        ],
+        "21.1": [
+            {
+                "dataType": "categorical",
+                "count": 27007526
+            },
+            {
+                "dataType": "image_record",
+                "count": 794481
+            },
+            {
+                "dataType": "ontological",
+                "count": 1982542
+            },
+            {
+                "dataType": "text",
+                "count": 600819
+            },
+            {
+                "dataType": "time_series",
+                "count": 27943516
+            },
+            {
+                "dataType": "unidimensional",
+                "count": 23321419
+            }
+        ]
+    },
+    "sampleCounts": [
+        {
+            "phenotypingCentre": "CCP-IMG",
+            "mutantLines": 383,
+            "mutantSpecimens": 7077,
+            "controlSpecimens": 3954
+        },
+        {
+            "phenotypingCentre": "MRC Harwell",
+            "mutantLines": 846,
+            "mutantSpecimens": 20700,
+            "controlSpecimens": 7523
+        },
+        {
+            "phenotypingCentre": "UC Davis",
+            "mutantLines": 1575,
+            "mutantSpecimens": 39873,
+            "controlSpecimens": 9597
+        },
+        {
+            "phenotypingCentre": "RBRC",
+            "mutantLines": 116,
+            "mutantSpecimens": 2687,
+            "controlSpecimens": 2314
+        },
+        {
+            "phenotypingCentre": "KMPC",
+            "mutantLines": 103,
+            "mutantSpecimens": 3906,
+            "controlSpecimens": 3127
+        },
+        {
+            "phenotypingCentre": "WTSI",
+            "mutantLines": 1621,
+            "mutantSpecimens": 18660,
+            "controlSpecimens": 5364
+        },
+        {
+            "phenotypingCentre": "TCP",
+            "mutantLines": 778,
+            "mutantSpecimens": 31647,
+            "controlSpecimens": 9539
+        },
+        {
+            "phenotypingCentre": "BCM",
+            "mutantLines": 1215,
+            "mutantSpecimens": 36076,
+            "controlSpecimens": 9694
+        },
+        {
+            "phenotypingCentre": "ICS",
+            "mutantLines": 239,
+            "mutantSpecimens": 3882,
+            "controlSpecimens": 2619
+        },
+        {
+            "phenotypingCentre": "HMGU",
+            "mutantLines": 538,
+            "mutantSpecimens": 10739,
+            "controlSpecimens": 7617
+        },
+        {
+            "phenotypingCentre": "JAX",
+            "mutantLines": 2128,
+            "mutantSpecimens": 59734,
+            "controlSpecimens": 15851
+        },
+        {
+            "phenotypingCentre": "MARC",
+            "mutantLines": 233,
+            "mutantSpecimens": 3588,
+            "controlSpecimens": 1858
+        }
+    ],
+    "dataQualityChecks": [
+        {
+            "dataType": "categorical",
+            "count": 27569636
+        },
+        {
+            "dataType": "time_series",
+            "count": 28688694
+        },
+        {
+            "dataType": "image_record",
+            "count": 834196
+        },
+        {
+            "dataType": "unidimensional",
+            "count": 24085684
+        },
+        {
+            "dataType": "ontological",
+            "count": 2025264
+        },
+        {
+            "dataType": "text",
+            "count": 643552
+        }
+    ],
+    "phenotypeAnnotations": [
+        {
+            "topLevelPhenotype": "embryo phenotype",
+            "total": 2619,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 3
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 658
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 1958
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "digestive/alimentary phenotype",
+            "total": 494,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 89
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 9
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 396
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "pigmentation phenotype",
+            "total": 718,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 532
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 9
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 177
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "integument phenotype",
+            "total": 2651,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 1954
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 56
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 641
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "growth/size/body region phenotype",
+            "total": 6340,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 1481
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 85
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 4774
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "renal/urinary system phenotype",
+            "total": 1798,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 487
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 39
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 1272
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "homeostasis/metabolism phenotype",
+            "total": 7776,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 1938
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 118
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 5720
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "skeleton phenotype",
+            "total": 3364,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 53
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 661
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 2650
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "endocrine/exocrine gland phenotype",
+            "total": 2845,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 41
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 2225
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 579
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "mortality/aging",
+            "total": 6086,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 6
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 6079
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "vision/eye phenotype",
+            "total": 5010,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 61
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 1515
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 3434
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "respiratory system phenotype",
+            "total": 380,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 61
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 312
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 7
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "cardiovascular system phenotype",
+            "total": 3720,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 39
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 2641
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 1040
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "liver/biliary system phenotype",
+            "total": 716,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 4
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 507
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 205
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "hearing/vestibular/ear phenotype",
+            "total": 762,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 654
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 3
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 105
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "hematopoietic system phenotype",
+            "total": 9787,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 2175
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 115
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 7497
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "limbs/digits/tail phenotype",
+            "total": 1114,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 5
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 956
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 153
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "reproductive system phenotype",
+            "total": 2671,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 456
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 2177
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 38
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "adipose tissue phenotype",
+            "total": 953,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 252
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 695
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 6
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "immune system phenotype",
+            "total": 7512,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 5769
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 1662
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 81
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "craniofacial phenotype",
+            "total": 1154,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 1019
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 107
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 28
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "muscle phenotype",
+            "total": 105,
+            "counts": [
+                {
+                    "zygosity": "heterozygote",
+                    "count": 13
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 2
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 90
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "behavior/neurological phenotype",
+            "total": 11554,
+            "counts": [
+                {
+                    "zygosity": "homozygote",
+                    "count": 8819
+                },
+                {
+                    "zygosity": "hemizygote",
+                    "count": 121
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 2614
+                }
+            ]
+        },
+        {
+            "topLevelPhenotype": "nervous system phenotype",
+            "total": 2321,
+            "counts": [
+                {
+                    "zygosity": "hemizygote",
+                    "count": 4
+                },
+                {
+                    "zygosity": "homozygote",
+                    "count": 1828
+                },
+                {
+                    "zygosity": "heterozygote",
+                    "count": 489
+                }
+            ]
+        }
+    ],
+    "productionStatusOverall": [
+        {
+            "statusType": "productionESCellNull",
+            "counts": [
+                {
+                    "status": "Chimeras/Founder Obtained",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "count": 2799
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "count": 981
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "count": 5
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "count": 3048
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "count": 1
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "count": 12
+                },
+                {
+                    "status": "Mouse Allele Modification Registered",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "count": 100
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "count": 274
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "count": 3490
+                },
+                {
+                    "status": "Plan Created",
+                    "count": 278
+                }
+            ]
+        },
+        {
+            "statusType": "productionESCellConditional",
+            "counts": [
+                {
+                    "status": "Attempt Aborted",
+                    "count": 9
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "count": 1379
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "count": 6
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "count": 2168
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "count": 7
+                },
+                {
+                    "status": "Mouse Allele Modification Registered",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "count": 68
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "count": 249
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "count": 135
+                },
+                {
+                    "status": "Plan Created",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "statusType": "productionCrisprNull",
+            "counts": [
+                {
+                    "status": "Founder Obtained",
+                    "count": 83
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "count": 657
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "count": 57
+                },
+                {
+                    "status": "Genotype Extinct",
+                    "count": 2
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "count": 5451
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "count": 9
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "count": 7
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "count": 1231
+                },
+                {
+                    "status": "Plan Created",
+                    "count": 969
+                }
+            ]
+        },
+        {
+            "statusType": "productionCrisprConditional",
+            "counts": [
+                {
+                    "status": "Genotype Confirmed",
+                    "count": 31
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "statusType": "phenotyping",
+            "counts": [
+                {
+                    "status": "Phenotyping Registered",
+                    "count": 202
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "count": 4096
+                },
+                {
+                    "status": "Rederivation Complete",
+                    "count": 37
+                },
+                {
+                    "status": "Phenotyping Finished",
+                    "count": 1272
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "count": 4068
+                }
+            ]
+        }
+    ],
+    "productionStatusByCenter": [
+        {
+            "statusType": "productionESCellNull",
+            "counts": [
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "CCP-IMG",
+                    "count": 15
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "WTSI",
+                    "count": 974
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "RIKEN BRC",
+                    "count": 13
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "BCM",
+                    "count": 603
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "KMPC",
+                    "count": 29
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CCP-IMG",
+                    "count": 52
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "WTSI",
+                    "count": 989
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 83
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 458
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "ICS",
+                    "count": 50
+                },
+                {
+                    "status": "Mouse Allele Modification Registered",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "Monterotondo",
+                    "count": 117
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "Monterotondo",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "JAX",
+                    "count": 277
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "SEAT",
+                    "count": 14
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "HMGU",
+                    "count": 302
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "CCP-IMG",
+                    "count": 38
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CNB",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 502
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Harwell",
+                    "count": 764
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 2
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CCP-IMG",
+                    "count": 4
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Monterotondo",
+                    "count": 77
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "RIKEN BRC",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "Harwell",
+                    "count": 135
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "CDTA",
+                    "count": 59
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CNB",
+                    "count": 5
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "HMGU",
+                    "count": 39
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "BCM",
+                    "count": 73
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "HMGU",
+                    "count": 11
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "NARLabs",
+                    "count": 4
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "WTSI",
+                    "count": 34
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "JAX",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Oulu",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "SEAT",
+                    "count": 24
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "SEAT",
+                    "count": 2
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "ICS",
+                    "count": 65
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 382
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "BCM",
+                    "count": 284
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "HMGU",
+                    "count": 53
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "TCP",
+                    "count": 196
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "JAX",
+                    "count": 19
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "RIKEN BRC",
+                    "count": 34
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "KMPC",
+                    "count": 1
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "RIKEN BRC",
+                    "count": 1
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "WTSI",
+                    "count": 269
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "MARC",
+                    "count": 41
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 15
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "UCD",
+                    "count": 272
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "JAX",
+                    "count": 15
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "VETMEDUNI",
+                    "count": 2
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "RIKEN BRC",
+                    "count": 13
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 53
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "UCD",
+                    "count": 9
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "JAX",
+                    "count": 403
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "Harwell",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Fleming",
+                    "count": 6
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "NARLabs",
+                    "count": 7
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CIPHE",
+                    "count": 16
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "UCD",
+                    "count": 35
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "HMGU",
+                    "count": 263
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Oulu",
+                    "count": 5
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "HMGU",
+                    "count": 329
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "Monterotondo",
+                    "count": 9
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "Harwell",
+                    "count": 3
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "UCD",
+                    "count": 699
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "MARC",
+                    "count": 65
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "NARLabs",
+                    "count": 13
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "RIKEN BRC",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "SEAT",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CAM-SU GRC",
+                    "count": 31
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "UCD",
+                    "count": 751
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "Harwell",
+                    "count": 532
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "UCD",
+                    "count": 590
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Monterotondo",
+                    "count": 36
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "MARC",
+                    "count": 220
+                },
+                {
+                    "status": "Chimeras/Founder Obtained",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "NARLabs",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "KMPC",
+                    "count": 12
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "JAX",
+                    "count": 653
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 154
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "Harwell",
+                    "count": 16
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "ICS",
+                    "count": 46
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "RIKEN BRC",
+                    "count": 8
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "TCP",
+                    "count": 294
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 267
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "WTSI",
+                    "count": 84
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "CAM-SU GRC",
+                    "count": 6
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "UCD",
+                    "count": 18
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "CIPHE",
+                    "count": 4
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "KMPC",
+                    "count": 27
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "BCM",
+                    "count": 6
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "MARC",
+                    "count": 13
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "VETMEDUNI",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 63
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CIPHE",
+                    "count": 26
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "KMPC",
+                    "count": 162
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CAM-SU GRC",
+                    "count": 145
+                }
+            ]
+        },
+        {
+            "statusType": "productionESCellConditional",
+            "counts": [
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "CCP-IMG",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "WTSI",
+                    "count": 57
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "RIKEN BRC",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "BCM",
+                    "count": 50
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "KMPC",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CCP-IMG",
+                    "count": 2
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "WTSI",
+                    "count": 193
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 81
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 439
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "ICS",
+                    "count": 8
+                },
+                {
+                    "status": "Mouse Allele Modification Registered",
+                    "centre": "HMGU",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "Monterotondo",
+                    "count": 12
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "Monterotondo",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "JAX",
+                    "count": 39
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "SEAT",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "HMGU",
+                    "count": 295
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "CCP-IMG",
+                    "count": 33
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CNB",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 985
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Harwell",
+                    "count": 103
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 3
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CCP-IMG",
+                    "count": 6
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Monterotondo",
+                    "count": 86
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "RIKEN BRC",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "CDTA",
+                    "count": 58
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "Harwell",
+                    "count": 11
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CNB",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "HMGU",
+                    "count": 38
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "BCM",
+                    "count": 2
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "HMGU",
+                    "count": 12
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "NARLabs",
+                    "count": 4
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "WTSI",
+                    "count": 34
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Oulu",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "SEAT",
+                    "count": 24
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "SEAT",
+                    "count": 2
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "ICS",
+                    "count": 5
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 383
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "BCM",
+                    "count": 16
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "HMGU",
+                    "count": 16
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "TCP",
+                    "count": 11
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "JAX",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "RIKEN BRC",
+                    "count": 33
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "KMPC",
+                    "count": 1
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "RIKEN BRC",
+                    "count": 1
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "WTSI",
+                    "count": 243
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "MARC",
+                    "count": 4
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 10
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "UCD",
+                    "count": 128
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "JAX",
+                    "count": 5
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 107
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "UCD",
+                    "count": 4
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "JAX",
+                    "count": 28
+                },
+                {
+                    "status": "Cre Excision Complete",
+                    "centre": "Harwell",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Fleming",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "NARLabs",
+                    "count": 15
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "UCD",
+                    "count": 13
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "HMGU",
+                    "count": 32
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "HMGU",
+                    "count": 52
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "Monterotondo",
+                    "count": 9
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "Harwell",
+                    "count": 3
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "UCD",
+                    "count": 61
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "MARC",
+                    "count": 62
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CAM-SU GRC",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "UCD",
+                    "count": 178
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "Harwell",
+                    "count": 42
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "UCD",
+                    "count": 150
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Monterotondo",
+                    "count": 4
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "MARC",
+                    "count": 71
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "KMPC",
+                    "count": 17
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "JAX",
+                    "count": 296
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 153
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "Harwell",
+                    "count": 16
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "ICS",
+                    "count": 46
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "RIKEN BRC",
+                    "count": 3
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 211
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "TCP",
+                    "count": 20
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "WTSI",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "UCD",
+                    "count": 2
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "CIPHE",
+                    "count": 4
+                },
+                {
+                    "status": "Cre Excision Started",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "HMGU",
+                    "count": 2
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "KMPC",
+                    "count": 26
+                },
+                {
+                    "status": "Mouse Allele Modification Aborted",
+                    "centre": "BCM",
+                    "count": 5
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "VETMEDUNI",
+                    "count": 3
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 104
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CIPHE",
+                    "count": 26
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "KMPC",
+                    "count": 12
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CAM-SU GRC",
+                    "count": 168
+                }
+            ]
+        },
+        {
+            "statusType": "productionCrisprNull",
+            "counts": [
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "WTSI",
+                    "count": 215
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "RIKEN BRC",
+                    "count": 69
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "CAM-SU GRC",
+                    "count": 14
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "CAM-SU GRC",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "BCM",
+                    "count": 104
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "KMPC",
+                    "count": 3
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "WTSI",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CCP-IMG",
+                    "count": 22
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "WTSI",
+                    "count": 40
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "ICS",
+                    "count": 17
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "JAX",
+                    "count": 383
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "centre": "UCD",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "SEAT",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "centre": "BCM",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 411
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "KMPC",
+                    "count": 122
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "Harwell",
+                    "count": 468
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 842
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CCP-IMG",
+                    "count": 565
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "Harwell",
+                    "count": 53
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "BCM",
+                    "count": 191
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "ICS",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "JAX",
+                    "count": 1399
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "BCM",
+                    "count": 35
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "HMGU",
+                    "count": 6
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "ICS",
+                    "count": 3
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "ICS",
+                    "count": 9
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "BCM",
+                    "count": 178
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "UCD",
+                    "count": 17
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "HMGU",
+                    "count": 227
+                },
+                {
+                    "status": "Genotype Extinct",
+                    "centre": "BCM",
+                    "count": 1
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "TCP",
+                    "count": 70
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "JAX",
+                    "count": 284
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "KMPC",
+                    "count": 5
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "MARC",
+                    "count": 165
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "CIPHE",
+                    "count": 6
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 401
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "JAX",
+                    "count": 16
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "UCD",
+                    "count": 860
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "APN",
+                    "count": 1
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "WTSI",
+                    "count": 5
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 70
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "JAX",
+                    "count": 318
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "CCP-IMG",
+                    "count": 195
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "Harwell",
+                    "count": 6
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "TCP",
+                    "count": 36
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "KRIBB",
+                    "count": 2
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Monterotondo R&D",
+                    "count": 4
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "centre": "KMPC",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CIPHE",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "HMGU",
+                    "count": 76
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "ICS",
+                    "count": 1
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "Harwell",
+                    "count": 2
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "HMGU",
+                    "count": 14
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "UCD",
+                    "count": 212
+                },
+                {
+                    "status": "Genotype Extinct",
+                    "centre": "JAX",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "RIKEN BRC",
+                    "count": 5
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "CAM-SU GRC",
+                    "count": 3
+                },
+                {
+                    "status": "Attempt Aborted",
+                    "centre": "Harwell",
+                    "count": 47
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "UCD",
+                    "count": 227
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "KMPC",
+                    "count": 10
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "MARC",
+                    "count": 32
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "HMGU",
+                    "count": 110
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "KMPC",
+                    "count": 162
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "UCD",
+                    "count": 27
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "RIKEN BRC",
+                    "count": 6
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "TCP",
+                    "count": 132
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "WTSI",
+                    "count": 33
+                },
+                {
+                    "status": "Attempt In Progress",
+                    "centre": "TCP",
+                    "count": 3
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "UCD",
+                    "count": 154
+                },
+                {
+                    "status": "Genotype In Progress",
+                    "centre": "HMGU",
+                    "count": 2
+                },
+                {
+                    "status": "Founder Obtained",
+                    "centre": "TCP",
+                    "count": 5
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 366
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "MARC",
+                    "count": 1
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "KMPC",
+                    "count": 25
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "JAX",
+                    "count": 7
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "BCM",
+                    "count": 13
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "CAM-SU GRC",
+                    "count": 1
+                },
+                {
+                    "status": "Embryos Obtained",
+                    "centre": "WTSI",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "statusType": "productionCrisprConditional",
+            "counts": [
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "WTSI",
+                    "count": 2
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "BCM",
+                    "count": 16
+                },
+                {
+                    "status": "Plan Created",
+                    "centre": "BCM",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 3
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "ICS",
+                    "count": 2
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Monterotondo R&D",
+                    "count": 2
+                },
+                {
+                    "status": "Plan Abandoned",
+                    "centre": "UCD",
+                    "count": 2
+                },
+                {
+                    "status": "Mouse Allele Modification Genotype Confirmed",
+                    "centre": "TCP",
+                    "count": 1
+                },
+                {
+                    "status": "Genotype Confirmed",
+                    "centre": "Harwell",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "statusType": "phenotyping",
+            "counts": [
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "UCD",
+                    "count": 1170
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "MARC",
+                    "count": 235
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "MARC",
+                    "count": 25
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "BCM",
+                    "count": 890
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "RIKEN BRC",
+                    "count": 109
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "UCD",
+                    "count": 7
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "KMPC",
+                    "count": 5
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "ICS",
+                    "count": 334
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "KMPC",
+                    "count": 107
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "Harwell",
+                    "count": 4
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "BCM",
+                    "count": 36
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "UCD",
+                    "count": 313
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "TCP",
+                    "count": 76
+                },
+                {
+                    "status": "Rederivation Complete",
+                    "centre": "WTSI",
+                    "count": 35
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "TCP",
+                    "count": 575
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "HMGU",
+                    "count": 606
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "HMGU",
+                    "count": 9
+                },
+                {
+                    "status": "Rederivation Complete",
+                    "centre": "Harwell",
+                    "count": 1
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "JAX",
+                    "count": 29
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "WTSI",
+                    "count": 18
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "JAX",
+                    "count": 2036
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "HMGU",
+                    "count": 3
+                },
+                {
+                    "status": "Rederivation Complete",
+                    "centre": "KMPC",
+                    "count": 1
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "CCP-IMG",
+                    "count": 368
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "TCP",
+                    "count": 21
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "Harwell",
+                    "count": 910
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "CCP-IMG",
+                    "count": 57
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "Harwell",
+                    "count": 13
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "WTSI",
+                    "count": 245
+                },
+                {
+                    "status": "Phenotyping All Data Sent",
+                    "centre": "BCM",
+                    "count": 319
+                },
+                {
+                    "status": "Phenotyping Started",
+                    "centre": "JAX",
+                    "count": 80
+                },
+                {
+                    "status": "Phenotyping Registered",
+                    "centre": "ICS",
+                    "count": 1
+                },
+                {
+                    "status": "Phenotyping Finished",
+                    "centre": "WTSI",
+                    "count": 1307
+                }
+            ]
+        }
+    ],
+    "phenotypeAssociationsByProcedure": [
+        {
+            "procedure_name": "Heart Weight",
+            "total": 374,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 25
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 349
+                }
+            ]
+        },
+        {
+            "procedure_name": "Open Field",
+            "total": 3353,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 200
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 3153
+                }
+            ]
+        },
+        {
+            "procedure_name": "Fasted Clinical Chemistry",
+            "total": 114,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 114
+                }
+            ]
+        },
+        {
+            "procedure_name": "Open Field - centre start",
+            "total": 1903,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 132
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 1771
+                }
+            ]
+        },
+        {
+            "procedure_name": "Lung mechanics by forced oscillations",
+            "total": 194,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 194
+                }
+            ]
+        },
+        {
+            "procedure_name": "Modified SHIRPA",
+            "total": 286,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 286
+                }
+            ]
+        },
+        {
+            "procedure_name": "Clinical chemistry (GMC)",
+            "total": 37,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 37
+                }
+            ]
+        },
+        {
+            "procedure_name": "Fear Conditioning",
+            "total": 286,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 24
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 262
+                }
+            ]
+        },
+        {
+            "procedure_name": "Whole blood peripheral blood leukocyte immunophenotyping",
+            "total": 273,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 273
+                }
+            ]
+        },
+        {
+            "procedure_name": "Trabecular Bone MicroCT",
+            "total": 5,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 5
+                }
+            ]
+        },
+        {
+            "procedure_name": "Food efficiency (GMC)",
+            "total": 13,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 13
+                }
+            ]
+        },
+        {
+            "procedure_name": "Viability E18.5 Secondary Screen",
+            "total": 26,
+            "counts": [
+                {
+                    "lifeStage": "E18.5",
+                    "count": 26
+                }
+            ]
+        },
+        {
+            "procedure_name": "Dysmorphology",
+            "total": 159,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 154
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 5
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Embryo E9.5",
+            "total": 1888,
+            "counts": [
+                {
+                    "lifeStage": "E9.5",
+                    "count": 1888
+                }
+            ]
+        },
+        {
+            "procedure_name": "Body Composition (DEXA lean/fat)",
+            "total": 3597,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 3411
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 186
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Embryo E14.5-E15.5",
+            "total": 1457,
+            "counts": [
+                {
+                    "lifeStage": "E15.5",
+                    "count": 1457
+                }
+            ]
+        },
+        {
+            "procedure_name": "Indirect Calorimetry",
+            "total": 111,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 3
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 108
+                }
+            ]
+        },
+        {
+            "procedure_name": "Intraperitoneal glucose tolerance test (IPGTT)",
+            "total": 882,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 42
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 840
+                }
+            ]
+        },
+        {
+            "procedure_name": "SHIRPA",
+            "total": 12,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 12
+                }
+            ]
+        },
+        {
+            "procedure_name": "Auditory Brain Stem Response",
+            "total": 722,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 722
+                }
+            ]
+        },
+        {
+            "procedure_name": "Heart Dissection",
+            "total": 90,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 90
+                }
+            ]
+        },
+        {
+            "procedure_name": "Open-field",
+            "total": 168,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 168
+                }
+            ]
+        },
+        {
+            "procedure_name": "Eye Morphology",
+            "total": 3582,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 126
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 3456
+                }
+            ]
+        },
+        {
+            "procedure_name": "Fertility of Homozygous Knock-out Mice",
+            "total": 467,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 467
+                }
+            ]
+        },
+        {
+            "procedure_name": "Y-maze",
+            "total": 6,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 2
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "procedure_name": "Spontaneous breathing (GMC)",
+            "total": 18,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 18
+                }
+            ]
+        },
+        {
+            "procedure_name": "Light-Dark Test",
+            "total": 677,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 654
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 23
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Embryo E18.5",
+            "total": 1391,
+            "counts": [
+                {
+                    "lifeStage": "E18.5",
+                    "count": 1391
+                }
+            ]
+        },
+        {
+            "procedure_name": "Electroconvulsive Threshold Testing",
+            "total": 10,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 10
+                }
+            ]
+        },
+        {
+            "procedure_name": "Acoustic Startle and Pre-pulse Inhibition (PPI)",
+            "total": 1427,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 10
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 1417
+                }
+            ]
+        },
+        {
+            "procedure_name": "Insulin Blood Level",
+            "total": 70,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 70
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Placenta E14.5-E15.5",
+            "total": 339,
+            "counts": [
+                {
+                    "lifeStage": "E15.5",
+                    "count": 339
+                }
+            ]
+        },
+        {
+            "procedure_name": "Clinical Chemistry",
+            "total": 6028,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 283
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 5745
+                }
+            ]
+        },
+        {
+            "procedure_name": "Grip Strength",
+            "total": 1558,
+            "counts": [
+                {
+                    "lifeStage": "Middle aged adult",
+                    "count": 22
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 1431
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 105
+                }
+            ]
+        },
+        {
+            "procedure_name": "Simplified IPGTT",
+            "total": 13,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 13
+                }
+            ]
+        },
+        {
+            "procedure_name": "Sleep Wake",
+            "total": 120,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 120
+                }
+            ]
+        },
+        {
+            "procedure_name": "Body Weight",
+            "total": 52,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 52
+                }
+            ]
+        },
+        {
+            "procedure_name": "MicroCT E14.5-E15.5",
+            "total": 1,
+            "counts": [
+                {
+                    "lifeStage": "E15.5",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "procedure_name": "Viability E12.5 Secondary Screen",
+            "total": 347,
+            "counts": [
+                {
+                    "lifeStage": "E12.5",
+                    "count": 347
+                }
+            ]
+        },
+        {
+            "procedure_name": "Echo",
+            "total": 425,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 30
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 395
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Placenta E12.5",
+            "total": 49,
+            "counts": [
+                {
+                    "lifeStage": "E12.5",
+                    "count": 49
+                }
+            ]
+        },
+        {
+            "procedure_name": "Dexa-scan analysis",
+            "total": 233,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 233
+                }
+            ]
+        },
+        {
+            "procedure_name": "Histopathology",
+            "total": 1704,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 1556
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 148
+                }
+            ]
+        },
+        {
+            "procedure_name": "Ear epidermis immunophenotyping",
+            "total": 10,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 10
+                }
+            ]
+        },
+        {
+            "procedure_name": "Hole-board Exploration",
+            "total": 70,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 62
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "procedure_name": "Hargreaves Test",
+            "total": 4,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "procedure_name": "Haematology",
+            "total": 225,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 225
+                }
+            ]
+        },
+        {
+            "procedure_name": "FACs Analysis",
+            "total": 110,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 110
+                }
+            ]
+        },
+        {
+            "procedure_name": "Organ Weight",
+            "total": 493,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 469
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 24
+                }
+            ]
+        },
+        {
+            "procedure_name": "Slit Lamp",
+            "total": 115,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 115
+                }
+            ]
+        },
+        {
+            "procedure_name": "Von Frey Test",
+            "total": 11,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 11
+                }
+            ]
+        },
+        {
+            "procedure_name": "Mesenteric Lymph Node Immunophenotyping",
+            "total": 189,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 189
+                }
+            ]
+        },
+        {
+            "procedure_name": "Shirpa (GMC)",
+            "total": 11,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 11
+                }
+            ]
+        },
+        {
+            "procedure_name": "Age monitoring",
+            "total": 2,
+            "counts": [
+                {
+                    "lifeStage": "Middle aged adult",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "procedure_name": "Combined SHIRPA and Dysmorphology",
+            "total": 3484,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 2968
+                },
+                {
+                    "lifeStage": "Middle aged adult",
+                    "count": 43
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 473
+                }
+            ]
+        },
+        {
+            "procedure_name": "MicroCT E18.5",
+            "total": 3,
+            "counts": [
+                {
+                    "lifeStage": "E18.5",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "procedure_name": "Bodyweight (GMC)",
+            "total": 8,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Placenta E18.5",
+            "total": 78,
+            "counts": [
+                {
+                    "lifeStage": "E18.5",
+                    "count": 78
+                }
+            ]
+        },
+        {
+            "procedure_name": "Minispec",
+            "total": 8,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 8
+                }
+            ]
+        },
+        {
+            "procedure_name": "Challenge Whole Body Plethysmography",
+            "total": 107,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 107
+                }
+            ]
+        },
+        {
+            "procedure_name": "IPGTT",
+            "total": 26,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 26
+                }
+            ]
+        },
+        {
+            "procedure_name": "Immunoglobulin",
+            "total": 39,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 39
+                }
+            ]
+        },
+        {
+            "procedure_name": "Electrocardiogram (ECG)",
+            "total": 570,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 530
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 40
+                }
+            ]
+        },
+        {
+            "procedure_name": "Viability E9.5 Secondary Screen",
+            "total": 558,
+            "counts": [
+                {
+                    "lifeStage": "E9.5",
+                    "count": 558
+                }
+            ]
+        },
+        {
+            "procedure_name": "X-ray",
+            "total": 1179,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 9
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 1170
+                }
+            ]
+        },
+        {
+            "procedure_name": "Ophthalmoscope",
+            "total": 43,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 43
+                }
+            ]
+        },
+        {
+            "procedure_name": "Hematology",
+            "total": 4802,
+            "counts": [
+                {
+                    "lifeStage": "Late adult",
+                    "count": 232
+                },
+                {
+                    "lifeStage": "Early adult",
+                    "count": 4570
+                }
+            ]
+        },
+        {
+            "procedure_name": "Urinalysis",
+            "total": 56,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 56
+                }
+            ]
+        },
+        {
+            "procedure_name": "Anti-nuclear antibody assay",
+            "total": 40,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 40
+                }
+            ]
+        },
+        {
+            "procedure_name": "Immunophenotyping - one panel",
+            "total": 2,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "procedure_name": "Rotarod",
+            "total": 25,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 25
+                }
+            ]
+        },
+        {
+            "procedure_name": "Viability E14.5-E15.5 Secondary Screen",
+            "total": 120,
+            "counts": [
+                {
+                    "lifeStage": "E15.5",
+                    "count": 120
+                }
+            ]
+        },
+        {
+            "procedure_name": "Bone marrow immunophenotyping",
+            "total": 20,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 20
+                }
+            ]
+        },
+        {
+            "procedure_name": "Haematology test",
+            "total": 180,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 180
+                }
+            ]
+        },
+        {
+            "procedure_name": "Formalin Test",
+            "total": 4,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 4
+                }
+            ]
+        },
+        {
+            "procedure_name": "ERG (Electroretinogram) (GMC)",
+            "total": 2,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "procedure_name": "Calorimetry",
+            "total": 2,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 2
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Morphology Embryo E12.5",
+            "total": 488,
+            "counts": [
+                {
+                    "lifeStage": "E12.5",
+                    "count": 488
+                }
+            ]
+        },
+        {
+            "procedure_name": "Gross Pathology and Tissue Collection",
+            "total": 13017,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 10638
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 2379
+                }
+            ]
+        },
+        {
+            "procedure_name": "Tail Suspension",
+            "total": 15,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 15
+                }
+            ]
+        },
+        {
+            "procedure_name": "Grip-Strength",
+            "total": 62,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 62
+                }
+            ]
+        },
+        {
+            "procedure_name": "Dark-Light Test",
+            "total": 46,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 46
+                }
+            ]
+        },
+        {
+            "procedure_name": "Spleen Immunophenotyping",
+            "total": 335,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 335
+                }
+            ]
+        },
+        {
+            "procedure_name": "Haematology (GMC)",
+            "total": 20,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 20
+                }
+            ]
+        },
+        {
+            "procedure_name": "Homozygote viability at weaning",
+            "total": 152,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 152
+                }
+            ]
+        },
+        {
+            "procedure_name": "Viability Primary Screen",
+            "total": 4883,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 4883
+                }
+            ]
+        },
+        {
+            "procedure_name": "Immunophenotyping",
+            "total": 317,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 301
+                },
+                {
+                    "lifeStage": "Late adult",
+                    "count": 16
+                }
+            ]
+        },
+        {
+            "procedure_name": "X-Ray",
+            "total": 67,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 67
+                }
+            ]
+        },
+        {
+            "procedure_name": "Acoustic Startle&PPI",
+            "total": 364,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 364
+                }
+            ]
+        },
+        {
+            "procedure_name": "DEXA",
+            "total": 250,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 250
+                }
+            ]
+        },
+        {
+            "procedure_name": "Heart weight/tibia length",
+            "total": 35,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 35
+                }
+            ]
+        },
+        {
+            "procedure_name": "Holeboard (GMC)",
+            "total": 20,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 20
+                }
+            ]
+        },
+        {
+            "procedure_name": "Grip Strength (GMC)",
+            "total": 3,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 3
+                }
+            ]
+        },
+        {
+            "procedure_name": "Plasma Chemistry",
+            "total": 100,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 100
+                }
+            ]
+        },
+        {
+            "procedure_name": "Hot Plate",
+            "total": 80,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 80
+                }
+            ]
+        },
+        {
+            "procedure_name": "Indirect ophthalmoscopy",
+            "total": 74,
+            "counts": [
+                {
+                    "lifeStage": "Early adult",
+                    "count": 74
+                }
+            ]
+        }
+    ]
+}

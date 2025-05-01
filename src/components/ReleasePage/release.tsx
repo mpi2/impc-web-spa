@@ -1,4 +1,3 @@
-"use client";
 import { Col, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -29,18 +28,30 @@ import remarkBreaks from "remark-breaks";
 import {
   DataQualityCheck,
   ProdStatusByCenter,
-  ReleaseMetadata,
   SampleCounts,
   StatusCount,
+  ReleaseMetadata
 } from "@/models/release";
 import { CallsTrendChart, DataPointsTrendChart } from "@/components";
 import { SortType } from "@/models";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import dr230Metadata from "@/static-data/releases-metadata/23.0.json";
+import dr221Metadata from "@/static-data/releases-metadata/22.1.json";
+import dr220Metadata from "@/static-data/releases-metadata/22.0.json";
 
-const listOfPastReleases = [
+const releaseMetadataMap: Record<string, ReleaseMetadata> = {
+  "latest": dr230Metadata,
+  "DR22.1": dr221Metadata,
+  "DR22.0": dr220Metadata,
+};
+
+const listOfPastReleasesPage = [
   "22.1",
   "22.0",
+];
+
+const listOfPastReleasesPDF = [
   "21.1",
   "21.0",
   "20.1",
@@ -125,7 +136,7 @@ const valuePair = (
 };
 
 type Props = {
-  releaseMetadata: ReleaseMetadata;
+  releaseVersion?: string;
 };
 
 const phenotypingStatuses = [
@@ -154,9 +165,8 @@ const genotypingStatuses = [
   "phenotype attempt registered",
 ];
 
-const ReleaseNotesPage = (props: Props) => {
-  const { releaseMetadata } = props;
-
+const ReleaseNotesPage = ({ releaseVersion }: Props) => {
+  const releaseMetadata = !!releaseVersion ? releaseMetadataMap[releaseVersion] : releaseMetadataMap["latest"];
   const dataReleaseVersion = releaseMetadata.dataReleaseVersion;
   const summaryCounts = releaseMetadata.summaryCounts;
 
@@ -944,16 +954,28 @@ const ReleaseNotesPage = (props: Props) => {
         <Card>
           <h2>Previous releases</h2>
           <ul>
-            {listOfPastReleases.map((releaseVersion) => (
+            {listOfPastReleasesPage.map((releaseVersion) => (
               <li key={releaseVersion} style={{ marginBottom: "1rem" }}>
                 <Link
                   className="link primary"
                   target="_blank"
-                  to={
-                    parseFloat(releaseVersion) <= 21.1
-                      ? `https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`
-                      : `/release/${releaseVersion}`
-                  }
+                  to={`/release/${releaseVersion}`}
+                >
+                  Release {releaseVersion} notes&nbsp;
+                  <FontAwesomeIcon
+                    icon={faExternalLinkAlt}
+                    className="grey"
+                    size="xs"
+                  />
+                </Link>
+              </li>
+            ))}
+            {listOfPastReleasesPDF.map((releaseVersion) => (
+              <li key={releaseVersion} style={{ marginBottom: "1rem" }}>
+                <Link
+                  className="link primary"
+                  target="_blank"
+                  to={`https://previous-releases-reports.s3.eu-west-2.amazonaws.com/release-${releaseVersion}.pdf`}
                 >
                   Release {releaseVersion} notes&nbsp;
                   <FontAwesomeIcon

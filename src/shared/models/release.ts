@@ -14,7 +14,7 @@ export type StatusCount = {
   centre: string;
   count: number;
   status: string;
-  originalStatus: string;
+  originalStatus?: string;
 };
 
 export type ProdStatusByCenter = {
@@ -26,7 +26,6 @@ export type SummaryCount = {
   phenotypedGenes: number;
   phenotypedLines: number;
   phentoypeCalls?: number;
-  phenotypeCalls: number;
 };
 
 export type dataPointType =
@@ -35,7 +34,8 @@ export type dataPointType =
   | "ontological"
   | "text"
   | "time_series"
-  | "unidimensional";
+  | "unidimensional"
+  | string;
 
 export type dataPointCountByDR = {
   dataType: dataPointType;

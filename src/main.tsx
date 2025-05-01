@@ -24,6 +24,7 @@ import MetabolismLandingPage from "@/pages/metabolism/metabolism-page.tsx";
 import PublicationsPage from "@/pages/publications/publications-page.tsx";
 import IDGPage from "@/pages/secondaryproject/idg/idg-page.tsx";
 import SexualDimorphismLandingPage from "@/pages/sexual-dimorphism/sexual-dimorphism-page.tsx";
+import { ReleaseNotesPage } from "@/components";
 
 
 createRoot(document.getElementById('root')!).render(
@@ -53,6 +54,9 @@ createRoot(document.getElementById('root')!).render(
           <Route path="publications" element={<PublicationsPage />} />
           <Route path="secondaryproject/idg" element={<IDGPage />} />
           <Route path="sexual-dimorphism" element={<SexualDimorphismLandingPage />} />
+          <Route path="release" element={<ReleaseNotesPage />}/>
+          <Route path="release/22.1" element={<ReleaseNotesPage releaseVersion="DR22.1" />}/>
+          <Route path="release/22.0" element={<ReleaseNotesPage releaseVersion="DR22.0" />}/>
         </Route>
       </Routes>
     </BrowserRouter>
