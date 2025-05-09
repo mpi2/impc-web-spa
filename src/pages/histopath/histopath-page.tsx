@@ -123,7 +123,7 @@ const HistopathLandingPage = () => {
         <a
           title="fixed tissue link"
           className="link primary"
-          href={`/data/alleles/${mgiID}/${allele}#mice`}
+          href={`/alleles/${mgiID}/${allele}#mice`}
         >
           Yes
         </a>
