@@ -25,14 +25,16 @@ import PublicationsPage from "@/pages/publications/publications-page.tsx";
 import IDGPage from "@/pages/secondaryproject/idg/idg-page.tsx";
 import SexualDimorphismLandingPage from "@/pages/sexual-dimorphism/sexual-dimorphism-page.tsx";
 import { ReleaseNotesPage } from "@/components";
+import HTMLPage from "./static-html/HTMLPage.tsx";
+import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html?raw";
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<SearchResults data={{ numResults: -1, results: []}} />} />
+        <Route path="/data" element={<RootLayout />}>
+          <Route path="search" element={<SearchResults data={{ numResults: -1, results: []}} />} />
           <Route path="genes/:pid" element={<GenePage />} />
           <Route path="genes/:pid/images/:parameterStableId" element={<ImageComparator />} />
           <Route path="genes/:pid/download-images/:parameterStableId" element={<ImageDownloader />} />
@@ -58,6 +60,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="release/22.1" element={<ReleaseNotesPage releaseVersion="DR22.1" />}/>
           <Route path="release/22.0" element={<ReleaseNotesPage releaseVersion="DR22.0" />}/>
         </Route>
+        <Route path="/understand/start-using-the-impc/impc-data-generation" element={<HTMLPage htmlContent={IMPCDataGenerationPage} />}></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

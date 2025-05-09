@@ -55,6 +55,8 @@ const getInternalLink = (name: string, link: string) => {
       return "/late-adult-data";
     case "Latest Data Release":
       return "/release";
+    case "IMPC Data Generation":
+      return "/understand/start-using-the-impc/impc-data-generation";
     default:
       return link;
   }

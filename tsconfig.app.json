@@ -58,6 +58,9 @@
       "@/static-data/*": [
         "./src/static-data/*"
       ],
+      "@/styles/*": [
+        "./src/styles/*"
+      ],
       "@/pages/*" : [
         "./src/pages/*"
       ],

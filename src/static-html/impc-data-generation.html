@@ -1,0 +1,763 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        // create dataLayer
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        // set „denied" as default for both ad and analytics storage, as well as ad_user_data and ad_personalization,
+        gtag("consent", "default", {
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            ad_storage: "denied",
+            analytics_storage: "denied",
+            wait_for_update: 2000 // milliseconds to wait for update
+        });
+
+        // Enable ads data redaction by default [optional]
+        gtag("set", "ads_data_redaction", true);
+    </script>
+
+    <script type="text/javascript">
+        // Google Tag Manager
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NZPSPWR'); //replace GTM-XXXXXX with Google Tag Manager ID
+    </script>
+
+    <script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="y7WXZ02Q6JSq6Q" async></script>
+    <script>
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.minSize = '350';
+    </script>
+    <script src="https://kit.fontawesome.com/4246fc9667.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ycXu_bQXhctVrLH-xazVLz_w_UODr2SR-ryz6WSeNaA" />
+
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://www.mousephenotype.org/xmlrpc.php">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="IMPC" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    <style>img:is([sizes="auto" i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}</style>
+    <link rel='preload' as='style' href='https://www.mousephenotype.org/wp-content/themes/impc/css/fontawesome/all.min.css'  data-wpacu-preload-css-basic='1' />
+    <link rel='preload' as='style' href='https://www.mousephenotype.org/wp-content/themes/impc/css/styles.css?ver=eb09dd2d3a1d788a44ecb32d3a4dd474'  data-wpacu-preload-css-basic='1' />
+    <link rel='preload' as='script' href='https://www.mousephenotype.org/wp-content/themes/impc/js/bootstrap.bundle.min.js' data-wpacu-preload-js='1'>
+    <link rel='preload' as='script' href='https://www.mousephenotype.org/wp-content/cache/asset-cleanup/js/item/impc__js__scripts-js-v61d4ea73dd2645958f9f10b10f03191a8ac1a946.js' data-wpacu-preload-js='1'>
+
+    <!-- This site is optimized with the Yoast SEO plugin v24.7 - https://yoast.com/wordpress/plugins/seo/ -->
+    <title>IMPC Data Generation | IMPC | International Mouse Phenotyping Consortium</title>
+    <link rel="canonical" href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="IMPC Data Generation | IMPC | International Mouse Phenotyping Consortium" />
+    <meta property="og:description" content="The IMPC has 21 international phenotyping centres who use high throughput pipelines to phenotype knockout mouse strains. These centres are generating homozygous knockout mouse strains for every protein coding gene in the mouse genome; producing 7 males and 7 females per gene. These 14 mice will enter the first test, viability, at the pre-weaning stage. [&hellip;]" />
+    <meta property="og:url" content="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/" />
+    <meta property="og:site_name" content="IMPC | International Mouse Phenotyping Consortium" />
+    <meta property="article:publisher" content="https://www.facebook.com/InternationalMousePhenotypingConsortium" />
+    <meta property="og:image" content="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Data-Generation.jpg" />
+    <meta property="og:image:width" content="726" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@impc" />
+    <script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/","url":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/","name":"IMPC Data Generation | IMPC | International Mouse Phenotyping Consortium","isPartOf":{"@id":"https://www.mousephenotype.org/#website"},"primaryImageOfPage":{"@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/#primaryimage"},"image":{"@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/#primaryimage"},"thumbnailUrl":"https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Data-Generation.jpg","datePublished":"2021-03-15T11:43:35+00:00","breadcrumb":{"@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/#primaryimage","url":"https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Data-Generation.jpg","contentUrl":"https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Data-Generation.jpg","width":726,"height":300},{"@type":"BreadcrumbList","@id":"https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.mousephenotype.org/"},{"@type":"ListItem","position":2,"name":"Data","item":"https://www.mousephenotype.org/understand/"},{"@type":"ListItem","position":3,"name":"Getting Started with IMPC Data","item":"https://www.mousephenotype.org/understand/start-using-the-impc/"},{"@type":"ListItem","position":4,"name":"IMPC Data Generation"}]},{"@type":"WebSite","@id":"https://www.mousephenotype.org/#website","url":"https://www.mousephenotype.org/","name":"IMPC | International Mouse Phenotyping Consortium","description":"Generating a complete functional catalogue of the mouse genome","publisher":{"@id":"https://www.mousephenotype.org/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.mousephenotype.org/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.mousephenotype.org/#organization","name":"IMPC | International Mouse Phenotyping Consortium","url":"https://www.mousephenotype.org/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.mousephenotype.org/#/schema/logo/image/","url":"https://www.mousephenotype.org/wp-content/uploads/2018/04/impc.png","contentUrl":"https://www.mousephenotype.org/wp-content/uploads/2018/04/impc.png","width":600,"height":146,"caption":"IMPC | International Mouse Phenotyping Consortium"},"image":{"@id":"https://www.mousephenotype.org/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/InternationalMousePhenotypingConsortium","https://x.com/impc","https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww"]}]}</script>
+    <!-- / Yoast SEO plugin. -->
+
+
+    <link rel="preload" as="font" href="/wp-content/themes/impc/css/webfonts/fa-brands-400.woff2" data-wpacu-preload-local-font="1" crossorigin>
+    <link rel="preload" as="font" href="/wp-content/themes/impc/css/webfonts/fa-regular-400.woff2" data-wpacu-preload-local-font="1" crossorigin>
+    <link rel="preload" as="font" href="/wp-content/themes/impc/css/webfonts/fa-light-300.woff2" data-wpacu-preload-local-font="1" crossorigin>
+    <link rel="preload" as="font" href="/wp-content/themes/impc/css/webfonts/fa-solid-900.woff2" data-wpacu-preload-local-font="1" crossorigin>
+    <link rel='dns-prefetch' href='//cdn.datatables.net' />
+    <link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+    <script type="text/javascript" id="wpp-js" src="https://www.mousephenotype.org/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=7.2.0" data-sampling="0" data-sampling-rate="100" data-api-url="https://www.mousephenotype.org/wp-json/wordpress-popular-posts" data-post-id="19028" data-token="8a0dd16439" data-lang="0" data-debug="0"></script>
+    <link rel='stylesheet' id='wedocs-block-style-css' href='https://www.mousephenotype.org/wp-content/plugins/wedocs/assets/build/style-block.css?ver=6.7.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='wp-block-library-css' href='https://www.mousephenotype.org/wp-includes/css/dist/block-library/style.min.css?ver=6.7.2' type='text/css' media='all' />
+    <style id='classic-theme-styles-inline-css' type='text/css'>/*! This file is auto-generated */
+    .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+    <style id='global-styles-inline-css' type='text/css'>:root{--wp--preset--aspect-ratio--square:1;--wp--preset--aspect-ratio--4-3:4/3;--wp--preset--aspect-ratio--3-4:3/4;--wp--preset--aspect-ratio--3-2:3/2;--wp--preset--aspect-ratio--2-3:2/3;--wp--preset--aspect-ratio--16-9:16/9;--wp--preset--aspect-ratio--9-16:9/16;--wp--preset--color--black:#000000;--wp--preset--color--cyan-bluish-gray:#abb8c3;--wp--preset--color--white:#ffffff;--wp--preset--color--pale-pink:#f78da7;--wp--preset--color--vivid-red:#cf2e2e;--wp--preset--color--luminous-vivid-orange:#ff6900;--wp--preset--color--luminous-vivid-amber:#fcb900;--wp--preset--color--light-green-cyan:#7bdcb5;--wp--preset--color--vivid-green-cyan:#00d084;--wp--preset--color--pale-cyan-blue:#8ed1fc;--wp--preset--color--vivid-cyan-blue:#0693e3;--wp--preset--color--vivid-purple:#9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple:linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan:linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange:linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red:linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray:linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum:linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple:linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux:linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk:linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean:linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass:linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight:linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small:13px;--wp--preset--font-size--medium:20px;--wp--preset--font-size--large:36px;--wp--preset--font-size--x-large:42px;--wp--preset--spacing--20:0.44rem;--wp--preset--spacing--30:0.67rem;--wp--preset--spacing--40:1rem;--wp--preset--spacing--50:1.5rem;--wp--preset--spacing--60:2.25rem;--wp--preset--spacing--70:3.38rem;--wp--preset--spacing--80:5.06rem;--wp--preset--shadow--natural:6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep:12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp:6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined:6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp:6px 6px 0px rgba(0, 0, 0, 1)}:where(.is-layout-flex){gap:.5em}:where(.is-layout-grid){gap:.5em}body .is-layout-flex{display:flex}.is-layout-flex{flex-wrap:wrap;align-items:center}.is-layout-flex>:is(*,div){margin:0}body .is-layout-grid{display:grid}.is-layout-grid>:is(*,div){margin:0}:where(.wp-block-columns.is-layout-flex){gap:2em}:where(.wp-block-columns.is-layout-grid){gap:2em}:where(.wp-block-post-template.is-layout-flex){gap:1.25em}:where(.wp-block-post-template.is-layout-grid){gap:1.25em}.has-black-color{color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-color{color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-color{color:var(--wp--preset--color--white)!important}.has-pale-pink-color{color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-color{color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-color{color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-color{color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-color{color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-color{color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-color{color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-color{color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-color{color:var(--wp--preset--color--vivid-purple)!important}.has-black-background-color{background-color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-background-color{background-color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-background-color{background-color:var(--wp--preset--color--white)!important}.has-pale-pink-background-color{background-color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-background-color{background-color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-background-color{background-color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-background-color{background-color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-background-color{background-color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-background-color{background-color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-background-color{background-color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-background-color{background-color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-background-color{background-color:var(--wp--preset--color--vivid-purple)!important}.has-black-border-color{border-color:var(--wp--preset--color--black)!important}.has-cyan-bluish-gray-border-color{border-color:var(--wp--preset--color--cyan-bluish-gray)!important}.has-white-border-color{border-color:var(--wp--preset--color--white)!important}.has-pale-pink-border-color{border-color:var(--wp--preset--color--pale-pink)!important}.has-vivid-red-border-color{border-color:var(--wp--preset--color--vivid-red)!important}.has-luminous-vivid-orange-border-color{border-color:var(--wp--preset--color--luminous-vivid-orange)!important}.has-luminous-vivid-amber-border-color{border-color:var(--wp--preset--color--luminous-vivid-amber)!important}.has-light-green-cyan-border-color{border-color:var(--wp--preset--color--light-green-cyan)!important}.has-vivid-green-cyan-border-color{border-color:var(--wp--preset--color--vivid-green-cyan)!important}.has-pale-cyan-blue-border-color{border-color:var(--wp--preset--color--pale-cyan-blue)!important}.has-vivid-cyan-blue-border-color{border-color:var(--wp--preset--color--vivid-cyan-blue)!important}.has-vivid-purple-border-color{border-color:var(--wp--preset--color--vivid-purple)!important}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background:var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple)!important}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background:var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan)!important}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background:var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange)!important}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background:var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red)!important}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background:var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray)!important}.has-cool-to-warm-spectrum-gradient-background{background:var(--wp--preset--gradient--cool-to-warm-spectrum)!important}.has-blush-light-purple-gradient-background{background:var(--wp--preset--gradient--blush-light-purple)!important}.has-blush-bordeaux-gradient-background{background:var(--wp--preset--gradient--blush-bordeaux)!important}.has-luminous-dusk-gradient-background{background:var(--wp--preset--gradient--luminous-dusk)!important}.has-pale-ocean-gradient-background{background:var(--wp--preset--gradient--pale-ocean)!important}.has-electric-grass-gradient-background{background:var(--wp--preset--gradient--electric-grass)!important}.has-midnight-gradient-background{background:var(--wp--preset--gradient--midnight)!important}.has-small-font-size{font-size:var(--wp--preset--font-size--small)!important}.has-medium-font-size{font-size:var(--wp--preset--font-size--medium)!important}.has-large-font-size{font-size:var(--wp--preset--font-size--large)!important}.has-x-large-font-size{font-size:var(--wp--preset--font-size--x-large)!important}:where(.wp-block-post-template.is-layout-flex){gap:1.25em}:where(.wp-block-post-template.is-layout-grid){gap:1.25em}:where(.wp-block-columns.is-layout-flex){gap:2em}:where(.wp-block-columns.is-layout-grid){gap:2em}:root :where(.wp-block-pullquote){font-size:1.5em;line-height:1.6}</style>
+    <link rel='stylesheet' id='ppress-frontend-css' href='https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/css/frontend.min.css?ver=4.15.22' type='text/css' media='all' />
+    <link rel='stylesheet' id='ppress-flatpickr-css' href='https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.css?ver=4.15.22' type='text/css' media='all' />
+    <link rel='stylesheet' id='ppress-select2-css' href='https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.css?ver=6.7.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='wordpress-popular-posts-css-css' href='https://www.mousephenotype.org/wp-content/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=7.2.0' type='text/css' media='all' />
+    <link   data-wpacu-to-be-preloaded-basic='1' rel='stylesheet' id='fontawesome-css' href='https://www.mousephenotype.org/wp-content/themes/impc/css/fontawesome/all.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='datatables-css' href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' type='text/css' media='all' />
+    <link   data-wpacu-to-be-preloaded-basic='1' rel='stylesheet' id='styles-css' href='https://www.mousephenotype.org/wp-content/themes/impc/css/styles.css?ver=eb09dd2d3a1d788a44ecb32d3a4dd474' type='text/css' media='all' />
+    <script type="text/javascript" src="https://www.mousephenotype.org/wp-content/themes/impc/js/jquery-3.3.1.min.js" id="jquery-js"></script>
+    <script type="text/javascript" src="https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/flatpickr/flatpickr.min.js?ver=4.15.22" id="ppress-flatpickr-js"></script>
+    <script type="text/javascript" src="https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/select2/select2.min.js?ver=4.15.22" id="ppress-select2-js"></script>
+    <script type="text/javascript" src="https://www.mousephenotype.org/wp-content/themes/impc/js/lazysizes.min.js" id="lazysizes-js"></script>
+    <link rel="https://api.w.org/" href="https://www.mousephenotype.org/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.mousephenotype.org/wp-json/wp/v2/pages/19028" />            <style id="wpp-loading-animation-styles">@-webkit-keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}@keyframes bgslide{from{background-position-x:0}to{background-position-x:-200%}}.wpp-widget-block-placeholder,.wpp-shortcode-placeholder{margin:0 auto;width:60px;height:3px;background:#dd3737;background:linear-gradient(90deg,#dd3737 0%,#571313 10%,#dd3737 100%);background-size:200% auto;border-radius:3px;-webkit-animation:bgslide 1s infinite linear;animation:bgslide 1s infinite linear}</style>
+    <link rel="icon" href="https://www.mousephenotype.org/wp-content/uploads/2022/04/favicon-196x196-1-150x150.png" sizes="32x32" />
+    <link rel="icon" href="https://www.mousephenotype.org/wp-content/uploads/2022/04/favicon-196x196-1.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://www.mousephenotype.org/wp-content/uploads/2022/04/favicon-196x196-1.png" />
+    <meta name="msapplication-TileImage" content="https://www.mousephenotype.org/wp-content/uploads/2022/04/favicon-196x196-1.png" />
+</head>
+
+<body class="page-template page-template-data page-template-data-php page page-id-19028 page-child parent-pageid-19027 wp-custom-logo">
+
+<div class="header">
+    <div class="header__nav-top d-none d-lg-block">
+        <div class="container text-right">
+            <div class="row">
+                <div class="col">
+                    <div class="menu-top-nav-container"><ul id="menu-top-nav" class="menu"><li id="menu-item-31491" class="impc-badge menu-item menu-item-type-post_type menu-item-object-docs menu-item-31491"><a href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/">Cite IMPC</a></li>
+                        <li id="menu-item-30309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30309"><a href="https://www.mousephenotype.org/help/">Help</a></li>
+                        <li id="menu-item-30324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-30324"><a href="http://cloud.mousephenotype.org">IMPC Cloud</a></li>
+                        <li id="menu-item-39812" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39812"><a href="https://www.mousephenotype.org/about-impc/become-an-impc-member/">Join the IMPC</a></li>
+                        <li id="menu-item-30310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30310"><a href="https://www.mousephenotype.org/contact-us/">Contact us</a></li>
+                    </ul></div>            <!-- <a id="searchButton" class="header__search collapsed" href="/" data-toggle="collapse" data-target="#searchBar"
+              aria-controls="searchBar" aria-expanded="false">Search<i id="search-icon-open" class="fal fa-search"></i><i
+                id="search-icon-close" class="fal fa-times"></i></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header__nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <a href="/public" class="header__logo-link "><img width="355" height="105" src="https://www.mousephenotype.org/wp-content/uploads/2022/08/IMPC_logo.svg" class="attachment-full size-full" alt="" decoding="async" />            </a>
+                </div>
+                <div class="col-6 col-md-9 text-right">
+                    <div class="d-none d-lg-block">
+                        <div class="menu-main-nav-container"><ul id="menu-main-nav" class="menu"><li id="menu-item-30311" class="about-impc menu-item menu-item-type-post_type menu-item-object-page menu-item-30311"><a href="https://www.mousephenotype.org/about-impc/">About the IMPC</a></li>
+                            <li id="menu-item-30323" class="data menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-30323"><a href="https://www.mousephenotype.org/understand/">Data</a></li>
+                            <li id="menu-item-30312" class="human-diseases menu-item menu-item-type-post_type menu-item-object-page menu-item-30312"><a href="https://www.mousephenotype.org/human-diseases/">Human Diseases</a></li>
+                            <li id="menu-item-30325" class="publications menu-item menu-item-type-post_type menu-item-object-page menu-item-30325"><a href="https://www.mousephenotype.org/publications/">Publications</a></li>
+                            <li id="menu-item-30313" class="news menu-item menu-item-type-post_type menu-item-object-page menu-item-30313"><a href="https://www.mousephenotype.org/news/">News</a></li>
+                            <li id="menu-item-30320" class="blog menu-item menu-item-type-post_type menu-item-object-page menu-item-30320"><a href="https://www.mousephenotype.org/blog/">Blog</a></li>
+                        </ul></div>                          </div>
+                    <button class="navbar-toggler collapsed d-inline d-lg-none active"
+                            type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent " aria-controls="navbarToggleExternalContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar top-bar"></span>
+                        <span class="icon-bar middle-bar"></span>
+                        <span class="icon-bar bottom-bar"></span>
+                    </button>
+                    <!-- <div class="collapse" id="searchBar">
+                      <form action="/">
+                        <div class="row search-pop no-gutters">
+                          <div class="search-pop__input col col-9 text-left">
+                            <p><br /></p>
+                            <input id="searchField" type="search" class="form-control" id="s" name="s" placeholder="Search documentation and news..." title="Search help, blog, news and more">
+                          </div>
+                          <div class="col col-3 text-right search-submit">
+                            <button type="submit">Search <i class="fal fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="header__drop"></div>
+
+    <div class="mobile-nav collapse" id="navbarToggleExternalContent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent "
+                aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+        </button>
+        <div class="movile-nav-inner">
+            <div class="portal-search">
+                <div class="portal-search__tabs">
+                    <a data-type="gene" class="active portalTab" href="#">Genes</a>
+                    <a data-type="pheno" class="portalTab right-shadow" href="#">Phenotypes</a>
+                    <a data-type="static" class="portalTab right-shadow" href="#">Everything Else</a>
+                </div>
+                <div class="portal-search__inputs">
+                    <form id="searchForm" action="/data/search">
+                        <input id="searchTerm" name="term" class="portal-search__input" value="" placeholder="Search All 9277 Knockout Data..." type="text">
+                        <button id="searchIcon" type="submit"><i class="fas fa-search"></i></button>
+                        <input id="searchType" type="hidden" name="type" value="gene">
+                    </form>
+                </div>
+            </div>
+            <div>
+                <h3 class="pt-2">
+                    <a class="object-id-7 about-impc" href="https://www.mousephenotype.org/about-impc/">About the IMPC</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                    <p><a href="https://www.mousephenotype.org/about-impc/consortium-members/">Institutional Members</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/corporate-associates/">Corporate Associates</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/collaborations/">Collaborations</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/funding/">Funding</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/animal-welfare/">Animal Welfare</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/about-komp/">About KOMP</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/about-impc/impc-award-of-excellence/">Awards of Excellence</a></p>
+                    <div class="sub-pages">
+                    </div>
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30163 data" href="https://www.mousephenotype.org/understand/">Data</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                    <p><a href="https://www.mousephenotype.org/understand/training-workshops/">Training & Workshops</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/understand/training-workshops/workshops/">Workshops</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/training-workshops/training/">Training</a></p>
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/">Getting Started with IMPC Data</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/">IMPC Data Generation</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/">How to Use Gene Pages</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/citing-the-impc/">Citing IMPC Data</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">Allele design</a></p>
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/understand/data-collections/">IMPC Data Collections</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/understand/data-collections/late-adult-data/">Late Adult Data</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/data-collections/histopathology/">Histopathology</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/data-collections/essential-genes-portal/">Essential genes</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/data-collections/embryo-development/">Embryo Development</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/data-collections/cardiovascular/">Cardiovascular</a></p>
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/">Accessing the Data</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/latest-data-release/">Latest Data Release</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-api/">Access via API</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/">Access via FTP</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/batch-query/">Batch query</a></p>
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/understand/advanced-tools/">Advanced Tools</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/diseasemodels/">Disease Models</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/phenodcc-homepage/">PhenoDCC Tools</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/imits/">GenTaR</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/openstats/">OpenStats</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/impress/">IMPReSS</a></p>
+                        <p><a href="https://www.mousephenotype.org/understand/advanced-tools/embryo-viewer/">Embryo Viewer</a></p>
+                    </div>
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30164 human-diseases" href="https://www.mousephenotype.org/human-diseases/">Human Diseases</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-57 publications" href="https://www.mousephenotype.org/publications/">Publications</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                    <p><a href="https://www.mousephenotype.org/publications/latest-impc-papers/">Latest IMPC Papers</a></p>
+                    <div class="sub-pages">
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/">Data Supporting IMPC Papers</a></p>
+                    <div class="sub-pages">
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">Pain Sensitivity Associated Genes</a></p>
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease-2/">Essential Genes - Linking to Disease</a></p>
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease/">Essential Genes - Translating to Other Species</a></p>
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/sexual-dimorphism/">Sexual Dimorphism</a></p>
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/hearing/">Genes Critical for Hearing Identified</a></p>
+                        <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/metabolism/">Genetic Basis for Metabolic Diseases</a></p>
+                    </div>
+                    <p><a href="https://www.mousephenotype.org/publications/papers-using-impc-resources/">Papers Using IMPC Resources</a></p>
+                    <div class="sub-pages">
+                    </div>
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30165 news" href="https://www.mousephenotype.org/news/">News</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30177 blog" href="https://www.mousephenotype.org/blog/">Blog</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30166 " href="https://www.mousephenotype.org/help/">Help</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30327 " href="https://www.mousephenotype.org/blog/2022/04/25/impc-cloud-2/">IMPC Cloud</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+                <h3 class="pt-2">
+                    <a class="object-id-30167 " href="https://www.mousephenotype.org/contact-us/">Contact us</a>
+                </h3>
+
+                <div class="mobile-nav__sub-pages">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-menu sub-menu collapse" id="about-menu">
+        <div class="about-menu__inside">
+            <div class="container">
+
+                <a href="https://www.mousephenotype.org/about-impc/">About the IMPC</a>
+                <a href="https://www.mousephenotype.org/about-impc/consortium-members/">Institutional Members</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/corporate-associates/">Corporate Associates</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/collaborations/">Collaborations</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/funding/">Funding</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/animal-welfare/">Animal Welfare</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/about-komp/">About KOMP</a>
+
+                <a href="https://www.mousephenotype.org/about-impc/impc-award-of-excellence/">Awards of Excellence</a>
+
+
+            </div>
+        </div>
+        <div class="about-menu__drop"></div>
+    </div>
+
+    <div class="data-menu sub-menu collapse" id="data-menu">
+        <div class="data-menu__inside">
+            <div class="container">
+                <div class="row justify-content-end">
+
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/understand/training-workshops/">Training & Workshops</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/understand/training-workshops/workshops/">Workshops</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/training-workshops/training/">Training</a></p>
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/understand/start-using-the-impc/">Getting Started with IMPC Data</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/">IMPC Data Generation</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/">How to Use Gene Pages</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/citing-the-impc/">Citing IMPC Data</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">Allele design</a></p>
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/understand/data-collections/">IMPC Data Collections</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/understand/data-collections/late-adult-data/">Late Adult Data</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/data-collections/histopathology/">Histopathology</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/data-collections/essential-genes-portal/">Essential genes</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/data-collections/embryo-development/">Embryo Development</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/data-collections/cardiovascular/">Cardiovascular</a></p>
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/understand/accessing-the-data/">Accessing the Data</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/latest-data-release/">Latest Data Release</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-api/">Access via API</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/access-via-ftp/">Access via FTP</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/accessing-the-data/batch-query/">Batch query</a></p>
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/understand/advanced-tools/">Advanced Tools</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/diseasemodels/">Disease Models</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/phenodcc-homepage/">PhenoDCC Tools</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/imits/">GenTaR</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/openstats/">OpenStats</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/impress/">IMPReSS</a></p>
+                            <p><a href="https://www.mousephenotype.org/understand/advanced-tools/embryo-viewer/">Embryo Viewer</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="data-menu__drop"></div>
+    </div>
+
+    <div class="publications-menu sub-menu collapse" id="publications-menu">
+        <div class="publications-menu__inside">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/publications/latest-impc-papers/">Latest IMPC Papers</a>
+                        <div class="sub-pages">
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/">Data Supporting IMPC Papers</a>
+                        <div class="sub-pages">
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/">Pain Sensitivity Associated Genes</a></p>
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease-2/">Essential Genes - Linking to Disease</a></p>
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/essential-genes-linking-to-disease/">Essential Genes - Translating to Other Species</a></p>
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/sexual-dimorphism/">Sexual Dimorphism</a></p>
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/hearing/">Genes Critical for Hearing Identified</a></p>
+                            <p><a href="https://www.mousephenotype.org/publications/data-supporting-impc-papers/metabolism/">Genetic Basis for Metabolic Diseases</a></p>
+                        </div>
+                    </div>
+                    <div class="col col-auto text-left">
+                        <a href="https://www.mousephenotype.org/publications/papers-using-impc-resources/">Papers Using IMPC Resources</a>
+                        <div class="sub-pages">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="publications-menu__drop"></div>
+    </div>
+</div>
+
+<div class="click-guard"></div>
+<div class="alert alert-info mb-0" role="alert">
+    <h4>IMPC Survey</h4><p>The IMPC is at a funding crossroads and seeking community input. <strong><a href="https://docs.google.com/forms/d/e/1FAIpQLScit_HcyJc-VJJs4NrNhVL1dJTwLmEJTOhs3FclUQUBXuv2RA/viewform?pli=1">Take part in our survey</a> </strong>to help shape the future of IMPC.</p>
+</div>
+<main id="main" class="main" role="main">
+    <div class="container-fluid">
+        <div class="single-header">
+            <img src="https://www.mousephenotype.org/wp-content/uploads/2019/05/understanding-150x150.png" srcset="https://www.mousephenotype.org/wp-content/uploads/2019/05/understanding-300x62.png 300w, https://www.mousephenotype.org/wp-content/uploads/2019/05/understanding-1024x210.png 1024w, https://www.mousephenotype.org/wp-content/uploads/2019/05/understanding-768x158.png 768w, https://www.mousephenotype.org/wp-content/uploads/2019/05/understanding.png 1440w" sizes="100%" alt=""  />
+
+            <div class="container">
+                <div class="row text-center justify-content-md-center">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <div class="portal-search pb-5 mb-5 mt-5">
+                            <div class="portal-search__tabs">
+                                <a data-type="gene" class="active portalTab" href="#">Genes</a>
+                                <a data-type="phenotype" class="portalTab right-shadow" href="#">Phenotypes</a>
+                                <a data-type="static" class="portalTab right-shadow" href="#">Help, News, Blog</a>
+                            </div>
+                            <div class="portal-search__inputs">
+                                <form class="searchForm" action="/data/search">
+                                    <input id="searchTerm" name="term" class="portal-search__input" value="" placeholder="Search All  Knockout Data..." type="text">
+                                    <button id="searchIcon" type="submit"><i class="fas fa-search"></i></button>
+                                    <input class="searchType" type="hidden" name="type" value="gene">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container white-bg-small ">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ml-md-3">
+
+                        <div class="col-12 col-lg-8">
+                            <div class="pr-md-25">
+                                <div class="breadcrumbs">
+                                    <div class="row">
+                                        <div class="col-12 d-none d-lg-block">
+                                            <aside><a href="/public">Home</a> <span class="fal fa-angle-right"></span>
+                                                <a href="https://www.mousephenotype.org/understand/start-using-the-impc/">Getting Started with IMPC Data</a> <span class="fal fa-angle-right"></span>
+                                                <strong>IMPC Data Generation</strong>
+                                            </aside>
+                                        </div>
+                                        <div class="col-12 d-block d-lg-none">
+                                            <aside>
+                                                <a href="https://www.mousephenotype.org/understand/start-using-the-impc/"><span class="fal fa-angle-left mr-2"></span> Getting Started with IMPC Data</a>
+                                            </aside>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pre-content">
+                                <div class="pr-md-25">
+                                    <h1>IMPC Data Generation</h1>
+                                    <div class="page-content article-content pt-4 pb-4">
+                                        <p>The IMPC has 21 international phenotyping centres who use high throughput pipelines to phenotype knockout mouse strains. These centres are generating homozygous knockout mouse strains for every protein coding gene in the mouse genome; producing 7 males and 7 females per gene.</p>
+
+
+
+                                        <p>These 14 mice will enter the first test, viability, at the pre-weaning stage. Then:</p>
+
+
+
+                                        <ul class="wp-block-list"><li>When the homozygous mice&nbsp;<strong>are viable</strong>, the animals are phenotyped following the procedures as indicated in the Early Adult pipeline.</li><li>When the homozygous mice&nbsp;<strong>are not viable</strong>, additional homozygous mice will enter the embryo pipeline and the heterozygous mice, when viable, will be phenotyped following the Early Adult pipeline</li><li>Selected mouse strains will be aged to enter the Late Adult pipeline.</li></ul>
+
+
+
+                                        <p><strong>Help:</strong>&nbsp;Some language used throughout the IMPC website may have specific meaning within this project. View our&nbsp;<a href="https://www.mousephenotype.org/impress/glossary">glossary</a>&nbsp;for a list of definitions.</p>
+
+
+
+                                        <h2 class="wp-block-heading">Key information about our data</h2>
+
+
+
+                                        <ul class="wp-block-list"><li><strong>Sample Sizes: </strong>Roughly 14 homozygous knockout mice (7 female, 7 male) are phenotyped for each gene</li><li><strong>Wildtype baselines: </strong>Wildtype mice are continually tested using the same protocols to provide baseline “normal” values </li><li><strong>Multiple Data Types:</strong> Phenotype parameters can be continuous data (e.g. cholesterol levels) or qualitative value (e.g. presence or absence of cataracts).&nbsp; Additionally, images (e.g. X rays, echocardiograms, lacZ staining, histology) are collected as part of the protocols</li><li><strong>Ontological Associations:</strong>&nbsp;Statistical analysis is performed to identify outlier values. These outliers are then annotated with terms from the mouse phenotype ontology,&nbsp;<em>e.g.</em>&nbsp;high circulating cholesterol.</li></ul>
+
+
+
+                                        <h2 class="wp-block-heading">The IMPC Pipeline</h2>
+
+
+
+                                        <ul class="wp-block-list"><li><strong>Embryo Pipeline:</strong>&nbsp;For about 25% of the knockouts there are few or no homozygous animals identified at weaning age (21 days postpartum). In these cases, presumed lethal knockouts are then analysed with timed pregnancies to determine the stage at which lethality occurs. This set of testing is referred to as the “embryo pipeline”.</li></ul>
+
+
+
+                                        <div class="wp-block-image"><figure class="aligncenter"><a href="https://www.mousephenotype.org/wp-content/uploads/2020/10/IMPC-Embryo_Pipeline.png" target="_blank" rel="noreferrer noopener"><img fetchpriority="high" decoding="async" width="728" height="704" src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Embryo-Pipeline-Diagram.png" alt="IMPC Embryo Pipeline infographic displays procedures HOM leathal and subviable lines go through" class="wp-image-19003" srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Embryo-Pipeline-Diagram.png 728w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Embryo-Pipeline-Diagram-300x290.png 300w" sizes="(max-width: 728px) 100vw, 728px" /></a><figcaption>IMPC Embryo Pipeline</figcaption></figure></div>
+
+
+
+                                        <ul class="wp-block-list"><li> <strong>Early Adult Pipeline:</strong>&nbsp;A range of&nbsp;<em>in vivo</em> phenotyping procedures are carried out from 9 to 15 weeks with weekly body weights from 4 to 16 weeks. Some procedures are mandatory for all centres, assuring key data is provided (<a rel="noreferrer noopener" aria-label="see IMPReSS for more detail (opens in a new tab)" href="https://www.mousephenotype.org/impress/index" target="_blank">see IMPReSS for high level detail</a>). For homozygous viable lines, the homozygote animals are phenotyped as a part of this pipeline; otherwise the heterozygotes are phenotyped. </li></ul>
+
+
+
+                                        <div class="wp-block-image"><figure class="aligncenter"><a href="https://www.mousephenotype.org/wp-content/uploads/2020/09/IMPC-Late-Adult-Pipeline.jpg" target="_blank" rel="noreferrer noopener"><img decoding="async" width="740" height="708" src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Early-Adult-Pipeline-Diagram.png" alt="IMPC Early Adult Pipeline infographic displays procedures HOM &amp; HET viable lines mice go through" class="wp-image-19002" srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Early-Adult-Pipeline-Diagram.png 740w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Early-Adult-Pipeline-Diagram-300x287.png 300w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption>IMPC Early Adult Pipeline</figcaption></figure></div>
+
+
+
+                                        <ul class="wp-block-list"><li><strong>Interval Pipeline: </strong> The Interval Pipeline marks the halfway point between the Early Adult and Late Adult pipelines. Procedures like Body Weight Curve are continuously tested monthly between the Early Adult and Late Adult pipelines. </li></ul>
+
+
+
+                                        <div class="wp-block-image"><figure class="aligncenter"><a href="https://www.mousephenotype.org/wp-content/uploads/2020/09/IMPC-Interval-Pipeline.jpg" target="_blank" rel="noreferrer noopener"><img decoding="async" width="740" height="332" src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Interval-Pipeline-Diagram.png" alt="IMPC Interval Pipeline infographic displays procedures HOM &amp; HET viable lines mice go through at interval stage of week 26" class="wp-image-19004" srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Interval-Pipeline-Diagram.png 740w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Interval-Pipeline-Diagram-300x135.png 300w" sizes="(max-width: 740px) 100vw, 740px" /></a><figcaption>IMPC Interval Pipeline</figcaption></figure></div>
+
+
+
+                                        <ul class="wp-block-list"><li><strong>Late Adult Pipeline:</strong> For about 10% of genes the mice are aged past 16 weeks and are retested later in life – circa 1 year. This set of testing is referred to as the “adult aging pipeline”. There is variability in the time slots that centres phenotype late adult mice, so we show this in schedule slots instead of age in weeks. The pipeline start age can range from 49 – 70 weeks, since it varies depending on the phenotyping centre&#8217;s strategy.  </li></ul>
+
+
+
+                                        <div class="wp-block-image"><figure class="aligncenter"><a href="https://www.mousephenotype.org/wp-content/uploads/2020/09/IMPC-Late-Pipeline.jpg" target="_blank" rel="noreferrer noopener"><img loading="lazy" decoding="async" width="740" height="652" src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Late-Adult-Pipeline-Diagram.png" alt="IMPC Late Adult Pipeline infographic displays procedures HOM &amp; HET viable lines mice go through at varying timepoints" class="wp-image-19005" srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Late-Adult-Pipeline-Diagram.png 740w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Late-Adult-Pipeline-Diagram-300x264.png 300w" sizes="auto, (max-width: 740px) 100vw, 740px" /></a><figcaption>IMPC Late Adult Pipeline</figcaption></figure></div>
+
+
+
+                                        <ul class="wp-block-list"><li><strong>Terminal Procedures: </strong> Terminal procedures are a set of procedures performed on samples collected from the animals at the end of the in vivo pipelines (16 weeks for Early Adult)</li></ul>
+
+
+
+                                        <div class="wp-block-image"><figure class="aligncenter"><a href="https://www.mousephenotype.org/wp-content/uploads/2020/09/IMPC-Terminal-Pipeline-Chart.jpg" target="_blank" rel="noreferrer noopener"><img loading="lazy" decoding="async" width="740" height="340" src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Terminal-Procedures-Diagram.png" alt="IMPC Interval Pipeline infographic displays procedures HOM &amp; HET viable lines mice go through at the terminal stage" class="wp-image-19006" srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Terminal-Procedures-Diagram.png 740w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Terminal-Procedures-Diagram-300x138.png 300w" sizes="auto, (max-width: 740px) 100vw, 740px" /></a><figcaption>IMPC Terminal Procedures</figcaption></figure></div>
+                                    </div>
+                                    <div class="pb-4">
+                                        <h4 class="mb-4">Read next</h4>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="box">
+                                                    <div class="box__image-holder box__image-holder--small ">
+                                                        <a href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/">
+                                                            <img class="lazyload " data-sizes="auto" data-src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Gene-Pages-150x150.jpg" data-srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Gene-Pages-300x124.jpg 300w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Gene-Pages.jpg 726w" alt=""/>
+                                                        </a>
+                                                    </div>
+                                                    <h4 class="mt-3 mb-1">How to Use Gene Pages</h4>
+                                                    <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/how-to-use-gene-pages/" class="text-primary">Read More <i class="fal fa-angle-right"></i></a></p></div>            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <div class="box">
+                                                    <div class="box__image-holder box__image-holder--small ">
+                                                        <a href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/">
+                                                            <img class="lazyload " data-sizes="auto" data-src="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Allele-Design-150x150.jpg" data-srcset="https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Allele-Design-300x124.jpg 300w, https://www.mousephenotype.org/wp-content/uploads/2021/03/IMPC-Allele-Design.jpg 726w" alt=""/>
+                                                        </a>
+                                                    </div>
+                                                    <h4 class="mt-3 mb-1">Allele design</h4>
+                                                    <p><a href="https://www.mousephenotype.org/understand/start-using-the-impc/allele-design/" class="text-primary">Read More <i class="fal fa-angle-right"></i></a></p></div>            </div>
+
+                                        </div>
+                                    </div>             </div>
+                            </div>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-4 side-bar pt-5">
+                            <div class="sidebar-items pl-md-25"><div><div class="popular-posts"><h4>Popular on IMPC</h4><script type="application/json">{"title":"Popular on IMPC","limit":"3","offset":0,"range":"last30days","time_quantity":"24","time_unit":"hour","freshness":false,"order_by":"views","post_type":"post,news","pid":"","exclude":"","taxonomy":"category","term_id":"","author":"","shorten_title":{"active":true,"length":"25","words":false},"post-excerpt":{"active":false,"length":0,"keep_format":false,"words":false},"thumbnail":{"active":true,"width":"75","height":"75","build":"manual","size":""},"rating":false,"stats_tag":{"comment_count":false,"views":false,"author":false,"date":{"active":true,"format":"wp_date_format"},"taxonomy":{"active":false,"name":"category"}},"markup":{"custom_html":true,"wpp-start":"<ul class=\"wpp-list wpp-cards-compact pl-0\">","wpp-end":"<\/ul>","title-start":"<h4>","title-end":"<\/h4>","post-html":"<li>{thumb_img}<div class=\"wpp-item-data\"><div class=\"taxonomies\">{date}<\/div>{title}<\/div><\/li>"},"theme":{"name":""}}</script><div class="wpp-widget-block-placeholder"></div></div></div><div class="widget__impcps px-2 py-4">
+                                <h4 class="mb-3">Search our portal for mouse resources of lasting biological value</h4>
+                                <div class="portal-search">
+                                    <div class="portal-search__tabs">
+                                        <a data-type="gene" class="active portalTab text-center left-shadow" href="#">Genes</a>
+                                        <a data-type="pheno" class="portalTab text-center right-shadow" href="#">Phenotypes</a>
+                                    </div>
+                                    <div class="portal-search__inputs">
+                                        <form action="/data/search">
+
+                                            <input class="portal-search__input" name="term" placeholder="Search the portal..." type="text" />
+                                            <input id="searchType" type="hidden" name="type" value="gene" />
+
+                                            <button type="submit"> <i class="fas fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6 footer-text mb-3">
+                <p><i class="fab fa-creative-commons fa-2x mr-2"></i> <i class="fab fa-creative-commons-by fa-2x"></i></p>
+                <p>Content on this site is licensed under a <a href="https://www.mousephenotype.org/help/faqs/is-impc-data-freely-available/">Creative Commons Attribution 4.0 International license</a></p>
+                <p><a href="https://www.mousephenotype.org/about-impc/accessibility-cookies/">Privacy &amp; Cookies</a><a href="https://www.mousephenotype.org/about-impc/terms-of-use/">Terms of use</a></p>
+            </div>
+
+            <div class="col-6 col-md-3 footer-nav">
+                <div class="menu-main-nav-container"><ul id="menu-main-nav-1" class="menu"><li class="about-impc menu-item menu-item-type-post_type menu-item-object-page menu-item-30311"><a href="https://www.mousephenotype.org/about-impc/">About the IMPC</a></li>
+                    <li class="data menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-30323"><a href="https://www.mousephenotype.org/understand/">Data</a></li>
+                    <li class="human-diseases menu-item menu-item-type-post_type menu-item-object-page menu-item-30312"><a href="https://www.mousephenotype.org/human-diseases/">Human Diseases</a></li>
+                    <li class="publications menu-item menu-item-type-post_type menu-item-object-page menu-item-30325"><a href="https://www.mousephenotype.org/publications/">Publications</a></li>
+                    <li class="news menu-item menu-item-type-post_type menu-item-object-page menu-item-30313"><a href="https://www.mousephenotype.org/news/">News</a></li>
+                    <li class="blog menu-item menu-item-type-post_type menu-item-object-page menu-item-30320"><a href="https://www.mousephenotype.org/blog/">Blog</a></li>
+                </ul></div>            </div>
+
+            <div class="col-6 col-md-3 footer-nav">
+                <div class="menu-top-nav-container"><ul id="menu-top-nav-1" class="menu"><li class="impc-badge menu-item menu-item-type-post_type menu-item-object-docs menu-item-31491"><a href="https://www.mousephenotype.org/help/faqs/how-do-i-cite-the-impc/">Cite IMPC</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30309"><a href="https://www.mousephenotype.org/help/">Help</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-30324"><a href="http://cloud.mousephenotype.org">IMPC Cloud</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39812"><a href="https://www.mousephenotype.org/about-impc/become-an-impc-member/">Join the IMPC</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30310"><a href="https://www.mousephenotype.org/contact-us/">Contact us</a></li>
+                </ul></div>            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-md-6">
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.linkedin.com/company/impc--international-mouse-phenotyping-consortium/" target="_blank" rel="noreferrer">
+                            <span class="sr-only">IMPC LinkedIn</span>
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww" target="_blank" rel="noreferrer">
+                            <span class="sr-only">IMPC YouTube</span>
+                            <i class="fa-brands fa-square-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6 mt-3 mt-md-0 text-right">
+                <h6><a href="https://www.mousephenotype.org/data/release"><small>Access Latest Data Release Data</small></a></h6>
+                <div class="menu-footer-access-container"><ul id="menu-footer-access" class="menu"><li id="menu-item-30322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30322"><a href="https://www.mousephenotype.org/understand/accessing-the-data/batch-query/">Batch query</a></li>
+                    <li id="menu-item-31493" class="menu-item menu-item-type-post_type menu-item-object-docs menu-item-31493"><a href="https://www.mousephenotype.org/help/programmatic-data-access/">Access via API</a></li>
+                    <li id="menu-item-31492" class="menu-item menu-item-type-post_type menu-item-object-docs menu-item-31492"><a href="https://www.mousephenotype.org/help/non-programmatic-data-access/">Access via FTP</a></li>
+                </ul></div>            </div>
+        </div>
+    </div>
+</footer>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"Blog","url":"https://www.mousephenotype.org/blog/"}</script>
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org/",
+        "@type":"Organization",
+        "name":"IMPC",
+        "legalName" : "International Mouse Phenotyping Consoritum",
+        "url": "https://www.mousephenotype.org/",
+        "logo": "https://www.mousephenotype.org/impress/resources/images/IMPC_logo.svg",
+        "foundingDate": "2010",
+        "contactPoint":{
+            "@type":"ContactPoint",
+            "contactType": "customer service",
+            "email":"mouse-helpdesk@ebi.ac.uk"
+        },
+        "sameAs": [
+            "https://twitter.com/impc",
+            "https://www.instagram.com/mousephenotyping/",
+            "https://www.youtube.com/channel/UCXp3DhDYbpJHu4MCX_wZKww",
+            "https://www.reddit.com/user/MousePhenotyping",
+            "https://en.wikipedia.org/wiki/International_Mouse_Phenotyping_Consortium"
+        ]},
+    "@type": "WebSite",
+    "name": "IMPC > International Mouse Phenotyping Consoritum",
+    "url": "https://www.mousephenotype.org"
+    "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.mousephenotype.org/data/search?term={search_term_string}&type=gene",
+    "query-input": "required name=search_term"
+    }
+    }
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script type="text/javascript" id="ppress-frontend-script-js-extra">
+    /* <![CDATA[ */
+    var pp_ajax_form = {"ajaxurl":"https:\/\/www.mousephenotype.org\/wp-admin\/admin-ajax.php","confirm_delete":"Are you sure?","deleting_text":"Deleting...","deleting_error":"An error occurred. Please try again.","nonce":"667ccc255d","disable_ajax_form":"false","is_checkout":"0","is_checkout_tax_enabled":"0","is_checkout_autoscroll_enabled":"true"};
+    /* ]]> */
+</script>
+<script type="text/javascript" src="https://www.mousephenotype.org/wp-content/plugins/wp-user-avatar/assets/js/frontend.min.js?ver=4.15.22" id="ppress-frontend-script-js"></script>
+<script data-wpacu-to-be-preloaded-basic='1' type="text/javascript" src="https://www.mousephenotype.org/wp-content/themes/impc/js/bootstrap.bundle.min.js" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" id="datatables-js"></script>
+<script data-wpacu-to-be-preloaded-basic='1' type="text/javascript" src="https://www.mousephenotype.org/wp-content/cache/asset-cleanup/js/item/impc__js__scripts-js-v61d4ea73dd2645958f9f10b10f03191a8ac1a946.js" id="scripts-js"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6LceiJsUAAAAADi5RCKN6vBZ52HqzgK2Fy171mb4&amp;ver=3.0" id="google-recaptcha-js"></script>
+<script type="text/javascript" src="https://www.mousephenotype.org/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" id="wpcf7-recaptcha-js-before">
+    /* <![CDATA[ */
+    var wpcf7_recaptcha = {
+        "sitekey": "6LceiJsUAAAAADi5RCKN6vBZ52HqzgK2Fy171mb4",
+        "actions": {
+            "homepage": "homepage",
+            "contactform": "contactform"
+        }
+    };
+    /* ]]> */
+</script>
+<script type="text/javascript" src="https://www.mousephenotype.org/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=6.0.5" id="wpcf7-recaptcha-js"></script>
+</body>
+
+</html>
+
+
+
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/
+
+
+Served from: www.mousephenotype.org @ 2025-05-08 14:58:51 by W3 Total Cache
+-->
