@@ -44,7 +44,7 @@ const Order = ({
       "targeting vector": "targetingVector",
     };
     const encodedAllele = allele;
-    return `/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
+    return `/data/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
   const orderData = filtered;
