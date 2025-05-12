@@ -1,7 +1,7 @@
 import { Fragment, memo, useEffect } from "react";
-import "@/styles/main-site/css/main.css";
-import "@/styles/main-site/css/wpp.css";
-import "@/styles/main-site/css/style-block.css";
+// import "@/styles/main-site/css/main.css";
+// import "@/styles/main-site/css/wpp.css";
+// import "@/styles/main-site/css/style-block.css";
 
 type HtmlPageProps = {
   htmlContent: string;
