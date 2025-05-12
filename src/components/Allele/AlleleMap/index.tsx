@@ -1,9 +1,11 @@
-import React from "react";
 import Card from "../../Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
+import { md5 } from "@/utils/md5.ts";
+
+const ALLELE_RESOURCE_URL = import.meta.env.VITE_ALLELE_RESOURCES_URL;
 
 const AlleleMap = ({
   mgiGeneAccessionId,
@@ -32,13 +34,18 @@ const AlleleMap = ({
     return null;
   }
 
+  const number = genbankFile.split("/")[4];
+  const hash = md5(genbankFile.split("/")[4]).substring(0, 2).toLowerCase();
+  const updatedGenbankFile = `${ALLELE_RESOURCE_URL}${hash}/${number}/${genbankFile.split("/")[5]}`;
+  const updatedAlleleImage = `${ALLELE_RESOURCE_URL}${hash}/${number}/${alleleSimpleImage.split("/")[5]}`;
+
   return (
     <Card>
       <h2>Allele Map</h2>
       <p className="mb-0">
-        {genbankFile && (
+        {updatedGenbankFile && (
           <>
-            <a href={genbankFile} target="_blank" className="primary link">
+            <a href={updatedGenbankFile} target="_blank" className="primary link">
               Genbank
               <FontAwesomeIcon icon={faExternalLinkAlt} style={{ marginLeft: "5px" }} />
             </a>&nbsp;
@@ -52,10 +59,10 @@ const AlleleMap = ({
           </a>
         )}
       </p>
-      {!!alleleSimpleImage && (
+      {!!updatedAlleleImage && (
         <div>
           <img
-            src={alleleSimpleImage}
+            src={updatedAlleleImage}
             style={{ display: "block", maxWidth: "100%" }}
           />
         </div>
