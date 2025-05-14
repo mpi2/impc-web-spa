@@ -27,17 +27,17 @@ const AlleleMap = ({
 
   const {
     otherLinks: { genbankFile, alleleSimpleImage },
+    alleleId,
   } = data[0];
 
   // don't show the section if we don't have any data
-  if (!genbankFile && !alleleSimpleImage && !emsembleUrl) {
+  if (!alleleId && !emsembleUrl) {
     return null;
   }
 
-  const number = genbankFile.split("/")[4];
-  const hash = md5(genbankFile.split("/")[4]).substring(0, 2).toLowerCase();
-  const updatedGenbankFile = `${ALLELE_RESOURCE_URL}${hash}/${number}/${genbankFile.split("/")[5]}`;
-  const updatedAlleleImage = `${ALLELE_RESOURCE_URL}${hash}/${number}/${alleleSimpleImage.split("/")[5]}`;
+  const hash = md5(alleleId.toString()).substring(0, 2).toLowerCase();
+  const updatedGenbankFile = `${ALLELE_RESOURCE_URL}${hash}/${alleleId}/${genbankFile.split("/").pop()}`;
+  const updatedAlleleImage = `${ALLELE_RESOURCE_URL}${hash}/${alleleId}/${alleleSimpleImage.split("/").pop()}`;
 
   return (
     <Card>
