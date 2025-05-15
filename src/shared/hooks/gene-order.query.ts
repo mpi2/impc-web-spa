@@ -1,6 +1,7 @@
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GeneOrder } from "@/models/gene";
 import { useQuery } from "@tanstack/react-query";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 export const processGeneOrderResponse = (data) => {
   return data
@@ -16,9 +17,11 @@ export const useGeneOrderQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "order"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/order`),
+    queryFn: () => fetchData(`${chromosome}/${id}/order.json`),
     select: (data) => processGeneOrderResponse(data),
     enabled: routerIsReady,
   });

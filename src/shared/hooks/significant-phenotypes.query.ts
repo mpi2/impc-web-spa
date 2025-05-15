@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GenePhenotypeHits } from "@/models/gene";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 const ABRProcedures = ["IMPC_ACS_001", "IMPC_ACS_002", "IMPC_ACS_003"];
 
@@ -73,10 +74,12 @@ export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   const { data, isLoading, isError, isFetching, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "phenotype-hits"],
     queryFn: () =>
-      fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/phenotype-hits`),
+      fetchData(`${chromosome}/${id}/phenotypehits.json`),
     enabled: routerIsReady,
     select: (data: Array<GenePhenotypeHits>) =>
       processGenePhenotypeHitsResponse(data),

@@ -27,3 +27,5 @@ export {
 } from "./gene-order.query";
 export { useChartFlags } from "./chartFlags";
 export { usePhenotypeResultsQuery } from "./phenotype-results.query";
+export { useGeneImagesQuery } from './gene-images.query';
+export { useGeneDiseasesQuery } from './gene-diseases.query';

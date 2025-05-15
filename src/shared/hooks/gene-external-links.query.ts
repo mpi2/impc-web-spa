@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI, fetchData } from "@/api-service";
 import _ from "lodash";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 type ExternalLinks = {
   providerName: string;
@@ -31,10 +32,12 @@ export const useGeneExternalLinksQuery = (
 
   const hasLoadedProvidersData =
     !!providers && Object.keys(providers).length > 0;
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   const linksQuery = useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "external-links"],
     queryFn: () =>
-      fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/gene_external_links`),
+      fetchData(`${chromosome}/${id}/external-links.json`),
     enabled: routerIsReady && hasLoadedProvidersData,
     select: (linkList) => {
       const linksByProvider = _.groupBy(linkList, (link) => link.providerName);

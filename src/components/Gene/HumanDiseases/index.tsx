@@ -32,6 +32,7 @@ import { SortType } from "@/models";
 import { Link } from "react-router";
 import { GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
+import { useGeneDiseasesQuery } from "@/hooks";
 
 type ScaleProps = {
   children: number;
@@ -309,29 +310,13 @@ const HumanDiseases = () => {
     isFetching: associatedLoading,
     isError: associatedIsError,
     data: associatedDiseases,
-  } = useQuery<Array<GeneDisease>>({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "disease", true],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=true`,
-      ),
-    enabled: !!gene.mgiGeneAccessionId,
-    placeholderData: [],
-  });
+  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "associated")
 
   const {
     isFetching: predictedLoading,
     isError: predictedIsError,
     data: predictedDiseases,
-  } = useQuery<Array<GeneDisease>>({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "disease", false],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/disease/json?associationCurated=false`,
-      ),
-    enabled: !!gene.mgiGeneAccessionId,
-    placeholderData: [],
-  });
+  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "predicted")
 
   const [tab, setTab] = useState("associated");
 

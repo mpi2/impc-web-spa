@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GeneExpression } from "@/models/gene";
 import { orderBy } from "lodash";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 const getExpressionRate = (p) => {
   return p.expression || p.noExpression
@@ -14,11 +15,13 @@ export const useGeneExpressionQuery = (
   routerIsReady: boolean,
   sortOptions: string,
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   return useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "expression"],
     queryFn: () =>
-      fetchAPI<Array<Partial<GeneExpression>>>(
-        `/api/v1/genes/${mgiGeneAccessionId}/expression`,
+      fetchData<Array<Partial<GeneExpression>>>(
+        `${chromosome}/${id}/expression.json`,
       ),
     select: (raw) => {
       const processed = raw.map((d) => ({

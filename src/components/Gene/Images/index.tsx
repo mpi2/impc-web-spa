@@ -12,6 +12,7 @@ import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { SectionHeader } from "@/components";
 import { CSSProperties, useContext } from "react";
 import { GeneContext } from "@/contexts";
+import { useGeneImagesQuery } from "@/hooks";
 
 interface ImageProps {
   mgiGeneAccessionId: string;
@@ -87,12 +88,7 @@ const Image = ({
 
 const Images = () => {
   const gene = useContext(GeneContext);
-  const { isLoading, isError, data } = useQuery<Array<GeneImage>>({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "images"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/images`),
-    enabled: !!gene.mgiGeneAccessionId,
-    select: (data) => data as Array<GeneImage>,
-  });
+  const { isLoading, isError, data } = useGeneImagesQuery(gene.mgiGeneAccessionId);
 
   if (isLoading) {
     return (

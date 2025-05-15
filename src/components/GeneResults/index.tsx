@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI, fetchData } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
 
