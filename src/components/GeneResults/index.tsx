@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchAPI, fetchData } from "@/api-service";
 import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
 
@@ -131,10 +131,7 @@ const GeneResult = ({
             <small>Shortcuts</small>
           </h5>
           <p className="grey">
-            <Link
-              to={`/genes/${mgiGeneAccessionId}/#order`}
-              className="link"
-            >
+            <Link to={`/genes/${mgiGeneAccessionId}/#order`} className="link">
               <FontAwesomeIcon icon={faShoppingCart} />
               Order mice
             </Link>
@@ -152,10 +149,18 @@ type GeneResultProps = {
 
 const GeneResults = ({ query }: GeneResultProps) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["search", "genes", query],
-    queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
+    queryKey: ["search", "genes"],
+    queryFn: () => fetchData(`gene_search.json`),
     select: (data: GeneSearchResponse) => data.results,
   });
+
+  const filteredData = !!query
+    ? data?.filter(
+        (item) =>
+          item.entityProperties.geneSymbol.includes(query) ||
+          item.entityProperties.synonyms.includes(query),
+      )
+    : data;
 
   return (
     <>
@@ -186,7 +191,7 @@ const GeneResults = ({ query }: GeneResultProps) => {
               <Spinner animation="border" size="sm" />
             </div>
           ) : (
-            <Pagination data={data}>
+            <Pagination data={filteredData}>
               {(pageData) => {
                 if (pageData.length === 0) {
                   return (

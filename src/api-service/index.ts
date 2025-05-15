@@ -15,6 +15,9 @@ export const DATA_RELEASE_VERSION =
 export const PUBLICATIONS_ENDPOINT_URL =
   import.meta.env.VITE_PUBLICATIONS_ENDPOINT_URL || "";
 
+export const PROTOTYPE_DATA_ROOT =
+  import.meta.env.VITE_PROTOTYPE_DATA_ROOT || "";
+
 const WEBSITE_ENV = import.meta.env.WEBSITE_ENV || "production";
 
 const httpCodesError500 = [500, 501, 502, 503, 504, 506];
@@ -57,12 +60,10 @@ export async function fetchAPI<T>(query: string): Promise<T> {
   return await fetchURL(endpointURL);
 }
 
-export async function fetchAPIFromServer<T>(query: string): Promise<T> {
-  const SERVER_API_ROOT = import.meta.env.SERVER_API_ROOT;
-  const DOMAIN_URL = SERVER_API_ROOT ? SERVER_API_ROOT : API_URL;
-  let domain = PROXY_ENABLED ? "http://localhost:5173/proxy" : DOMAIN_URL;
-  const endpointURL = domain + query;
-  return await fetchURL(endpointURL);
+export async function fetchData<T>(path: string): Promise<T> {
+  const endpointURL = PROTOTYPE_DATA_ROOT + path;
+  const response = await fetch(endpointURL);
+  return await response.json();
 }
 
 export async function fetchDatasetFromS3(datasetId: string) {
@@ -88,19 +89,6 @@ export async function fetchLandingPageData(
   const response = await fetch(
     `${LANDING_PAGE_DATA_URL}/${landingPageId}.json`,
     fetchOpts,
-  );
-  if (!response.ok) {
-    return Promise.reject(`An error has occured: ${response.status}`);
-  }
-  return await response.json();
-}
-
-export async function fetchReleaseNotesData(releaseTag: string) {
-  const response = await fetch(
-    `${LANDING_PAGE_DATA_URL.replace(
-      DATA_RELEASE_VERSION,
-      releaseTag,
-    )}/release_metadata.json`,
   );
   if (!response.ok) {
     return Promise.reject(`An error has occured: ${response.status}`);
