@@ -125,11 +125,10 @@ const PhenotypeResult = ({
 };
 
 type PhenotypeResultsProps = {
-  initialData: PhenotypeSearchResponse;
   query?: string;
 };
 
-const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
+const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
@@ -143,7 +142,7 @@ const PhenotypeResults = ({ initialData, query }: PhenotypeResultsProps) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading } = usePhenotypeResultsQuery(query, initialData);
+  const { data, isLoading } = usePhenotypeResultsQuery(query);
 
   const filteredData = useMemo(() => {
     return !!selectedSystem

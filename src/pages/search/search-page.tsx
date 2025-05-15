@@ -1,14 +1,10 @@
 import { Suspense } from "react";
 import { GeneResults, PhenotypeResults, Search } from "@/components";
-import { PhenotypeSearchResponse } from "@/models/phenotype";
-import { GeneSearchResponse } from "@/models/gene";
 import { useSearchParams } from "react-router";
 
-type PageProps = {
-  data: PhenotypeSearchResponse | GeneSearchResponse;
-};
+type PageProps = {};
 
-const SearchResults = ({ data }: PageProps) => {
+const SearchResults = ({ }: PageProps) => {
   const [ searchParams ] = useSearchParams();
   const type = searchParams.get("type") ?? "";
   const query = searchParams.get("term") ?? "";
@@ -19,14 +15,11 @@ const SearchResults = ({ data }: PageProps) => {
       case "phenotype":
       case "pheno":
         return (
-          <PhenotypeResults
-            initialData={data as PhenotypeSearchResponse}
-            query={query}
-          />
+          <PhenotypeResults query={query} />
         );
       default:
         return (
-          <GeneResults initialData={data as GeneSearchResponse} query={query} />
+          <GeneResults query={query} />
         );
     }
   };

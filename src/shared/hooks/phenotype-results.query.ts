@@ -36,7 +36,6 @@ export const processPhenotypeResults = (
 
 export const usePhenotypeResultsQuery = (
   query: string | undefined,
-  initialData: PhenotypeSearchResponse,
 ) => {
   return useQuery({
     queryKey: ["search", "phenotypes", query],
@@ -45,11 +44,5 @@ export const usePhenotypeResultsQuery = (
         `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
       ),
     select: processPhenotypeResults,
-    initialData: () => {
-      if (initialData.numResults !== -1) {
-        return initialData;
-      }
-      return undefined;
-    },
   });
 };
