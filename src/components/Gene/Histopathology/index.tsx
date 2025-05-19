@@ -4,9 +4,6 @@ import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router";
 import _ from "lodash";
-import { fetchAPI } from "@/api-service";
-import { useQuery } from "@tanstack/react-query";
-import { GeneHistopathology } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import { GeneContext } from "@/contexts";
 import {
@@ -17,21 +14,14 @@ import {
   SortableTable,
 } from "@/components";
 import { SortType } from "@/models";
+import { useGeneHistopathologyQuery } from "@/hooks";
 
 const Histopathology = () => {
   const gene = useContext(GeneContext);
   const [sorted, setSorted] = useState<any[]>([]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
-  const { isLoading, isError, data, error } = useQuery<
-    Array<GeneHistopathology>
-  >({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "histopathology"],
-    queryFn: () =>
-      fetchAPI(`/api/v1/genes/${gene.mgiGeneAccessionId}/gene_histopathology`),
-    enabled: !!gene.mgiGeneAccessionId,
-    select: (data) => data as Array<GeneHistopathology>,
-  });
+  const { isLoading, isError, data } = useGeneHistopathologyQuery(gene.mgiGeneAccessionId);
 
   useEffect(() => {
     if (data) {

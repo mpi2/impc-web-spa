@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GeneStatisticalResult } from "@/models/gene";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
+
 
 const getMutantCount = (dataset: GeneStatisticalResult) => {
   if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
@@ -13,6 +15,8 @@ export const useGeneAllStatisticalResData = (
   mgiAccessionId: string,
   enabled: boolean
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiAccessionId];
+  const id = mgiAccessionId.replace(":", "-");
   const {
     data: geneData = [],
     isFetching: isGeneFetching,
@@ -21,7 +25,7 @@ export const useGeneAllStatisticalResData = (
   } = useQuery({
     queryKey: ["genes", mgiAccessionId, "statistical-result"],
     queryFn: () =>
-      fetchAPI(`/api/v1/genes/${mgiAccessionId}/statistical-result`),
+      fetchData(`${chromosome}/${id}/stats-results.json`),
     enabled,
     select: (data: Array<GeneStatisticalResult>) => {
       return data

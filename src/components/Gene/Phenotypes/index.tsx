@@ -86,8 +86,6 @@ const Phenotypes = () => {
     isPhenotypeLoading,
     isPhenotypeError,
     isPhenotypeFetching,
-    error: sigPhenotypeError,
-    fetchStatus: sigPhenotypeFetchStatus,
   } = useSignificantPhenotypesQuery(gene.mgiGeneAccessionId, !!gene);
 
   const sigPhenotypes = phenotypeData;
