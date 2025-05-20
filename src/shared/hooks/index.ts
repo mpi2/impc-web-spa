@@ -3,11 +3,11 @@ export { usePhenotypeGeneAssociationsQuery } from "./phenotype-gene-associations
 export {
   useSignificantPhenotypesQuery,
   processGenePhenotypeHitsResponse,
-} from "./significant-phenotypes.query";
+} from "./gene-queries/significant-phenotypes.query.ts";
 export { useViabilityQuery } from "./viability.query";
-export { useGeneExpressionQuery } from "./gene-expression.query";
-export { useGeneExternalLinksQuery } from "./gene-external-links.query";
-export { useGeneSummaryQuery } from "./gene-summary.query";
+export { useGeneExpressionQuery } from "./gene-queries/gene-expression.query.ts";
+export { useGeneExternalLinksQuery } from "./gene-queries/gene-external-links.query.ts";
+export { useGeneSummaryQuery } from "./gene-queries/gene-summary.query.ts";
 export { useHistopathologyQuery } from "./histopathology.query";
 export { useDatasetsQuery } from "./datasets.query";
 export { useGrossPathologyChartQuery } from "./gross-pathology-chart.query";
@@ -16,7 +16,7 @@ export { useEmbryoLandingQuery } from "./embryo-landing.query";
 export { usePagination } from "./pagination";
 export { useMultipleS3DatasetsQuery } from "./multiple-s3-datasets.query";
 export { useScroll } from "./useScroll";
-export { useGeneAllStatisticalResData } from "./gene-all-statistical-result-data.query";
+export { useGeneAllStatisticalResData } from "./gene-queries/gene-all-statistical-result-data.query.ts";
 export { useUnidimensionalDataQuery } from "./unidimensional-data.query";
 export { useQueryFlags } from "./query-flags";
 export { usePleiotropyQuery } from "./pleiotropy.query";
@@ -24,9 +24,10 @@ export { useRerender } from "./rerender";
 export {
   useGeneOrderQuery,
   processGeneOrderResponse,
-} from "./gene-order.query";
+} from "./gene-queries/gene-order.query.ts";
 export { useChartFlags } from "./chartFlags";
 export { usePhenotypeResultsQuery } from "./phenotype-results.query";
-export { useGeneImagesQuery } from './gene-images.query';
-export { useGeneDiseasesQuery } from './gene-diseases.query';
-export { useGeneHistopathologyQuery } from "./gene-histopathology.query.ts";
+export { useGeneImagesQuery } from './gene-queries/gene-images.query.ts';
+export { useGeneDiseasesQuery } from './gene-queries/gene-diseases.query.ts';
+export { useGeneHistopathologyQuery } from "./gene-queries/gene-histopathology.query.ts";
+export { useGenePublicationsQuery } from "./gene-queries/gene-publications.query.ts";
