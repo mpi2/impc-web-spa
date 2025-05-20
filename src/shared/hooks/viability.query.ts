@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { Dataset } from "@/models";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 
-export const useViabilityQuery = (mgiGeneAccessionId: string, routerIsReady: boolean) => {
+export const useViabilityQuery = (mgiGeneAccessionId: string) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   const { data, isLoading, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "all", "viability"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/dataset/viability`),
+    queryFn: () => fetchData(`${chromosome}/${id}/viability.json`),
     select: data => {
       const groupedData = data.reduce((acc, d) => {
         const {
@@ -28,7 +31,7 @@ export const useViabilityQuery = (mgiGeneAccessionId: string, routerIsReady: boo
       }, {});
       return Object.values(groupedData) as Array<Dataset>;
     },
-    enabled: routerIsReady,
+    enabled: !!mgiGeneAccessionId,
   });
   return {
     viabilityData: data,
