@@ -1,11 +1,9 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { formatAlleleSymbol } from "@/utils";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { orderBy } from "lodash";
 import { Publication } from "../../PublicationsList/types";
 import moment from "moment";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
@@ -19,6 +17,7 @@ import {
 } from "@/components";
 import { SortType } from "@/models";
 import { GeneContext } from "@/contexts";
+import { useGenePublicationsQuery } from "@/hooks";
 
 const ALLELES_COUNT = 2;
 const AllelesCell = ({ pub }: { pub: Publication }) => {
@@ -44,27 +43,12 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
 
 const Publications = () => {
   const gene = useContext(GeneContext);
-  const [page, setPage] = useState(0);
   let totalItems = 0;
-  const [sorted, setSorted] = useState<any[]>([]);
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", gene.mgiGeneAccessionId, "publication", page],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/publication?page=${page}`,
-      ),
-    enabled: !!gene.mgiGeneAccessionId,
-    select: (response) => {
-      totalItems = response.totalElements;
-      return response.content as Array<Publication>;
-    },
-  });
+  const { data, isLoading, isError } = useGenePublicationsQuery(gene.mgiGeneAccessionId);
   const defaultSort: SortType = useMemo(() => ["title", "asc"], []);
 
-  useEffect(() => {
-    if (data) {
-      setSorted(_.orderBy(data, "title", "asc"));
-    }
+  const sorted = useMemo(() => {
+    return orderBy(data ?? [], "title", "asc");
   }, [data]);
 
   const getPubDate = (publication: Publication) => {
@@ -144,9 +128,6 @@ const Publications = () => {
         >
           {(pageData) => (
             <SortableTable
-              doSort={(sort) => {
-                setSorted(_.orderBy(data, sort[0], sort[1]));
-              }}
               defaultSort={defaultSort}
               headers={[
                 { width: 5, label: "Title", field: "title" },
