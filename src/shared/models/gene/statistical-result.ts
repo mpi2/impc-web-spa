@@ -19,7 +19,7 @@ export type GeneStatisticalResult = {
   lifeStageName: string;
   pValue: null | number;
   significant: boolean;
-  phenotype: PhenotypeRef;
+  displayPhenotype: PhenotypeRef;
   topLevelPhenotypes: PhenotypeRef[] | null;
   status: string;
   procedureMinMales: number | null;

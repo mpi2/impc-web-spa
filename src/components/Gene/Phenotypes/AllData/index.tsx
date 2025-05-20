@@ -16,15 +16,14 @@ import {
   SupportingDataCell,
 } from "./custom-cells";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
-import { usePagination } from "@/hooks";
-import { useQuery } from "@tanstack/react-query";
+import { useGeneAllStatisticalResData } from "@/hooks";
 import { fetchAPI } from "@/api-service";
-import { PaginatedResponse, SortType } from "@/models";
+import { SortType } from "@/models";
 import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
-import { useDebounce } from "usehooks-ts";
 import Footnotes from "../Footnotes";
 import { Alert } from "react-bootstrap";
+import { uniq } from "lodash";
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -58,13 +57,6 @@ const defaultSelectedValues: SelectedValues = {
   alleleSymbol: undefined,
 };
 
-const getMutantCount = (dataset: GeneStatisticalResult) => {
-  if (!dataset.maleMutantCount && !dataset.femaleMutantCount) {
-    return "N/A";
-  }
-  return `${dataset.maleMutantCount || 0}m/${dataset.femaleMutantCount || 0}f`;
-};
-
 type Props = {
   tableIsVisible: boolean;
   onTotalData: (arg: number) => void;
@@ -80,6 +72,7 @@ const AllData = (props: Props) => {
     additionalSelectedValues,
     queryFromURL,
     hasDataRelatedToPWG,
+    tableIsVisible,
   } = props;
   const { setAlleles } = useContext(AllelesStudiedContext);
   const [sortField, setSortField] = useState<string>("pValue");
@@ -87,7 +80,6 @@ const AllData = (props: Props) => {
   const defaultSort: SortType = useMemo(() => ["pValue", "asc"], []);
   const [totalItems, setTotalItems] = useState<number>(0);
   const [query, setQuery] = useState(queryFromURL);
-  const debouncedQuery = useDebounce(query, 500);
   const [filterOptions, setFilterOptions] =
     useState<FilterOptions>(defaultFilterOptions);
 
@@ -104,67 +96,18 @@ const AllData = (props: Props) => {
     key: keyof SelectedValues,
     newValue: string,
   ): void => {
-    setActivePage(0);
     setSelectedValues((prevState) => ({
       ...prevState,
       [key]: newValue,
     }));
   };
 
-  const { activePage, pageSize, setActivePage, setPageSize } = usePagination();
-
-  const { data, isError, isFetching } = useQuery({
-    queryKey: [
-      "statistical-result",
+  const { geneData, isGeneFetching, isGeneError } =
+    useGeneAllStatisticalResData(
       gene.mgiGeneAccessionId,
-      activePage,
-      pageSize,
-      selectedValues,
-      sortField,
-      sortOrder,
-      debouncedQuery,
-    ],
-    queryFn: () => {
-      const url = `/api/v1/genes/statistical-result/filtered/page`;
-      const params = {
-        mgiGeneAccessionId: gene.mgiGeneAccessionId,
-        page: activePage.toString(10),
-        size: pageSize.toString(10),
-        sortBy: sortField,
-        sort: sortOrder,
-      };
-
-      Object.entries(selectedValues)
-        .filter(([, value]) => !!value)
-        .forEach(([key, value]) => (params[key] = value));
-
-      if (debouncedQuery) {
-        params["searchQuery"] = debouncedQuery;
-      }
-
-      return fetchAPI(buildURL(url, params));
-    },
-    select: (response: PaginatedResponse<GeneStatisticalResult>) => {
-      return {
-        ...response,
-        content: response.content.map((d) => ({
-          ...d,
-          pValue: Number(d.pValue),
-          mutantCount: getMutantCount(d),
-        })),
-      } as PaginatedResponse<GeneStatisticalResult>;
-    },
-    enabled: props.tableIsVisible,
-  });
-
-  const { data: filterData } = useQuery({
-    queryKey: ["filterData", gene.mgiGeneAccessionId],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/genes/${gene.mgiGeneAccessionId}/dataset/get_filter_data`,
-      ),
-    enabled: props.tableIsVisible,
-  });
+      tableIsVisible,
+      false,
+    );
 
   const getDownloadData = () => {
     const url = `/api/v1/genes/statistical-result/filtered`;
@@ -191,24 +134,43 @@ const AllData = (props: Props) => {
   };
 
   useEffect(() => {
-    if (data && data.totalElements !== totalItems) {
-      setTotalItems(data.totalElements);
-      onTotalData(data.totalElements);
+    if (geneData && geneData.length !== totalItems) {
+      setTotalItems(geneData.length);
+      onTotalData(geneData.length);
     }
-  }, [data, totalItems]);
+  }, [geneData, totalItems]);
 
   useEffect(() => {
-    if (filterData) {
+    if (geneData) {
+      const allProcedures = uniq(
+        geneData.map((item) => item.procedureName),
+      ).sort((a, b) => a.localeCompare(b));
+      const allLifeStages = uniq(
+        geneData.map((item) => item.lifeStageName),
+      ).sort((a, b) => a.localeCompare(b));
+      const allZygosities = uniq(geneData.map((item) => item.zygosity)).sort(
+        (a, b) => a.localeCompare(b),
+      );
+      const allAlleles = uniq(geneData.map((item) => item.alleleSymbol)).sort(
+        (a, b) => a.localeCompare(b),
+      );
+      const allSystems = uniq(
+        geneData.flatMap(
+          (item) => item?.topLevelPhenotypes?.map((p) => p.name) ?? [],
+        ),
+      )
+        .filter((system) => system !== null)
+        .sort((a, b) => a.localeCompare(b));
       setFilterOptions({
-        procedures: filterData.procedureName,
-        systems: filterData.topLevelPhenotypes,
-        lifestages: filterData.lifeStageName,
-        zygosities: filterData.zygosity,
-        alleles: filterData.alleleSymbol,
+        procedures: allProcedures,
+        systems: allSystems,
+        lifestages: allLifeStages,
+        zygosities: allZygosities,
+        alleles: allAlleles,
       });
-      setAlleles(filterData.alleleSymbol);
+      setAlleles(allAlleles);
     }
-  }, [filterData]);
+  }, [geneData]);
 
   useEffect(() => {
     const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
@@ -239,7 +201,41 @@ const AllData = (props: Props) => {
     }
   }, [queryFromURL, query]);
 
-  if (isError && !data) {
+  const mutatedData = useMemo(() => {
+    const values = Object.values(selectedValues).filter(Boolean);
+    if (values.length === 0 && !query) {
+      return geneData;
+    }
+    const {
+      procedureName: selectedProcedureName,
+      topLevelPhenotypeName: selectedTopLevelPhenotypeName,
+      lifeStageName: selectedLifeStageName,
+      zygosity: selectedZygosity,
+      alleleSymbol: selectedAlleleSymbol,
+    } = selectedValues;
+    return geneData.filter(
+      ({
+        displayPhenotype,
+        alleleSymbol,
+        lifeStageName,
+        topLevelPhenotypes,
+        zygosity,
+        procedureName
+      }) =>
+        (!selectedAlleleSymbol || alleleSymbol === selectedAlleleSymbol) &&
+        (!query ||
+          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""}`.toLowerCase().includes(query)) &&
+        (!selectedTopLevelPhenotypeName ||
+          (topLevelPhenotypes ?? []).some(
+            ({ name }) => name === selectedTopLevelPhenotypeName,
+          )) &&
+        (!selectedLifeStageName || lifeStageName === selectedLifeStageName) &&
+        (!selectedZygosity || zygosity === selectedZygosity) &&
+        (!selectedProcedureName || procedureName.includes(selectedProcedureName) || procedureName.includes(query)),
+    );
+  }, [geneData, selectedValues, query]);
+
+  if (isGeneError && !geneData) {
     return (
       <Alert variant="primary" className="mt-3">
         <span>
@@ -251,7 +247,7 @@ const AllData = (props: Props) => {
 
   return (
     <SmartTable<GeneStatisticalResult>
-      data={data?.content}
+      data={mutatedData}
       defaultSort={defaultSort}
       onSortChange={(sortOptions) => {
         const [sortField, sortOrder] = sortOptions.split(";");
@@ -260,7 +256,7 @@ const AllData = (props: Props) => {
       }}
       customFiltering
       additionalTopControls={
-        !!filterData ? (
+        !!geneData ? (
           <>
             <FilterBox
               controlId="queryFilterAD"
@@ -373,14 +369,7 @@ const AllData = (props: Props) => {
           />
         </>
       }
-      showLoadingIndicator={isFetching}
-      pagination={{
-        totalItems,
-        onPageChange: setActivePage,
-        onPageSizeChange: setPageSize,
-        page: activePage,
-        pageSize,
-      }}
+      showLoadingIndicator={isGeneFetching}
       columns={[
         {
           width: 2,

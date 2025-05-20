@@ -13,7 +13,8 @@ const getMutantCount = (dataset: GeneStatisticalResult) => {
 
 export const useGeneAllStatisticalResData = (
   mgiAccessionId: string,
-  enabled: boolean
+  enabled: boolean,
+  removeNotProcessedData = true,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiAccessionId];
   const id = mgiAccessionId.replace(":", "-");
@@ -35,7 +36,9 @@ export const useGeneAllStatisticalResData = (
           mutantCount: getMutantCount(dataset),
         }))
         .filter(
-          (dataset) => dataset.status !== "NotProcessed"
+          (dataset) => {
+            return removeNotProcessedData ? dataset.status !== "NotProcessed" : true
+          }
         ) as Array<GeneStatisticalResult>;
     },
     placeholderData: [],
