@@ -16,8 +16,6 @@ import Card from "@/components/Card";
 import Search from "@/components/Search";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import styles from "./styles.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import Skeleton from "react-loading-skeleton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -34,6 +32,7 @@ import {
   useParams,
   useNavigate,
 } from "react-router";
+import { useGeneParameterImages } from "@/hooks";
 
 type Filters = {
   selectedCenter: string;
@@ -274,25 +273,9 @@ const ImagesCompare = () => {
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
-  const { data: mutantImages } = useQuery<Array<GeneImageCollection>>({
-    queryKey: ["genes", pid, "images", parameterStableId],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
-      ),
-    enabled: !!parameterStableId && !!pid,
-    placeholderData: [],
-  });
+  const { data: mutantImages } = useGeneParameterImages(pid, parameterStableId, "mutant");
 
-  const { data: controlImagesRaw } = useQuery<Array<GeneImageCollection>>({
-    queryKey: ["genes", pid, "images", parameterStableId, "control"],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
-      ),
-    enabled: !!parameterStableId,
-    placeholderData: [],
-  });
+  const { data: controlImagesRaw } = useGeneParameterImages(pid, parameterStableId, "wildtype");
 
   const [selectedSex, setSelectedSex] = useState("both");
   const [selectedZyg, setSelectedZyg] = useState("both");

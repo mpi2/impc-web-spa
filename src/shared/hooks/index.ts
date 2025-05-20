@@ -31,3 +31,4 @@ export { useGeneImagesQuery } from './gene-queries/gene-images.query.ts';
 export { useGeneDiseasesQuery } from './gene-queries/gene-diseases.query.ts';
 export { useGeneHistopathologyQuery } from "./gene-queries/gene-histopathology.query.ts";
 export { useGenePublicationsQuery } from "./gene-queries/gene-publications.query.ts";
+export { useGeneParameterImages } from "./gene-queries/parameter-images.query.ts"

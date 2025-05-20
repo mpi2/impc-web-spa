@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import Search from "@/components/Search";
 import { Link, useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ import { SortType, TableCellProps } from "@/models";
 import _ from "lodash";
 import { useMemo } from "react";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
-import { GeneImageCollection } from "@/models/gene";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 type Image = {
   alleleSymbol: string;
@@ -48,12 +48,11 @@ const DownloadImagesPage = () => {
   const params = useParams<{ pid: string; parameterStableId: string }>();
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
+  const chromosome: string = geneChromosomeMap[pid];
+  const id = pid.replace(":", "-");
   const { data: mutantImages, isLoading: isMutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/images/find_by_mgi_and_stable_id?mgiGeneAccessionId=${pid}&parameterStableId=${parameterStableId}`,
-      ),
+    queryFn: () => fetchData(`${chromosome}/${id}/images/${parameterStableId}/mutant.json`),
     enabled: !!pid && !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
@@ -74,10 +73,7 @@ const DownloadImagesPage = () => {
 
   const { data: controlImages, isLoading: isControlImagesLoading } = useQuery({
     queryKey: ["control", pid, "images", parameterStableId],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/images/find_by_stable_id_and_sample_id?biologicalSampleGroup=control&parameterStableId=${parameterStableId}`,
-      ),
+    queryFn: () => fetchData(`${chromosome}/${id}/images/${parameterStableId}/wildtype.json`),
     enabled: !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
