@@ -176,7 +176,7 @@ const GeneResults = ({ query }: GeneResultProps) => {
           {!!query && !isLoading && (
             <p className="grey mb-0">
               <small>
-                Found {data?.length || 0} entries{" "}
+                Found {filteredData?.length || 0} entries{" "}
                 {!!query && (
                   <>
                     matching <strong>"{query}"</strong>
