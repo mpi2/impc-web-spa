@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import { formatESCellName, toSentenceCase } from "@/utils";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleEsCell } from "@/models/allele/es-cell";
+import { useAlleleESCellQuery } from "@/hooks";
 
 const ESCell = ({
   mgiGeneAccessionId,
@@ -20,18 +19,11 @@ const ESCell = ({
   alleleName: string;
   setQcData: (any) => void;
 }) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", mgiGeneAccessionId, "alleles", "es_cell", alleleName],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
-      ),
-    placeholderData: [],
-  });
+  const { data, isLoading, isError } = useAlleleESCellQuery(mgiGeneAccessionId, alleleName);
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
+      setSorted(orderBy(data, "productId", "asc"));
     }
   }, [data]);
 

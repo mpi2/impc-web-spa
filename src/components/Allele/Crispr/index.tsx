@@ -1,12 +1,10 @@
-import React from "react";
 import { faCopy, faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { Alert } from "react-bootstrap";
 import { Card, DownloadData, SortableTable } from "@/components";
 import { AlleleCrispr } from "@/models/allele/crispr";
+import { useAlleleCRISPRQuery } from "@/hooks";
 
 const CopyButton = ({ sequence }) => {
   const [clicked, setClicked] = useState(false);
@@ -42,14 +40,7 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", mgiGeneAccessionId, "alleles", "crispr", alleleName],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/alleles/crispr/get_by_mgi_and_allele_superscript/${mgiGeneAccessionId}/${alleleName}`
-      ),
-    select: (data) => (data ?? [])[0] || undefined,
-  });
+  const { data, isLoading, isError } = useAlleleCRISPRQuery(mgiGeneAccessionId, alleleName);
 
   if (isLoading) {
     return (

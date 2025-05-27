@@ -35,3 +35,5 @@ export { useGeneParameterImages } from "./gene-queries/parameter-images.query.ts
 export { useAlleleSummaryQuery } from "./allele-queries/allele-summary.query.ts";
 export { useAlleleESCellQuery } from "./allele-queries/allele-escell.query.ts";
 export { useAlleleMiceQuery } from "./allele-queries/allele-mice.query.ts";
+export { useAlleleTVPQuery } from "./allele-queries/allele-tvp.query.ts";
+export { useAlleleCRISPRQuery } from "./allele-queries/allele-crispr.query.ts";

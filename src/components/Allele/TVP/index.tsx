@@ -6,12 +6,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import _ from "lodash";
+import { orderBy } from "lodash";
 import { Link } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleTvp } from "@/models/allele/tvp";
+import { useAlleleTVPQuery } from "@/hooks";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
@@ -20,18 +19,11 @@ const TargetingVector = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleName],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/alleles/tvp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
-      ),
-    placeholderData: [],
-  });
+  const { data, isLoading, isError } = useAlleleTVPQuery(mgiGeneAccessionId, alleleName);
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
+      setSorted(orderBy(data, "productId", "asc"));
     }
   }, [data]);
 
