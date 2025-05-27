@@ -20,12 +20,11 @@ import {
   QCModal,
   TargetingVector,
 } from "@/components/Allele";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import classNames from "classnames";
 import { AlleleSymbol } from "@/components";
 import { AlleleSummary } from "@/models";
 import Skeleton from "react-loading-skeleton";
+import { useAlleleSummaryQuery } from "@/hooks";
 
 const ProductItem = ({
   name,
@@ -67,12 +66,7 @@ const AllelePage = () => {
   const pid = decodeURIComponent(params.pid);
   const alleleSymbol = params.alleleSymbol;
 
-  const { data: allele } = useQuery<AlleleSummary>({
-    queryKey: ["genes", pid, "alleles", alleleSymbol, "order"],
-    queryFn: () =>
-      fetchAPI(`/api/v1/alleles/${pid}/${encodeURIComponent(alleleSymbol)}`),
-    enabled: !!pid,
-  });
+  const { data: allele } = useAlleleSummaryQuery(pid, alleleSymbol);
 
   const [qcData, setQcData] = useState<any[]>([]);
 

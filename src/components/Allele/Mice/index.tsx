@@ -10,6 +10,7 @@ import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlelleMice } from "@/models/allele/mice";
 import { toSentenceCase } from "@/utils";
+import { useAlleleMiceQuery } from "@/hooks";
 
 const Mice = ({
   mgiGeneAccessionId,
@@ -22,14 +23,7 @@ const Mice = ({
   isCrispr: boolean;
   setQcData: (any) => void;
 }) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", mgiGeneAccessionId, "alleles", "mice", alleleName],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/alleles/mice/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`
-      ),
-    placeholderData: [],
-  });
+  const { data, isLoading, isError } = useAlleleMiceQuery(mgiGeneAccessionId, alleleName);
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {

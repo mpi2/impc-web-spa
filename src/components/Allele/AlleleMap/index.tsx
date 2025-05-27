@@ -4,6 +4,7 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
 import { md5 } from "@/utils/md5.ts";
+import { useAlleleESCellQuery } from "@/hooks";
 
 const ALLELE_RESOURCE_URL = import.meta.env.VITE_ALLELE_RESOURCES_URL;
 
@@ -16,10 +17,7 @@ const AlleleMap = ({
   alleleName: string;
   emsembleUrl: string;
 }) => {
-  const { data } = useQuery({
-    queryKey: ['genes', mgiGeneAccessionId, 'alleles', 'es_cell', alleleName],
-    queryFn: () => fetchAPI(`/api/v1/alleles/es_cell/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`)
-  });
+  const { data } = useAlleleESCellQuery(mgiGeneAccessionId, alleleName);
 
   if (!data || (Array.isArray(data) && data.length === 0)) {
     return null;

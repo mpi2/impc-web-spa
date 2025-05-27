@@ -171,7 +171,6 @@ const Unidimensional = ({
               className="link"
               href="https://www.mousephenotype.org/help/data-visualization/chart-pages/"
             >
-              {" "}
               View documentation about soft windowing{" "}
               <FontAwesomeIcon icon={faChevronRight} />
             </a>
