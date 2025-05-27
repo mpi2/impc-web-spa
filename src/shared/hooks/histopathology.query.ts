@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { Histopathology, HistopathologyResponse } from "@/models";
 import { groupBy } from "lodash";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 type SpecimenData = {
   lifeStageName: string;
@@ -41,10 +42,11 @@ export const useHistopathologyQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId.replace(":", "-");
   return useQuery({
     queryKey: ["histopathology", mgiGeneAccessionId],
-    queryFn: () =>
-      fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/histopathology`),
+    queryFn: () => fetchData(`${chromosome}/${id}/full-histopathology.json`),
     enabled: routerIsReady,
     select: (data: HistopathologyResponse) => {
       const specimensData: Record<string, SpecimenData> = {};
