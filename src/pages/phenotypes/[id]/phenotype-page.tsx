@@ -6,13 +6,12 @@ import {
   ManhattanPlot,
 } from "@/components/Phenotype";
 import Search from "@/components/Search";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
 import { useMemo } from "react";
 import { useParams } from "react-router";
+import { usePhenotypeSummaryQuery } from "@/hooks";
 
 const sortAndUniqPhenotypeProcedures = (
   data: PhenotypeSummary,
@@ -26,15 +25,7 @@ const sortAndUniqPhenotypeProcedures = (
 const Phenotype = () => {
   const params = useParams();
   const phenotypeId = params.id;
-  const {
-    data: phenotype,
-    isLoading,
-    isError,
-  } = useQuery<PhenotypeSummary>({
-    queryKey: ["phenotype", phenotypeId, "summary"],
-    queryFn: () => fetchAPI(`/api/v1/phenotypes/${phenotypeId}/summary`),
-    enabled: !!phenotypeId
-  });
+  const { data: phenotype } = usePhenotypeSummaryQuery(phenotypeId)
 
   const phenotypeData = useMemo(() => {
     const selectedData = phenotype;

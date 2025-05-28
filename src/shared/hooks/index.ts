@@ -37,3 +37,4 @@ export { useAlleleESCellQuery } from "./allele-queries/allele-escell.query.ts";
 export { useAlleleMiceQuery } from "./allele-queries/allele-mice.query.ts";
 export { useAlleleTVPQuery } from "./allele-queries/allele-tvp.query.ts";
 export { useAlleleCRISPRQuery } from "./allele-queries/allele-crispr.query.ts";
+export { usePhenotypeSummaryQuery } from "./phenotype-queries/phenotype-summary.query.ts";
