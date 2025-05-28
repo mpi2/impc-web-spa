@@ -1,8 +1,14 @@
 default:
   image: node:lts-bookworm
 
-create-pages:
+pages:
+  stage: deploy
   script:
     - yarn install
     - yarn build
-  pages: true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment: production
