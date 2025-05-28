@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { orderBy } from "lodash";
 import { PhenotypeGenotypes } from "@/models/phenotype";
 
@@ -48,13 +48,11 @@ export const usePhenotypeGeneAssociationsQuery = (
   routerIsReady: boolean,
   sortOptions: string,
 ) => {
+  const id = phenotypeId?.replace(":", "-");
   return useQuery({
     queryKey: ["phenotype", phenotypeId, "genotype-hits"],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/phenotypes/${phenotypeId}/genotype-hits/by-any-phenotype-Id`,
-      ),
-    enabled: routerIsReady && !!phenotypeId,
+    queryFn: () => fetchData(`phenotypes/${id}/genotype-hits.json`),
+    enabled: routerIsReady && !!id,
     select: (data: Array<PhenotypeGenotypes>) =>
       processGenotypeHitsByPhenotype(data, sortOptions),
     placeholderData: [],

@@ -1,5 +1,5 @@
 export { useBodyWeightQuery } from "./bodyweight.query";
-export { usePhenotypeGeneAssociationsQuery } from "./phenotype-gene-associations.query";
+export { usePhenotypeGeneAssociationsQuery } from "./phenotype-queries/phenotype-gene-associations.query.ts";
 export {
   useSignificantPhenotypesQuery,
   processGenePhenotypeHitsResponse,

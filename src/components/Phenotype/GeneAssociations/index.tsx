@@ -84,7 +84,6 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
 
 const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
-  const [query, setQuery] = useState(undefined);
   const [sortOptions, setSortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { data, isFetching, isError } = usePhenotypeGeneAssociationsQuery(
