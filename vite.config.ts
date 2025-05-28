@@ -1,18 +1,20 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { reactScopedCssPlugin } from "rollup-plugin-react-scoped-css";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), reactScopedCssPlugin()],
+  plugins: [react(), tsconfigPaths()],
   server: {
     proxy: {
-      '/proxy': {
-        target: 'https://nginx.mousephenotype-dev.org/data',
+      "/proxy": {
+        target: "https://nginx.mousephenotype-dev.org/data",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/proxy/, '')
-      }
-    }
-  }
-})
+        rewrite: (path) => path.replace(/^\/proxy/, ""),
+      },
+    },
+  },
+  build: {
+    outDir: "public",
+  },
+});

@@ -1,0 +1,8 @@
+default:
+  image: node:lts-bookworm
+
+create-pages:
+  script:
+    - yarn install
+    - yarn build
+  pages: true
