@@ -33,8 +33,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/data" element={<RootLayout />}>
-          <Route path="search" element={<SearchResults />} />
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<SearchResults />} />
           <Route path="genes/:pid" element={<GenePage />} />
           <Route path="genes/:pid/images/:parameterStableId" element={<ImageComparator />} />
           <Route path="genes/:pid/download-images/:parameterStableId" element={<ImageDownloader />} />

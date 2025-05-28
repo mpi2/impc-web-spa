@@ -57,7 +57,7 @@ const GeneResult = ({
           sm={8}
           className={styles.result}
           onClick={() => {
-            navigate(`/data/genes/${mgiGeneAccessionId}`);
+            navigate(`/genes/${mgiGeneAccessionId}`);
           }}
         >
           <h4 className="mb-2">
