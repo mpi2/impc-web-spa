@@ -10,8 +10,6 @@ export const PROTOTYPE_API_URL =
   import.meta.env.VITE_PROTOTYPE_API_ROOT || "";
 export const DEV_API_ROOT = import.meta.env.VITE_DEV_API_ROOT || "";
 export const PROD_API_ROOT = import.meta.env.VITE_PROD_API_ROOT || "";
-export const DATA_RELEASE_VERSION =
-  import.meta.env.VITE_DATA_RELEASE_VERSION || "";
 export const PUBLICATIONS_ENDPOINT_URL =
   import.meta.env.VITE_PUBLICATIONS_ENDPOINT_URL || "";
 
@@ -62,8 +60,15 @@ export async function fetchAPI<T>(query: string): Promise<T> {
 
 export async function fetchData<T>(path: string): Promise<T> {
   const endpointURL = PROTOTYPE_DATA_ROOT + path;
-  const response = await fetch(endpointURL);
-  return await response.json();
+  try {
+    const response = await fetch(endpointURL);
+    if (response.status === 204 || response.status === 404) {
+      return Promise.reject("No content");
+    }
+    return await response.json();
+  } catch (error) {
+    return Promise.reject("Error: " + error);
+  }
 }
 
 export async function fetchDatasetFromS3(datasetId: string) {
