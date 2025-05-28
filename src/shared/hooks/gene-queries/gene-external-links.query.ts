@@ -33,7 +33,7 @@ export const useGeneExternalLinksQuery = (
   const hasLoadedProvidersData =
     !!providers && Object.keys(providers).length > 0;
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   const linksQuery = useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "external-links"],
     queryFn: () =>

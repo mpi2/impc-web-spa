@@ -18,7 +18,7 @@ export const useGeneOrderQuery = (
   routerIsReady: boolean
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "order"],
     queryFn: () => fetchData(`${chromosome}/${id}/order.json`),

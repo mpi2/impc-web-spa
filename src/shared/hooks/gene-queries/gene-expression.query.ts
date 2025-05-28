@@ -16,7 +16,7 @@ export const useGeneExpressionQuery = (
   sortOptions: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "expression"],
     queryFn: () =>

@@ -7,7 +7,7 @@ export const useGeneHistopathologyQuery = (
   mgiGeneAccessionId: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery<
     Array<GeneHistopathology>
   >({

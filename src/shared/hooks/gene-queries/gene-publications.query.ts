@@ -7,7 +7,7 @@ export const useGenePublicationsQuery = (
   mgiGeneAccessionId: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery<Array<Publication>>({
     queryKey: ["genes", mgiGeneAccessionId, "publications"],
     queryFn: () => fetchData(`${chromosome}/${id}/publications.json`),

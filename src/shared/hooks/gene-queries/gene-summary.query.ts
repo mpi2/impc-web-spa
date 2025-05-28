@@ -8,7 +8,7 @@ export const useGeneSummaryQuery = (
   routerIsReady: boolean,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "summary"],
     queryFn: () => fetchData(`${chromosome}/${id}/summary.json`),

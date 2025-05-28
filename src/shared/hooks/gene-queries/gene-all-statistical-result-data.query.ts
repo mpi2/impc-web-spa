@@ -17,7 +17,7 @@ export const useGeneAllStatisticalResData = (
   removeNotProcessedData = true,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiAccessionId];
-  const id = mgiAccessionId?.replace(":", "-");
+  const id = mgiAccessionId?.replace(":", "_");
   const {
     data: geneData = [],
     isFetching: isGeneFetching,

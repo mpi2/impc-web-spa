@@ -75,7 +75,7 @@ export const useSignificantPhenotypesQuery = (
   routerIsReady: boolean
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId?.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "_");
   const { data, isLoading, isError, isFetching, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "phenotype-hits"],
     queryFn: () =>

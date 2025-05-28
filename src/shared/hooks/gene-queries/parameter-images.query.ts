@@ -9,7 +9,7 @@ export const useGeneParameterImages = (
   type: "mutant" | "wildtype",
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery<Array<GeneImageCollection>>({
     queryKey: ["genes", mgiGeneAccessionId, "images", parameterStableId, type],
     queryFn: () => fetchData(`${chromosome}/${id}/images/${parameterStableId}/${type}.json`),
