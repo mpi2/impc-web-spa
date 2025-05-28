@@ -8,11 +8,11 @@ export const useGeneImagesQuery = (
   mgiGeneAccessionId: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   return useQuery<Array<GeneImage>>({
     queryKey: ["genes", mgiGeneAccessionId, "images"],
     queryFn: () => fetchData(`${chromosome}/${id}/images.json`),
-    enabled: !!mgiGeneAccessionId,
+    enabled: !!mgiGeneAccessionId && !!id,
     select: (data) => data as Array<GeneImage>,
   });
 }

@@ -8,7 +8,7 @@ export const useGeneDiseasesQuery = (
   type: "associated" | "predicted",
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   const url =
     type === "associated"
       ? `${chromosome}/${id}/associated-diseases.json`
@@ -16,7 +16,7 @@ export const useGeneDiseasesQuery = (
   return useQuery<Array<GeneDisease>>({
     queryKey: ["genes", mgiGeneAccessionId, "disease", type],
     queryFn: () => fetchData(url),
-    enabled: !!mgiGeneAccessionId,
+    enabled: !!mgiGeneAccessionId && !!id,
     placeholderData: [],
   });
 };

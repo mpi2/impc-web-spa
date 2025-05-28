@@ -16,7 +16,7 @@ export const useGeneExpressionQuery = (
   sortOptions: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   return useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "expression"],
     queryFn: () =>
@@ -32,7 +32,7 @@ export const useGeneExpressionQuery = (
       const [field, order] = sortOptions.split(";");
       return orderBy(processed, field, order as "asc" | "desc");
     },
-    enabled: routerIsReady,
+    enabled: routerIsReady && !!id,
     placeholderData: [],
   });
 };

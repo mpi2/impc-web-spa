@@ -17,7 +17,7 @@ export const useGeneAllStatisticalResData = (
   removeNotProcessedData = true,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiAccessionId];
-  const id = mgiAccessionId.replace(":", "-");
+  const id = mgiAccessionId?.replace(":", "-");
   const {
     data: geneData = [],
     isFetching: isGeneFetching,
@@ -27,7 +27,7 @@ export const useGeneAllStatisticalResData = (
     queryKey: ["genes", mgiAccessionId, "statistical-result"],
     queryFn: () =>
       fetchData(`${chromosome}/${id}/stats-results.json`),
-    enabled,
+    enabled: enabled && !!id,
     select: (data: Array<GeneStatisticalResult>) => {
       return data
         .map((dataset) => ({

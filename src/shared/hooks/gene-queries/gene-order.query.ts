@@ -18,11 +18,11 @@ export const useGeneOrderQuery = (
   routerIsReady: boolean
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "order"],
     queryFn: () => fetchData(`${chromosome}/${id}/order.json`),
     select: (data) => processGeneOrderResponse(data),
-    enabled: routerIsReady,
+    enabled: routerIsReady && !!id,
   });
 };

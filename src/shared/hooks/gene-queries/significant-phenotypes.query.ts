@@ -75,12 +75,12 @@ export const useSignificantPhenotypesQuery = (
   routerIsReady: boolean
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   const { data, isLoading, isError, isFetching, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "phenotype-hits"],
     queryFn: () =>
       fetchData(`${chromosome}/${id}/phenotypehits.json`),
-    enabled: routerIsReady,
+    enabled: routerIsReady && !!id,
     select: (data: Array<GenePhenotypeHits>) =>
       processGenePhenotypeHitsResponse(data),
     placeholderData: [],

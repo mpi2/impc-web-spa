@@ -33,12 +33,12 @@ export const useGeneExternalLinksQuery = (
   const hasLoadedProvidersData =
     !!providers && Object.keys(providers).length > 0;
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   const linksQuery = useQuery({
     queryKey: ["gene", mgiGeneAccessionId, "external-links"],
     queryFn: () =>
       fetchData(`${chromosome}/${id}/external-links.json`),
-    enabled: routerIsReady && hasLoadedProvidersData,
+    enabled: routerIsReady && hasLoadedProvidersData && !!id,
     select: (linkList) => {
       const linksByProvider = groupBy(linkList, (link) => link.providerName);
       return Object.entries(linksByProvider)

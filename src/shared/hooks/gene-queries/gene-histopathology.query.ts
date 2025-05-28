@@ -7,13 +7,13 @@ export const useGeneHistopathologyQuery = (
   mgiGeneAccessionId: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId?.replace(":", "-");
   return useQuery<
     Array<GeneHistopathology>
   >({
     queryKey: ["genes", mgiGeneAccessionId, "histopathology"],
     queryFn: () => fetchData(`${chromosome}/${id}/gene-histopathology.json`),
-    enabled: !!mgiGeneAccessionId,
+    enabled: !!mgiGeneAccessionId && !!id,
     select: (data) => data as Array<GeneHistopathology>,
   });
 }
