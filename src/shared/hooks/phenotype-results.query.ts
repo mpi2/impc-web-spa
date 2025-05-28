@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import {
   PhenotypeSearchItem,
   PhenotypeSearchResponse,
@@ -34,15 +34,10 @@ export const processPhenotypeResults = (
   }));
 };
 
-export const usePhenotypeResultsQuery = (
-  query: string | undefined,
-) => {
+export const usePhenotypeResultsQuery = () => {
   return useQuery({
-    queryKey: ["search", "phenotypes", query],
-    queryFn: () =>
-      fetchAPI<PhenotypeSearchResponse>(
-        `/api/search/v1/search?prefix=${query}&type=PHENOTYPE`,
-      ),
+    queryKey: ["search", "phenotypes"],
+    queryFn: () => fetchData<PhenotypeSearchResponse>("phenotype_search.json"),
     select: processPhenotypeResults,
   });
 };

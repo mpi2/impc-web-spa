@@ -142,17 +142,23 @@ const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading } = usePhenotypeResultsQuery(query);
+  const { data, isLoading } = usePhenotypeResultsQuery();
 
   const filteredData = useMemo(() => {
-    return !!selectedSystem
-      ? data?.filter((phenotype) =>
-          phenotype.topLevelParentsArray.some(
-            (p) => p.mpTerm === selectedSystem,
-          ),
+    return !!selectedSystem || !!query
+      ? data?.filter(
+          (phenotype) =>
+            (!selectedSystem ||
+              phenotype.topLevelParentsArray.some(
+                (p) => p.mpTerm === selectedSystem,
+              )) &&
+            (!query ||
+              `${phenotype.definition} ${phenotype.mpId} ${phenotype.phenotypeName} ${phenotype.synonyms}`
+                .toLowerCase()
+                .includes(query)),
         )
       : data;
-  }, [data, selectedSystem]);
+  }, [data, selectedSystem, query]);
 
   const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
@@ -187,7 +193,7 @@ const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
         {!!query && !isLoading && (
           <p className="grey">
             <small>
-              Found {data?.length || 0} entries{" "}
+              Found {sortedData?.length || 0} entries{" "}
               {!!query && (
                 <>
                   matching <strong>"{query}"</strong>
