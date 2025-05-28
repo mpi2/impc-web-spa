@@ -1,8 +1,6 @@
 import Card from "../../Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { md5 } from "@/utils/md5.ts";
 import { useAlleleESCellQuery } from "@/hooks";
 

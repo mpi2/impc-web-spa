@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import _ from "lodash";
 import { faWindowMaximize } from "@fortawesome/free-regular-svg-icons";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlelleMice } from "@/models/allele/mice";
 import { toSentenceCase } from "@/utils";

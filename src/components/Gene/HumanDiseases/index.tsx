@@ -16,8 +16,6 @@ import {
 } from "react";
 import { Alert, Overlay, Spinner, Tab, Tabs, Tooltip } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
 import { GeneDisease } from "@/models/gene";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import {
