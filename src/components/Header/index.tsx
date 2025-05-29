@@ -132,7 +132,7 @@ const Header = () => {
                 >
                   <img
                     className="header__logo"
-                    src="/images/logo.svg"
+                    src="/impc-web-spa-mirror/images/logo.svg"
                     alt="International Mouse Phenotyping Consortium Office Logo"
                     width={355}
                     height={105}
