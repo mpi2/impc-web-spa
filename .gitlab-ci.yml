@@ -6,6 +6,7 @@ pages:
   script:
     - yarn install
     - yarn build
+    - /* /index.html 200 >> $CI_PROJECT_DIR/public/_redirects
   artifacts:
     paths:
       - public
