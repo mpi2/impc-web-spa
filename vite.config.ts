@@ -16,5 +16,36 @@ export default defineConfig({
   },
   build: {
     outDir: "public",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: [
+            "react",
+            "react-dom",
+            "lodash",
+            "moment",
+            "framer-motion",
+            "classnames",
+            "file-saver",
+            "react-router",
+          ],
+          chartjs: [
+            "react-chartjs-2",
+            "chart.js",
+            "chartjs-adapter-moment",
+            "chartjs-chart-error-bars",
+            "chartjs-plugin-datalabels",
+            "chartjs-plugin-zoom",
+            "@sgratzl/chartjs-chart-boxplot",
+          ],
+          nivo: ["@nivo/axes", "@nivo/core", "@nivo/heatmap"],
+          visx: ["@visx/visx"],
+          d3: ["d3"],
+          upsetjs: ["@upsetjs/react"],
+          bootstrap: ["bootstrap", "react-bootstrap"],
+        },
+      },
+    },
   },
+  publicDir: "assets",
 });
