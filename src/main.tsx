@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import RootLayout from "./layout.tsx";
 import SearchResults from "@/pages/search/search-page.tsx";
@@ -28,40 +28,72 @@ import { ReleaseNotesPage } from "@/components";
 import HTMLPage from "./static-html/HTMLPage.tsx";
 import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html?raw";
 
-
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/impc-web-spa-mirror/">
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<SearchResults />} />
           <Route path="genes/:pid" element={<GenePage />} />
-          <Route path="genes/:pid/images/:parameterStableId" element={<ImageComparator />} />
-          <Route path="genes/:pid/download-images/:parameterStableId" element={<ImageDownloader />} />
+          <Route
+            path="genes/:pid/images/:parameterStableId"
+            element={<ImageComparator />}
+          />
+          <Route
+            path="genes/:pid/download-images/:parameterStableId"
+            element={<ImageDownloader />}
+          />
           <Route path="alleles/:pid/:alleleSymbol" element={<AllelePage />} />
           <Route path="supporting-data" element={<SupportingDataPage />} />
-          <Route path="supporting-data/histopath/:pid" element={<HistopathChartPage />} />
-          <Route path="supporting-data/viability" element={<ViabilityChartPage />} />
-          <Route path="supporting-data/bodyweight" element={<BodyweightChartPage />} />
+          <Route
+            path="supporting-data/histopath/:pid"
+            element={<HistopathChartPage />}
+          />
+          <Route
+            path="supporting-data/viability"
+            element={<ViabilityChartPage />}
+          />
+          <Route
+            path="supporting-data/bodyweight"
+            element={<BodyweightChartPage />}
+          />
           <Route path="phenotypes/:id" element={<PhenotypePage />} />
           <Route path="designs/:id" element={<DesignsPage />} />
-          <Route path="cardiovascular" element={<CardiovascularLandingPage />} />
+          <Route
+            path="cardiovascular"
+            element={<CardiovascularLandingPage />}
+          />
           <Route path="conservation" element={<ConservationLandingPage />} />
           <Route path="embryo" element={<EmbryoLandingPage />} />
           <Route path="embryo/vignettes" element={<EmbryoVignettesPage />} />
           <Route path="hearing" element={<HearingLandingPage />} />
           <Route path="histopath" element={<HistopathLandingPage />} />
-          <Route path="late-adult-data" element={<LateAdultDataLandingPage />} />
+          <Route
+            path="late-adult-data"
+            element={<LateAdultDataLandingPage />}
+          />
           <Route path="metabolism" element={<MetabolismLandingPage />} />
           <Route path="publications" element={<PublicationsPage />} />
           <Route path="secondaryproject/idg" element={<IDGPage />} />
-          <Route path="sexual-dimorphism" element={<SexualDimorphismLandingPage />} />
-          <Route path="release" element={<ReleaseNotesPage />}/>
-          <Route path="release/22.1" element={<ReleaseNotesPage releaseVersion="DR22.1" />}/>
-          <Route path="release/22.0" element={<ReleaseNotesPage releaseVersion="DR22.0" />}/>
+          <Route
+            path="sexual-dimorphism"
+            element={<SexualDimorphismLandingPage />}
+          />
+          <Route path="release" element={<ReleaseNotesPage />} />
+          <Route
+            path="release/22.1"
+            element={<ReleaseNotesPage releaseVersion="DR22.1" />}
+          />
+          <Route
+            path="release/22.0"
+            element={<ReleaseNotesPage releaseVersion="DR22.0" />}
+          />
         </Route>
-        <Route path="/understand/start-using-the-impc/impc-data-generation" element={<HTMLPage htmlContent={IMPCDataGenerationPage} />}></Route>
+        <Route
+          path="/understand/start-using-the-impc/impc-data-generation"
+          element={<HTMLPage htmlContent={IMPCDataGenerationPage} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,
-)
+);
