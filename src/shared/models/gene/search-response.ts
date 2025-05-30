@@ -1,4 +1,3 @@
-
 export type GeneSearchResponseItem = {
   entityId: string;
   entityProperties: {
@@ -18,4 +17,18 @@ export type GeneSearchResponseItem = {
 export type GeneSearchResponse = {
   numResults: number;
   results: Array<GeneSearchResponseItem>;
-}
+};
+
+export type GeneSearchItem = {
+  entityId: string;
+  esCellProductionStatus: string;
+  geneName: string;
+  geneSymbol: string;
+  humanGeneSymbols: string;
+  humanSymbolSynonyms: string;
+  mgiGeneAccessionId: string;
+  mouseProductionStatus: string;
+  phenotypeStatus: string;
+  phenotypingDataAvailable: string;
+  synonyms: string;
+};

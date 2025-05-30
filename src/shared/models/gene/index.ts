@@ -1,6 +1,7 @@
 export type {
   GeneSearchResponse,
   GeneSearchResponseItem,
+  GeneSearchItem,
 } from "./search-response";
 export type { GeneSummary } from "./summary";
 export type { GenePhenotypeHits } from "./phenotype-hits";

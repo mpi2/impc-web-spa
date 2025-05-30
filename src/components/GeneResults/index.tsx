@@ -6,14 +6,14 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { Link, useNavigate } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "@/api-service";
-import { GeneSearchResponse, GeneSearchResponseItem } from "@/models/gene";
+import { GeneSearchResponse, GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
+import { useEffect } from "react";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -26,22 +26,20 @@ const GeneResult = ({
   gene,
   query,
 }: {
-  gene: GeneSearchResponseItem;
+  gene: GeneSearchItem;
   query: string | undefined;
 }) => {
   const {
-    entityProperties: {
-      geneSymbol,
-      geneName,
-      synonyms = "",
-      mgiGeneAccessionId,
-      esCellProductionStatus,
-      mouseProductionStatus,
-      phenotypeStatus,
-      phenotypingDataAvailable,
-      humanGeneSymbols,
-      humanSymbolSynonyms,
-    },
+    geneSymbol,
+    geneName,
+    synonyms = "",
+    mgiGeneAccessionId,
+    esCellProductionStatus,
+    mouseProductionStatus,
+    phenotypeStatus,
+    phenotypingDataAvailable,
+    humanGeneSymbols,
+    humanSymbolSynonyms,
   } = gene;
   const navigate = useNavigate();
   const synonymsArray =
@@ -151,14 +149,23 @@ const GeneResults = ({ query }: GeneResultProps) => {
   const { data, isLoading } = useQuery({
     queryKey: ["search", "genes"],
     queryFn: () => fetchData(`gene_search.json`),
-    select: (data: GeneSearchResponse) => data.results,
+    select: (data: GeneSearchResponse) =>
+      data.results.map((r) => ({
+        ...r.entityProperties,
+        entityId: r.entityId,
+      })) as Array<GeneSearchItem>,
   });
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
 
   const filteredData = !!query
     ? data?.filter(
         (item) =>
-          item.entityProperties.geneSymbol.includes(query) ||
-          item.entityProperties.synonyms.includes(query),
+          item.geneSymbol.includes(query) || item.synonyms.includes(query),
       )
     : data;
 
