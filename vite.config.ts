@@ -48,5 +48,4 @@ export default defineConfig({
     },
   },
   publicDir: "assets",
-  base: "/impc-web-spa-mirror/",
 });

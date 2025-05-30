@@ -30,7 +30,7 @@ import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter basename="/impc-web-spa-mirror/">
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<SearchResults />} />
