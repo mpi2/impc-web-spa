@@ -1,4 +1,3 @@
-"use client";
 import {
   Col,
   Container,
@@ -28,6 +27,7 @@ import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import { AlleleSymbol } from "@/components";
 import { Link } from "react-router";
+import { usePublicationsQuery } from "@/hooks";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -146,62 +146,24 @@ const PublicationsList = (props: PublicationListProps) => {
     data: publications,
     isError,
     isFetching,
-  } = useQuery({
-    queryKey: [
-      "publications",
-      prefixQuery,
-      debounceQuery,
-      page,
-      pageSize,
-      onlyConsortiumPublications,
-      filterByGrantAgency,
-    ],
-    queryFn: () => {
-      let url = `/api/v1/publications?page=${page}&size=${pageSize}`;
-      if (!!onlyConsortiumPublications) {
-        url = `/api/v1/publications/by_consortium_paper?consortiumPaper=true&page=${page}&size=${pageSize}`;
-      }
-      if (!!filterByGrantAgency) {
-        url = `/api/v1/publications/by_agency?grantAgency=${filterByGrantAgency}&page=${page}&size=${pageSize}`;
-      }
-      if (debounceQuery) {
-        url += `&searchQuery=${prefixQuery} ${debounceQuery}`;
-      } else if (prefixQuery) {
-        url += `&searchQuery=${prefixQuery}`;
-      }
+  } = usePublicationsQuery(onlyConsortiumPublications);
 
-      return fetchPublicationEndpoint(url);
-    },
-    select: (response) => {
-      const prevTotalItems = totalItems;
-      const currentTotalItems = response.totalElements;
-      if (prevTotalItems !== currentTotalItems) {
-        setTotalItems(response.totalElements);
-      }
-      return response.content as Array<Publication>;
-    },
-  });
+  useEffect(() => {
+    if (publications) {
+      setTotalItems(publications.length);
+    }
+  }, [publications]);
 
   useEffect(() => {
     setDebouncedQuery(query);
     setPage(0);
   }, [query]);
-  const updatePage = (value: number) => {
-    setPage(value);
-  };
-  const updatePageSize = (value: number) => {
-    setPageSize(value);
-  };
 
   return (
     <Container>
       <Row>
         <Col xs={6}>
-          <p>
-            Showing {Math.min(pageSize, totalItems) * page + 1} to{" "}
-            {Math.min(pageSize, totalItems) * (page + 1)} of{" "}
-            {totalItems.toLocaleString()} entries
-          </p>
+          <p>Showing {totalItems.toLocaleString()} entries</p>
         </Col>
       </Row>
       {!!isError && (
@@ -211,12 +173,6 @@ const PublicationsList = (props: PublicationListProps) => {
       )}
       <Pagination
         data={publications}
-        totalItems={totalItems}
-        page={page}
-        pageSize={pageSize}
-        onPageChange={updatePage}
-        onPageSizeChange={updatePageSize}
-        controlled
         buttonsPlacement="both"
         additionalTopControls={
           <>

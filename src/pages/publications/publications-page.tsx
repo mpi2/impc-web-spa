@@ -1,48 +1,16 @@
 import { Container, Tab, Tabs } from "react-bootstrap";
 import styles from "./styles.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import { fetchPublicationEndpoint } from "@/api-service";
 import { Card, Search, PublicationsList } from "@/components";
 import {
   PublicationsIncreaseChart,
   PublicationsByYearChart,
   GrantSection,
 } from "./charts";
-import { PublicationAggregationDataResponse } from "@/models";
 import { Suspense } from "react";
+import { usePublicationsAggregationQuery } from "@/hooks";
 
 const PublicationsPage = () => {
-  const { data } = useQuery({
-    queryKey: ["publications", "aggregation"],
-    queryFn: () => fetchPublicationEndpoint(`/api/v1/publications/aggregation`),
-    select: (aggregationData: PublicationAggregationDataResponse) => {
-      const yearlyIncrementData = aggregationData.incrementalCountsByYear;
-      const allGrantsData = aggregationData.publicationsByGrantAgency;
-      const publicationsByGrantsChartData = allGrantsData.filter(
-        (pubCount) => pubCount.count > 8,
-      );
-      const publicationsByQuarter = aggregationData.publicationsByQuarter.map(
-        (year) => {
-          return {
-            ...year,
-            byQuarter: year.byQuarter.sort((q1, q2) => q1.quarter - q2.quarter),
-          };
-        },
-      );
-
-      return {
-        yearlyIncrementData,
-        publicationsByGrantsChartData,
-        publicationsByQuarter,
-        allGrantsData,
-      };
-    },
-    placeholderData: {
-      incrementalCountsByYear: [],
-      publicationsByGrantAgency: [],
-      publicationsByQuarter: [],
-    },
-  });
+  const { data } = usePublicationsAggregationQuery();
 
   return (
     <>
