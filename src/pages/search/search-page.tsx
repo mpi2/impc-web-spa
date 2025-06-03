@@ -1,25 +1,23 @@
-import { Suspense } from "react";
+import { Suspense, useDeferredValue, useState } from "react";
 import { GeneResults, PhenotypeResults, Search } from "@/components";
 import { useSearchParams } from "react-router";
 
 type PageProps = {};
 
-const SearchResults = ({ }: PageProps) => {
-  const [ searchParams ] = useSearchParams();
+const SearchResults = ({}: PageProps) => {
+  const [searchParams] = useSearchParams();
   const type = searchParams.get("type") ?? "";
-  const query = searchParams.get("term") ?? "";
-
+  const [query, setQuery] = useState<string>(searchParams.get("term") ?? "");
+  const deferredQuery = useDeferredValue(query);
 
   const renderResults = () => {
     switch (type) {
       case "phenotype":
       case "pheno":
-        return (
-          <PhenotypeResults query={query} />
-        );
+        return <PhenotypeResults query={query} />;
       default:
         return (
-          <GeneResults query={query} />
+          <GeneResults query={deferredQuery} stale={query !== deferredQuery} />
         );
     }
   };
@@ -72,7 +70,7 @@ const SearchResults = ({ }: PageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Suspense>
-        <Search updateURL />
+        <Search onChange={setQuery} />
       </Suspense>
       {renderResults()}
     </>

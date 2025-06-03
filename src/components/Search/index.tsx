@@ -17,11 +17,9 @@ export type Tab = {
 const Search = ({
   defaultType,
   onChange,
-  updateURL = false,
 }: {
   defaultType?: string;
   onChange?: (val: string) => void;
-  updateURL?: boolean;
 }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -75,18 +73,6 @@ const Search = ({
       handleInput(searchParams.get("term") || "");
     }
   }, [searchParams]);
-
-  useEffect(() => {
-    if (updateURL) {
-      if (searchParams.get("query") !== query) {
-        const updatedSearchParams = new URLSearchParams(
-          searchParams.toString(),
-        );
-        updatedSearchParams.set("term", query);
-        navigate(`${pathname}?${updatedSearchParams.toString()}`);
-      }
-    }
-  }, [query]);
 
   return (
     <div className={`${styles.banner}`}>
@@ -146,9 +132,7 @@ const Search = ({
                       searchParams.toString(),
                     );
                     updatedSearchParams.set("term", e.currentTarget.value);
-                    navigate(
-                      `${pathname}?${updatedSearchParams.toString()}`,
-                    );
+                    navigate(`${pathname}?${updatedSearchParams.toString()}`);
                   }
                 }
               }}

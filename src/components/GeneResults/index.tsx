@@ -9,11 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
-import { useQuery } from "@tanstack/react-query";
-import { fetchData } from "@/api-service";
-import { GeneSearchResponse, GeneSearchItem } from "@/models/gene";
+import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useGeneSearchIndexQuery, useGeneSearchQuery } from "@/hooks";
+import classNames from "classnames";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -143,31 +143,29 @@ const GeneResult = ({
 
 type GeneResultProps = {
   query?: string;
+  stale: boolean;
 };
 
-const GeneResults = ({ query }: GeneResultProps) => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["search", "genes"],
-    queryFn: () => fetchData(`gene_search.json`),
-    select: (data: GeneSearchResponse) =>
-      data.results.map((r) => ({
-        ...r.entityProperties,
-        entityId: r.entityId,
-      })) as Array<GeneSearchItem>,
-  });
+function filterData(searchIndex, query: string, data) {
+  if (!!query && !!searchIndex) {
+    return searchIndex
+      .search(`${query}*`)
+      .map((item) => item.ref)
+      .map((mgiGeneAccessionId) =>
+        data.find((g) => g.mgiGeneAccessionId === mgiGeneAccessionId),
+      );
+  } else {
+    return data;
+  }
+}
 
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
+const GeneResults = ({ query, stale }: GeneResultProps) => {
+  const { data, isLoading } = useGeneSearchQuery();
+  const { data: searchIndex } = useGeneSearchIndexQuery();
 
-  const filteredData = !!query
-    ? data?.filter(
-        (item) =>
-          item.geneSymbol.includes(query) || item.synonyms.includes(query),
-      )
-    : data;
+  const filteredData = useMemo(() => {
+    return filterData(searchIndex, query, data);
+  }, [searchIndex, query, data]);
 
   return (
     <>
@@ -175,8 +173,12 @@ const GeneResults = ({ query }: GeneResultProps) => {
         <Card
           style={{
             marginTop: -80,
+            position: "relative",
           }}
         >
+          <div
+            className={classNames(styles.overlay, { [styles.active]: stale })}
+          ></div>
           <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
           </h1>
