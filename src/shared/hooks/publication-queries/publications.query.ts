@@ -7,8 +7,8 @@ export const usePublicationsQuery = (onlyConsortiumPublications: boolean) => {
     queryKey: ["publications", onlyConsortiumPublications],
     queryFn: () => {
       let fileName = onlyConsortiumPublications
-        ? "consortium_publications.json"
-        : "all_publications.json";
+        ? "publications/consortium_publications.json"
+        : "publications/all_publications.json";
       return fetchData(fileName);
     },
   });

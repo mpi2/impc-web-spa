@@ -5,7 +5,7 @@ import { PublicationAggregationDataResponse } from "@/models";
 export const usePublicationsAggregationQuery = () => {
   return useQuery({
     queryKey: ["publications", "aggregation"],
-    queryFn: () => fetchData(`publications_aggregation.json`),
+    queryFn: () => fetchData(`publications/publications_aggregation.json`),
     select: (aggregationData: PublicationAggregationDataResponse) => {
       const yearlyIncrementData = aggregationData.incrementalCountsByYear;
       const allGrantsData = aggregationData.publicationsByGrantAgency;
