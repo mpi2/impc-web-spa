@@ -14,7 +14,9 @@ const SearchResults = ({}: PageProps) => {
     switch (type) {
       case "phenotype":
       case "pheno":
-        return <PhenotypeResults query={query} />;
+        return (
+          <PhenotypeResults query={query} stale={query !== deferredQuery} />
+        );
       default:
         return (
           <GeneResults query={deferredQuery} stale={query !== deferredQuery} />

@@ -40,6 +40,7 @@ export const usePhenotypeResultsQuery = () => {
     queryKey: ["search", "phenotypes"],
     queryFn: () => fetchData<PhenotypeSearchResponse>("phenotype_search.json"),
     select: processPhenotypeResults,
+    staleTime: Infinity,
   });
 };
 

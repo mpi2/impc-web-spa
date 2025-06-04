@@ -11,7 +11,7 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useGeneSearchIndexQuery, useGeneSearchQuery } from "@/hooks";
 import classNames from "classnames";
 

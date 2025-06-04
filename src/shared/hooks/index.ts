@@ -26,7 +26,10 @@ export {
   processGeneOrderResponse,
 } from "./gene-queries/gene-order.query.ts";
 export { useChartFlags } from "./chartFlags";
-export { usePhenotypeResultsQuery } from "./phenotype-results.query";
+export {
+  usePhenotypeResultsQuery,
+  usePhenotypeSearchIndexQuery,
+} from "./search-queries/phenotype-results.query.ts";
 export { useGeneImagesQuery } from "./gene-queries/gene-images.query.ts";
 export { useGeneDiseasesQuery } from "./gene-queries/gene-diseases.query.ts";
 export { useGeneHistopathologyQuery } from "./gene-queries/gene-histopathology.query.ts";

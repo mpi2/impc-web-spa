@@ -20,15 +20,16 @@ import { useNavigate } from "react-router";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
-import {
-  PhenotypeSearchItem,
-  PhenotypeSearchResponse,
-} from "@/models/phenotype";
+import { PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
-import { usePhenotypeResultsQuery } from "@/hooks";
+import {
+  usePhenotypeResultsQuery,
+  usePhenotypeSearchIndexQuery,
+} from "@/hooks";
+import classNames from "classnames";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -126,9 +127,21 @@ const PhenotypeResult = ({
 
 type PhenotypeResultsProps = {
   query?: string;
+  stale: boolean;
 };
 
-const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
+function filterData(searchIndex, query: string, data) {
+  if (!!query && !!searchIndex) {
+    return searchIndex
+      .search(`${query}*`)
+      .map((item) => item.ref)
+      .map((mpId) => data.find((g) => g.mpId === mpId));
+  } else {
+    return data;
+  }
+}
+
+const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
@@ -143,22 +156,11 @@ const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
   };
 
   const { data, isLoading } = usePhenotypeResultsQuery();
+  const { data: searchIndex } = usePhenotypeSearchIndexQuery();
 
   const filteredData = useMemo(() => {
-    return !!selectedSystem || !!query
-      ? data?.filter(
-          (phenotype) =>
-            (!selectedSystem ||
-              phenotype.topLevelParentsArray.some(
-                (p) => p.mpTerm === selectedSystem,
-              )) &&
-            (!query ||
-              `${phenotype.definition} ${phenotype.mpId} ${phenotype.phenotypeName} ${phenotype.synonyms}`
-                .toLowerCase()
-                .includes(query)),
-        )
-      : data;
-  }, [data, selectedSystem, query]);
+    return filterData(searchIndex, query, data);
+  }, [searchIndex, query, data]);
 
   const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
@@ -185,8 +187,12 @@ const PhenotypeResults = ({ query }: PhenotypeResultsProps) => {
       <Card
         style={{
           marginTop: -80,
+          position: "relative",
         }}
       >
+        <div
+          className={classNames(styles.overlay, { [styles.active]: stale })}
+        ></div>
         <h1 style={{ marginBottom: 0 }}>
           <strong>Phenotype search results</strong>
         </h1>
