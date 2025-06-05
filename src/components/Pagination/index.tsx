@@ -35,7 +35,7 @@ type NavButtonsProps = {
   style?: CSSProperties;
 };
 
-const Pagination = <T extends unknown>(props: Props<T>) => {
+const Pagination = <T,>(props: Props<T>) => {
   const {
     data = [],
     children,
