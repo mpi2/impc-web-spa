@@ -50,3 +50,4 @@ export {
   useGeneSearchQuery,
   useGeneSearchIndexQuery,
 } from "./search-queries/gene-search.query.ts";
+export { useWebWorker } from "./web-worker.ts";
