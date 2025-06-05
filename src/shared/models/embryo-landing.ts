@@ -1,4 +1,4 @@
-type EmbryoLandingPageData = {
+export type EmbryoLandingPageData = {
   primaryViabilityTable: Array<{
     outcome: string;
     genes: Array<{ mgiGeneAccessionId: string; geneSymbol: string }>;
