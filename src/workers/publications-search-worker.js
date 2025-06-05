@@ -11,9 +11,16 @@ let searchIndex;
 fetch(url)
   .then((res) => res.json())
   .then((serializedIndex) => {
+    postMessage({ type: "index-loaded" });
     searchIndex = lunr.Index.load(serializedIndex);
   });
 addEventListener("message", (event) => {
-  console.log("Received message", event);
-  postMessage(url);
+  if (searchIndex) {
+    const ids = searchIndex.search(`${event.data}*`).map((item) => item.ref);
+    postMessage({
+      type: "query-result",
+      result: ids,
+      noMatches: ids.length === 0,
+    });
+  }
 });

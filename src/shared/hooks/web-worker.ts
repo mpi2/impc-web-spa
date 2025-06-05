@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-export const useWebWorker = (workerUrl: string) => {
-  const [result, setResult] = useState(null);
+export const useWebWorker = <T>(workerUrl: string) => {
+  const [eventResult, setEventResult] = useState<T | null>(null);
   const workerRef = useRef<Worker | null>(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export const useWebWorker = (workerUrl: string) => {
       type: "module",
     });
     workerRef.current.addEventListener("message", (event) => {
-      setResult(event.data);
+      setEventResult(event.data);
     });
     return () => {
       workerRef.current?.terminate();
@@ -20,5 +20,5 @@ export const useWebWorker = (workerUrl: string) => {
     workerRef.current?.postMessage(message);
   };
 
-  return { result, sendMessage };
+  return { eventResult, sendMessage };
 };

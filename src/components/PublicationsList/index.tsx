@@ -13,21 +13,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from "./styles.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import {
-  PUBLICATIONS_ENDPOINT_URL,
-  fetchPublicationEndpoint,
-} from "@/api-service";
+import { PROTOTYPE_DATA_ROOT, PUBLICATIONS_ENDPOINT_URL } from "@/api-service";
 import Pagination from "../Pagination";
 import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import { AlleleSymbol } from "@/components";
 import { Link } from "react-router";
-import { usePublicationsQuery } from "@/hooks";
+import { usePublicationsQuery, useWebWorker } from "@/hooks";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -35,15 +31,22 @@ export type PublicationListProps = {
   prefixQuery?: string;
 };
 
+type WebWorkerResult =
+  | {
+      type: "index-loaded";
+    }
+  | {
+      type: "query-result";
+      result: Array<string>;
+      noMatches: boolean;
+    };
+
 const PublicationsList = (props: PublicationListProps) => {
   const {
     onlyConsortiumPublications,
     filterByGrantAgency,
     prefixQuery = "",
   } = props;
-  const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
-  const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
-  const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const displayPubTitle = (pub: Publication) => {
     if (pub.doi) {
       return (
@@ -92,6 +95,7 @@ const PublicationsList = (props: PublicationListProps) => {
       ? pub.alleles
       : pub.alleles.slice(0, 8);
   };
+
   const getMapByType = (type: "abstract" | "mesh-terms" | "alleles") => {
     switch (type) {
       case "abstract":
@@ -102,6 +106,7 @@ const PublicationsList = (props: PublicationListProps) => {
         return { map: meshTermsVisibilityMap, setFn: setMeshVisibilityMap };
     }
   };
+
   const isFieldVisible = (
     pub: Publication,
     type: "abstract" | "mesh-terms" | "alleles",
@@ -134,10 +139,22 @@ const PublicationsList = (props: PublicationListProps) => {
     return url;
   };
 
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(10);
+  const workerScriptUrl = useMemo(
+    () =>
+      `../../workers/publications-search-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&only-consortium=${onlyConsortiumPublications}`,
+    [onlyConsortiumPublications],
+  );
+
+  const { eventResult, sendMessage } =
+    useWebWorker<WebWorkerResult>(workerScriptUrl);
+
+  const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
+  const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
+  const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const [query, setQuery] = useState("");
-  const [totalItems, setTotalItems] = useState(0);
+  const [indexLoaded, setIndexLoaded] = useState(false);
+  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
+  const [noMatches, setNoMatches] = useState<boolean>(false);
   const [debounceQuery, setDebouncedQuery] = useDebounceValue<string>(
     query,
     500,
@@ -149,21 +166,50 @@ const PublicationsList = (props: PublicationListProps) => {
   } = usePublicationsQuery(onlyConsortiumPublications);
 
   useEffect(() => {
-    if (publications) {
-      setTotalItems(publications.length);
+    setDebouncedQuery(query);
+    if (noMatches && !query) {
+      setNoMatches(false);
     }
-  }, [publications]);
+  }, [query, noMatches]);
 
   useEffect(() => {
-    setDebouncedQuery(query);
-    setPage(0);
-  }, [query]);
+    if (debounceQuery) {
+      sendMessage(debounceQuery);
+    }
+  }, [debounceQuery]);
+
+  useEffect(() => {
+    if (eventResult) {
+      switch (eventResult.type) {
+        case "index-loaded":
+          setIndexLoaded(true);
+          break;
+        case "query-result":
+          setSearchResultIds(eventResult.result);
+          setNoMatches(eventResult.noMatches);
+          break;
+      }
+    }
+  }, [eventResult]);
+
+  const filteredPublications = useMemo(() => {
+    if (noMatches) {
+      return [];
+    }
+    if (debounceQuery && searchResultIds.length) {
+      return publications?.filter((publication) =>
+        searchResultIds.includes(publication["_id"]),
+      );
+    } else {
+      return publications;
+    }
+  }, [publications, debounceQuery, searchResultIds, noMatches]);
 
   return (
     <Container>
       <Row>
         <Col xs={6}>
-          <p>Showing {totalItems.toLocaleString()} entries</p>
+          <p>Showing {filteredPublications?.length.toLocaleString()} entries</p>
         </Col>
       </Row>
       {!!isError && (
@@ -172,7 +218,7 @@ const PublicationsList = (props: PublicationListProps) => {
         </Alert>
       )}
       <Pagination
-        data={publications}
+        data={filteredPublications}
         buttonsPlacement="both"
         additionalTopControls={
           <>
@@ -184,6 +230,7 @@ const PublicationsList = (props: PublicationListProps) => {
                   aria-labelledby="filter-label"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  disabled={!indexLoaded}
                 />
               </InputGroup>
             </div>
@@ -332,6 +379,12 @@ const PublicationsList = (props: PublicationListProps) => {
                     </td>
                   </tr>
                 ))}
+              {noMatches && (
+                <Alert variant="primary">
+                  No publications found that use IMPC mice or data for the
+                  filters
+                </Alert>
+              )}
             </tbody>
           </Table>
         )}
