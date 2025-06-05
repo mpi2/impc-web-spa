@@ -190,9 +190,7 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
           position: "relative",
         }}
       >
-        <div
-          className={classNames(styles.overlay, { [styles.active]: stale })}
-        ></div>
+        <div className={classNames("overlay", { active: stale })}></div>
         <h1 style={{ marginBottom: 0 }}>
           <strong>Phenotype search results</strong>
         </h1>

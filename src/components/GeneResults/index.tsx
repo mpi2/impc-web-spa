@@ -177,7 +177,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
           }}
         >
           <div
-            className={classNames(styles.overlay, { [styles.active]: stale })}
+            className={classNames("search-overlay", { active: stale })}
           ></div>
           <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
