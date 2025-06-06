@@ -24,22 +24,13 @@ import _ from "lodash";
 import { AlleleSymbol } from "@/components";
 import { Link } from "react-router";
 import { usePublicationsQuery, useWebWorker } from "@/hooks";
+import { SearchWebWorkerResult } from "@/models";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
   filterByGrantAgency?: string;
   prefixQuery?: string;
 };
-
-type WebWorkerResult =
-  | {
-      type: "index-loaded";
-    }
-  | {
-      type: "query-result";
-      result: Array<string>;
-      noMatches: boolean;
-    };
 
 const PublicationsList = (props: PublicationListProps) => {
   const {
@@ -146,7 +137,7 @@ const PublicationsList = (props: PublicationListProps) => {
   );
 
   const { eventResult, sendMessage } =
-    useWebWorker<WebWorkerResult>(workerScriptUrl);
+    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
 
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());

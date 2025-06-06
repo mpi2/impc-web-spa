@@ -33,6 +33,7 @@ export type {
 export type { AlleleSummary } from "./allele";
 export type { Release };
 export type { PublicationAggregationDataResponse } from "./publications";
+export type { SearchWebWorkerResult } from "./web-worker.ts";
 
 type Model =
   | PhenotypeRef
