@@ -4,7 +4,6 @@ import {
   PhenotypeSearchItem,
   PhenotypeSearchResponse,
 } from "@/models/phenotype";
-import lunr from "lunr";
 
 const parsePhenotypeString = (value: string) => {
   const [mpId, mpTerm] = value.split("|");
@@ -40,15 +39,6 @@ export const usePhenotypeResultsQuery = () => {
     queryKey: ["search", "phenotypes"],
     queryFn: () => fetchData<PhenotypeSearchResponse>("phenotype_search.json"),
     select: processPhenotypeResults,
-    staleTime: Infinity,
-  });
-};
-
-export const usePhenotypeSearchIndexQuery = () => {
-  return useQuery({
-    queryKey: ["search", "phenotypes", "search_index"],
-    queryFn: () => fetchData(`phenotype_search_index.json`),
-    select: (data) => lunr.Index.load(data),
     staleTime: Infinity,
   });
 };

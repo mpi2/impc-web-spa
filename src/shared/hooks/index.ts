@@ -26,10 +26,7 @@ export {
   processGeneOrderResponse,
 } from "./gene-queries/gene-order.query.ts";
 export { useChartFlags } from "./chartFlags";
-export {
-  usePhenotypeResultsQuery,
-  usePhenotypeSearchIndexQuery,
-} from "./search-queries/phenotype-results.query.ts";
+export { usePhenotypeResultsQuery } from "./search-queries/phenotype-results.query.ts";
 export { useGeneImagesQuery } from "./gene-queries/gene-images.query.ts";
 export { useGeneDiseasesQuery } from "./gene-queries/gene-diseases.query.ts";
 export { useGeneHistopathologyQuery } from "./gene-queries/gene-histopathology.query.ts";
@@ -43,8 +40,5 @@ export { useAlleleCRISPRQuery } from "./allele-queries/allele-crispr.query.ts";
 export { usePhenotypeSummaryQuery } from "./phenotype-queries/phenotype-summary.query.ts";
 export { usePublicationsQuery } from "./publication-queries/publications.query.ts";
 export { usePublicationsAggregationQuery } from "./publication-queries/publications-aggregation.query.ts";
-export {
-  useGeneSearchQuery,
-  useGeneSearchIndexQuery,
-} from "./search-queries/gene-search.query.ts";
+export { useGeneSearchQuery } from "./search-queries/gene-search.query.ts";
 export { useWebWorker } from "./web-worker.ts";
