@@ -22,14 +22,17 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
 import {
   usePhenotypeResultsQuery,
   usePhenotypeSearchIndexQuery,
+  useWebWorker,
 } from "@/hooks";
 import classNames from "classnames";
+import { PROTOTYPE_DATA_ROOT } from "@/api-service";
+import { SearchWebWorkerResult } from "@/models";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -145,6 +148,9 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
+  const [indexLoaded, setIndexLoaded] = useState(false);
+  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
+  const [noMatches, setNoMatches] = useState<boolean>(false);
   const updateSortByOntology = (value: "asc" | "desc") => {
     setSortGenes(null);
     setSort(value);
@@ -156,11 +162,46 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
   };
 
   const { data, isLoading } = usePhenotypeResultsQuery();
-  const { data: searchIndex } = usePhenotypeSearchIndexQuery();
+
+  const workerScriptUrl = useMemo(
+    () =>
+      `../../workers/search-result-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&type=phenotype`,
+    [],
+  );
+
+  const { eventResult, sendMessage } =
+    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
+
+  useEffect(() => {
+    if (eventResult) {
+      switch (eventResult.type) {
+        case "index-loaded":
+          setIndexLoaded(true);
+          break;
+        case "query-result":
+          setSearchResultIds(eventResult.result);
+          setNoMatches(eventResult.noMatches);
+          break;
+      }
+    }
+  }, [eventResult]);
+
+  useEffect(() => {
+    if (query) {
+      sendMessage(query);
+    }
+  }, [query]);
 
   const filteredData = useMemo(() => {
-    return filterData(searchIndex, query, data);
-  }, [searchIndex, query, data]);
+    if (noMatches) {
+      return [];
+    }
+    if (query && searchResultIds.length) {
+      return data?.filter((gene) => searchResultIds.includes(gene.mpId));
+    } else {
+      return data;
+    }
+  }, [data, query, searchResultIds, noMatches]);
 
   const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {

@@ -11,9 +11,11 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useMemo } from "react";
-import { useGeneSearchIndexQuery, useGeneSearchQuery } from "@/hooks";
+import { useEffect, useMemo, useState } from "react";
+import { useGeneSearchQuery, useWebWorker } from "@/hooks";
 import classNames from "classnames";
+import { PROTOTYPE_DATA_ROOT } from "@/api-service";
+import { SearchWebWorkerResult } from "@/models";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -146,26 +148,53 @@ type GeneResultProps = {
   stale: boolean;
 };
 
-function filterData(searchIndex, query: string, data) {
-  if (!!query && !!searchIndex) {
-    return searchIndex
-      .search(`${query}*`)
-      .map((item) => item.ref)
-      .map((mgiGeneAccessionId) =>
-        data.find((g) => g.mgiGeneAccessionId === mgiGeneAccessionId),
-      );
-  } else {
-    return data;
-  }
-}
-
 const GeneResults = ({ query, stale }: GeneResultProps) => {
   const { data, isLoading } = useGeneSearchQuery();
-  const { data: searchIndex } = useGeneSearchIndexQuery();
+  const [indexLoaded, setIndexLoaded] = useState(false);
+  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
+  const [noMatches, setNoMatches] = useState<boolean>(false);
+
+  const workerScriptUrl = useMemo(
+    () =>
+      `../../workers/search-result-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&type=gene`,
+    [],
+  );
+
+  const { eventResult, sendMessage } =
+    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
+
+  useEffect(() => {
+    if (eventResult) {
+      switch (eventResult.type) {
+        case "index-loaded":
+          setIndexLoaded(true);
+          break;
+        case "query-result":
+          setSearchResultIds(eventResult.result);
+          setNoMatches(eventResult.noMatches);
+          break;
+      }
+    }
+  }, [eventResult]);
+
+  useEffect(() => {
+    if (query) {
+      sendMessage(query);
+    }
+  }, [query]);
 
   const filteredData = useMemo(() => {
-    return filterData(searchIndex, query, data);
-  }, [searchIndex, query, data]);
+    if (noMatches) {
+      return [];
+    }
+    if (query && searchResultIds.length) {
+      return data?.filter((gene) =>
+        searchResultIds.includes(gene.mgiGeneAccessionId),
+      );
+    } else {
+      return data;
+    }
+  }, [data, query, searchResultIds, noMatches]);
 
   return (
     <>
