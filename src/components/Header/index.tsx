@@ -34,27 +34,27 @@ const rewriteMenu = (data) => {
 const getInternalLink = (name: string, link: string) => {
   switch (name) {
     case "Cardiovascular":
-      return "/cardiovascular";
+      return "/data/cardiovascular";
     case "Embryo Development":
-      return "/embryo";
+      return "/data/embryo";
     case "Papers Using IMPC Resources":
-      return "/publications";
+      return "/data/publications";
     case "Histopathology":
-      return "/histopath";
+      return "/data/histopath";
     case "Sexual Dimorphism":
-      return "/sexual-dimorphism";
+      return "/data/sexual-dimorphism";
     case "Genes Critical for Hearing Identified":
-      return "/hearing";
+      return "/data/hearing";
     case "Genetic Basis for Metabolic Diseases":
-      return "/metabolism";
+      return "/data/metabolism";
     case "Essential Genes - Translating to Other Species":
-      return "/conservation";
+      return "/data/conservation";
     case "Batch query":
       return "/batchQuery";
     case "Late Adult Data":
-      return "/late-adult-data";
+      return "/data/late-adult-data";
     case "Latest Data Release":
-      return "/release";
+      return "/data/release";
     case "IMPC Data Generation":
       return "/understand/start-using-the-impc/impc-data-generation";
     default:

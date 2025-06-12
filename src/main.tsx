@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import RootLayout from "./layout.tsx";
 import SearchResults from "@/pages/search/search-page.tsx";
 import GenePage from "@/pages/genes/[pid]/gene-page.tsx";
@@ -32,8 +32,8 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<SearchResults />} />
+        <Route path="/data" element={<RootLayout />}>
+          <Route path="search" element={<SearchResults />} />
           <Route path="genes/:pid" element={<GenePage />} />
           <Route
             path="genes/:pid/images/:parameterStableId"
@@ -92,6 +92,10 @@ createRoot(document.getElementById("root")!).render(
         <Route
           path="/understand/start-using-the-impc/impc-data-generation"
           element={<HTMLPage htmlContent={IMPCDataGenerationPage} />}
+        ></Route>
+        <Route
+          path="*"
+          element={<Navigate to="/data/search" replace />}
         ></Route>
       </Routes>
     </BrowserRouter>

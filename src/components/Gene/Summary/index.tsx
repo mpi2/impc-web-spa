@@ -80,10 +80,15 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
       <div className={styles.headingCont}>
         <h1 className="mt-2 mb-3">
           <strong>
-            <i>{gene?.geneSymbol ?? <Skeleton style={{ width: "50px"}} inline />}</i>
+            <i>
+              {gene?.geneSymbol ?? (
+                <Skeleton style={{ width: "50px" }} inline />
+              )}
+            </i>
           </strong>
           &nbsp;
-          <span>|</span>&nbsp;{gene?.geneName ?? <Skeleton style={{ width: "50px"}} inline />}
+          <span>|</span>&nbsp;
+          {gene?.geneName ?? <Skeleton style={{ width: "50px" }} inline />}
         </h1>
       </div>
       <div className={styles.subheadingCont}>
@@ -95,7 +100,9 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
             target="_blank"
             title={`visit MGI site to view details for gene ${gene?.geneSymbol}`}
           >
-            {gene?.mgiGeneAccessionId ?? <Skeleton style={{ width: "50px"}} inline />}
+            {gene?.mgiGeneAccessionId ?? (
+              <Skeleton style={{ width: "50px" }} inline />
+            )}
             <FontAwesomeIcon
               icon={faExternalLinkAlt}
               className="grey"
@@ -265,13 +272,13 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
             </Col>
             <Col md={6}>
               <CollectionItem
-                link={`/supporting-data/viability?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
+                link={`/data/supporting-data/viability?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene?.hasViabilityData}
               />
               <br />
               <CollectionItem
-                link={`/supporting-data/bodyweight?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
+                link={`/data/supporting-data/bodyweight?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene?.hasBodyWeightData}
               />

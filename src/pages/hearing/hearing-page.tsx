@@ -244,7 +244,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
                   <Link
                     className="primary link"
-                    to={`/genes/${data.adgrb1.mgiGeneAccessionId}`}
+                    to={`/data/genes/${data.adgrb1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.adgrb1.alleleSymbol}
@@ -259,7 +259,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
                   <Link
                     className="primary link"
-                    to={`/genes/${data.elmod1.mgiGeneAccessionId}`}
+                    to={`/data/genes/${data.elmod1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.elmod1.alleleSymbol}
@@ -278,7 +278,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    to={`/genes/${data.ccdc88c.mgiGeneAccessionId}`}
+                    to={`/data/genes/${data.ccdc88c.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.ccdc88c.alleleSymbol}
@@ -295,7 +295,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    to={`/genes/${data.zfp719.mgiGeneAccessionId}`}
+                    to={`/data/genes/${data.zfp719.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.zfp719.alleleSymbol}

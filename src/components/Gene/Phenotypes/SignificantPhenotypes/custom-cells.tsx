@@ -12,7 +12,7 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   const mpTermKey = !!props.mpTermIdKey ? props.mpTermIdKey : "id";
   const mpTermpId = get(props.value, mpTermKey) as string;
 
-  let url = `/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
+  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =

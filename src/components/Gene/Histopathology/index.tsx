@@ -21,7 +21,9 @@ const Histopathology = () => {
   const [sorted, setSorted] = useState<any[]>([]);
   const defaultSort: SortType = useMemo(() => ["parameterName", "asc"], []);
 
-  const { isLoading, isError, data } = useGeneHistopathologyQuery(gene.mgiGeneAccessionId);
+  const { isLoading, isError, data } = useGeneHistopathologyQuery(
+    gene.mgiGeneAccessionId,
+  );
 
   useEffect(() => {
     if (data) {
@@ -54,7 +56,7 @@ const Histopathology = () => {
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link
             className="primary link"
-            to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+            to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
           >
             Click here to see the raw data
           </Link>
@@ -92,7 +94,7 @@ const Histopathology = () => {
         Full histopathology data table, including submitted images,&nbsp;
         <Link
           className="link primary"
-          to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+          to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
         >
           can be accessed by clicking this link
         </Link>
@@ -122,7 +124,7 @@ const Histopathology = () => {
                 <tr key={index}>
                   <td>
                     <Link
-                      to={`/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
+                      to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
                     >

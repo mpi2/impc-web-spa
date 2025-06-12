@@ -66,7 +66,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     metadataGroup,
   } = props.value;
 
-  let url = `/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
+  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
@@ -75,9 +75,9 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
   if (procedureName.includes("Histopathology")) {
     if (parameterName.includes("-")) {
       const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
-      url = `/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;
+      url = `/data/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;
     } else {
-      url = `/supporting-data/histopath/${mgiGeneAccessionId}`;
+      url = `/data/supporting-data/histopath/${mgiGeneAccessionId}`;
     }
   }
   // if linking to any "special" chart page (ABR, PPI or IPGTT), it shouldn't specify metadataGroup

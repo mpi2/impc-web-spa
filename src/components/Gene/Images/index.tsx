@@ -44,7 +44,7 @@ const Image = ({
   isSpecialFormat,
 }: ImageProps) => {
   const urlSegment = isSpecialFormat ? "download-images" : "images";
-  let url = `/genes/${mgiGeneAccessionId}/${urlSegment}/${parameterStableId}`;
+  let url = `/data/genes/${mgiGeneAccessionId}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
     url = `https://www.mousephenotype.org/embryoviewer/?mgi=${mgiGeneAccessionId}`;
   }
@@ -85,7 +85,9 @@ const Image = ({
 
 const Images = () => {
   const gene = useContext(GeneContext);
-  const { isLoading, isError, data } = useGeneImagesQuery(gene.mgiGeneAccessionId);
+  const { isLoading, isError, data } = useGeneImagesQuery(
+    gene.mgiGeneAccessionId,
+  );
 
   if (isLoading) {
     return (
