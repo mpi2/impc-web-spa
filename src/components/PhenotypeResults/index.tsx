@@ -25,11 +25,7 @@ import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { allBodySystems } from "@/utils";
-import {
-  usePhenotypeResultsQuery,
-  usePhenotypeSearchIndexQuery,
-  useWebWorker,
-} from "@/hooks";
+import { usePhenotypeResultsQuery, useWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { PROTOTYPE_DATA_ROOT } from "@/api-service";
 import { SearchWebWorkerResult } from "@/models";
@@ -132,17 +128,6 @@ type PhenotypeResultsProps = {
   query?: string;
   stale: boolean;
 };
-
-function filterData(searchIndex, query: string, data) {
-  if (!!query && !!searchIndex) {
-    return searchIndex
-      .search(`${query}*`)
-      .map((item) => item.ref)
-      .map((mpId) => data.find((g) => g.mpId === mpId));
-  } else {
-    return data;
-  }
-}
 
 const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
