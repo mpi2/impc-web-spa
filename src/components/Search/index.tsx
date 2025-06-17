@@ -136,7 +136,7 @@ const Search = ({
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (pathname !== "/") {
-                    let url = `/?term=${e.currentTarget.value}`;
+                    let url = `/data/search?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += "&type=pheno";
                     }
@@ -146,9 +146,7 @@ const Search = ({
                       searchParams.toString(),
                     );
                     updatedSearchParams.set("term", e.currentTarget.value);
-                    navigate(
-                      `${pathname}?${updatedSearchParams.toString()}`,
-                    );
+                    navigate(`${pathname}?${updatedSearchParams.toString()}`);
                   }
                 }
               }}
