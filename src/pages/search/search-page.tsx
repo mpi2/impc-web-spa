@@ -72,7 +72,7 @@ const SearchResults = ({}: PageProps) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Suspense>
-        <Search onChange={setQuery} />
+        <Search onChange={setQuery} updateURL />
       </Suspense>
       {renderResults()}
     </>
