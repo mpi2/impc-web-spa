@@ -10,7 +10,7 @@
   transition: 0.5s all;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-top: 4rem;
   &.active {
     opacity: 1;
     z-index: 10;
