@@ -8,8 +8,17 @@
   height: 100%;
   z-index: -1;
   transition: 0.5s all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &.active {
     opacity: 1;
-    z-index: 1;
+    z-index: 10;
+  }
+  .spinner-border {
+    --bs-spinner-width: 3rem;
+    --bs-spinner-height: 3rem;
+    border-color: #FFF;
+    border-right-color: transparent;
   }
 }
