@@ -152,6 +152,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
   const { data, isLoading } = useGeneSearchQuery();
   const [indexLoaded, setIndexLoaded] = useState(false);
   const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
+  const [isSearching, setIsSearching] = useState(false);
   const [noMatches, setNoMatches] = useState<boolean>(false);
 
   const workerScriptUrl = useMemo(
@@ -172,6 +173,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
         case "query-result":
           setSearchResultIds(eventResult.result);
           setNoMatches(eventResult.noMatches);
+          setIsSearching(false);
           break;
       }
     }
@@ -180,6 +182,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
   useEffect(() => {
     if (query) {
       sendMessage(query);
+      setIsSearching(true);
     }
   }, [query]);
 
@@ -206,8 +209,12 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
           }}
         >
           <div
-            className={classNames("search-overlay", { active: stale })}
-          ></div>
+            className={classNames("search-overlay", {
+              active: stale || !indexLoaded || isSearching,
+            })}
+          >
+            <Spinner animation="border" />
+          </div>
           <h1 style={{ marginBottom: 0 }}>
             <strong>Gene search results</strong>
           </h1>
