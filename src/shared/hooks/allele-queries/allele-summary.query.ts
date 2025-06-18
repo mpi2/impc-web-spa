@@ -8,10 +8,11 @@ export const useAlleleSummaryQuery = (
   alleleSymbol: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery<AlleleSummary>({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", alleleSymbol, "summary"],
-    queryFn: () => fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/summary.json`),
+    queryFn: () =>
+      fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/summary.json`),
     enabled: !!mgiGeneAccessionId,
   });
-}
+};

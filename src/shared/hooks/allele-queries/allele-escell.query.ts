@@ -7,10 +7,11 @@ export const useAlleleESCellQuery = (
   alleleSymbol: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", alleleSymbol, "es_cell"],
-    queryFn: () => fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/es_cell.json`),
+    queryFn: () =>
+      fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/es_cell.json`),
     enabled: !!mgiGeneAccessionId,
   });
-}
+};

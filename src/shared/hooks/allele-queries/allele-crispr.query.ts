@@ -7,10 +7,11 @@ export const useAlleleCRISPRQuery = (
   alleleSymbol: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "CRISPR", alleleSymbol],
-    queryFn: () => fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/crispr.json`),
+    queryFn: () =>
+      fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/crispr.json`),
     select: (data) => (data ?? [])[0] || undefined,
   });
-}
+};

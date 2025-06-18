@@ -7,10 +7,11 @@ export const useAlleleTVPQuery = (
   alleleSymbol: string,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "alleles", "tvp", alleleSymbol],
-    queryFn: () => fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/tvp.json`),
+    queryFn: () =>
+      fetchData(`${chromosome}/${id}/alleles/${alleleSymbol}/tvp.json`),
     placeholderData: [],
   });
-}
+};
