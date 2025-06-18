@@ -5,7 +5,16 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), VitePWA({ registerType: "autoUpdate" })],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    VitePWA({
+      registerType: "autoUpdate",
+      workbox: {
+        maximumFileSizeToCacheInBytes: 10000000,
+      },
+    }),
+  ],
   server: {
     proxy: {
       "/proxy": {
