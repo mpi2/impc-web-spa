@@ -40,7 +40,10 @@ const Crispr = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const { data, isLoading, isError } = useAlleleCRISPRQuery(mgiGeneAccessionId, alleleName);
+  const { data, isLoading, isError } = useAlleleCRISPRQuery(
+    mgiGeneAccessionId,
+    alleleName,
+  );
 
   if (isLoading) {
     return (
@@ -85,7 +88,6 @@ const Crispr = ({
     { field: "guideSource", label: "Guide source", width: 2 },
   ];
 
-  console.log("CRISPR: ", data);
   return !data ? (
     <Card id="crispr">
       <h2>Crispr</h2>
@@ -114,7 +116,7 @@ const Crispr = ({
                   <CopyButton sequence={sequence} />
                 </div>
               </div>
-            )
+            ),
           )}
         </Card>
       )}
@@ -201,7 +203,7 @@ const Crispr = ({
                 item.guides
                   .map(
                     (guide) =>
-                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`
+                      `Sequence: ${guide.guideSequence}, PAM: ${guide.pam}, CHR: ${guide.chr}, Genome build: ${guide.genomeBuild}`,
                   )
                   .join(" | "),
             },
