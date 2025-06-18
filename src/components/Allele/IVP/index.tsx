@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
-import Card from "../../Card";
-import Pagination from "../../Pagination";
-import _ from "lodash";
-import SortableTable from "../../SortableTable";
+import { orderBy } from "lodash";
 import { Link } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { useAlleleIVPQuery } from "@/hooks";
+import { Card, Pagination, SortableTable } from "@/components";
 
 const IntermediateVector = ({
   mgiGeneAccessionId,
@@ -16,18 +13,14 @@ const IntermediateVector = ({
   mgiGeneAccessionId: string;
   alleleName: string;
 }) => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["genes", mgiGeneAccessionId, "alleles", "ivp", alleleName],
-    queryFn: () =>
-      fetchAPI(
-        `/api/v1/alleles/ivp/get_by_mgi_and_allele_name/${mgiGeneAccessionId}/${alleleName}`,
-      ),
-    placeholderData: [],
-  });
+  const { data, isLoading, isError } = useAlleleIVPQuery(
+    mgiGeneAccessionId,
+    alleleName,
+  );
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
-      setSorted(_.orderBy(data, "productId", "asc"));
+      setSorted(orderBy(data, "productId", "asc"));
     }
   }, [data]);
 

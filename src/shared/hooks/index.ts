@@ -37,6 +37,7 @@ export { useAlleleESCellQuery } from "./allele-queries/allele-escell.query.ts";
 export { useAlleleMiceQuery } from "./allele-queries/allele-mice.query.ts";
 export { useAlleleTVPQuery } from "./allele-queries/allele-tvp.query.ts";
 export { useAlleleCRISPRQuery } from "./allele-queries/allele-crispr.query.ts";
+export { useAlleleIVPQuery } from "./allele-queries/allele-ivp.query.ts";
 export { usePhenotypeSummaryQuery } from "./phenotype-queries/phenotype-summary.query.ts";
 export { usePublicationsQuery } from "./publication-queries/publications.query.ts";
 export { usePublicationsAggregationQuery } from "./publication-queries/publications-aggregation.query.ts";
