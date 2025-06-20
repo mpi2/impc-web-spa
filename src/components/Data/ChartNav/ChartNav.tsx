@@ -21,7 +21,7 @@ const ChartNav = (props: ChartNavProps) => {
         data-testid="back-to-gene-page-link"
       >
         <Link
-          to={`/genes/${mgiGeneAccessionId}`}
+          to={`/data/genes/${mgiGeneAccessionId}`}
           className={classNames("mb-3", styles.link)}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
