@@ -3,14 +3,13 @@ import { fetchData } from "@/api-service";
 import { Dataset } from "@/models";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
-
 export const useViabilityQuery = (mgiGeneAccessionId: string) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   const { data, isLoading, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "all", "viability"],
     queryFn: () => fetchData(`${chromosome}/${id}/viability.json`),
-    select: data => {
+    select: (data) => {
       const groupedData = data.reduce((acc, d) => {
         const {
           alleleAccessionId,
@@ -24,7 +23,7 @@ export const useViabilityQuery = (mgiGeneAccessionId: string) => {
         if (!acc[key]) {
           acc[key] = {
             ...d,
-            key
+            key,
           };
         }
         return acc;
@@ -36,6 +35,6 @@ export const useViabilityQuery = (mgiGeneAccessionId: string) => {
   return {
     viabilityData: data,
     isViabilityLoading: isLoading,
-    ...rest
-  }
-}
+    ...rest,
+  };
+};
