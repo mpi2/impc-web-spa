@@ -38,6 +38,7 @@ const generateParamsObject = (
     "pipelineStableId",
     "procedureStableId",
     "phenotypingCentre",
+    "statisticalResultId",
   ];
   const result = {};
   params.forEach((param) => (result[param] = searchParams.get(param)));
@@ -77,7 +78,7 @@ const GeneralChartPage = () => {
   const { datasetSummaries, isFetching, isError } = useDatasetsQuery(
     mgiGeneAccessionId,
     generateParamsObject(searchParams),
-    !!mgiGeneAccessionId
+    !!mgiGeneAccessionId,
   );
 
   const {

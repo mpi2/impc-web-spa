@@ -32,4 +32,5 @@ export type GeneStatisticalResult = {
   dataType: string;
   assertionType: string;
   statisticalMethod: string;
+  statisticalResultId: string;
 };
