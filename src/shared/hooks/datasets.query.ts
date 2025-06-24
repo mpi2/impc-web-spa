@@ -11,7 +11,7 @@ export const generateDatasetsEndpointUrl = (
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
   const id = mgiGeneAccessionId?.replace(":", "_");
   let endpointUrl = !!params.mpTermId
-    ? `/api/v1/genes/${mgiGeneAccessionId}/${params.mpTermId}/dataset/`
+    ? `${chromosome}/${id}/significant_phenotypes/${params.mpTermId.replace(":", "_")}.json`
     : `${chromosome}/${id}/datasets/${params.statisticalResultId}.json`;
   if (!params.mpTermId && !!params.metadataGroup) {
     endpointUrl += `&metadataGroup=${params.metadataGroup}`;
