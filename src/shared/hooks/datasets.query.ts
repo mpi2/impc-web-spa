@@ -1,15 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { Dataset } from "@/models";
 import { ChartPageParamsObj } from "@/models/chart";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 export const generateDatasetsEndpointUrl = (
   mgiGeneAccessionId: string,
   params: ChartPageParamsObj,
 ) => {
+  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const id = mgiGeneAccessionId?.replace(":", "_");
   let endpointUrl = !!params.mpTermId
     ? `/api/v1/genes/${mgiGeneAccessionId}/${params.mpTermId}/dataset/`
-    : `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${params.alleleAccessionId}&zygosity=${params.zygosity}&parameterStableId=${params.parameterStableId}&pipelineStableId=${params.pipelineStableId}&procedureStableId=${params.procedureStableId}&phenotypingCentre=${params.phenotypingCentre}`;
+    : `${chromosome}/${id}/datasets/${params.statisticalResultId}.json`;
   if (!params.mpTermId && !!params.metadataGroup) {
     endpointUrl += `&metadataGroup=${params.metadataGroup}`;
   }
@@ -34,7 +37,7 @@ export const useDatasetsQuery = (
   const apiUrl = generateDatasetsEndpointUrl(mgiGeneAccessionId, params);
   const { data, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
-    queryFn: () => fetchAPI(apiUrl),
+    queryFn: () => fetchData(apiUrl),
     enabled,
     select: sortAndDeduplicateDatasets,
     placeholderData: [],
