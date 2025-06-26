@@ -99,7 +99,6 @@ const SignificantPhenotypes = ({
   return (
     <>
       <SmartTable<GenePhenotypeHits>
-        id="significant-phenotypes-table"
         data={filteredPhenotypeData}
         defaultSort={defaultSort}
         customSortFunction={sortPhenotypes}

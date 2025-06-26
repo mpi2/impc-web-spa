@@ -29,6 +29,7 @@ type TabContentProps = {
   isError: boolean;
   data: Array<any>;
   alertVariant?: Variant;
+  id?: string;
 };
 
 const TabContent = (props: PropsWithChildren<TabContentProps>) => {
@@ -39,6 +40,7 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
     data,
     children,
     alertVariant = "primary",
+    id = "",
   } = props;
 
   if (isFetching) {
@@ -56,7 +58,11 @@ const TabContent = (props: PropsWithChildren<TabContentProps>) => {
       </Alert>
     );
   }
-  return <div className="mt-3">{children}</div>;
+  return (
+    <div className="mt-3" id={id}>
+      {children}
+    </div>
+  );
 };
 
 type DataFilters = {
@@ -156,6 +162,7 @@ const Phenotypes = () => {
           title={`Significant Phenotypes (${sigPhenotypes?.length || 0})`}
         >
           <TabContent
+            id="significant-phenotypes-table"
             isFetching={isPhenotypeFetching}
             isError={isPhenotypeError}
             data={sigPhenotypes}
