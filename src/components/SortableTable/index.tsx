@@ -18,6 +18,7 @@ type SortableTableProps = {
   children: React.ReactNode;
   className?: string;
   withMargin?: boolean;
+  id?: string;
 };
 
 const SortableTable = ({
@@ -26,6 +27,7 @@ const SortableTable = ({
   doSort,
   children,
   className = "",
+  id = "",
   withMargin: shouldHaveMargin = true,
 }: SortableTableProps) => {
   // TODO: add search filter
@@ -132,6 +134,7 @@ const SortableTable = ({
   return (
     <div className={styles.tableWrapper}>
       <Table
+        id={id}
         bordered
         className={classNames(styles.table, styles.striped, className, {
           [styles.noMargin]: !shouldHaveMargin,

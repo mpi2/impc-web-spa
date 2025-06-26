@@ -9,6 +9,7 @@ import type { Model, SortType } from "@/models";
 import Skeleton from "react-loading-skeleton";
 
 const SmartTable = <T extends Model>(props: {
+  id?: string;
   columns: Array<{
     width: number;
     label: string;
@@ -49,6 +50,7 @@ const SmartTable = <T extends Model>(props: {
   displayPaginationControls?: boolean;
 }) => {
   const {
+    id = "",
     filteringEnabled = true,
     customFiltering = false,
     zeroResulsText = "No data available",
@@ -122,6 +124,7 @@ const SmartTable = <T extends Model>(props: {
     >
       {(pageData) => (
         <SortableTable
+          id={id}
           doSort={([field, order]) => {
             setSortOptions(`${field};${order}`);
           }}
