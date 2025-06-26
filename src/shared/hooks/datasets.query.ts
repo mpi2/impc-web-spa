@@ -19,14 +19,23 @@ export const generateDatasetsEndpointUrl = (
   return endpointUrl;
 };
 
-export const sortAndDeduplicateDatasets = (input: Array<Dataset>) => {
+export const sortAndDeduplicateDatasets = (
+  input: Array<Dataset>,
+  params: ChartPageParamsObj,
+) => {
   input.sort((a, b) => {
     return a["reportedPValue"] - b["reportedPValue"];
   });
-  return input?.filter(
-    (value, index, self) =>
-      self.findIndex((v) => v.datasetId === value.datasetId) === index,
-  ) as Array<Dataset>;
+  return input
+    ?.filter((d) =>
+      !!params.alleleAccessionId
+        ? d.alleleAccessionId === params.alleleAccessionId
+        : true,
+    )
+    ?.filter(
+      (value, index, self) =>
+        self.findIndex((v) => v.datasetId === value.datasetId) === index,
+    ) as Array<Dataset>;
 };
 
 export const useDatasetsQuery = (
@@ -39,7 +48,7 @@ export const useDatasetsQuery = (
     queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
     queryFn: () => fetchData(apiUrl),
     enabled,
-    select: sortAndDeduplicateDatasets,
+    select: (data) => sortAndDeduplicateDatasets(data, params),
     placeholderData: [],
   });
   return {
