@@ -191,6 +191,7 @@ const GeneralChartPage = () => {
                 "mb-4": shouldDisplayPValueStatement,
                 "mb-0": !shouldDisplayPValueStatement,
               })}
+              id="chart-name-page"
             >
               <strong className="text-capitalize">
                 {getPageTitle(allSummaries, isError)}
