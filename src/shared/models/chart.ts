@@ -40,6 +40,7 @@ export type ChartPageParams =
   | "procedureStableId"
   | "phenotypingCentre"
   | "metadataGroup"
-  | "statisticalResultId";
+  | "statisticalResultId"
+  | "lifeStageName";
 
 export type ChartPageParamsObj = Record<ChartPageParams, string>;

@@ -27,11 +27,15 @@ export const sortAndDeduplicateDatasets = (
     return a["reportedPValue"] - b["reportedPValue"];
   });
   return input
-    ?.filter((d) =>
-      !!params.alleleAccessionId
+    ?.filter((d) => {
+      const alelleMatch = !!params.alleleAccessionId
         ? d.alleleAccessionId === params.alleleAccessionId
-        : true,
-    )
+        : true;
+      const lifeStageMatch = !!params.lifeStageName
+        ? d.lifeStageName === params.lifeStageName
+        : true;
+      return alelleMatch && lifeStageMatch;
+    })
     ?.filter(
       (value, index, self) =>
         self.findIndex((v) => v.datasetId === value.datasetId) === index,

@@ -12,8 +12,9 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   const mpTermKey = !!props.mpTermIdKey ? props.mpTermIdKey : "id";
   const mpTermpId = get(props.value, mpTermKey) as string;
   const alleleAccessionId = get(props.value, "alleleAccessionId");
+  const lifeStage = get(props.value, "lifeStageName") as string;
 
-  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}&alleleAccessionId=${alleleAccessionId}`;
+  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}&alleleAccessionId=${alleleAccessionId}&lifeStageName=${lifeStage}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
