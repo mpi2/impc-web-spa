@@ -9,7 +9,7 @@ import { formatPValue, getDownloadData } from "@/utils";
 import ChartSummary from "./ChartSummary/ChartSummary";
 import { GeneralChartProps } from "@/models";
 import { capitalize } from "lodash";
-import StatisticalMethodTable from "./StatisticalMethodTable";
+import { StatisticalMethodTable } from "@/components/Data";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { DownloadData } from "..";
 import { getZygosityLabel } from "@/components/Data/Utils";

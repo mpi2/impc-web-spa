@@ -21,7 +21,7 @@ import { useMultipleS3DatasetsQuery } from "@/hooks";
 import quartileLinesPlugin from "@/utils/chart/violin-quartile-lines.plugin";
 import { Col, Form, Row } from "react-bootstrap";
 import SortableTable from "@/components/SortableTable";
-import StatisticalMethodTable from "@/components/Data/StatisticalMethodTable";
+import { StatisticalMethodTable } from "@/components/Data";
 import { generateSummaryStatistics } from "@/utils/chart";
 import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";

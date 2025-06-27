@@ -10,7 +10,7 @@ export { default as Histopathology } from "./Histopathology";
 export { default as TimeSeries } from "./TimeSeries";
 export { default as Unidimensional } from "./Unidimensional";
 export { default as Viability } from "./Viability";
-export { default as StatisticalMethodTable } from "./StatisticalMethodTable";
+export { default as StatisticalMethodTable } from "./StatisticalMethodTable/StatisticalMethodTable.tsx";
 export { default as IPGTT } from "./IPGTT";
 export { default as GrossPathology } from "./GrossPathology";
 export { default as FlowCytometryImages } from "./FlowCytometryImages";
