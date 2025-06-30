@@ -22,7 +22,7 @@ const Footnotes = (props: Props) => {
             <>* This parameter was manually assessed for significance.</>
           ) : (
             <>
-              * Does not have a P-value assigned because it was manually marked
+              * Does not have a P-Value assigned because it was manually marked
               as significant.
             </>
           )}

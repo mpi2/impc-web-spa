@@ -260,7 +260,7 @@ const GraphicalAnalysis = (props: Props) => {
               style={{ display: "inline-block", whiteSpace: "nowrap" }}
             >
               <hr className={styles.dashedLine} />
-              <small>Significant P-value threshold (P &lt; 0.0001)</small>
+              <small>Significant P-Value threshold (P &lt; 0.0001)</small>
             </span>
           </div>
           <div className={classNames(styles.labels, "grey")}>

@@ -48,7 +48,7 @@ const TooltipContent = ({ statResult }: { statResult: any }) => {
       <span>
         {statResult.pValue === 0 && statResult.significant
           ? "Manual association"
-          : `P-value: ${parseFloat(statResult.pValue).toExponential(3)}`}
+          : `P-Value: ${parseFloat(statResult.pValue).toExponential(3)}`}
       </span>
       <br />
       <span>
@@ -383,7 +383,7 @@ const GraphicalAnalysisChart = withTooltip<Props, TooltipData>(
             top={yMax}
             scale={xScale}
             numTicks={10}
-            label="log₁₀(P-value)"
+            label="log₁₀(P-Value)"
           />
         </svg>
         {tooltipOpen && tooltipData && (

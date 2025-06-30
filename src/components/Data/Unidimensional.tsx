@@ -121,15 +121,15 @@ const Unidimensional = ({
 
             <Alert variant="green">
               <p className="mb-0">
-                <strong>Genotype P value</strong>
+                <strong>Genotype P-Value</strong>
               </p>
               <p>{combinedPValue}</p>
               <p className="mb-0">
-                <strong>Genotype*Female P value</strong>
+                <strong>Genotype*Female P-Value</strong>
               </p>
               <p>{femalePValue}</p>
               <p className="mb-0">
-                <strong>Genotype*Male P value</strong>
+                <strong>Genotype*Male P-Value</strong>
               </p>
               <p>{malePValue}</p>
               <p className="mb-0">

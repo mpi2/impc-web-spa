@@ -48,10 +48,7 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
-        <Link
-          className="link"
-          to={`/genes/${props.value.mgiGeneAccessionId}`}
-        >
+        <Link className="link" to={`/genes/${props.value.mgiGeneAccessionId}`}>
           <i>{allele[0]}</i>
         </Link>
       </small>
@@ -178,7 +175,7 @@ const Associations = () => {
               { key: "phenotypingCentre", label: "Phenotyping center" },
               {
                 key: "pValue",
-                label: "Most significant P-value",
+                label: "Most significant P-Value",
                 getValueFn: (item) => item.pValue?.toString(10) || "1",
               },
             ]}
@@ -235,7 +232,7 @@ const Associations = () => {
           },
           {
             width: 1,
-            label: "Most significant P-value",
+            label: "Most significant P-Value",
             field: "pValue",
             cmp: <SignificantPValueCell />,
           },

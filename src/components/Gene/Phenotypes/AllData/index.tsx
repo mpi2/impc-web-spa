@@ -220,18 +220,22 @@ const AllData = (props: Props) => {
         lifeStageName,
         topLevelPhenotypes,
         zygosity,
-        procedureName
+        procedureName,
       }) =>
         (!selectedAlleleSymbol || alleleSymbol === selectedAlleleSymbol) &&
         (!query ||
-          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""}`.toLowerCase().includes(query)) &&
+          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""}`
+            .toLowerCase()
+            .includes(query)) &&
         (!selectedTopLevelPhenotypeName ||
           (topLevelPhenotypes ?? []).some(
             ({ name }) => name === selectedTopLevelPhenotypeName,
           )) &&
         (!selectedLifeStageName || lifeStageName === selectedLifeStageName) &&
         (!selectedZygosity || zygosity === selectedZygosity) &&
-        (!selectedProcedureName || procedureName.includes(selectedProcedureName) || procedureName.includes(query)),
+        (!selectedProcedureName ||
+          procedureName.includes(selectedProcedureName) ||
+          procedureName.includes(query)),
     );
   }, [geneData, selectedValues, query]);
 
@@ -362,7 +366,7 @@ const AllData = (props: Props) => {
               },
               {
                 key: "pValue",
-                label: "Most significant P-value",
+                label: "Most significant P-Value",
                 getValueFn: (item) => item?.pValue?.toString() || "N/A",
               },
             ]}
@@ -442,7 +446,7 @@ const AllData = (props: Props) => {
         },
         {
           width: 1,
-          label: "P value",
+          label: "P-Value",
           field: "pValue",
           cmp: <SignificantPValueCell onRefHover={onRefHover} />,
         },

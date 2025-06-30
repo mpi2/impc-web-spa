@@ -166,7 +166,7 @@ const SignificantPhenotypes = ({
                 { key: "phenotypingCentre", label: "Phenotyping center" },
                 {
                   key: "pValue",
-                  label: "Most significant P-value",
+                  label: "Most significant P-Value",
                   getValueFn: (item) => item?.pValue?.toString(10) || "-",
                 },
               ]}
@@ -218,7 +218,7 @@ const SignificantPhenotypes = ({
           },
           {
             width: 0.7,
-            label: "Significant P-value",
+            label: "Significant P-Value",
             field: "pValue",
             cmp: <SignificantPValueCell onRefHover={onRefHover} />,
           },

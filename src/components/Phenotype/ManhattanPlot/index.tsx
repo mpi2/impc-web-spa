@@ -109,7 +109,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
       return <span>Manually annotated as significant</span>;
     }
     return (
-      <span>P-value: {!!gene.pValue ? formatPValue(gene.pValue) : "-"}</span>
+      <span>P-Value: {!!gene.pValue ? formatPValue(gene.pValue) : "-"}</span>
     );
   };
 
@@ -194,7 +194,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
           },
         },
         y: {
-          title: { display: true, text: "-log₁₀(P-value)" },
+          title: { display: true, text: "-log₁₀(P-Value)" },
           min: 0,
           max: 45,
         },
@@ -386,7 +386,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
         })),
       };
       result.datasets.push({
-        label: "P-value threshold",
+        label: "P-Value threshold",
         type: "line" as const,
         data: Object.keys(listOfGenesByChromosome).map((chr) => ({
           x: getThresholdXPos(chr, listOfGenesByChromosome[chr]),
@@ -487,7 +487,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
                   opacity: 1,
                 }}
               />
-              &nbsp;&nbsp;Significant P-value threshold (P &lt; 0.0001)
+              &nbsp;&nbsp;Significant P-Value threshold (P &lt; 0.0001)
             </div>
           </div>
           <div
