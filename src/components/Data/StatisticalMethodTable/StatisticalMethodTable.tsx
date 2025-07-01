@@ -170,9 +170,16 @@ const StatisticalMethodTable = ({
   onlyDisplayTable = false,
 }: Props) => {
   const WrapperCmp = onlyDisplayTable ? Fragment : Card;
-  const {
-    statisticalMethod: { attributes, name },
-  } = datasetSummary;
+
+  const { attributes, name } = useMemo(() => {
+    const {
+      statisticalMethod: { attributes, name },
+    } = datasetSummary;
+    return {
+      attributes,
+      name: name ?? "Supplied as data",
+    };
+  }, [datasetSummary]);
 
   const statisticalMethodFields = useMemo(() => {
     switch (name) {
