@@ -1,0 +1,34 @@
+
+.controlsContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  :global(.form-label) {
+    min-width: 140px;
+    text-align: right;
+  }
+}
+.resetBtnContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(170, 170, 170, 0.3);
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  &.active {
+    opacity: 1;
+    z-index: 2;
+  }
+}

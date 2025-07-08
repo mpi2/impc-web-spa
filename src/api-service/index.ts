@@ -1,17 +1,17 @@
 export const API_URL = import.meta.env.VITE_API_ROOT || "";
 export const PROXY_ENABLED =
   import.meta.env.VITE_PROXY_ENABLED === "TRUE" || false;
-export const STATS_DATASETS_URL =
-  import.meta.env.VITE_STATS_DATASETS_URL || "";
+export const STATS_DATASETS_URL = import.meta.env.VITE_STATS_DATASETS_URL || "";
 export const MH_PLOT_DATA_URL = import.meta.env.VITE_MH_PLOT_DATA_URL || "";
 export const LANDING_PAGE_DATA_URL =
   import.meta.env.VITE_LANDING_PAGE_DATA_URL || "";
-export const PROTOTYPE_API_URL =
-  import.meta.env.VITE_PROTOTYPE_API_ROOT || "";
+export const PROTOTYPE_API_URL = import.meta.env.VITE_PROTOTYPE_API_ROOT || "";
 export const DEV_API_ROOT = import.meta.env.VITE_DEV_API_ROOT || "";
 export const PROD_API_ROOT = import.meta.env.VITE_PROD_API_ROOT || "";
 export const PUBLICATIONS_ENDPOINT_URL =
   import.meta.env.VITE_PUBLICATIONS_ENDPOINT_URL || "";
+export const GENOME_BROWSER_DATA_URL =
+  import.meta.env.VITE_GENOME_BROWSER_DATA_URL || "";
 
 export const PROTOTYPE_DATA_ROOT =
   import.meta.env.VITE_PROTOTYPE_DATA_ROOT || "";

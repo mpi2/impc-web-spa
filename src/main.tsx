@@ -27,6 +27,7 @@ import SexualDimorphismLandingPage from "@/pages/sexual-dimorphism/sexual-dimorp
 import { ReleaseNotesPage } from "@/components";
 import HTMLPage from "./static-html/HTMLPage.tsx";
 import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html?raw";
+import GenomeBrowserPage from "@/pages/genes/[pid]/genome-browser/genome-browser-page.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -42,6 +43,10 @@ createRoot(document.getElementById("root")!).render(
           <Route
             path="genes/:pid/download-images/:parameterStableId"
             element={<ImageDownloader />}
+          />
+          <Route
+            path="genes/:pid/genome-browser"
+            element={<GenomeBrowserPage />}
           />
           <Route path="alleles/:pid/:alleleSymbol" element={<AllelePage />} />
           <Route path="supporting-data" element={<SupportingDataPage />} />

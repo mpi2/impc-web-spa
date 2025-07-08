@@ -47,10 +47,8 @@ const CollectionItem = ({
     </span>
   );
 
-type SummaryProps = {
-  numOfAlleles: number;
-};
-const Summary = ({ numOfAlleles }: SummaryProps) => {
+type SummaryProps = {};
+const Summary = ({}: SummaryProps) => {
   const gene = useContext(GeneContext);
   const { numAllelesAvailable } = useContext(AllelesStudiedContext);
   const SYNONYMS_COUNT = 2;
@@ -66,7 +64,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
   const displaySynonymsInTooltip = () => {
     return gene.synonyms
       .slice(SYNONYMS_COUNT, gene.synonyms.length)
-      .map((s, i) => <li key={s}>{s}</li>);
+      .map((s, _) => <li key={s}>{s}</li>);
   };
 
   const notTested = allBodySystems.filter((x) => joined.indexOf(x) < 0);
@@ -110,6 +108,12 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
               style={{ marginLeft: "0.3rem" }}
             />
           </a>
+          <Link
+            className="link primary"
+            to={`/data/genes/${gene?.mgiGeneAccessionId}/genome-browser`}
+          >
+            Genome Browser
+          </Link>
           {gene?.synonyms?.length > 0 && (
             <span>
               Synonyms: {displaySynonyms()}
@@ -265,7 +269,7 @@ const Summary = ({ numOfAlleles }: SummaryProps) => {
               <Link
                 className="primary"
                 style={{ fontWeight: 500 }}
-                href="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
+                to="https://www.mousephenotype.org/understand/start-using-the-impc/impc-data-generation/"
               >
                 How IMPC generates data
               </Link>

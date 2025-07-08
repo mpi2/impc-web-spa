@@ -21,7 +21,7 @@ import {
   TargetingVector,
 } from "@/components/Allele";
 import classNames from "classnames";
-import { AlleleSymbol } from "@/components";
+import { AlleleSymbol, GenomeBrowser } from "@/components";
 import { AlleleSummary } from "@/models";
 import Skeleton from "react-loading-skeleton";
 import { useAlleleSummaryQuery } from "@/hooks";
@@ -132,7 +132,7 @@ const AllelePage = () => {
                 withLabel={false}
               ></AlleleSymbol>
             ) : (
-              <Skeleton style={{ width: "50px"}} inline />
+              <Skeleton style={{ width: "50px" }} inline />
             )}
           </h1>
           <p className="mb-4 grey">{alleleData?.alleleDescription}</p>
@@ -183,11 +183,14 @@ const AllelePage = () => {
             alleleName={alleleSymbol as string}
           />
         )}
+        {!!alleleData && (
+          <GenomeBrowser
+            geneSymbol={alleleData.geneSymbol}
+            mgiGeneAccessionId={alleleData.mgiGeneAccessionId}
+          />
+        )}
         <Card>
-          <Link
-            to={`/genes/${pid}/#order`}
-            className="primary link"
-          >
+          <Link to={`/genes/${pid}/#order`} className="primary link">
             See all alleles for the gene{" "}
             <FontAwesomeIcon icon={faArrowRightLong} />
           </Link>
