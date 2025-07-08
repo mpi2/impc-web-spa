@@ -182,7 +182,7 @@ const Phenotypes = () => {
           eventKey="allData"
           title={allDataCount === 0 ? "All data" : `All data (${allDataCount})`}
         >
-          <div className="mt-3">
+          <div className="mt-3" id="all-data-table">
             <AllData
               tableIsVisible
               onTotalData={setAllDataCount}
