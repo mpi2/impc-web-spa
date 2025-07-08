@@ -4496,6 +4496,11 @@ ignore@^7.0.0:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-7.0.4.tgz#a12c70d0f2607c5bf508fb65a40c75f037d7a078"
   integrity sha512-gJzzk+PQNznz8ysRrC0aOkBNVRBDtE1n53IqyqEf3PXrYwomFs5q4pGMizBMJF+ykh03insJ27hB8gSrD2Hn8A==
 
+igv@~3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/igv/-/igv-3.4.1.tgz#c25ec4ab27c66171973d93b798dd04b5c743fdeb"
+  integrity sha512-pso4S2nt7S7QAbtbTranS0SSyLlHFla8GUJbRQY2SxuNPPeQbfXQR5qlZA/DnCVZmFiC3cMKixdhGjPr8EhOzQ==
+
 immutable@^5.0.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-5.1.2.tgz#e8169476414505e5a4fa650107b65e1227d16d4b"
