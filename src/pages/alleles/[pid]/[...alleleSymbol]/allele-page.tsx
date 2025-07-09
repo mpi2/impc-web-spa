@@ -110,7 +110,7 @@ const AllelePage = () => {
           <div className="subheading">
             <span className="subheadingSection primary">
               <Link
-                to={`/genes/${pid}`}
+                to={`/data/genes/${pid}`}
                 className="mb-3"
                 style={{
                   textTransform: "none",
