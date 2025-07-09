@@ -213,8 +213,7 @@ const GenomeBrowser = ({
     return () => {
       shouldCreateBrowser = false;
     };
-    // IMPORTANT: no dependencies to ensure effect only runs once (IGV browser creation)
-  }, []);
+  }, [isBrowserSetup, mgiGeneAccessionId, geneSymbol]);
 
   const resetView = () => {
     if (genomeBrowserRef.current) {
