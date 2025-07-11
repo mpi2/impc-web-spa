@@ -70,13 +70,14 @@ import { ReleaseNotesPage } from "@/components";
 import HTMLPage from "./static-html/HTMLPage.tsx";
 import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html?raw";
 import GenomeBrowserPage from "@/pages/genes/[pid]/genome-browser/genome-browser-page.tsx";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Suspense fallback={<FallbackPage />}>
         <Routes>
-          <Route path="/data" element={<RootLayout />}>
+          <Route path={DATA_SITE_BASE_PATH} element={<RootLayout />}>
             <Route path="search" element={<SearchResults />} />
             <Route path="genes/:pid" element={<GenePage />} />
             <Route
@@ -143,7 +144,7 @@ createRoot(document.getElementById("root")!).render(
           ></Route>
           <Route
             path="*"
-            element={<Navigate to="/data/search" replace />}
+            element={<Navigate to={`${DATA_SITE_BASE_PATH}/search`} replace />}
           ></Route>
         </Routes>
       </Suspense>

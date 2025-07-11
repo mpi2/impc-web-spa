@@ -52,6 +52,9 @@
       "@/models/*": [
         "./src/shared/models/*"
       ],
+      "@/shared": [
+        "./src/shared/index.ts"
+      ],
       "@/shared/*": [
         "./src/shared/*"
       ],
