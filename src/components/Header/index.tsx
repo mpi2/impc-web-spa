@@ -5,7 +5,7 @@ import { Collapse } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
-import { DATA_SITE_BASE_PATH } from "@/shared";
+import { BASE_PATH, DATA_SITE_BASE_PATH } from "@/shared";
 
 export interface MenuItem {
   name: string;
@@ -145,7 +145,7 @@ const Header = () => {
                   >
                     <img
                       className="header__logo"
-                      src="/images/logo.svg"
+                      src={`${BASE_PATH}images/logo.svg`}
                       alt="International Mouse Phenotyping Consortium Office Logo"
                       width={355}
                       height={105}
