@@ -5,6 +5,7 @@ import { Collapse } from "react-bootstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export interface MenuItem {
   name: string;
@@ -34,27 +35,27 @@ const rewriteMenu = (data) => {
 const getInternalLink = (name: string, link: string) => {
   switch (name) {
     case "Cardiovascular":
-      return "/data/cardiovascular";
+      return `/${DATA_SITE_BASE_PATH}/cardiovascular`;
     case "Embryo Development":
-      return "/data/embryo";
+      return `/${DATA_SITE_BASE_PATH}/embryo`;
     case "Papers Using IMPC Resources":
-      return "/data/publications";
+      return `/${DATA_SITE_BASE_PATH}/publications`;
     case "Histopathology":
-      return "/data/histopath";
+      return `/${DATA_SITE_BASE_PATH}/histopath`;
     case "Sexual Dimorphism":
-      return "/data/sexual-dimorphism";
+      return `/${DATA_SITE_BASE_PATH}/sexual-dimorphism`;
     case "Genes Critical for Hearing Identified":
-      return "/data/hearing";
+      return `/${DATA_SITE_BASE_PATH}/hearing`;
     case "Genetic Basis for Metabolic Diseases":
-      return "/data/metabolism";
+      return `/${DATA_SITE_BASE_PATH}/metabolism`;
     case "Essential Genes - Translating to Other Species":
-      return "/data/conservation";
+      return `/${DATA_SITE_BASE_PATH}/conservation`;
     case "Batch query":
       return "/batchQuery";
     case "Late Adult Data":
-      return "/data/late-adult-data";
+      return `/${DATA_SITE_BASE_PATH}/late-adult-data`;
     case "Latest Data Release":
-      return "/data/release";
+      return `/${DATA_SITE_BASE_PATH}/release`;
     case "IMPC Data Generation":
       return "/understand/start-using-the-impc/impc-data-generation";
     default:
@@ -325,11 +326,6 @@ const Header = () => {
             </div>
             <div className="row">
               <div className="col-12">
-                <h3 className="mt-2">
-                  <a className="" href="/data/summary">
-                    My Genes
-                  </a>
-                </h3>
                 {menuItems?.map((menuItem, i) => (
                   <Fragment key={i}>
                     <h3 className="mt-2">

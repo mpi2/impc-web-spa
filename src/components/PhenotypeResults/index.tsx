@@ -64,7 +64,7 @@ const PhenotypeResult = ({
       <Row
         className={styles.result}
         onClick={() => {
-          navigate(`/data/phenotypes/${mpId}`);
+          navigate(`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`);
         }}
       >
         <Col>

@@ -16,6 +16,7 @@ import { useGeneSearchQuery, useWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { PROTOTYPE_DATA_ROOT } from "@/api-service";
 import { SearchWebWorkerResult } from "@/models";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -57,7 +58,7 @@ const GeneResult = ({
           sm={8}
           className={styles.result}
           onClick={() => {
-            navigate(`/data/genes/${mgiGeneAccessionId}`);
+            navigate(`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}`);
           }}
         >
           <h4 className="mb-2">

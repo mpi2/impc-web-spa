@@ -1,6 +1,7 @@
 import { TableCellProps } from "@/models";
 import { Link } from "react-router";
 import { get } from "lodash";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type Props<T> = {
   mpTermIdKey?: keyof T;
@@ -14,7 +15,7 @@ export const SupportingDataCell = <T,>(props: Props<T>) => {
   const alleleAccessionId = get(props.value, "alleleAccessionId");
   const lifeStage = get(props.value, "lifeStageName") as string;
 
-  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}&alleleAccessionId=${alleleAccessionId}&lifeStageName=${lifeStage}`;
+  let url = `/${DATA_SITE_BASE_PATH}/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}&alleleAccessionId=${alleleAccessionId}&lifeStageName=${lifeStage}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =

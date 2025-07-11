@@ -5,6 +5,7 @@ import { PropsWithChildren, ReactNode, useMemo, useState } from "react";
 import { Link } from "react-router";
 import { Dataset } from "@/models";
 import styles from "./styles.module.scss";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type ChartSummaryProps = {
   datasetSummary: Dataset;
@@ -121,7 +122,7 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             <div className="content">
               {!!datasetSummary["significantPhenotype"]?.["id"] ? (
                 <Link
-                  to={`/data/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
+                  to={`/${DATA_SITE_BASE_PATH}/phenotypes/${datasetSummary["significantPhenotype"]["id"]}`}
                 >
                   <span className="link primary">
                     {datasetSummary["significantPhenotype"]?.["name"]}

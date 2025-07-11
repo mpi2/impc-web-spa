@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import { formatPValue } from "@/utils";
 import { useQueryFlags } from "@/hooks";
 import { useMemo } from "react";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export const ParameterCell = <T extends GeneStatisticalResult>(
   props: TableCellProps<T>,
@@ -67,7 +68,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     statisticalResultId,
   } = props.value;
 
-  let url = `/data/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}&statisticalResultId=${statisticalResultId}`;
+  let url = `/${DATA_SITE_BASE_PATH}/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}&statisticalResultId=${statisticalResultId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =
@@ -76,9 +77,9 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
   if (procedureName.includes("Histopathology")) {
     if (parameterName.includes("-")) {
       const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
-      url = `/data/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;
+      url = `/${DATA_SITE_BASE_PATH}/supporting-data/histopath/${mgiGeneAccessionId}?anatomy=${tissue}`;
     } else {
-      url = `/data/supporting-data/histopath/${mgiGeneAccessionId}`;
+      url = `/${DATA_SITE_BASE_PATH}/supporting-data/histopath/${mgiGeneAccessionId}`;
     }
   }
   // if linking to any "special" chart page (ABR, PPI or IPGTT), it shouldn't specify metadataGroup

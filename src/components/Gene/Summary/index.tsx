@@ -14,6 +14,7 @@ import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import Skeleton from "react-loading-skeleton";
 import classNames from "classnames";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const spring = {
   type: "spring",
@@ -110,7 +111,7 @@ const Summary = ({}: SummaryProps) => {
           </a>
           <Link
             className="link primary"
-            to={`/data/genes/${gene?.mgiGeneAccessionId}/genome-browser`}
+            to={`/${DATA_SITE_BASE_PATH}/genes/${gene?.mgiGeneAccessionId}/genome-browser`}
           >
             Genome Browser
           </Link>
@@ -276,13 +277,13 @@ const Summary = ({}: SummaryProps) => {
             </Col>
             <Col md={6}>
               <CollectionItem
-                link={`/data/supporting-data/viability?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
+                link={`/${DATA_SITE_BASE_PATH}/supporting-data/viability?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Viability data"
                 hasData={gene?.hasViabilityData}
               />
               <br />
               <CollectionItem
-                link={`/data/supporting-data/bodyweight?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
+                link={`/${DATA_SITE_BASE_PATH}/supporting-data/bodyweight?mgiGeneAccessionId=${gene?.mgiGeneAccessionId}`}
                 name="Body weight measurements"
                 hasData={gene?.hasBodyWeightData}
               />

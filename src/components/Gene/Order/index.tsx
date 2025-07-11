@@ -17,6 +17,7 @@ import {
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneOrderQuery } from "@/hooks";
 import { SortType } from "@/models";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type OrderProps = {
   allelesStudied: Array<string>;
@@ -41,7 +42,7 @@ const Order = ({ allelesStudied, allelesStudiedLoading }: OrderProps) => {
       "targeting vector": "targetingVector",
     };
     const encodedAllele = allele;
-    return `/data/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
+    return `/${DATA_SITE_BASE_PATH}/alleles/${gene.mgiGeneAccessionId}/${encodedAllele}?alleleSymbol=${allele}#${anchorObjs[product]}`;
   };
 
   const orderData = filtered;

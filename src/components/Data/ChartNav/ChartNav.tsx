@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type ChartNavProps = {
   mgiGeneAccessionId: string;
@@ -22,7 +23,7 @@ const ChartNav = (props: ChartNavProps) => {
         data-testid="back-to-gene-page-link"
       >
         <Link
-          to={`/data/genes/${mgiGeneAccessionId}`}
+          to={`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}`}
           className={classNames("mb-3", styles.link)}
         >
           <FontAwesomeIcon icon={faArrowLeft} />

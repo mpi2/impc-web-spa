@@ -108,10 +108,7 @@ const EmbryoVignettesPage = () => {
                   </Link>
                   . For a comprehensive list of lines with 3D image data refer
                   to:&nbsp;
-                  <Link
-                    className="link primary"
-                    to="/embryo#embryo-data-grid"
-                  >
+                  <Link className="link primary" to="/embryo#embryo-data-grid">
                     IMPC 3D Embryo Data
                   </Link>
                   .
@@ -481,11 +478,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/cbx4.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/cbx4.png" fluid alt="" />
                     <p>
                       Automated MRI analysis of E15.5 Cbx4tm1.1/tm1.1 mutants
                       viewed in coronal section revealed that mutant embryos had
@@ -662,11 +655,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/eye4.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/eye4.png" fluid alt="" />
                     <p>
                       Automated MRI analysis of E15.5 Eya4tm1b/tm1b mutants
                       showed that mutant embryos had a statistically smaller
@@ -899,11 +888,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Pax7.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Pax7.png" fluid alt="" />
                     <p>
                       Micro-CT analysis of E15.5 Pax7 embryos and lacZ staining
                       of E12.5 embryos indicating volume changes and staining in
@@ -1003,11 +988,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Svep1.jpg"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Svep1.jpg" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1101,11 +1082,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Strn3.jpg"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Strn3.jpg" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1202,11 +1179,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Rab34.jpg"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Rab34.jpg" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1293,11 +1266,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Cox7c.jpg"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Cox7c.jpg" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1373,11 +1342,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Cox7c.jpg"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Cox7c.jpg" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1452,11 +1417,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/gfpt1.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/gfpt1.png" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1537,11 +1498,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Atg3.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Atg3.png" fluid alt="" />
                   </Col>
                 </Row>
               </div>
@@ -1609,11 +1566,7 @@ const EmbryoVignettesPage = () => {
                     </ul>
                   </Col>
                   <Col xs={4}>
-                    <Image
-                      src="/images/landing-pages/Kdm8.png"
-                      fluid
-                      alt=""
-                    />
+                    <Image src="/images/landing-pages/Kdm8.png" fluid alt="" />
                   </Col>
                 </Row>
               </div>

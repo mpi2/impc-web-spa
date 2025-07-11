@@ -15,6 +15,7 @@ import { usePleiotropyQuery } from "@/hooks";
 import { SortType } from "@/models";
 import { Suspense, useMemo } from "react";
 import PublicationsList from "@/components/PublicationsList";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type GeneHearingData = {
   geneSymbol: string;
@@ -244,7 +245,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Novel, mild hearing loss</h2>
                   <Link
                     className="primary link"
-                    to={`/data/genes/${data.adgrb1.mgiGeneAccessionId}`}
+                    to={`/${DATA_SITE_BASE_PATH}/genes/${data.adgrb1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.adgrb1.alleleSymbol}
@@ -259,7 +260,7 @@ const HearingLandingPage = () => {
                   <h2 style={{ marginBottom: 0 }}>Know, severe hearing loss</h2>
                   <Link
                     className="primary link"
-                    to={`/data/genes/${data.elmod1.mgiGeneAccessionId}`}
+                    to={`/${DATA_SITE_BASE_PATH}/genes/${data.elmod1.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.elmod1.alleleSymbol}
@@ -278,7 +279,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    to={`/data/genes/${data.ccdc88c.mgiGeneAccessionId}`}
+                    to={`/${DATA_SITE_BASE_PATH}/genes/${data.ccdc88c.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.ccdc88c.alleleSymbol}
@@ -295,7 +296,7 @@ const HearingLandingPage = () => {
                   </h2>
                   <Link
                     className="primary link"
-                    to={`/data/genes/${data.zfp719.mgiGeneAccessionId}`}
+                    to={`/${DATA_SITE_BASE_PATH}/genes/${data.zfp719.mgiGeneAccessionId}`}
                   >
                     <AlleleSymbol
                       symbol={data.zfp719.alleleSymbol}

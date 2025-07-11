@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { debounce } from "lodash";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export type Tab = {
   name: string;
@@ -40,12 +41,12 @@ const Search = ({
   const tabs: Tab[] = [
     {
       name: "Genes",
-      link: "/data/search",
+      link: `/${DATA_SITE_BASE_PATH}/search`,
       type: null,
     },
     {
       name: "Phenotypes",
-      link: "/data/search?type=pheno",
+      link: `/${DATA_SITE_BASE_PATH}/search?type=pheno`,
       type: "pheno",
       altType: "phenotype",
     },
@@ -136,7 +137,7 @@ const Search = ({
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   if (pathname !== "/") {
-                    let url = `/data/search?term=${e.currentTarget.value}`;
+                    let url = `/${DATA_SITE_BASE_PATH}/search?term=${e.currentTarget.value}`;
                     if (tabIndex === 1) {
                       url += "&type=pheno";
                     }

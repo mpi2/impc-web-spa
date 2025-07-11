@@ -25,6 +25,7 @@ import { AlleleSymbol, GenomeBrowser } from "@/components";
 import { AlleleSummary } from "@/models";
 import Skeleton from "react-loading-skeleton";
 import { useAlleleSummaryQuery } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const ProductItem = ({
   name,
@@ -110,7 +111,7 @@ const AllelePage = () => {
           <div className="subheading">
             <span className="subheadingSection primary">
               <Link
-                to={`/data/genes/${pid}`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${pid}`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

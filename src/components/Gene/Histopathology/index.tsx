@@ -15,6 +15,7 @@ import {
 } from "@/components";
 import { SortType } from "@/models";
 import { useGeneHistopathologyQuery } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const Histopathology = () => {
   const gene = useContext(GeneContext);
@@ -56,7 +57,7 @@ const Histopathology = () => {
           This gene doesn't have any significant Histopathology hits.&nbsp;
           <Link
             className="primary link"
-            to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+            to={`/${DATA_SITE_BASE_PATH}/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
           >
             Click here to see the raw data
           </Link>
@@ -94,7 +95,7 @@ const Histopathology = () => {
         Full histopathology data table, including submitted images,&nbsp;
         <Link
           className="link primary"
-          to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
+          to={`/${DATA_SITE_BASE_PATH}/supporting-data/histopath/${gene.mgiGeneAccessionId}`}
         >
           can be accessed by clicking this link
         </Link>
@@ -124,7 +125,7 @@ const Histopathology = () => {
                 <tr key={index}>
                   <td>
                     <Link
-                      to={`/data/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
+                      to={`/${DATA_SITE_BASE_PATH}/supporting-data/histopath/${gene.mgiGeneAccessionId}?anatomy=${(
                         p.parameterName.split(" -")[0] || ""
                       ).toLowerCase()}`}
                     >

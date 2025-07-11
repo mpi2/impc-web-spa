@@ -8,6 +8,7 @@ import { usePagination } from "@/hooks";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
 import { capitalize } from "lodash";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const ClickableAxisTick = ({
   tick,
@@ -138,7 +139,7 @@ const EmbryoDataAvailabilityGrid = ({
     ) {
       url = `//www.mousephenotype.org/embryoviewer/?mgi=${geneAcc}`;
     } else if (dataType === "Vignettes") {
-      url = `/data/embryo/vignettes?gene=${cell.serieId}`;
+      url = `/${DATA_SITE_BASE_PATH}/embryo/vignettes?gene=${cell.serieId}`;
     } else if (dataType === "LacZ") {
       url = `//www.mousephenotype.org/data/imageComparator?parameter_stable_id=IMPC_ELZ_064_001&acc=${geneAcc}`;
     } else {
@@ -259,7 +260,7 @@ const EmbryoDataAvailabilityGrid = ({
                   onClick={() => {
                     const selectedGene = chartData[tick.tickIndex];
                     window.open(
-                      `/data/genes/${
+                      `/${DATA_SITE_BASE_PATH}/genes/${
                         selectedGene?.mgiGeneAccessionId
                       }?dataQuery=viability`,
                       "_blank",

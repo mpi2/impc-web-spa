@@ -182,7 +182,7 @@ const LateAdultHeatmap = (props: Props) => {
 
   const onClickCell = useCallback(
     (mgiGeneAccessionId: string, columnName: string) => {
-      let url = `/data/genes/${mgiGeneAccessionId}?dataLifeStage=Late adult`;
+      let url = `/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}?dataLifeStage=Late adult`;
       // if selectedParam is null, column name will contain a procedureName
       // when a user clicks a param, columnName will contain a parameterName
       if (!selectedParam) {

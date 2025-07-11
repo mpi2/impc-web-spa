@@ -10,6 +10,7 @@ import { SectionHeader } from "@/components";
 import { CSSProperties, useContext } from "react";
 import { GeneContext } from "@/contexts";
 import { useGeneImagesQuery } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 interface ImageProps {
   mgiGeneAccessionId: string;
@@ -44,7 +45,7 @@ const Image = ({
   isSpecialFormat,
 }: ImageProps) => {
   const urlSegment = isSpecialFormat ? "download-images" : "images";
-  let url = `/data/genes/${mgiGeneAccessionId}/${urlSegment}/${parameterStableId}`;
+  let url = `/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}/${urlSegment}/${parameterStableId}`;
   if (embryo3DParametersIds.includes(parameterStableId)) {
     url = `https://www.mousephenotype.org/embryoviewer/?mgi=${mgiGeneAccessionId}`;
   }
