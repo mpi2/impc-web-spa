@@ -21,6 +21,7 @@ import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 import { SortType } from "@/models";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -306,7 +307,7 @@ const MetabolismLandingPage = () => {
                     width: 1,
                     label: "MGI_ID",
                     field: "MGI_ID",
-                    cmp: <LinkCell prefix="/genes" />,
+                    cmp: <LinkCell prefix={`/${DATA_SITE_BASE_PATH}/genes`} />,
                   },
                   {
                     width: 1,

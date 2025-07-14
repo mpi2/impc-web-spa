@@ -34,6 +34,7 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 ChartJS.register(
   CategoryScale,
@@ -74,7 +75,7 @@ type Gene = {
 };
 
 const getLinksToGenePage = (gene: Gene) => {
-  const url = `/genes/${gene.mgi_accession_id}`;
+  const url = `/${DATA_SITE_BASE_PATH}/genes/${gene.mgi_accession_id}`;
   const products = [];
   if (gene.es_cell_production_status === "ES Cells Produced") {
     products.push("ES Cells");
@@ -228,7 +229,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
           <tr>
             <td className={styles.geneCell}>
               <Link
-                to={`/genes/${gene.mgi_accession_id}`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${gene.mgi_accession_id}`}
                 className="primary link"
                 style={{ backgroundColor: "initial", padding: 0 }}
               >
@@ -293,7 +294,7 @@ const AccordionTable = forwardRef<AccordionTableHandle, AccordionTableProps>(
               <td>
                 <Link
                   className="link primary"
-                  to={`/genes/${gene.mgi_accession_id}`}
+                  to={`/${DATA_SITE_BASE_PATH}/genes/${gene.mgi_accession_id}`}
                 >
                   {gene.marker_symbol}
                 </Link>

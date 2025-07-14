@@ -25,6 +25,7 @@ import { AlleleSymbol } from "@/components";
 import { Link } from "react-router";
 import { usePublicationsQuery, useWebWorker } from "@/hooks";
 import { SearchWebWorkerResult } from "@/models";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -306,7 +307,7 @@ const PublicationsList = (props: PublicationListProps) => {
                             <>
                               <Link
                                 className="primary link"
-                                to={`/genes/${allele.mgiGeneAccessionId}`}
+                                to={`/${DATA_SITE_BASE_PATH}/genes/${allele.mgiGeneAccessionId}`}
                               >
                                 <AlleleSymbol
                                   symbol={allele.alleleSymbol}

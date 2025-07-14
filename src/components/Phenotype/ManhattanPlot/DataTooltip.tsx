@@ -1,6 +1,7 @@
 import styles from "@/components/Phenotype/ManhattanPlot/styles.module.scss";
 import { formatPValue } from "@/utils";
 import classNames from "classnames";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type Gene = {
   mgiGeneAccessionId: string;
@@ -67,7 +68,7 @@ const DataTooltip = ({ tooltip, offsetY, offsetX, onClick }: TooltipProps) => {
             <a
               className="primary link"
               target="_blank"
-              href={`/genes/${gene.mgiGeneAccessionId}`}
+              href={`/${DATA_SITE_BASE_PATH}/genes/${gene.mgiGeneAccessionId}`}
             >
               <i>{gene.geneSymbol}</i>
             </a>

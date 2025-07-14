@@ -32,6 +32,7 @@ import {
 } from "@/components";
 import { Suspense } from "react";
 import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 ChartJS.register(
   LinearScale,
@@ -47,7 +48,10 @@ ChartJS.register(
 
 const GeneLink = ({ gene }) => {
   return (
-    <Link className="primary link" to={`/genes/${gene.mgiGeneAccessionId}`}>
+    <Link
+      className="primary link"
+      to={`/${DATA_SITE_BASE_PATH}/genes/${gene.mgiGeneAccessionId}`}
+    >
       <AlleleSymbol symbol={gene.alleleSymbol} withLabel={false} />
     </Link>
   );

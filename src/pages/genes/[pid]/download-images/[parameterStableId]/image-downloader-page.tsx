@@ -18,6 +18,7 @@ import _ from "lodash";
 import { useMemo } from "react";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type Image = {
   alleleSymbol: string;
@@ -52,7 +53,8 @@ const DownloadImagesPage = () => {
   const id = pid.replace(":", "-");
   const { data: mutantImages, isLoading: isMutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
-    queryFn: () => fetchData(`${chromosome}/${id}/images/${parameterStableId}/mutant.json`),
+    queryFn: () =>
+      fetchData(`${chromosome}/${id}/images/${parameterStableId}/mutant.json`),
     enabled: !!pid && !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
@@ -73,7 +75,10 @@ const DownloadImagesPage = () => {
 
   const { data: controlImages, isLoading: isControlImagesLoading } = useQuery({
     queryKey: ["control", pid, "images", parameterStableId],
-    queryFn: () => fetchData(`${chromosome}/${id}/images/${parameterStableId}/wildtype.json`),
+    queryFn: () =>
+      fetchData(
+        `${chromosome}/${id}/images/${parameterStableId}/wildtype.json`,
+      ),
     enabled: !!parameterStableId,
     select: (data) => {
       const selectedDataset = data.find((d) =>
@@ -101,7 +106,7 @@ const DownloadImagesPage = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                to={`/genes/${pid}#images`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${pid}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

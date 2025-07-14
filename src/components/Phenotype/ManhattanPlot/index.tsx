@@ -19,6 +19,7 @@ import { PhenotypeStatsResults } from "@/models/phenotype";
 import { formatPValue } from "@/utils";
 import { Link } from "react-router";
 import { Alert } from "react-bootstrap";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -551,7 +552,7 @@ const ManhattanPlot = ({ phenotypeId }) => {
                   <Link
                     className="primary link"
                     target="_blank"
-                    to={`/genes/${gene.mgiGeneAccessionId}`}
+                    to={`/${DATA_SITE_BASE_PATH}/genes/${gene.mgiGeneAccessionId}`}
                   >
                     <i>{gene.geneSymbol}</i>
                   </Link>

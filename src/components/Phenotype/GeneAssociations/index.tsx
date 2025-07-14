@@ -15,6 +15,7 @@ import { get, orderBy } from "lodash";
 import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { Alert } from "react-bootstrap";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const ParameterCell = <T extends PhenotypeGenotypes>(
   props: TableCellProps<T>,
@@ -48,7 +49,10 @@ const AlleleWithLinkCell = <T extends PhenotypeGenotypes>(
   return (
     <span style={{ lineHeight: 1.5 }}>
       <small>
-        <Link className="link" to={`/genes/${props.value.mgiGeneAccessionId}`}>
+        <Link
+          className="link"
+          to={`/${DATA_SITE_BASE_PATH}/genes/${props.value.mgiGeneAccessionId}`}
+        >
           <i>{allele[0]}</i>
         </Link>
       </small>
@@ -66,7 +70,7 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
   const mgiAccessionId = get(props.value, "mgiGeneAccessionId") as string;
   const mpTermpId = get(props.value, "phenotype.id") as string;
 
-  let url = `/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
+  let url = `/${DATA_SITE_BASE_PATH}/supporting-data?mgiGeneAccessionId=${mgiAccessionId}&mpTermId=${mpTermpId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
   if (isAssociatedToPWG) {
     url =

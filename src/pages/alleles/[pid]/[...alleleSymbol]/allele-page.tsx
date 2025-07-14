@@ -191,7 +191,10 @@ const AllelePage = () => {
           />
         )}
         <Card>
-          <Link to={`/genes/${pid}/#order`} className="primary link">
+          <Link
+            to={`/${DATA_SITE_BASE_PATH}/genes/${pid}/#order`}
+            className="primary link"
+          >
             See all alleles for the gene{" "}
             <FontAwesomeIcon icon={faArrowRightLong} />
           </Link>

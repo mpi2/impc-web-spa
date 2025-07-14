@@ -6,6 +6,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 import _ from "lodash";
 import { GeneExpressionCounts } from "@/models/gene/expression";
 import { Fragment } from "react";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export const ImagesCell = <T extends GeneExpression>(
   props: TableCellProps<T> & { mgiGeneAccessionId: string },
@@ -17,7 +18,7 @@ export const ImagesCell = <T extends GeneExpression>(
         <Fragment key={index}>
           <Link
             className="primary small"
-            to={`/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}?anatomyTerm=${anatomyTerm}`}
+            to={`/${DATA_SITE_BASE_PATH}/genes/${props.mgiGeneAccessionId}/images/${p.parameterStableId}?anatomyTerm=${anatomyTerm}`}
           >
             <FontAwesomeIcon icon={faImage} style={{ marginRight: "0.5rem" }} />
             {p.parameterName === "lacz images section"

@@ -132,7 +132,10 @@ const GeneResult = ({
             <small>Shortcuts</small>
           </h5>
           <p className="grey">
-            <Link to={`/genes/${mgiGeneAccessionId}/#order`} className="link">
+            <Link
+              to={`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}/#order`}
+              className="link"
+            >
               <FontAwesomeIcon icon={faShoppingCart} />
               Order mice
             </Link>

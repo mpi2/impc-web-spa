@@ -9,6 +9,7 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
 import { useMemo } from "react";
 import { useParams, useSearchParams } from "react-router";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const GrossPathChartPage = () => {
   const params = useParams<{ pid: string }>();
@@ -32,7 +33,7 @@ const GrossPathChartPage = () => {
           <Col>
             <Card style={{ marginTop: "-80px" }}>
               <Link
-                to={`/genes/${mgiGeneAccessionId}/#data`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}/#data`}
                 className="grey mb-3 small"
               >
                 <FontAwesomeIcon icon={faArrowLeftLong} />

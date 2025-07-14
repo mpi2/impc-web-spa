@@ -20,6 +20,7 @@ import { capitalize } from "lodash";
 import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid";
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type SelectedLine = {
   windowOfLethality: string;
@@ -475,7 +476,7 @@ const EmbryoLandingPage = () => {
                   label: "MGI Accession ID",
                   field: "mgiGeneAccessionId",
                   disabled: true,
-                  cmp: <LinkCell prefix="/genes" />,
+                  cmp: <LinkCell prefix={`/${DATA_SITE_BASE_PATH}/genes`} />,
                 },
               ]}
               paginationButtonsPlacement="bottom"
