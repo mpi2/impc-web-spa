@@ -65,7 +65,10 @@ const EmbryoLandingPage = () => {
     }
     const mpId = value === "Lethal" ? "MP:0011100" : "MP:0011110";
     return (
-      <Link className="link primary" to={`/phenotypes/${mpId}`}>
+      <Link
+        className="link primary"
+        to={`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`}
+      >
         {value}
       </Link>
     );

@@ -216,7 +216,7 @@ const HeatMap = ({ geneList }: { geneList: Array<Gene> }) => {
                 <span className={styles.verticalHeader}>
                   <Link
                     className="primary link"
-                    to={`/phenotypes/${phenotype.id}`}
+                    to={`/${DATA_SITE_BASE_PATH}/phenotypes/${phenotype.id}`}
                   >
                     {phenotype.name}
                   </Link>
