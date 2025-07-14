@@ -33,6 +33,7 @@ import {
   useNavigate,
 } from "react-router";
 import { useGeneParameterImages } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type Filters = {
   selectedCenter: string;
@@ -273,9 +274,17 @@ const ImagesCompare = () => {
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const anatomyTerm = searchParams.get("anatomyTerm");
-  const { data: mutantImages } = useGeneParameterImages(pid, parameterStableId, "mutant");
+  const { data: mutantImages } = useGeneParameterImages(
+    pid,
+    parameterStableId,
+    "mutant",
+  );
 
-  const { data: controlImagesRaw } = useGeneParameterImages(pid, parameterStableId, "wildtype");
+  const { data: controlImagesRaw } = useGeneParameterImages(
+    pid,
+    parameterStableId,
+    "wildtype",
+  );
 
   const [selectedSex, setSelectedSex] = useState("both");
   const [selectedZyg, setSelectedZyg] = useState("both");
@@ -526,7 +535,7 @@ const ImagesCompare = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                to={`/genes/${pid}#images`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${pid}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

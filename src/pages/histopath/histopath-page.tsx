@@ -19,6 +19,7 @@ import {
 } from "@/components";
 import { Link } from "react-router";
 import { kebabCase } from "lodash";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const geneMap = new Map();
 

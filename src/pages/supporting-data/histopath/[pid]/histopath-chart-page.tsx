@@ -32,7 +32,8 @@ import {
   useSearchParams,
 } from "react-router";
 import _ from "lodash";
-import Skeleton from "react-loading-skeleton";;
+import Skeleton from "react-loading-skeleton";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const DescriptionCell = <T extends Histopathology>(
   props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
@@ -117,7 +118,7 @@ const HistopathChartPage = () => {
           <div className={styles.subheading}>
             <span className={`${styles.subheadingSection} primary`}>
               <Link
-                to={`/genes/${mgiGeneAccessionId}#images`}
+                to={`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}#images`}
                 className="mb-3"
                 style={{
                   textTransform: "none",

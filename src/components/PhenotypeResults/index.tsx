@@ -20,6 +20,7 @@ import { usePhenotypeResultsQuery, useWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { PROTOTYPE_DATA_ROOT } from "@/api-service";
 import { SearchWebWorkerResult } from "@/models";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
