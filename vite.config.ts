@@ -2,13 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { VitePWA } from "vite-plugin-pwa";
-import { comlink } from "vite-plugin-comlink";
 
 // https://vite.dev/config/
 export default defineConfig({
   base: "/impc-web-spa/",
   plugins: [
-    comlink(),
     react(),
     tsconfigPaths(),
     VitePWA({
@@ -18,9 +16,6 @@ export default defineConfig({
       },
     }),
   ],
-  worker: {
-    plugins: () => [comlink()],
-  },
   server: {
     proxy: {
       "/proxy": {
