@@ -78,6 +78,9 @@
       ],
       "@/utils/results-page": [
         "./src/utils/results-page.tsx"
+      ],
+      "@/workers/*": [
+        "./src/workers/*"
       ]
     }
   },
