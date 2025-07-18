@@ -11,8 +11,8 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useEffect, useMemo, useState } from "react";
-import { useGeneSearchQuery } from "@/hooks";
+import { useEffect, useMemo } from "react";
+import { useGeneSearchQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
@@ -153,32 +153,13 @@ type GeneResultProps = {
 
 const GeneResults = ({ query, stale }: GeneResultProps) => {
   const { data, isLoading } = useGeneSearchQuery();
-  const [indexLoaded, setIndexLoaded] = useState(false);
-  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const [noMatches, setNoMatches] = useState<boolean>(false);
-
   const { eventResult, sendMessage } = useGeneSearchResultWorker();
-
-  useEffect(() => {
-    if (eventResult) {
-      switch (eventResult.type) {
-        case "index-loaded":
-          setIndexLoaded(true);
-          break;
-        case "query-result":
-          setSearchResultIds(eventResult.result);
-          setNoMatches(eventResult.noMatches);
-          setIsSearching(false);
-          break;
-      }
-    }
-  }, [eventResult]);
+  const { searchResultIds, noMatches, indexLoaded, isSearching, sendQuery } =
+    useSearchWebWorker(eventResult, sendMessage);
 
   useEffect(() => {
     if (query) {
-      sendMessage(query);
-      setIsSearching(true);
+      sendQuery(query);
     }
   }, [query]);
 

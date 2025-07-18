@@ -16,11 +16,10 @@ import { PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { usePhenotypeResultsQuery, useWebWorker } from "@/hooks";
+import { usePhenotypeResultsQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
-import { PROTOTYPE_DATA_ROOT } from "@/api-service";
-import { SearchWebWorkerResult } from "@/models";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { usePhenotypeSearchResultWorker } from "@/workers/usePhenotypeSearchResultWorker.ts";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -124,10 +123,6 @@ type PhenotypeResultsProps = {
 const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
-  const [indexLoaded, setIndexLoaded] = useState(false);
-  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const [noMatches, setNoMatches] = useState<boolean>(false);
   const updateSortByOntology = (value: "asc" | "desc") => {
     setSortGenes(null);
     setSort(value);
@@ -140,34 +135,13 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
 
   const { data, isLoading } = usePhenotypeResultsQuery();
 
-  const workerScriptUrl = useMemo(
-    () =>
-      `../../workers/search-result-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&type=phenotype`,
-    [],
-  );
-
-  const { eventResult, sendMessage } =
-    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
-
-  useEffect(() => {
-    if (eventResult) {
-      switch (eventResult.type) {
-        case "index-loaded":
-          setIndexLoaded(true);
-          break;
-        case "query-result":
-          setSearchResultIds(eventResult.result);
-          setNoMatches(eventResult.noMatches);
-          setIsSearching(false);
-          break;
-      }
-    }
-  }, [eventResult]);
+  const { eventResult, sendMessage } = usePhenotypeSearchResultWorker();
+  const { indexLoaded, searchResultIds, noMatches, isSearching, sendQuery } =
+    useSearchWebWorker(eventResult, sendMessage);
 
   useEffect(() => {
     if (query) {
-      sendMessage(query);
-      setIsSearching(true);
+      sendQuery(query);
     }
   }, [query]);
 
