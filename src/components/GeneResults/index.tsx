@@ -12,11 +12,10 @@ import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
 import { useEffect, useMemo, useState } from "react";
-import { useGeneSearchQuery, useWebWorker } from "@/hooks";
+import { useGeneSearchQuery } from "@/hooks";
 import classNames from "classnames";
-import { PROTOTYPE_DATA_ROOT } from "@/api-service";
-import { SearchWebWorkerResult } from "@/models";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -159,14 +158,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
   const [isSearching, setIsSearching] = useState(false);
   const [noMatches, setNoMatches] = useState<boolean>(false);
 
-  const workerScriptUrl = useMemo(
-    () =>
-      `../../workers/search-result-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&type=gene`,
-    [],
-  );
-
-  const { eventResult, sendMessage } =
-    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
+  const { eventResult, sendMessage } = useGeneSearchResultWorker();
 
   useEffect(() => {
     if (eventResult) {
