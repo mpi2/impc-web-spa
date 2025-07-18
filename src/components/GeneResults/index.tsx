@@ -11,12 +11,11 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useEffect, useMemo, useState } from "react";
-import { useGeneSearchQuery, useWebWorker } from "@/hooks";
+import { useEffect, useMemo } from "react";
+import { useGeneSearchQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
-import { PROTOTYPE_DATA_ROOT } from "@/api-service";
-import { SearchWebWorkerResult } from "@/models";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -154,39 +153,13 @@ type GeneResultProps = {
 
 const GeneResults = ({ query, stale }: GeneResultProps) => {
   const { data, isLoading } = useGeneSearchQuery();
-  const [indexLoaded, setIndexLoaded] = useState(false);
-  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const [noMatches, setNoMatches] = useState<boolean>(false);
-
-  const workerScriptUrl = useMemo(
-    () =>
-      `../../workers/search-result-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&type=gene`,
-    [],
-  );
-
-  const { eventResult, sendMessage } =
-    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
-
-  useEffect(() => {
-    if (eventResult) {
-      switch (eventResult.type) {
-        case "index-loaded":
-          setIndexLoaded(true);
-          break;
-        case "query-result":
-          setSearchResultIds(eventResult.result);
-          setNoMatches(eventResult.noMatches);
-          setIsSearching(false);
-          break;
-      }
-    }
-  }, [eventResult]);
+  const { eventResult, sendMessage } = useGeneSearchResultWorker();
+  const { searchResultIds, noMatches, indexLoaded, isSearching, sendQuery } =
+    useSearchWebWorker(eventResult, sendMessage);
 
   useEffect(() => {
     if (query) {
-      sendMessage(query);
-      setIsSearching(true);
+      sendQuery(query);
     }
   }, [query]);
 

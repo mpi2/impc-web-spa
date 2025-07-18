@@ -43,3 +43,4 @@ export { usePublicationsQuery } from "./publication-queries/publications.query.t
 export { usePublicationsAggregationQuery } from "./publication-queries/publications-aggregation.query.ts";
 export { useGeneSearchQuery } from "./search-queries/gene-search.query.ts";
 export { useWebWorker } from "./web-worker.ts";
+export { useSearchWebWorker } from "./search-web-worker.ts";
