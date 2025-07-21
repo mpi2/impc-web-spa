@@ -69,7 +69,9 @@ const SexualDimorphismLandingPage = lazy(
 import { ReleaseNotesPage } from "@/components";
 import HTMLPage from "./static-html/HTMLPage.tsx";
 import IMPCDataGenerationPage from "../src/static-html/impc-data-generation.html?raw";
-import GenomeBrowserPage from "@/pages/genes/[pid]/genome-browser/genome-browser-page.tsx";
+const GenomeBrowserPage = lazy(
+  () => import("@/pages/genes/[pid]/genome-browser/genome-browser-page.tsx"),
+);
 import { DATA_SITE_BASE_PATH } from "@/shared";
 
 createRoot(document.getElementById("root")!).render(
