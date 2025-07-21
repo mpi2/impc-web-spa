@@ -73,6 +73,7 @@ const GenomeBrowserPage = lazy(
   () => import("@/pages/genes/[pid]/genome-browser/genome-browser-page.tsx"),
 );
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import NotFound from "@/pages/not-found.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -139,6 +140,7 @@ createRoot(document.getElementById("root")!).render(
               path="release/22.0"
               element={<ReleaseNotesPage releaseVersion="DR22.0" />}
             />
+            <Route path="*" element={<NotFound />}></Route>
           </Route>
           <Route
             path="/understand/start-using-the-impc/impc-data-generation"
