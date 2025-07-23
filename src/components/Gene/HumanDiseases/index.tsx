@@ -308,13 +308,13 @@ const HumanDiseases = () => {
     isFetching: associatedLoading,
     isError: associatedIsError,
     data: associatedDiseases,
-  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "associated")
+  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "associated");
 
   const {
     isFetching: predictedLoading,
     isError: predictedIsError,
     data: predictedDiseases,
-  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "predicted")
+  } = useGeneDiseasesQuery(gene.mgiGeneAccessionId, "predicted");
 
   const [tab, setTab] = useState("associated");
 
@@ -413,8 +413,8 @@ const HumanDiseases = () => {
           data={visibleData}
           additionalBottomControls={
             <DownloadData<GeneDisease>
-              data={fullData}
-              fileName={`${gene.geneSymbol}-associated-diseases`}
+              data={visibleData}
+              fileName={`${gene.geneSymbol}-${tab === "associated" ? "associated" : "predicted"}-diseases`}
               fields={[
                 { key: "diseaseTerm", label: "Disease" },
                 { key: "phenodigmScore", label: "Phenodigm Score" },
