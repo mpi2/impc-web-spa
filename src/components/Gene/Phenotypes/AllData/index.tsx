@@ -109,25 +109,6 @@ const AllData = (props: Props) => {
       false,
     );
 
-  const getDownloadData = () => {
-    const url = `/api/v1/genes/statistical-result/filtered`;
-    const params = {
-      mgiGeneAccessionId: gene.mgiGeneAccessionId,
-      sortBy: sortField,
-      sort: sortOrder,
-    };
-
-    Object.entries(selectedValues)
-      .filter(([, value]) => !!value)
-      .forEach(([key, value]) => (params[key] = value));
-
-    if (query) {
-      params["searchQuery"] = query;
-    }
-
-    return fetchAPI(buildURL(url, params));
-  };
-
   const onRefHover = (ref: "*" | "**" | "+", active: boolean) => {
     const value = active ? ref : null;
     setHoveringRef(value);
@@ -338,7 +319,7 @@ const AllData = (props: Props) => {
             hasDataRelatedToPWG={hasDataRelatedToPWG}
           />
           <DownloadData<GeneStatisticalResult>
-            getData={getDownloadData}
+            data={mutatedData}
             fileName={`${gene.geneSymbol}-all-phenotype-data`}
             fields={[
               { key: "alleleSymbol", label: "Allele" },
