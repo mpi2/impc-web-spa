@@ -834,6 +834,11 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
+"@cascadia-code/scroll-to-hash-element@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@cascadia-code/scroll-to-hash-element/-/scroll-to-hash-element-2.0.3.tgz#8e062b22343d119c6b185f1a4431856c96f9bc6d"
+  integrity sha512-unNYcJYLhcFdKAvjxRe0fACyj/mDnK8qbljEoPzOgT526J1Dvd2zhyNKy383QT8Iaq8pYcmAjmJpQ5hf639FvQ==
+
 "@csstools/color-helpers@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@csstools/color-helpers/-/color-helpers-5.0.2.tgz#82592c9a7c2b83c293d9161894e2a6471feb97b8"

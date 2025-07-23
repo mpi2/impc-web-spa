@@ -1,6 +1,7 @@
 import { StrictMode, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import ScrollToHashElement from "@cascadia-code/scroll-to-hash-element";
 import RootLayout from "./layout.tsx";
 import SearchResults from "@/pages/search/search-page.tsx";
 import FallbackPage from "@/components/FallbackPage";
@@ -77,6 +78,7 @@ import NotFound from "@/pages/not-found.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <ScrollToHashElement />
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Suspense fallback={<FallbackPage />}>
         <Routes>
