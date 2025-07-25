@@ -43,7 +43,7 @@ export const useHistopathologyQuery = (
   routerIsReady: boolean,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
-  const id = mgiGeneAccessionId.replace(":", "-");
+  const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery({
     queryKey: ["histopathology", mgiGeneAccessionId],
     queryFn: () => fetchData(`${chromosome}/${id}/full-histopathology.json`),
