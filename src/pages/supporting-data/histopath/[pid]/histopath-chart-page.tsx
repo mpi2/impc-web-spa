@@ -1,4 +1,4 @@
-import { AlleleSymbol, Search } from "@/components";
+import { AlleleSymbol, DownloadData, Search } from "@/components";
 import styles from "../../styles.module.scss";
 import {
   Accordion,
@@ -64,7 +64,7 @@ const HistopathChartPage = () => {
   const { pathname: pathName } = useLocation();
   const [searchParams] = useSearchParams();
   const mgiGeneAccessionId = decodeURIComponent(params.pid);
-  const [selectedAnatomy, setSelectedAnatomy] = useState<string>(null);
+  const [selectedAnatomy, setSelectedAnatomy] = useState<string | null>(null);
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
   const [selectedTissue, setSelectedTissue] = useState<Histopathology>(null);
   const { data: gene } = useGeneSummaryQuery(
@@ -271,6 +271,23 @@ const HistopathChartPage = () => {
                 cmp: <PlainTextCell />,
               },
             ]}
+            additionalBottomControls={
+              <DownloadData<Histopathology>
+                data={() => filteredData!}
+                fields={[
+                  { key: "tissue", label: "Tissue" },
+                  { key: "zygosity", label: "Zygosity" },
+                  { key: "specimenNumber", label: "Specimen number" },
+                  { key: "description", label: "Description" },
+                  { key: "mPathTerm", label: "MPath Term" },
+                  { key: "severityScore", label: "Severity Score" },
+                  { key: "significanceScore", label: "Significance Score" },
+                  { key: "descriptorPATO", label: "PATO Descriptor" },
+                  { key: "freeText", label: "Additional comments" },
+                ]}
+                fileName={`${gene?.geneSymbol}-histopathology-data`}
+              />
+            }
           />
           {!_.isEmpty(data?.images) ? (
             <>
