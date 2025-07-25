@@ -9,9 +9,10 @@ import Search from "@/components/Search";
 import { PhenotypeSummary } from "@/models/phenotype";
 import { PhenotypeContext } from "@/contexts";
 import { uniqBy } from "lodash";
-import { useMemo } from "react";
-import { useParams } from "react-router";
+import { useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router";
 import { usePhenotypeSummaryQuery } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const sortAndUniqPhenotypeProcedures = (
   data: PhenotypeSummary,
@@ -24,8 +25,13 @@ const sortAndUniqPhenotypeProcedures = (
 
 const Phenotype = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const phenotypeId = params.id;
-  const { data: phenotype } = usePhenotypeSummaryQuery(phenotypeId)
+  const {
+    data: phenotype,
+    isError,
+    error,
+  } = usePhenotypeSummaryQuery(phenotypeId);
 
   const phenotypeData = useMemo(() => {
     const selectedData = phenotype;
@@ -37,6 +43,12 @@ const Phenotype = () => {
       ),
     };
   }, [phenotype]);
+
+  useEffect(() => {
+    if (!phenotype && isError && error === "No content") {
+      navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
+    }
+  }, [phenotype, isError, error]);
 
   return (
     <>
