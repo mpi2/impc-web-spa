@@ -2,6 +2,7 @@ import { Card, Search } from "@/components";
 import { Link } from "react-router";
 import { Col, Container, Row } from "react-bootstrap";
 import { Suspense } from "react";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export default function NotFound() {
   return (
@@ -21,12 +22,18 @@ export default function NotFound() {
               </p>
               <ul className="list-links-404">
                 <li>
-                  <Link className="link primary" to="/search">
+                  <Link
+                    className="link primary"
+                    to={`/${DATA_SITE_BASE_PATH}/search`}
+                  >
                     Gene search
                   </Link>
                 </li>
                 <li>
-                  <Link className="link primary" to="/search?type=pheno">
+                  <Link
+                    className="link primary"
+                    to={`/${DATA_SITE_BASE_PATH}/search?type=pheno`}
+                  >
                     Phenotype search
                   </Link>
                 </li>
