@@ -14,10 +14,12 @@ import {
 import { useEffect, useState } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
 import { useGeneSummaryQuery } from "@/hooks";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const GenePage = () => {
   const params = useParams<{ pid: string }>();
+  const navigate = useNavigate();
   const [allelesStudied, setAlleles] = useState<Array<string>>([]);
   const [numAllelesAvailable, setNumAllelesAvailable] = useState(-1);
   const [allelesStudiedLoading, setAllelesStudiedLoading] =
@@ -32,10 +34,11 @@ const GenePage = () => {
     setNumAllelesAvailable,
   };
 
-  const { data: gene } = useGeneSummaryQuery(
-    params.pid,
-    !!params.pid
-  );
+  const {
+    data: gene,
+    isError,
+    error,
+  } = useGeneSummaryQuery(params.pid, !!params.pid);
 
   const geneData = gene;
 
@@ -49,6 +52,12 @@ const GenePage = () => {
       }
     }
   }, [geneData]);
+
+  useEffect(() => {
+    if (!geneData && isError && error === "No content") {
+      navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
+    }
+  }, [gene, isError, error]);
 
   return (
     <>
