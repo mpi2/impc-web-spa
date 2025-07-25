@@ -152,6 +152,7 @@ const AllelePage = () => {
         )}
         {alleleData?.doesMiceProductsExist && (
           <Mice
+            geneSymbol={alleleData.geneSymbol}
             isCrispr={alleleData?.doesCrisprProductsExist}
             mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
@@ -160,6 +161,7 @@ const AllelePage = () => {
         )}
         {alleleData?.doesEsCellProductsExist && (
           <ESCell
+            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
             setQcData={setQcData}
@@ -167,6 +169,7 @@ const AllelePage = () => {
         )}
         {alleleData?.doesTargetingVectorProductsExist && (
           <TargetingVector
+            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />
@@ -180,6 +183,7 @@ const AllelePage = () => {
 
         {alleleData?.doesCrisprProductsExist && (
           <Crispr
+            geneSymbol={alleleData.geneSymbol}
             mgiGeneAccessionId={alleleData?.mgiGeneAccessionId}
             alleleName={alleleSymbol as string}
           />

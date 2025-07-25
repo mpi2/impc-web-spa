@@ -15,13 +15,18 @@ const Mice = ({
   alleleName,
   isCrispr,
   setQcData,
+  geneSymbol,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
   isCrispr: boolean;
   setQcData: (any) => void;
+  geneSymbol: string;
 }) => {
-  const { data, isLoading, isError } = useAlleleMiceQuery(mgiGeneAccessionId, alleleName);
+  const { data, isLoading, isError } = useAlleleMiceQuery(
+    mgiGeneAccessionId,
+    alleleName,
+  );
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
@@ -49,7 +54,7 @@ const Mice = ({
 
   const fixedTissuesLinks: Array<any> = _.uniqBy(
     data.flatMap((item) => item.tissueDistribution),
-    "tissueEnquiryLink"
+    "tissueEnquiryLink",
   );
   return (
     <Card id="mice" data-testid="mice-section">
@@ -82,7 +87,7 @@ const Mice = ({
                 )}
                 <DownloadData<AlelleMice>
                   data={sorted}
-                  fileName={`${alleleName}-mice-data`}
+                  fileName={`${geneSymbol}-${alleleName}-mice-data`}
                   fields={[
                     { key: "name", label: "Colony Name" },
                     {
@@ -105,7 +110,7 @@ const Mice = ({
                                 (key) =>
                                   `${toSentenceCase(key)}: ${
                                     item.qcData[0]?.productionQc[key]
-                                  }`
+                                  }`,
                               )
                               .join(", ")
                           : "No data",

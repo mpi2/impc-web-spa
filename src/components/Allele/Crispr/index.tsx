@@ -36,9 +36,11 @@ const CopyButton = ({ sequence }) => {
 const Crispr = ({
   mgiGeneAccessionId,
   alleleName,
+  geneSymbol,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
+  geneSymbol: string;
 }) => {
   const { data, isLoading, isError } = useAlleleCRISPRQuery(
     mgiGeneAccessionId,
@@ -169,7 +171,7 @@ const Crispr = ({
         </SortableTable>
         <DownloadData<AlleleCrispr>
           data={() => [data]}
-          fileName={`${alleleName}-crispr-data`}
+          fileName={`${geneSymbol}-${alleleName}-crispr-data`}
           fields={[
             {
               key: "nucleases",

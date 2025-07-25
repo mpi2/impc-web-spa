@@ -15,11 +15,16 @@ import { useAlleleTVPQuery } from "@/hooks";
 const TargetingVector = ({
   mgiGeneAccessionId,
   alleleName,
+  geneSymbol,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
+  geneSymbol: string;
 }) => {
-  const { data, isLoading, isError } = useAlleleTVPQuery(mgiGeneAccessionId, alleleName);
+  const { data, isLoading, isError } = useAlleleTVPQuery(
+    mgiGeneAccessionId,
+    alleleName,
+  );
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
@@ -60,7 +65,7 @@ const TargetingVector = ({
           additionalBottomControls={
             <DownloadData<AlleleTvp>
               data={sorted}
-              fileName={`${alleleName}-tvp-data`}
+              fileName={`${geneSymbol}-${alleleName}-tvp-data`}
               fields={[
                 { key: "name", label: "Targeting Vector" },
                 {

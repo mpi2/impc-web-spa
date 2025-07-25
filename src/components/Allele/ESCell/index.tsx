@@ -14,12 +14,17 @@ const ESCell = ({
   mgiGeneAccessionId,
   alleleName,
   setQcData,
+  geneSymbol,
 }: {
   mgiGeneAccessionId: string;
   alleleName: string;
   setQcData: (any) => void;
+  geneSymbol: string;
 }) => {
-  const { data, isLoading, isError } = useAlleleESCellQuery(mgiGeneAccessionId, alleleName);
+  const { data, isLoading, isError } = useAlleleESCellQuery(
+    mgiGeneAccessionId,
+    alleleName,
+  );
   const [sorted, setSorted] = useState<any[]>([]);
   useEffect(() => {
     if (data) {
@@ -60,7 +65,7 @@ const ESCell = ({
           additionalBottomControls={
             <DownloadData<AlleleEsCell>
               data={sorted}
-              fileName={`${alleleName}-ES-Cell-data`}
+              fileName={`${geneSymbol}-${alleleName}-ES-Cell-data`}
               fields={[
                 { key: "name", label: "ES Cell Clone" },
                 { key: "strain", label: "ES Cell strain" },
@@ -76,7 +81,7 @@ const ESCell = ({
                             (key) =>
                               `${toSentenceCase(key)}: ${
                                 item.qcData[0]?.userQc[key]
-                              }`
+                              }`,
                           )
                           .join(", ")
                       : "No data",
