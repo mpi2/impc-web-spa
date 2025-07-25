@@ -142,6 +142,7 @@ createRoot(document.getElementById("root")!).render(
               path="release/22.0"
               element={<ReleaseNotesPage releaseVersion="DR22.0" />}
             />
+            <Route path="not-found" element={<NotFound />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Route>
           <Route
