@@ -70,7 +70,7 @@ const PRODUCTS_TRACKS = {
 const optionalTracks = {
   GENCODEFull: {
     name: "GENCODE M37 (complete)",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/gencode/gencodeVM37.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -88,7 +88,7 @@ const optionalTracks = {
   },
   GENCODEBasic: {
     name: "GENCODE M37 basic annotations",
-    url: "https://impc-datasets.s3.eu-west-2.amazonaws.com/genome_data/gencodeVM37.basic.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/gencodeVM37.basic.bb`,
     indexed: false,
     searchable: true,
     searchableFields: [
@@ -104,9 +104,18 @@ const optionalTracks = {
     autoHeight: true,
     type: "annotation",
   },
+  RefSeq: {
+    name: "RefSeq Curated",
+    format: "refgene",
+    url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
+    indexed: false,
+    order: 0,
+    removable: false,
+    autoHeight: true,
+  },
   "UniProt SwissProt Protein Annotations": {
     name: "UniProt SwissProt Protein Annotations",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliSwissprot.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliSwissprot.bb`,
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -114,7 +123,7 @@ const optionalTracks = {
   },
   "UniProt TrEMBL Protein Annotations": {
     name: "UniProt TrEMBL Protein Annotations",
-    url: "https://hgdownload.soe.ucsc.edu/gbdb/mm39/uniprot/unipAliTrembl.bb",
+    url: `${GENOME_BROWSER_DATA_URL}/unipAliTrembl.bb`,
     indexed: false,
     nameField: "GeneName",
     order: 0,
@@ -125,6 +134,13 @@ const optionalTracks = {
     url: `${GENOME_BROWSER_DATA_URL}/ikmc_ucsc_alleles.bb`,
     autoHeight: true,
   },
+};
+
+const updateTrackWithTimestamp = (track: any, timestamp: string) => {
+  return {
+    ...track,
+    url: `${track.url}?t=${timestamp}`,
+  };
 };
 
 const GenomeBrowser = ({
@@ -150,11 +166,12 @@ const GenomeBrowser = ({
       const igvContainer = document.querySelector("#igv-container");
       const currentHash = window.location.hash;
       const selectedTracks: Record<string, boolean> = {};
+      const timestamp = (+new Date()).toString(10);
       let tracks: Array<any> = [
         {
           name: "RefSeq Curated",
           format: "refgene",
-          url: "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/database/ncbiRefSeqCurated.txt.gz",
+          url: `${GENOME_BROWSER_DATA_URL}/ncbiRefSeqCurated.txt.gz`,
           indexed: false,
           order: 0,
           removable: false,
@@ -167,11 +184,14 @@ const GenomeBrowser = ({
       selectedTracks.crisprFASTA = true;
       selectedTracks.crisprDeletionCoords = true;
       tracks.push(
-        PRODUCTS_TRACKS.crisprGuides,
-        PRODUCTS_TRACKS.crisprFASTA,
-        PRODUCTS_TRACKS.crisprDeletionCoords,
-        PRODUCTS_TRACKS.esCellAlleles,
-        PRODUCTS_TRACKS.esCellProducts,
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprGuides, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.crisprFASTA, timestamp),
+        updateTrackWithTimestamp(
+          PRODUCTS_TRACKS.crisprDeletionCoords,
+          timestamp,
+        ),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellAlleles, timestamp),
+        updateTrackWithTimestamp(PRODUCTS_TRACKS.esCellProducts, timestamp),
       );
       if (currentHash === "#targetingVector") {
         tracks.push(PRODUCTS_TRACKS.targetingVectors);
@@ -185,9 +205,8 @@ const GenomeBrowser = ({
           id: "mm39",
           name: "Mouse (GRCm39/mm39)",
           fastaURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa",
-          indexURL: "https://s3.amazonaws.com/igv.org.genomes/mm39/mm39.fa.fai",
-          chromSizesURL:
-            "https://hgdownload.soe.ucsc.edu/goldenPath/mm39/bigZips/mm39.chrom.sizes",
+          indexURL: `${GENOME_BROWSER_DATA_URL}/mm39.fa.fai`,
+          chromSizesURL: `${GENOME_BROWSER_DATA_URL}/mm39.chrom.sizes`,
         },
         search: {
           url: "https://www.gentar.org/orthology-api/api/ortholog/get-coordinates/search?geneQuery=$FEATURE$",
@@ -226,7 +245,10 @@ const GenomeBrowser = ({
   ) => {
     if (genomeBrowserRef.current) {
       if (selection) {
-        genomeBrowserRef.current.loadTrack(optionalTracks[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(optionalTracks[name], timestamp),
+        );
       } else {
         genomeBrowserRef.current.removeTrackByName(optionalTracks[name].name);
       }
@@ -236,7 +258,10 @@ const GenomeBrowser = ({
   const toggleProductTrack = (name: keyof SelectedTracks, value: boolean) => {
     if (genomeBrowserRef.current) {
       if (value) {
-        genomeBrowserRef.current.loadTrack(PRODUCTS_TRACKS[name]);
+        const timestamp = (+new Date()).toString(10);
+        genomeBrowserRef.current.loadTrack(
+          updateTrackWithTimestamp(PRODUCTS_TRACKS[name], timestamp),
+        );
       } else {
         genomeBrowserRef.current.removeTrackByName(PRODUCTS_TRACKS[name].name);
       }
@@ -289,10 +314,12 @@ const GenomeBrowser = ({
                 <Form.Check
                   className="mb-0"
                   inline
-                  disabled
-                  checked
+                  defaultChecked
                   label="RefSeq"
                   type="checkbox"
+                  onChange={(e) => {
+                    toggleOptionalTrack("RefSeq", e.target.checked);
+                  }}
                 />
                 <Form.Check
                   className="mb-0"
