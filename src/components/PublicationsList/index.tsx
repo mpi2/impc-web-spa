@@ -17,15 +17,16 @@ import { useEffect, useState, useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
 import styles from "./styles.module.scss";
-import { PROTOTYPE_DATA_ROOT, PUBLICATIONS_ENDPOINT_URL } from "@/api-service";
+import { PUBLICATIONS_ENDPOINT_URL } from "@/api-service";
 import Pagination from "../Pagination";
 import { useDebounceValue } from "usehooks-ts";
 import _ from "lodash";
 import { AlleleSymbol } from "@/components";
 import { Link } from "react-router";
-import { usePublicationsQuery, useWebWorker } from "@/hooks";
-import { SearchWebWorkerResult } from "@/models";
+import { usePublicationsQuery, useSearchWebWorker } from "@/hooks";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { useConsortiumPublicationsSearchResultWorker } from "@/workers/useConsortiumPublicationsSearchResultWorker.ts";
+import { useAllPublicationsSearchResultWorker } from "@/workers/useAllPublicationsSearchResultWorker.ts";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -131,26 +132,17 @@ const PublicationsList = (props: PublicationListProps) => {
     return url;
   };
 
-  const workerScriptUrl = useMemo(
-    () =>
-      `../../workers/publications-search-worker.js?api-data-root=${PROTOTYPE_DATA_ROOT}&only-consortium=${onlyConsortiumPublications}`,
-    [onlyConsortiumPublications],
-  );
-
-  const { eventResult, sendMessage } =
-    useWebWorker<SearchWebWorkerResult>(workerScriptUrl);
+  const { eventResult, sendMessage } = onlyConsortiumPublications
+    ? useConsortiumPublicationsSearchResultWorker()
+    : useAllPublicationsSearchResultWorker();
+  const { searchResultIds, noMatches, indexLoaded, isSearching, sendQuery } =
+    useSearchWebWorker(eventResult, sendMessage);
 
   const [abstractVisibilityMap, setAbstractVisibilityMap] = useState(new Map());
   const [meshTermsVisibilityMap, setMeshVisibilityMap] = useState(new Map());
   const [allelesVisibilityMap, setAllelesVisibilityMap] = useState(new Map());
   const [query, setQuery] = useState("");
-  const [indexLoaded, setIndexLoaded] = useState(false);
-  const [searchResultIds, setSearchResultIds] = useState<Array<string>>([]);
-  const [noMatches, setNoMatches] = useState<boolean>(false);
-  const [debounceQuery, setDebouncedQuery] = useDebounceValue<string>(
-    query,
-    500,
-  );
+  const [debounceQuery] = useDebounceValue<string>(query, 500);
   const {
     data: publications,
     isError,
@@ -158,31 +150,10 @@ const PublicationsList = (props: PublicationListProps) => {
   } = usePublicationsQuery(onlyConsortiumPublications);
 
   useEffect(() => {
-    setDebouncedQuery(query);
-    if (noMatches && !query) {
-      setNoMatches(false);
-    }
-  }, [query, noMatches]);
-
-  useEffect(() => {
     if (debounceQuery) {
-      sendMessage(debounceQuery);
+      sendQuery(debounceQuery);
     }
   }, [debounceQuery]);
-
-  useEffect(() => {
-    if (eventResult) {
-      switch (eventResult.type) {
-        case "index-loaded":
-          setIndexLoaded(true);
-          break;
-        case "query-result":
-          setSearchResultIds(eventResult.result);
-          setNoMatches(eventResult.noMatches);
-          break;
-      }
-    }
-  }, [eventResult]);
 
   const filteredPublications = useMemo(() => {
     if (noMatches) {

@@ -1,12 +1,8 @@
 import lunr from "lunr";
 
-const params = new URL(location).searchParams;
-const API_DATA_ROOT = params.get("api-data-root");
-const onlyConsortium = params.get("only-consortium") === "true";
-let fileName = onlyConsortium
-  ? "publications/consortium_publications_index.json"
-  : "publications/all_publications_index.json";
-const url = `${API_DATA_ROOT}${fileName}`;
+const API_DATA_ROOT = import.meta.env.VITE_PROTOTYPE_DATA_ROOT;
+const url = `${API_DATA_ROOT}publications/consortium-publications-index.json`;
+
 let searchIndex;
 fetch(url)
   .then((res) => res.json())
