@@ -11,7 +11,12 @@ export const useGeneSummaryQuery = (
   const id = mgiGeneAccessionId?.replace(":", "_");
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "summary"],
-    queryFn: () => fetchData(`${chromosome}/${id}/gene-summary.json`),
+    queryFn: () => {
+      if (!chromosome) {
+        return Promise.reject("No content");
+      }
+      return fetchData(`${chromosome}/${id}/gene-summary.json`);
+    },
     enabled: routerIsReady && !!mgiGeneAccessionId && !!id,
     select: (data) => data as GeneSummary,
   });
