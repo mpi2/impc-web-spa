@@ -1,4 +1,5 @@
 import { PROTOTYPE_DATA_ROOT } from "./index.ts";
+const IS_PROD = import.meta.env.PROD;
 
 type RequestResult = {
   success: boolean;
@@ -23,10 +24,12 @@ export class HeartbeatService {
   }
 
   public setUp() {
-    this.intervalId = setInterval(
-      this.checkFTPConnection.bind(this),
-      this.delay,
-    );
+    if (IS_PROD) {
+      this.intervalId = setInterval(
+        this.checkFTPConnection.bind(this),
+        this.delay,
+      );
+    }
   }
 
   public teardown() {
