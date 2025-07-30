@@ -45,7 +45,7 @@ const Phenotype = () => {
   }, [phenotype]);
 
   useEffect(() => {
-    if (!phenotype && isError && error === "No content") {
+    if (!phenotype && isError) {
       navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
     }
   }, [phenotype, isError, error]);

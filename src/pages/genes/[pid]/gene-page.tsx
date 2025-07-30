@@ -54,7 +54,7 @@ const GenePage = () => {
   }, [geneData]);
 
   useEffect(() => {
-    if (!geneData && isError && error === "No content") {
+    if (!geneData && isError) {
       navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
     }
   }, [gene, isError, error]);
