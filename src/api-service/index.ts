@@ -67,6 +67,7 @@ export async function fetchData<T>(path: string): Promise<T> {
     }
     return await response.json();
   } catch (error) {
+    console.error("Error: " + error);
     return Promise.reject("Error: " + error);
   }
 }
