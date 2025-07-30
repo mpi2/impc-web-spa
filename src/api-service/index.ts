@@ -60,14 +60,15 @@ export async function fetchAPI<T>(query: string): Promise<T> {
 
 export async function fetchData<T>(path: string): Promise<T> {
   const endpointURL = PROTOTYPE_DATA_ROOT + path;
+  let response;
   try {
-    const response = await fetch(endpointURL);
+    response = await fetch(endpointURL);
     if (response.status === 204 || response.status === 404) {
       return Promise.reject("No content");
     }
     return await response.json();
   } catch (error) {
-    console.error("Error: " + error);
+    console.log({ status: response?.status, ok: response?.ok });
     return Promise.reject("Error: " + error);
   }
 }
