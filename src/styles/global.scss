@@ -198,3 +198,12 @@ ul.pagination .page-item.disabled .page-link {
 .list-links-404 li {
   padding-bottom: 1rem;
 }
+
+.main-layout {
+  position: relative;
+}
+.connection-toast {
+  position: absolute;
+  top: 250px;
+  right: 0;
+}

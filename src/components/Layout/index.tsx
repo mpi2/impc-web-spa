@@ -1,10 +1,11 @@
 import Footer from "../Footer";
 import Header from "../Header";
 import Newsletter from "../Newsletter";
+import { PropsWithChildren } from "react";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div>
+    <div className="main-layout">
       <Header />
       <noscript>
         <div className="container mt-3" style={{ maxWidth: "1240px" }}>
