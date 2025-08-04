@@ -7,12 +7,14 @@ type RequestResult = {
   status: number;
 };
 
+type OnChangeFn = (newValue: boolean) => void;
+
 export class HeartbeatService {
   static #instance: HeartbeatService;
   private intervalId: number | undefined;
   private delay: number = 10000;
   private lastResults: Array<RequestResult> = [];
-  public isStable = true;
+  private onChangeFn: OnChangeFn | undefined;
 
   private constructor() {}
 
@@ -23,12 +25,13 @@ export class HeartbeatService {
     return HeartbeatService.#instance;
   }
 
-  public setUp() {
+  public setUp(onNewValue: OnChangeFn) {
     if (IS_PROD) {
       this.intervalId = setInterval(
         this.checkFTPConnection.bind(this),
         this.delay,
       );
+      this.onChangeFn = onNewValue;
     }
   }
 
@@ -71,6 +74,10 @@ export class HeartbeatService {
     const successfulResults = this.lastResults.filter(
       (res) => res.success,
     ).length;
-    this.isStable = successfulResults / totalResults >= 0.5;
+    if (this.onChangeFn) {
+      // basic logic to decide if a connection is stable or not
+      const isStable = successfulResults / totalResults >= 0.5;
+      this.onChangeFn(isStable);
+    }
   }
 }

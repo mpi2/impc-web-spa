@@ -27,11 +27,13 @@ export default function RootLayout() {
         <Layout>
           <Outlet />
           <Toast show={!connectionIsStable} className="connection-toast">
-            <Toast.Header>Unstable connection to data site</Toast.Header>
+            <Toast.Header closeButton={false}>
+              Unstable FTP site detected
+            </Toast.Header>
             <Toast.Body>
-              The connection to the data site is unstable, some sections and
-              pages won't be able to load properly. Reload the page or try
-              later.
+              Looks like the FTP site might not be working properly, some
+              sections and pages won't be able to load properly. Reload the page
+              or try later.
             </Toast.Body>
           </Toast>
         </Layout>

@@ -3,18 +3,14 @@ import { useEffect, useState } from "react";
 
 export function useHeartbeatService() {
   const heartbeatService = HeartbeatService.instance;
-  const [isStable, setIsStable] = useState(heartbeatService.isStable);
+  const [isStable, setIsStable] = useState<boolean>(true);
+
   useEffect(() => {
-    heartbeatService.setUp();
+    heartbeatService.setUp(setIsStable);
     return () => {
       heartbeatService.teardown();
     };
   }, []);
-
-  useEffect(() => {
-    console.log("Change in heartbeatService to ", heartbeatService.isStable);
-    setIsStable(heartbeatService.isStable);
-  }, [heartbeatService.isStable]);
 
   return { connectionIsStable: isStable };
 }
