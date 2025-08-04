@@ -1,8 +1,6 @@
-"use client";
-
 import { useEffect, useMemo, useState } from "react";
 import { Alert, Container, Spinner } from "react-bootstrap";
-import { useSearchParams } from "react-router";
+import { useSearchParams, useNavigate } from "react-router";
 import { formatPValue, getDatasetByKey, getSmallestPValue } from "@/utils";
 import {
   ABR,
@@ -26,6 +24,7 @@ import { chartLoadingIndicatorChannel } from "@/eventChannels";
 import { useDebounce } from "usehooks-ts";
 import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const generateParamsObject = (
   searchParams: URLSearchParams,
@@ -47,6 +46,7 @@ const generateParamsObject = (
 };
 
 const GeneralChartPage = () => {
+  const navigate = useNavigate();
   const [selectedKey, setSelectedKey] = useState("");
   const [additionalSummaries, setAdditionalSummaries] = useState<
     Array<Dataset>
@@ -76,7 +76,12 @@ const GeneralChartPage = () => {
     }
   };
 
-  const { datasetSummaries, isFetching, isError } = useDatasetsQuery(
+  const {
+    datasetSummaries = [],
+    isFetching,
+    isError,
+    isFetched,
+  } = useDatasetsQuery(
     mgiGeneAccessionId,
     generateParamsObject(searchParams),
     !!mgiGeneAccessionId,
@@ -93,37 +98,21 @@ const GeneralChartPage = () => {
     noStatisticsPerformed,
   } = useChartFlags(datasetSummaries, isError);
 
-  useEffect(() => {
-    const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
-      "toggleIndicator",
-      (payload: boolean) => setSpecialChartLoading(payload),
-    );
-
-    return () => {
-      unsubscribeToggleIndicator();
-    };
-  }, []);
-
   const parameterStableId: string =
     searchParams.get("parameterStableId") || datasetSummaries?.length
       ? datasetSummaries[0]?.parameterStableId
-      : null;
+      : "";
 
-  const { data: flowCytometryImages } = useFlowCytometryQuery(
+  const { data: flowCytometryImages = [] } = useFlowCytometryQuery(
     mgiGeneAccessionId,
     parameterStableId,
     !!mgiGeneAccessionId && !!parameterStableId && hasFlowCytometryImages,
   );
 
-  useEffect(() => {
-    if (!isPPIChart && specialChartLoading) {
-      setSpecialChartLoading(false);
-    }
-  }, [isPPIChart]);
-
   const allSummaries = !!overridingSummaries.length
     ? overridingSummaries?.concat(additionalSummaries)
     : datasetSummaries?.concat(additionalSummaries);
+
   const activeDataset = !!selectedKey
     ? getDatasetByKey(allSummaries, selectedKey)
     : allSummaries?.[0];
@@ -146,17 +135,44 @@ const GeneralChartPage = () => {
     }
   }, [chartType, bodyWeightData]);
 
+  useEffect(() => {
+    if (!isPPIChart && specialChartLoading) {
+      setSpecialChartLoading(false);
+    }
+  }, [isPPIChart]);
+
+  useEffect(() => {
+    const unsubscribeToggleIndicator = chartLoadingIndicatorChannel.on(
+      "toggleIndicator",
+      (payload: boolean) => setSpecialChartLoading(payload),
+    );
+
+    return () => {
+      unsubscribeToggleIndicator();
+    };
+  }, []);
+
+  useEffect(() => {
+    // if the query to fetch the datasets has been fetched, had an error and return 0 datasets
+    // most probably the JSON file is not present on the FTP/data site
+    // For now, navigating to the 404 page should be enough
+    if (isFetched && isError && allSummaries?.length === 0) {
+      navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
+    }
+  }, [allSummaries, isError, isFetched]);
+
   const smallestPValue = useMemo(
     () => getSmallestPValue(allSummaries),
     [allSummaries],
   );
-
   const fetchingInProcess = (isFetching || debouncedSpChartLoading) && !isError;
+
   const shouldDisplayPValueStatement =
     !isTimeSeries &&
     !fetchingInProcess &&
     smallestPValue !== 1 &&
     !noStatisticsPerformed;
+
   return (
     <>
       <Search />
