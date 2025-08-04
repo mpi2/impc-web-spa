@@ -9,12 +9,7 @@ export default function Providers({ children }: { children: ReactNode }) {
           queries: {
             staleTime: Infinity,
             refetchOnWindowFocus: false,
-            retry: (failureCount: Number, error) => {
-              const is404Error = error && error.toString() === "No content";
-              const hasReached3Failures = failureCount === 3;
-              // need to return false to stop retrying
-              return !(is404Error || hasReached3Failures);
-            },
+            retry: false,
           },
         },
       }),
