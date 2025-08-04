@@ -25,6 +25,7 @@ import { useDebounce } from "usehooks-ts";
 import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { ErrorBoundary } from "react-error-boundary";
 
 const generateParamsObject = (
   searchParams: URLSearchParams,
@@ -274,30 +275,44 @@ const GeneralChartPage = () => {
       <div
         style={{ position: "sticky", top: 0, zIndex: 100 }}
         className="bg-grey pt-2"
+        id="chart-container"
       >
-        <Container>
-          {!!isABRChart ? (
-            <ABR
-              datasetSummaries={datasetSummaries}
-              onNewSummariesFetched={setAdditionalSummaries}
-              activeDataset={activeDataset}
-            />
-          ) : !!isIPGTTChart ? (
-            <IPGTT
-              datasetSummaries={datasetSummaries}
-              onNewSummariesFetched={setAdditionalSummaries}
-              activeDataset={activeDataset}
-            />
-          ) : !!isPPIChart ? (
-            <PPI
-              datasetSummaries={datasetSummaries}
-              onNewSummariesFetched={setAdditionalSummaries}
-              activeDataset={activeDataset}
-            />
-          ) : (
-            !!activeDataset && <div>{Chart}</div>
-          )}
-        </Container>
+        <ErrorBoundary
+          fallback={
+            <Card>
+              <h2>There was an error</h2>
+              <p>
+                An error occured while trying to display the data for{" "}
+                {activeDataset?.parameterName} parameter. Please try again
+                later.
+              </p>
+            </Card>
+          }
+        >
+          <Container>
+            {isABRChart ? (
+              <ABR
+                datasetSummaries={datasetSummaries}
+                onNewSummariesFetched={setAdditionalSummaries}
+                activeDataset={activeDataset}
+              />
+            ) : isIPGTTChart ? (
+              <IPGTT
+                datasetSummaries={datasetSummaries}
+                onNewSummariesFetched={setAdditionalSummaries}
+                activeDataset={activeDataset}
+              />
+            ) : isPPIChart ? (
+              <PPI
+                datasetSummaries={datasetSummaries}
+                onNewSummariesFetched={setAdditionalSummaries}
+                activeDataset={activeDataset}
+              />
+            ) : (
+              !!activeDataset && <div>{Chart}</div>
+            )}
+          </Container>
+        </ErrorBoundary>
       </div>
     </>
   );
