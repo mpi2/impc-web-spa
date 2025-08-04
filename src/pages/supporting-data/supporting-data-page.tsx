@@ -60,7 +60,7 @@ const GeneralChartPage = () => {
     500,
   );
   const [searchParams] = useSearchParams();
-  const mgiGeneAccessionId: string = searchParams.get("mgiGeneAccessionId");
+  const mgiGeneAccessionId = searchParams.get("mgiGeneAccessionId");
 
   const getPageTitle = (summaries: Array<Dataset>, isError: boolean) => {
     if ((!summaries || summaries.length === 0) && !isError) {
@@ -94,7 +94,6 @@ const GeneralChartPage = () => {
     isIPGTTChart,
     isPPIChart,
     hasFlowCytometryImages,
-    isMiniSpecProcedure,
     noStatisticsPerformed,
   } = useChartFlags(datasetSummaries, isError);
 
@@ -159,7 +158,11 @@ const GeneralChartPage = () => {
     if (isFetched && isError && allSummaries?.length === 0) {
       navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
     }
-  }, [allSummaries, isError, isFetched]);
+    // if there is no mgiGeneAccessionId param, navigate also to the 404 page
+    if (mgiGeneAccessionId === null) {
+      navigate(`/${DATA_SITE_BASE_PATH}/not-found`, { replace: true });
+    }
+  }, [allSummaries, isError, isFetched, mgiGeneAccessionId]);
 
   const smallestPValue = useMemo(
     () => getSmallestPValue(allSummaries),
@@ -259,7 +262,7 @@ const GeneralChartPage = () => {
               <button
                 className="btn impc-secondary-button"
                 onClick={() => {
-                  document.querySelector("#chart").scrollIntoView();
+                  document.querySelector("#chart")?.scrollIntoView();
                 }}
               >
                 View chart
