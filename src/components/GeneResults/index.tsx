@@ -16,6 +16,7 @@ import { useGeneSearchQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
+import { GeneResultSkeleton } from "./GeneResultSkeleton.tsx";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -152,7 +153,7 @@ type GeneResultProps = {
 };
 
 const GeneResults = ({ query, stale }: GeneResultProps) => {
-  const { data, isLoading } = useGeneSearchQuery();
+  const { data, isLoading, isFetched } = useGeneSearchQuery();
   const { eventResult, sendMessage } = useGeneSearchResultWorker();
   const { searchResultIds, noMatches, indexLoaded, isSearching, sendQuery } =
     useSearchWebWorker(eventResult, sendMessage);
@@ -190,6 +191,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
               active: stale || !indexLoaded || isSearching,
             })}
           >
+            <span>Loading results...</span>
             <Spinner animation="border" />
           </div>
           <h1 style={{ marginBottom: 0 }}>
@@ -215,12 +217,16 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
           ) : (
             <Pagination data={filteredData}>
               {(pageData) => {
-                if (pageData.length === 0) {
+                if (pageData.length === 0 && isFetched) {
                   return (
                     <Alert variant="yellow">
                       <p>No results found.</p>
                     </Alert>
                   );
+                } else if (pageData.length === 0) {
+                  return Array.from({ length: 10 }).map((_, index) => (
+                    <GeneResultSkeleton isFirst={index === 0} />
+                  ));
                 }
                 return pageData.map((p, i) => (
                   <GeneResult gene={p} key={p.entityId + i} query={query} />

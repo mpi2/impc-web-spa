@@ -20,6 +20,7 @@ import { usePhenotypeResultsQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { usePhenotypeSearchResultWorker } from "@/workers/usePhenotypeSearchResultWorker.ts";
+import { PhenotypeResultSkeleton } from "./PhenotypeResultSkeleton.tsx";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -133,7 +134,7 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading } = usePhenotypeResultsQuery();
+  const { data, isLoading, isFetched } = usePhenotypeResultsQuery();
 
   const { eventResult, sendMessage } = usePhenotypeSearchResultWorker();
   const { indexLoaded, searchResultIds, noMatches, isSearching, sendQuery } =
@@ -189,6 +190,7 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
             active: stale || !indexLoaded || isSearching,
           })}
         >
+          <span>Loading results...</span>
           <Spinner animation="border" />
         </div>
         <h1 style={{ marginBottom: 0 }}>
@@ -255,24 +257,20 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
             }
           >
             {(pageData) => {
-              if (pageData.length === 0) {
+              if (pageData.length === 0 && isFetched) {
                 return (
                   <Alert variant="yellow">
                     <p>No results found.</p>
                   </Alert>
                 );
+              } else if (pageData.length === 0) {
+                return Array.from({ length: 10 }).map((_, index) => (
+                  <PhenotypeResultSkeleton isFirst={index === 0} />
+                ));
               }
-              return (
-                <>
-                  {pageData.map((p) => (
-                    <PhenotypeResult
-                      phenotype={p}
-                      key={p.entityId}
-                      query={query}
-                    />
-                  ))}
-                </>
-              );
+              return pageData.map((p) => (
+                <PhenotypeResult phenotype={p} key={p.entityId} query={query} />
+              ));
             }}
           </Pagination>
         )}

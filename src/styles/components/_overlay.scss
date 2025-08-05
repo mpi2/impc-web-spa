@@ -9,8 +9,10 @@
   z-index: -1;
   transition: 0.5s all;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-top: 4rem;
+  gap: 1rem;
   &.active {
     opacity: 1;
     z-index: 10;
@@ -20,5 +22,10 @@
     --bs-spinner-height: 3rem;
     border-color: #FFF;
     border-right-color: transparent;
+  }
+  span {
+    font-weight: bold;
+    color: #FFF;
+    font-size: 2rem;
   }
 }
