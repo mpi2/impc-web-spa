@@ -11,7 +11,7 @@ export const PhenotypeResultSkeleton = ({ isFirst }: { isFirst: boolean }) => (
       >
         <Skeleton width={140} />
         <div style={{ display: "flex", gap: "1rem" }}>
-          <Skeleton width={450} count={2} containerClassName="mt-1" />
+          <Skeleton width={530} count={2} containerClassName="mt-1" />
           <Skeleton width={450} count={2} containerClassName="mt-1" />
         </div>
         <Skeleton width={150} />
