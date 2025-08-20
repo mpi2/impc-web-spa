@@ -21,16 +21,22 @@ import EmbryoDataAvailabilityGrid from "@/components/EmbryoDataAvailabilityGrid"
 import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { DownloadData } from "@/components";
+
+type SelectedLineGene = {
+  mgiGeneAccessionId: string;
+  geneSymbol: string;
+};
 
 type SelectedLine = {
   windowOfLethality: string;
-  genes: Array<{ mgiGeneAccessionId: string; geneSymbol: string }>;
+  genes: Array<SelectedLineGene>;
 };
 
 const EmbryoLandingPage = () => {
   const { data } = useEmbryoLandingQuery();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [listGenes, setListGenes] = useState<SelectedLine>(null);
+  const [listGenes, setListGenes] = useState<SelectedLine | null>(null);
   const [displayGenesWithData, setDisplayGenesWithData] =
     useState<boolean>(true);
   const defaultSort: SortType = useMemo(() => ["geneSymbol", "asc"], []);
@@ -363,7 +369,7 @@ const EmbryoLandingPage = () => {
                     <td colSpan={2}>
                       <a
                         className="link primary"
-                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr21.0.tsv"
+                        href="https://impc-datasets.s3.eu-west-2.amazonaws.com/embryo-landing-assets/wol_all_dr23.0.tsv"
                       >
                         Download
                       </a>
@@ -484,6 +490,20 @@ const EmbryoLandingPage = () => {
               ]}
               paginationButtonsPlacement="bottom"
               displayPageControls={false}
+              additionalBottomControls={
+                <DownloadData
+                  data={() =>
+                    listGenes?.genes.sort((a, b) =>
+                      a.geneSymbol.localeCompare(b.geneSymbol),
+                    )!
+                  }
+                  fileName={`${listGenes?.windowOfLethality}-category-gene-list`}
+                  fields={[
+                    { key: "geneSymbol", label: "Gene symbol" },
+                    { key: "mgiGeneAccessionId", label: "MGI Accession ID" },
+                  ]}
+                />
+              }
             />
           </Modal.Body>
           <Modal.Footer>
