@@ -10,11 +10,6 @@ export const fetchSearchIndex = (url) =>
 
 export const searchAndReturnResults = (searchIndex, query) => {
   const ids = searchIndex.search(`${query}*`).map((item) => item.ref);
-  console.log({
-    type: "query-result",
-    result: ids,
-    noMatches: ids.length === 0,
-  });
   return {
     type: "query-result",
     result: ids,
