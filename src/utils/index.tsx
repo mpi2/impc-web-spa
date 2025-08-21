@@ -5,7 +5,7 @@ import {
   faVenus,
 } from "@fortawesome/free-solid-svg-icons";
 import { Dataset } from "@/models";
-import moment from "moment";
+import { differenceInCalendarWeeks } from "date-fns";
 
 export const allBodySystems = [
   "adipose tissue phenotype",
@@ -172,13 +172,10 @@ function calculateAgeInWeeks(
   dateOfBirth: string,
   experimentDate: string,
 ): number {
-  const birthDate = moment(dateOfBirth);
-  const experimentDateObj = moment(experimentDate);
-
-  const diffDuration = moment.duration(experimentDateObj.diff(birthDate));
-  const weeks = Math.floor(diffDuration.asWeeks());
-
-  return weeks;
+  return differenceInCalendarWeeks(
+    new Date(experimentDate),
+    new Date(dateOfBirth),
+  );
 }
 
 export const getPhenStatReadyData = (datasetMetadata: Dataset, data: any) => {
