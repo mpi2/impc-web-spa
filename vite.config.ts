@@ -34,6 +34,7 @@ export default defineConfig({
             "react",
             "react-dom",
             "lodash",
+            "date-fns",
             "framer-motion",
             "classnames",
             "file-saver",
@@ -42,7 +43,7 @@ export default defineConfig({
           chartjs: [
             "react-chartjs-2",
             "chart.js",
-            "chartjs-adapter-moment",
+            "chartjs-adapter-date-fns",
             "chartjs-chart-error-bars",
             "chartjs-plugin-datalabels",
             "chartjs-plugin-zoom",
