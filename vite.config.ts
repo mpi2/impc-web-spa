@@ -34,7 +34,6 @@ export default defineConfig({
             "react",
             "react-dom",
             "lodash",
-            "moment",
             "framer-motion",
             "classnames",
             "file-saver",
