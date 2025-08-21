@@ -8,9 +8,10 @@ import {
   Tooltip,
   TimeScale,
   ScatterController,
-  LineController, LegendItem,
+  LineController,
+  LegendItem,
 } from "chart.js";
-import "chartjs-adapter-moment";
+import "chartjs-adapter-date-fns";
 import { FC } from "react";
 import { Chart } from "react-chartjs-2";
 import {
@@ -21,7 +22,6 @@ import {
   UnidimensionalSeries,
 } from "..";
 import { getZygosityLabel } from "@/components/Data/Utils";
-import { capitalize } from "lodash";
 
 ChartJS.register(
   LinearScale,
@@ -32,7 +32,7 @@ ChartJS.register(
   Tooltip,
   CategoryScale,
   ScatterController,
-  LineController
+  LineController,
 );
 
 interface IUnidimensionalScatterPlotProps {
@@ -103,7 +103,7 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
             callbacks: {
               label: ({ dataset, parsed, raw }) =>
                 `${dataset.label}: ${parsed.y} ${unit} (${raw.x.format(
-                  "MMMM YYYY"
+                  "MMMM YYYY",
                 )})`,
             },
           },
@@ -114,14 +114,14 @@ const UnidimensionalScatterPlot: FC<IUnidimensionalScatterPlotProps> = ({
               padding: 20,
               sort: (a: LegendItem, b: LegendItem) => {
                 if (
-                  a.text.includes("Female") && b.text.includes("Female") ||
-                  a.text.includes("Male") && b.text.includes("Male")
+                  (a.text.includes("Female") && b.text.includes("Female")) ||
+                  (a.text.includes("Male") && b.text.includes("Male"))
                 ) {
                   return b.text.localeCompare(a.text);
                 } else {
                   return a.text.localeCompare(b.text);
                 }
-              }
+              },
             },
           },
         },
