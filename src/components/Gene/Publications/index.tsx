@@ -5,7 +5,7 @@ import { formatAlleleSymbol } from "@/utils";
 import { Alert } from "react-bootstrap";
 import { orderBy } from "lodash";
 import { Publication } from "../../PublicationsList/types";
-import moment from "moment";
+import { format } from "date-fns";
 import MoreItemsTooltip from "../../MoreItemsTooltip";
 import { sectionWithErrorBoundary } from "@/hoc/sectionWithErrorBoundary";
 import {
@@ -44,7 +44,9 @@ const AllelesCell = ({ pub }: { pub: Publication }) => {
 const Publications = () => {
   const gene = useContext(GeneContext);
   let totalItems = 0;
-  const { data, isLoading, isError } = useGenePublicationsQuery(gene.mgiGeneAccessionId);
+  const { data, isLoading, isError } = useGenePublicationsQuery(
+    gene.mgiGeneAccessionId,
+  );
   const defaultSort: SortType = useMemo(() => ["title", "asc"], []);
 
   const sorted = useMemo(() => {
@@ -52,7 +54,7 @@ const Publications = () => {
   }, [data]);
 
   const getPubDate = (publication: Publication) => {
-    return moment(publication.publicationDate).format("MM/YYYY");
+    return format(publication.publicationDate, "MM/yyyy");
   };
 
   if (isLoading) {

@@ -12,7 +12,7 @@ import {
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import moment from "moment";
+import { format } from "date-fns";
 import { useEffect, useState, useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Publication } from "./types";
@@ -68,7 +68,7 @@ const PublicationsList = (props: PublicationListProps) => {
   };
 
   const displayPubDate = (pub: Publication) => {
-    return moment(pub.publicationDate).format("DD-MM-YYYY");
+    return format(pub.publicationDate, "dd-MM-yyyy");
   };
 
   const getGrantsList = (pub: Publication) => {
