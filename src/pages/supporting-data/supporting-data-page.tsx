@@ -279,14 +279,16 @@ const GeneralChartPage = () => {
       >
         <ErrorBoundary
           fallback={
-            <Card>
-              <h2>There was an error</h2>
-              <p>
-                An error occured while trying to display the data for{" "}
-                {activeDataset?.parameterName} parameter. Please try again
-                later.
-              </p>
-            </Card>
+            <Container>
+              <Card>
+                <h2>There was an error</h2>
+                <p>
+                  An error occured while trying to display the data for{" "}
+                  {activeDataset?.parameterName} parameter. Please try again
+                  later.
+                </p>
+              </Card>
+            </Container>
           }
         >
           <Container>
