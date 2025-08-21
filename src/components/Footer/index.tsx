@@ -1,9 +1,6 @@
 import {
   faCreativeCommons,
   faCreativeCommonsBy,
-  faFacebookSquare,
-  faReddit,
-  faTwitter,
   faYoutube,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
@@ -11,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row } from "react-bootstrap";
 import footerCss from "./styles.module.scss";
 import { Link } from "react-router";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 export const DR_VERSION = import.meta.env.VITE_DATA_RELEASE_VERSION || "";
 
@@ -140,7 +138,7 @@ const Footer = () => {
           </div>
           <div className="col-12 col-md-6 text-right">
             <h6>
-              <Link to="/release">
+              <Link to={`/${DATA_SITE_BASE_PATH}/release`}>
                 <small>
                   Access Data Release <span id="data-no">{DR_VERSION}</span>
                   &nbsp;Data
