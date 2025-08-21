@@ -23,7 +23,6 @@ import { AlleleSymbol, FilterBox, ZoomButtons } from "@/components";
 import { GeneImageCollection, Image } from "@/models/gene";
 import classNames from "classnames";
 import { getIcon } from "@/utils";
-import moment from "moment";
 import { uniq } from "lodash";
 import {
   Link,
@@ -412,7 +411,7 @@ const ImagesCompare = () => {
           .flatMap((collection) => collection.images)
           .map((image) => ({
             ...image,
-            experimentDate: moment(image.dateOfExperiment),
+            experimentDate: new Date(image.dateOfExperiment),
           }))
           .sort(
             (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
@@ -422,7 +421,7 @@ const ImagesCompare = () => {
       return images[0].images
         .map((image) => ({
           ...image,
-          experimentDate: moment(image.dateOfExperiment),
+          experimentDate: new Date(image.dateOfExperiment),
         }))
         .sort(
           (a, b) => b.experimentDate.valueOf() - a.experimentDate.valueOf(),
