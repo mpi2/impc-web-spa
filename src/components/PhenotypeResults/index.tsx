@@ -7,8 +7,7 @@ import {
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import Card from "../Card";
 
 import Pagination from "../Pagination";
@@ -58,58 +57,54 @@ const PhenotypeResult = ({
   },
   query,
 }: Props) => {
-  const navigate = useNavigate();
   const synonymsArray = synonyms.split(";");
   return (
     <>
-      <Row
-        className={styles.result}
-        onClick={() => {
-          navigate(`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`);
-        }}
-      >
-        <Col>
-          <h4 className="mb-2 blue-dark">
-            {surroundWithMarkEl(phenotypeName, query)}
-          </h4>
-          <p className="grey small">
-            <strong>Synomyms:</strong>{" "}
-            {surroundWithMarkEl(synonymsArray.join(", "), query)}
-          </p>
-          {!!geneCountNum && geneCountNum !== 0 ? (
-            <p className="small grey">
-              <FontAwesomeIcon className="secondary" icon={faCheck} />{" "}
-              <strong>{geneCountNum}</strong> genes associated with this
-              phenotype
-            </p>
-          ) : (
+      <Row className={styles.result}>
+        <Link to={`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`}>
+          <Col>
+            <h4 className="mb-2 blue-dark">
+              {surroundWithMarkEl(phenotypeName, query)}
+            </h4>
             <p className="grey small">
-              <FontAwesomeIcon className="grey" icon={faCross} /> No IMPC genes
-              currently associated with this phenotype
+              <strong>Synomyms:</strong>{" "}
+              {surroundWithMarkEl(synonymsArray.join(", "), query)}
             </p>
-          )}
-        </Col>
-        <Col>
-          <p className="grey small">Physiological System</p>
-          {topLevelParentsArray.map((x) => (
-            <BodySystem
-              key={x.mpId}
-              name={x.mpTerm}
-              hoverColor="black"
-              color="black"
-              isSignificant
-            />
-          ))}
-          {topLevelParentsArray.length === 0 && (
-            <BodySystem
-              key={mpId}
-              name={phenotypeName}
-              hoverColor="black"
-              color="black"
-              isSignificant
-            />
-          )}
-        </Col>
+            {!!geneCountNum && geneCountNum !== 0 ? (
+              <p className="small grey">
+                <FontAwesomeIcon className="secondary" icon={faCheck} />{" "}
+                <strong>{geneCountNum}</strong> genes associated with this
+                phenotype
+              </p>
+            ) : (
+              <p className="grey small">
+                <FontAwesomeIcon className="grey" icon={faCross} /> No IMPC
+                genes currently associated with this phenotype
+              </p>
+            )}
+          </Col>
+          <Col>
+            <p className="grey small">Physiological System</p>
+            {topLevelParentsArray.map((x) => (
+              <BodySystem
+                key={x.mpId}
+                name={x.mpTerm}
+                hoverColor="black"
+                color="black"
+                isSignificant
+              />
+            ))}
+            {topLevelParentsArray.length === 0 && (
+              <BodySystem
+                key={mpId}
+                name={phenotypeName}
+                hoverColor="black"
+                color="black"
+                isSignificant
+              />
+            )}
+          </Col>
+        </Link>
       </Row>
       <hr className="mt-0 mb-0" />
     </>
@@ -159,7 +154,7 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
 
   const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
-      return filteredData.sort(
+      return filteredData?.sort(
         (
           { intermediateLevelParentsArray: p1, geneCountNum: count1 },
           { intermediateLevelParentsArray: p2, geneCountNum: count2 },

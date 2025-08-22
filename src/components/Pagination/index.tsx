@@ -12,7 +12,7 @@ import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 type Props<T> = {
-  data: Array<T>;
+  data: Array<T> | undefined;
   children: (pageData: Array<T>) => ReactNode;
   totalItems?: number;
   onPageChange?: (newPage: number) => void;

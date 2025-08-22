@@ -6,7 +6,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
@@ -44,7 +44,6 @@ const GeneResult = ({
     humanGeneSymbols,
     humanSymbolSynonyms,
   } = gene;
-  const navigate = useNavigate();
   const synonymsArray =
     synonyms.includes(";") || synonyms !== "" ? synonyms.split(";") : [];
   const humanSynonymsArray =
@@ -54,78 +53,74 @@ const GeneResult = ({
   return (
     <>
       <Row className={styles.row}>
-        <Col
-          sm={8}
-          className={styles.result}
-          onClick={() => {
-            navigate(`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}`);
-          }}
-        >
-          <h4 className="mb-2">
-            <span className="blue-dark">
-              <i>{surroundWithMarkEl(geneSymbol, query)}</i>
-            </span>
-            &nbsp;
-            <span className="grey">|</span>{" "}
-            {surroundWithMarkEl(geneName, query)}
-          </h4>
-          {!!synonymsArray && !!synonymsArray.length && (
-            <p className="grey small">
-              <strong>Synonyms:</strong>{" "}
-              <i>
-                {surroundWithMarkEl(
-                  (synonymsArray || []).slice(0, 10).join(", "),
-                  query,
-                ) || "None"}
-              </i>
-            </p>
-          )}
-          <p className="grey small mt-2">
-            <strong>Human symbol:</strong>{" "}
-            <i>{surroundWithMarkEl(humanGeneSymbols, query) || "None"}</i>
-          </p>
-          {!!humanSynonymsArray && !!humanSynonymsArray.length && (
-            <p className="grey small">
-              <strong>Human synonyms:</strong>{" "}
-              <i>
-                {surroundWithMarkEl(
-                  (humanSynonymsArray || []).slice(0, 10).join(", "),
-                  query,
-                ) || "None"}
-              </i>
-            </p>
-          )}
-
-          <div className="small grey mt-3">
-            {phenotypingDataAvailable ? (
-              <p>
-                <AvailabilityIcon hasData={!!phenotypeStatus} />
-                &nbsp;
-                <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
-                  {phenotypeStatus || "No phenotyping data"}
-                </span>
-                <AvailabilityIcon hasData={!!esCellProductionStatus} />
-                &nbsp;
-                <span
-                  className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
-                >
-                  {esCellProductionStatus || "No ES cells"}
-                </span>
-                <AvailabilityIcon hasData={!!mouseProductionStatus} />
-                &nbsp;
-                <span
-                  className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
-                >
-                  {mouseProductionStatus || "No mice"}
-                </span>
-              </p>
-            ) : (
-              <span className="grey">
-                <FontAwesomeIcon className="grey" icon={faTimes} /> Phenotyping
-                data not yet available
+        <Col sm={8} className={styles.result}>
+          <Link to={`/${DATA_SITE_BASE_PATH}/genes/${mgiGeneAccessionId}`}>
+            <h4 className="mb-2">
+              <span className="blue-dark">
+                <i>{surroundWithMarkEl(geneSymbol, query)}</i>
               </span>
+              &nbsp;
+              <span className="grey">|</span>{" "}
+              {surroundWithMarkEl(geneName, query)}
+            </h4>
+            {!!synonymsArray && !!synonymsArray.length && (
+              <p className="grey small">
+                <strong>Synonyms:</strong>{" "}
+                <i>
+                  {surroundWithMarkEl(
+                    (synonymsArray || []).slice(0, 10).join(", "),
+                    query,
+                  ) || "None"}
+                </i>
+              </p>
             )}
-          </div>
+            <p className="grey small mt-2">
+              <strong>Human symbol:</strong>{" "}
+              <i>{surroundWithMarkEl(humanGeneSymbols, query) || "None"}</i>
+            </p>
+            {!!humanSynonymsArray && !!humanSynonymsArray.length && (
+              <p className="grey small">
+                <strong>Human synonyms:</strong>{" "}
+                <i>
+                  {surroundWithMarkEl(
+                    (humanSynonymsArray || []).slice(0, 10).join(", "),
+                    query,
+                  ) || "None"}
+                </i>
+              </p>
+            )}
+
+            <div className="small grey mt-3">
+              {phenotypingDataAvailable ? (
+                <p>
+                  <AvailabilityIcon hasData={!!phenotypeStatus} />
+                  &nbsp;
+                  <span className={`me-4 ${!phenotypeStatus ? "grey" : ""}`}>
+                    {phenotypeStatus || "No phenotyping data"}
+                  </span>
+                  <AvailabilityIcon hasData={!!esCellProductionStatus} />
+                  &nbsp;
+                  <span
+                    className={`me-4 ${!esCellProductionStatus ? "grey" : ""}`}
+                  >
+                    {esCellProductionStatus || "No ES cells"}
+                  </span>
+                  <AvailabilityIcon hasData={!!mouseProductionStatus} />
+                  &nbsp;
+                  <span
+                    className={`me-4 ${!mouseProductionStatus ? "grey" : ""}`}
+                  >
+                    {mouseProductionStatus || "No mice"}
+                  </span>
+                </p>
+              ) : (
+                <span className="grey">
+                  <FontAwesomeIcon className="grey" icon={faTimes} />{" "}
+                  Phenotyping data not yet available
+                </span>
+              )}
+            </div>
+          </Link>
         </Col>
         <Col sm={4} className={styles.shortcuts}>
           <h5 className="grey text-uppercase">
@@ -178,65 +173,63 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
   }, [data, query, searchResultIds, noMatches]);
 
   return (
-    <>
-      <Container style={{ maxWidth: 1240 }}>
-        <Card
-          style={{
-            marginTop: -80,
-            position: "relative",
-          }}
+    <Container style={{ maxWidth: 1240 }}>
+      <Card
+        style={{
+          marginTop: -80,
+          position: "relative",
+        }}
+      >
+        <div
+          className={classNames("search-overlay", {
+            active: stale || !indexLoaded || isSearching,
+          })}
         >
-          <div
-            className={classNames("search-overlay", {
-              active: stale || !indexLoaded || isSearching,
-            })}
-          >
-            <span>Loading results...</span>
-            <Spinner animation="border" />
+          <span>Loading results...</span>
+          <Spinner animation="border" />
+        </div>
+        <h1 style={{ marginBottom: 0 }}>
+          <strong>Gene search results</strong>
+        </h1>
+        {!!query && !isLoading && (
+          <p className="grey mb-0">
+            <small>
+              Found {filteredData?.length || 0} entries{" "}
+              {!!query && (
+                <>
+                  matching <strong>"{query}"</strong>
+                </>
+              )}
+            </small>
+          </p>
+        )}
+        {isLoading ? (
+          <div className="grey mt-3 mb-3">
+            Loading&nbsp;
+            <Spinner animation="border" size="sm" />
           </div>
-          <h1 style={{ marginBottom: 0 }}>
-            <strong>Gene search results</strong>
-          </h1>
-          {!!query && !isLoading && (
-            <p className="grey mb-0">
-              <small>
-                Found {filteredData?.length || 0} entries{" "}
-                {!!query && (
-                  <>
-                    matching <strong>"{query}"</strong>
-                  </>
-                )}
-              </small>
-            </p>
-          )}
-          {isLoading ? (
-            <div className="grey mt-3 mb-3">
-              Loading&nbsp;
-              <Spinner animation="border" size="sm" />
-            </div>
-          ) : (
-            <Pagination data={filteredData}>
-              {(pageData) => {
-                if (pageData.length === 0 && isFetched) {
-                  return (
-                    <Alert variant="yellow">
-                      <p>No results found.</p>
-                    </Alert>
-                  );
-                } else if (pageData.length === 0) {
-                  return Array.from({ length: 10 }).map((_, index) => (
-                    <GeneResultSkeleton isFirst={index === 0} />
-                  ));
-                }
-                return pageData.map((p, i) => (
-                  <GeneResult gene={p} key={p.entityId + i} query={query} />
+        ) : (
+          <Pagination data={filteredData}>
+            {(pageData) => {
+              if (pageData.length === 0 && isFetched) {
+                return (
+                  <Alert variant="yellow">
+                    <p>No results found.</p>
+                  </Alert>
+                );
+              } else if (pageData.length === 0) {
+                return Array.from({ length: 10 }).map((_, index) => (
+                  <GeneResultSkeleton isFirst={index === 0} />
                 ));
-              }}
-            </Pagination>
-          )}
-        </Card>
-      </Container>
-    </>
+              }
+              return pageData.map((p, i) => (
+                <GeneResult gene={p} key={p.entityId + i} query={query} />
+              ));
+            }}
+          </Pagination>
+        )}
+      </Card>
+    </Container>
   );
 };
 
