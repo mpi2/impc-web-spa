@@ -26,6 +26,7 @@ import { ChartPageParams } from "@/models/chart";
 import classnames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { ErrorBoundary } from "react-error-boundary";
+import { Helmet } from "react-helmet";
 
 const generateParamsObject = (
   searchParams: URLSearchParams,
@@ -179,6 +180,18 @@ const GeneralChartPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${allSummaries?.[0]?.geneSymbol} chart page | International Mouse
+          Phenotyping Consortium`}</title>
+        <meta
+          name="description"
+          content={`View ${allSummaries?.[0]?.parameterName} chart page for mouse gene ${allSummaries?.[0]?.geneSymbol}. Experimental data about ${allSummaries?.[0]?.parameterName} is all freely available for download.`}
+        />
+        <meta
+          name="keywords"
+          content={`${allSummaries?.[0]?.parameterName}, ${allSummaries?.[0]?.geneSymbol}, mouse, gene, phenotypes, alleles, diseases`}
+        />
+      </Helmet>
       <Search />
       <Container className="page">
         <Card>
