@@ -4,6 +4,7 @@ import {
   Summary,
   PhenotypeGeneAssociations,
   ManhattanPlot,
+  PhenotypeMetadata,
 } from "@/components/Phenotype";
 import Search from "@/components/Search";
 import { PhenotypeSummary } from "@/models/phenotype";
@@ -55,6 +56,7 @@ const Phenotype = () => {
       <PhenotypeContext.Provider value={phenotypeData}>
         <Search defaultType="phenotype" />
         <Container className="page">
+          <PhenotypeMetadata phenotypeSummary={phenotypeData} />
           <Summary {...{ phenotype: phenotypeData }} />
           <Card id="associations-table">
             <PhenotypeGeneAssociations />
