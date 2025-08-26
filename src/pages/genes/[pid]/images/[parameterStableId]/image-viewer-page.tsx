@@ -33,6 +33,7 @@ import {
 } from "react-router";
 import { useGeneParameterImages } from "@/hooks";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 type Filters = {
   selectedCenter: string;
@@ -529,6 +530,9 @@ const ImagesCompare = () => {
   return (
     <>
       <Search />
+      <Helmet>
+        <title>{`${geneSymbol} image comparator | International Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Container className="page">
         <Card>
           <div className={styles.subheading}>

@@ -19,6 +19,7 @@ import { useMemo } from "react";
 import styles from "../../images/[parameterStableId]/styles.module.scss";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 type Image = {
   alleleSymbol: string;
@@ -98,9 +99,21 @@ const DownloadImagesPage = () => {
   });
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 
+  const { geneSymbol } = useMemo(() => {
+    if (mutantImages.length) {
+      return mutantImages[0];
+    }
+    return {
+      geneSymbol: null,
+    };
+  }, [mutantImages.length]);
+
   return (
     <>
       <Search />
+      <Helmet>
+        <title>{`${geneSymbol} image comparator | International Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Container className="page">
         <Card>
           <div className={styles.subheading}>
