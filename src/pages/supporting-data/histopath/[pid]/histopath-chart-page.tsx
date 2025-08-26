@@ -34,6 +34,7 @@ import {
 import _ from "lodash";
 import Skeleton from "react-loading-skeleton";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 const DescriptionCell = <T extends Histopathology>(
   props: TableCellProps<T> & { maxChars?: number; onClick: (data: T) => void },
@@ -112,6 +113,9 @@ const HistopathChartPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${gene?.geneSymbol} histopath information  | International Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Search />
       <Container className="page">
         <Card>

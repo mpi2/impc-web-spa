@@ -9,6 +9,7 @@ import {
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
 import { useSearchParams } from "react-router";
+import { Helmet } from "react-helmet";
 
 const BodyWeightChartPage = () => {
   const [params] = useSearchParams();
@@ -25,6 +26,9 @@ const BodyWeightChartPage = () => {
   return (
     <>
       <Search />
+      <Helmet>
+        <title>{`${activeDataset?.geneSymbol} body weight curve chart | International Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Container className="page">
         <Card>
           <ChartNav

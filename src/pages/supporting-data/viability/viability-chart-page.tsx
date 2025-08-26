@@ -10,6 +10,7 @@ import {
 } from "@/components/Data";
 import { getDatasetByKey } from "@/utils";
 import { useSearchParams } from "react-router";
+import { Helmet } from "react-helmet";
 
 const ViabilityChartPage = () => {
   const [selectedKey, setSelectedKey] = useState("");
@@ -27,6 +28,9 @@ const ViabilityChartPage = () => {
   return (
     <>
       <Search />
+      <Helmet>
+        <title>{`${activeDataset?.geneSymbol} viability chart | International Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Container className="page">
         <Card>
           <ChartNav
