@@ -35,6 +35,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLandingPageData } from "@/api-service";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 ChartJS.register(
   CategoryScale,
@@ -367,6 +368,12 @@ const IDGPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Illuminating the Druggable Genome | International Mouse Phenotyping
+          Consortium
+        </title>
+      </Helmet>
       <Container className="page">
         <Card>
           <div className="subheading">

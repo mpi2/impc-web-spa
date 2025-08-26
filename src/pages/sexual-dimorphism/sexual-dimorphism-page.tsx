@@ -33,6 +33,7 @@ import {
 import { Suspense } from "react";
 import displayTooltipLabelMultiline from "@/shared/chart-js-plugins/boxplot-tooltip-label-multiline";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 ChartJS.register(
   LinearScale,
@@ -91,6 +92,11 @@ const SexualDimorphismLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Sexual dimorphism | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

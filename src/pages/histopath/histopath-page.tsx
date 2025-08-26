@@ -20,6 +20,7 @@ import {
 import { Link } from "react-router";
 import { kebabCase } from "lodash";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 const geneMap = new Map();
 
@@ -267,6 +268,11 @@ const HistopathLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Histopathology | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

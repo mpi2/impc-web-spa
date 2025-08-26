@@ -8,6 +8,7 @@ import {
 } from "./charts";
 import { Suspense } from "react";
 import { usePublicationsAggregationQuery } from "@/hooks";
+import { Helmet } from "react-helmet";
 
 const PublicationsPage = () => {
   const { data } = usePublicationsAggregationQuery();
@@ -17,6 +18,12 @@ const PublicationsPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Publications with IMPC alleles | International Mouse Phenotyping
+          Consortium
+        </title>
+      </Helmet>
       <Container className="page">
         <Card>
           <h1 className="mb-4 mt-2">

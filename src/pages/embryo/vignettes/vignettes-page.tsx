@@ -13,6 +13,7 @@ import { Link, useSearchParams } from "react-router";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Helmet } from "react-helmet";
 
 const additionalContentMap = {
   "cbx4_thymus_black.png":
@@ -75,6 +76,11 @@ const EmbryoVignettesPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          IMPC Embryo vignettes | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

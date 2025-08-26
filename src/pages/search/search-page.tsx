@@ -1,6 +1,7 @@
 import { Suspense, useDeferredValue, useState } from "react";
 import { GeneResults, PhenotypeResults, Search } from "@/components";
 import { useSearchParams } from "react-router";
+import { Helmet } from "react-helmet";
 
 type PageProps = {};
 
@@ -71,6 +72,9 @@ const SearchResults = ({}: PageProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <Helmet>
+        <title>IMPC Search | International Mouse Phenotyping Consortium</title>
+      </Helmet>
       <Suspense>
         <Search onChange={setQuery} updateURL />
       </Suspense>

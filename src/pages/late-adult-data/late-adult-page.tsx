@@ -22,6 +22,7 @@ import {
 } from "@/models";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { usePagination } from "@/hooks";
+import { Helmet } from "react-helmet";
 
 type AllGeneList = Array<LateAdultRowResponse>;
 
@@ -184,6 +185,11 @@ const LateAdultDataPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Late Adult Data | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

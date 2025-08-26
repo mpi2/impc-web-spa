@@ -14,6 +14,7 @@ import {
 import PublicationsList from "@/components/PublicationsList";
 import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
+import { Helmet } from "react-helmet";
 
 const ProcedureWithVersions = ({ procedure }) => {
   return (
@@ -65,6 +66,9 @@ const CardiovascularLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>{`Cardiovascular system | Internation Mouse Phenotyping Consortium`}</title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

@@ -22,6 +22,7 @@ import { usePleiotropyQuery } from "@/hooks";
 import { ParentSize } from "@visx/responsive";
 import { SortType } from "@/models";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 export type MetabolismGeneData = {
   Parameter: string;
@@ -102,6 +103,11 @@ const MetabolismLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Metabolism landing page | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

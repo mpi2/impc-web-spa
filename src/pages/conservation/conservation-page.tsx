@@ -16,6 +16,7 @@ import { chartColors } from "@/utils/chart";
 import { Card, PublicationDataAlert, Search } from "@/components";
 import PublicationsList from "@/components/PublicationsList";
 import { Suspense } from "react";
+import { Helmet } from "react-helmet";
 
 ChartJS.register(
   CategoryScale,
@@ -141,6 +142,11 @@ const ConservationLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>
+          Conservation landing page | International Mouse Phenotyping Consortium
+        </title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

@@ -16,6 +16,7 @@ import { SortType } from "@/models";
 import { Suspense, useMemo } from "react";
 import PublicationsList from "@/components/PublicationsList";
 import { DATA_SITE_BASE_PATH } from "@/shared";
+import { Helmet } from "react-helmet";
 
 type GeneHearingData = {
   geneSymbol: string;
@@ -34,6 +35,9 @@ const HearingLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>Hearing | International Mouse Phenotyping Consortium</title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className="subheading">

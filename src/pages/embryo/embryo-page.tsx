@@ -22,6 +22,7 @@ import { LinkCell, PlainTextCell, SmartTable } from "@/components/SmartTable";
 import PublicationsList from "@/components/PublicationsList";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { DownloadData } from "@/components";
+import { Helmet } from "react-helmet";
 
 type SelectedLineGene = {
   mgiGeneAccessionId: string;
@@ -128,6 +129,9 @@ const EmbryoLandingPage = () => {
       <Suspense>
         <Search />
       </Suspense>
+      <Helmet>
+        <title>IMPC Embryo | International Mouse Phenotyping Consortium</title>
+      </Helmet>
       <Container className="page" style={{ lineHeight: 2 }}>
         <Card>
           <div className={styles.subheading}>
