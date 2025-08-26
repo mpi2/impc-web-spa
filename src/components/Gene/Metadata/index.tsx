@@ -18,7 +18,7 @@ const GeneMetadata = ({ geneSummary }: GeneMetadataProps) => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="{geneSymbol}, {geneName}, mouse, gene, phenotypes, alleles, diseases"
+        content={`${geneSymbol}, ${geneName}, mouse, gene, phenotypes, alleles, diseases`}
       />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
