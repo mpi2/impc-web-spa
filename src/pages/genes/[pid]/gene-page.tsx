@@ -10,6 +10,7 @@ import {
   Order,
   Phenotypes,
   HumanDiseases,
+  GeneMetadata,
 } from "@/components/Gene";
 import { useEffect, useState } from "react";
 import { AllelesStudiedContext, GeneContext } from "@/contexts";
@@ -68,6 +69,7 @@ const GenePage = () => {
             <Summary numOfAlleles={numAllelesAvailable ?? 0} />
             {!!geneData && (
               <>
+                <GeneMetadata geneSummary={geneData} />
                 <Phenotypes />
                 <Expressions />
                 <Images />

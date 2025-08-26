@@ -7,3 +7,4 @@ export { default as Histopathology } from "./Histopathology";
 export { default as Expressions } from "./Expressions";
 export { default as Order } from "./Order";
 export { default as HumanDiseases } from "./HumanDiseases";
+export { default as GeneMetadata } from "./Metadata";
