@@ -108,22 +108,22 @@ const AllelePage = () => {
     <>
       <Search />
       <Helmet>
-        <title>{`${alleleData.alleleName} allele of ${alleleData.geneSymbol} mouse gene | IMPC`}</title>
+        <title>{`${alleleData?.alleleName} allele of ${alleleData?.geneSymbol} mouse gene | IMPC`}</title>
         <meta
           name="description"
-          content={`Discover mouse allele ${alleleData.alleleName} of ${alleleData.geneSymbol} gene, view all available products and tissues with their detailed information.`}
+          content={`Discover mouse allele ${alleleData?.alleleName} of ${alleleData?.geneSymbol} gene, view all available products and tissues with their detailed information.`}
         />
         <meta
           name="keywords"
-          content={`${alleleData.alleleName}, ${alleleData.geneSymbol}, mouse, gene, phenotypes, alleles, diseases`}
+          content={`${alleleData?.alleleName}, ${alleleData?.geneSymbol}, mouse, gene, phenotypes, alleles, diseases`}
         />
         <meta
           property="og:title"
-          content={`${alleleData.alleleName} allele of ${alleleData.geneSymbol} mouse gene | IMPC`}
+          content={`${alleleData?.alleleName} allele of ${alleleData?.geneSymbol} mouse gene | IMPC`}
         />
         <meta
           property="og:description"
-          content={`Discover mouse allele ${alleleData.alleleName} of ${alleleData.geneSymbol} gene, view all available products and tissues with their detailed information.`}
+          content={`Discover mouse allele ${alleleData?.alleleName} of ${alleleData?.geneSymbol} gene, view all available products and tissues with their detailed information.`}
         />
         <meta property="og:type" content="website" />
       </Helmet>
