@@ -6,16 +6,7 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vite.dev/config/
 export default defineConfig({
   base: "/impc-web-spa/",
-  plugins: [
-    react(),
-    tsconfigPaths(),
-    VitePWA({
-      registerType: "autoUpdate",
-      workbox: {
-        maximumFileSizeToCacheInBytes: 10000000,
-      },
-    }),
-  ],
+  plugins: [react(), tsconfigPaths()],
   server: {
     proxy: {
       "/proxy": {
