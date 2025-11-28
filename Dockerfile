@@ -2,21 +2,37 @@ FROM node:lts-bookworm AS builder
 
 WORKDIR /usr/src/app
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --immutable
 COPY . .
-RUN yarn build
+RUN yarn run docker-build
 
-FROM nginx:mainline-alpine AS runner
+FROM nginx:alpine AS runner
 
-# Copy the nginx configuration files
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+# Create a non-root user to run nginx
+RUN adduser -D -H -u 1001 -s /sbin/nologin webuser
 
-# Remove default nginx website
-RUN rm -rf /usr/share/nginx/html/*
-
+# Create app directory and set up nginx
+RUN mkdir -p /app/www
 # From the 'builder' copy the artifacts in 'public' folder to the nginx impc-web-spa folder
-COPY --from=builder /usr/src/app/public /usr/share/nginx/html/impc-web-spa
+COPY --from=builder /usr/src/app/public /app/www
+COPY nginx/default.conf /etc/nginx/templates/default.conf.template
 
-EXPOSE 8080
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Set correct ownership and permissions for non-root user
+RUN chown -R webuser:webuser /app/www && \
+    chmod -R 755 /app/www && \
+    chown -R webuser:webuser /var/cache/nginx && \
+    chown -R webuser:webuser /var/log/nginx && \
+    chown -R webuser:webuser /etc/nginx/conf.d && \
+    touch /var/run/nginx.pid && \
+    chown -R webuser:webuser /var/run/nginx.pid && \
+    chmod -R 777 /etc/nginx/conf.d
+
+ENV NGINX_ENVSUBST_TEMPLATE_DIR=/etc/nginx/templates
+ENV NGINX_ENVSUBST_TEMPLATE_SUFFIX=.template
+ENV NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d
+ENV PORT=8080
+
+EXPOSE $PORT
+# Switch to non-root user
+USER webuser
+CMD ["nginx", "-g", "daemon off;"]

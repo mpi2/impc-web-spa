@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build && cp ./public/index.html ./public/404.html",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker-build": "vite build --base=/ && cp ./public/index.html ./public/404.html"
   },
   "dependencies": {
     "@cascadia-code/scroll-to-hash-element": "^2.0.3",
