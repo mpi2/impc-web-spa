@@ -1,0 +1,49 @@
+
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      VITE_SEARCH_SERVICE_ENABLED: true
+    ports:
+      - "8080:8080"
+
+  mongodb:
+    image: mongo:8.2-noble
+    restart: always
+    volumes:
+      - ./mongo/init/:/docker-entrypoint-initdb.d
+      - ./mongo/init:/home/mongodb
+      - ./mongo/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+      - ./mongo:/mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: impc-spa
+      MONGO_INITDB_ROOT_PASSWORD: I5dVq9<8f8;5
+      MONGO_INITDB_DATABASE: searchDB
+      DB_NAME: searchDB
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://impc-spa:I5dVq9<8f8;5@mongodb:27017/
+      ME_CONFIG_BASICAUTH_ENABLED: true
+      ME_CONFIG_BASICAUTH_USERNAME: impc-spa
+      ME_CONFIG_BASICAUTH_PASSWORD: I5dVq9<8f8;5
+
+  search-service:
+    image: mousephenotype/impc-search-service:latest
+    depends_on:
+      - mongodb
+    environment:
+      XMS: "-Xms1024m"
+      XMX: "-Xmx1024m"
+      MONGODB_URL: "impc-spa:I5dVq9<8f8;5@mongodb:27017"
+      ENVIRONMENT: "aws"
+    ports:
+      - "4010:8080"
