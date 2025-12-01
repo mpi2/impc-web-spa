@@ -1,6 +1,4 @@
 export const API_URL = import.meta.env.VITE_API_ROOT || "";
-export const PROXY_ENABLED =
-  import.meta.env.VITE_PROXY_ENABLED === "TRUE" || false;
 export const STATS_DATASETS_URL = import.meta.env.VITE_STATS_DATASETS_URL || "";
 export const MH_PLOT_DATA_URL = import.meta.env.VITE_MH_PLOT_DATA_URL || "";
 export const LANDING_PAGE_DATA_URL =
@@ -52,7 +50,7 @@ export async function fetchAPI<T>(query: string): Promise<T> {
   } else if (location.hostname === "mousephenotype.org") {
     domain = PROD_API_ROOT;
   } else {
-    domain = PROXY_ENABLED ? "http://localhost:5173/proxy" : API_URL;
+    domain = API_URL;
   }
   const endpointURL = domain + query;
   return await fetchURL(endpointURL);
