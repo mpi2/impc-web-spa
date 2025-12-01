@@ -11,12 +11,10 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { GeneSearchItem } from "@/models/gene";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { useEffect, useMemo } from "react";
-import { useGeneSearchQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
-import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
 import { GeneResultSkeleton } from "./GeneResultSkeleton.tsx";
+import { useGeneSearch } from "@/hooks/search-queries/gene-search.ts";
 
 const AvailabilityIcon = (props: { hasData: boolean }) => (
   <FontAwesomeIcon
@@ -147,31 +145,8 @@ type GeneResultProps = {
   stale: boolean;
 };
 
-const GeneResults = ({ query, stale }: GeneResultProps) => {
-  const { data, isLoading, isFetched } = useGeneSearchQuery();
-  const { eventResult, sendMessage } = useGeneSearchResultWorker();
-  const { searchResultIds, noMatches, indexLoaded, isSearching, sendQuery } =
-    useSearchWebWorker(eventResult, sendMessage);
-
-  useEffect(() => {
-    if (query) {
-      sendQuery(query);
-    }
-  }, [query]);
-
-  const filteredData = useMemo(() => {
-    if (noMatches) {
-      return [];
-    }
-    if (query && searchResultIds.length) {
-      return data?.filter((gene) =>
-        searchResultIds.includes(gene.mgiGeneAccessionId),
-      );
-    } else {
-      return data;
-    }
-  }, [data, query, searchResultIds, noMatches]);
-
+const GeneResults = ({ query = "", stale }: GeneResultProps) => {
+  const { data, isLoading, isFetched } = useGeneSearch(query);
   return (
     <Container style={{ maxWidth: 1240 }}>
       <Card
@@ -182,7 +157,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
       >
         <div
           className={classNames("search-overlay", {
-            active: stale || !indexLoaded || isSearching,
+            active: stale || isLoading,
           })}
         >
           <span>Loading results...</span>
@@ -194,7 +169,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
         {!!query && !isLoading && (
           <p className="grey mb-0">
             <small>
-              Found {filteredData?.length || 0} entries{" "}
+              Found {data?.length || 0} entries{" "}
               {!!query && (
                 <>
                   matching <strong>"{query}"</strong>
@@ -209,7 +184,7 @@ const GeneResults = ({ query, stale }: GeneResultProps) => {
             <Spinner animation="border" size="sm" />
           </div>
         ) : (
-          <Pagination data={filteredData}>
+          <Pagination data={data}>
             {(pageData) => {
               if (pageData.length === 0 && isFetched) {
                 return (
