@@ -4,8 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      VITE_SEARCH_SERVICE_ENABLED: true
+      args:
+        SEARCH_SERVICE_ENABLED: true
+
     ports:
       - "8080:8080"
 
