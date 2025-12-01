@@ -2,7 +2,9 @@ FROM node:lts-bookworm AS builder
 
 WORKDIR /usr/src/app
 ARG SEARCH_SERVICE_ENABLED=false
+ARG API_ROOT="https://nginx.mousephenotype-dev.org/data"
 ENV VITE_SEARCH_SERVICE_ENABLED=$SEARCH_SERVICE_ENABLED
+ENV VITE_API_ROOT=$API_ROOT
 COPY package.json yarn.lock ./
 RUN yarn install --immutable
 COPY . .

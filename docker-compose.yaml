@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         SEARCH_SERVICE_ENABLED: true
+        API_ROOT: http://localhost:4010
 
     ports:
       - "8080:8080"
