@@ -6,19 +6,16 @@ services:
       dockerfile: Dockerfile
       args:
         SEARCH_SERVICE_ENABLED: true
-        API_ROOT: http://localhost:4010
-
-    ports:
-      - "8080:8080"
+        API_ROOT: http://localhost:8080
 
   mongodb:
     image: mongo:8.2-noble
     restart: always
     volumes:
-      - ./mongo/init/:/docker-entrypoint-initdb.d
-      - ./mongo/init:/home/mongodb
-      - ./mongo/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
-      - ./mongo:/mongo
+      - ./docker-compose/mongo/init/:/docker-entrypoint-initdb.d
+      - ./docker-compose/mongo/init:/home/mongodb
+      - ./docker-compose/mongo/mongorestore.sh:/docker-entrypoint-initdb.d/mongorestore.sh
+      - ./docker-compose/mongo:/mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: impc-spa
       MONGO_INITDB_ROOT_PASSWORD: I5dVq9<8f8;5
@@ -38,7 +35,7 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: impc-spa
       ME_CONFIG_BASICAUTH_PASSWORD: I5dVq9<8f8;5
 
-  search-service:
+  searchservice:
     image: mousephenotype/impc-search-service:latest
     depends_on:
       - mongodb
@@ -47,5 +44,6 @@ services:
       XMX: "-Xmx1024m"
       MONGODB_URL: "impc-spa:I5dVq9<8f8;5@mongodb:27017"
       ENVIRONMENT: "aws"
-    ports:
-      - "4010:8080"
+
+  nginx:
+    image: nginx:alpine

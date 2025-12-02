@@ -19,7 +19,7 @@ RUN adduser -D -H -u 1001 -s /sbin/nologin webuser
 RUN mkdir -p /app/www
 # From the 'builder' copy the artifacts in 'public' folder to the nginx impc-web-spa folder
 COPY --from=builder /usr/src/app/public /app/www
-COPY nginx/default.conf /etc/nginx/templates/default.conf.template
+COPY docker-compose/website-nginx/default.conf /etc/nginx/templates/default.conf.template
 
 # Set correct ownership and permissions for non-root user
 RUN chown -R webuser:webuser /app/www && \
