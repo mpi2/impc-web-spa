@@ -1,6 +1,17 @@
 
 services:
+  proxy-nginx:
+    image: nginx:alpine
+    environment:
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docker-compose/proxy-nginx:/etc/nginx/templates
+
   website:
+    depends_on:
+      - proxy-nginx
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,28 +33,13 @@ services:
       MONGO_INITDB_DATABASE: searchDB
       DB_NAME: searchDB
 
-  mongo-express:
-    image: mongo-express
-    restart: always
-    depends_on:
-      - mongodb
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_URL: mongodb://impc-spa:I5dVq9<8f8;5@mongodb:27017/
-      ME_CONFIG_BASICAUTH_ENABLED: true
-      ME_CONFIG_BASICAUTH_USERNAME: impc-spa
-      ME_CONFIG_BASICAUTH_PASSWORD: I5dVq9<8f8;5
-
   searchservice:
     image: mousephenotype/impc-search-service:latest
     depends_on:
+      - proxy-nginx
       - mongodb
     environment:
       XMS: "-Xms1024m"
       XMX: "-Xmx1024m"
       MONGODB_URL: "impc-spa:I5dVq9<8f8;5@mongodb:27017"
       ENVIRONMENT: "aws"
-
-  nginx:
-    image: nginx:alpine
