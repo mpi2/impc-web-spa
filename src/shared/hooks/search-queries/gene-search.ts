@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAPI } from "@/api-service";
-import { GeneSearchResponse } from "@/models/gene";
+import { GeneSearchItem, GeneSearchResponse } from "@/models/gene";
 import { useGeneSearchQuery, useSearchWebWorker } from "@/hooks";
 import { useGeneSearchResultWorker } from "@/workers/useGeneSearchResultWorker.ts";
 import { useEffect, useMemo } from "react";
@@ -12,8 +12,12 @@ export const useGeneSearch = (query: string) => {
   if (SEARCH_SERVICE_ENABLED) {
     return useQuery({
       queryKey: ["search", "genes", query],
-      queryFn: () => fetchAPI(`/v1/search?prefix=${query}`),
-      select: (data: GeneSearchResponse) => data.results,
+      queryFn: () => fetchAPI(`/api/search/v1/search?prefix=${query}`),
+      select: (data: GeneSearchResponse) =>
+        data.results.map((r) => ({
+          ...r.entityProperties,
+          entityId: r.entityId,
+        })) as Array<GeneSearchItem>,
     });
   } else {
     const { data, isLoading, isFetched } = useGeneSearchQuery();
