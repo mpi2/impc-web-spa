@@ -45,9 +45,8 @@ export const useGeneSearch = (query: string) => {
     }, [data, query, searchResultIds, noMatches]);
     return {
       data: filteredData,
-      isLoading,
+      isLoading: isLoading || !indexLoaded || isSearching,
       isFetched,
-      isSearching: isSearching || indexLoaded,
     };
   }
 };
