@@ -178,31 +178,24 @@ const GeneResults = ({ query = "", stale }: GeneResultProps) => {
             </small>
           </p>
         )}
-        {isLoading ? (
-          <div className="grey mt-3 mb-3">
-            Loading&nbsp;
-            <Spinner animation="border" size="sm" />
-          </div>
-        ) : (
-          <Pagination data={data}>
-            {(pageData) => {
-              if (pageData.length === 0 && isFetched) {
-                return (
-                  <Alert variant="yellow">
-                    <p>No results found.</p>
-                  </Alert>
-                );
-              } else if (pageData.length === 0) {
-                return Array.from({ length: 10 }).map((_, index) => (
-                  <GeneResultSkeleton isFirst={index === 0} />
-                ));
-              }
-              return pageData.map((p, i) => (
-                <GeneResult gene={p} key={p.entityId + i} query={query} />
+        <Pagination data={data}>
+          {(pageData) => {
+            if (pageData.length === 0 && isFetched) {
+              return (
+                <Alert variant="yellow">
+                  <p>No results found.</p>
+                </Alert>
+              );
+            } else if (pageData.length === 0) {
+              return Array.from({ length: 10 }).map((_, index) => (
+                <GeneResultSkeleton isFirst={index === 0} />
               ));
-            }}
-          </Pagination>
-        )}
+            }
+            return pageData.map((p, i) => (
+              <GeneResult gene={p} key={p.entityId + i} query={query} />
+            ));
+          }}
+        </Pagination>
       </Card>
     </Container>
   );

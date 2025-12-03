@@ -8,7 +8,8 @@
   height: 100%;
   z-index: -1;
   transition: 0.5s all;
-  display: flex;
+  display: inline-flex;
+  flex: 1 1 auto;
   flex-direction: column;
   align-items: center;
   padding: 4rem 0;
