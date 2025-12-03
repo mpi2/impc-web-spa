@@ -13,13 +13,12 @@ import Card from "../Card";
 import Pagination from "../Pagination";
 import { PhenotypeSearchItem } from "@/models/phenotype";
 import { BodySystem } from "@/components/BodySystemIcon";
-import { ReactNode, useEffect, useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { surroundWithMarkEl } from "@/utils/results-page";
-import { usePhenotypeResultsQuery, useSearchWebWorker } from "@/hooks";
 import classNames from "classnames";
 import { DATA_SITE_BASE_PATH } from "@/shared";
-import { usePhenotypeSearchResultWorker } from "@/workers/usePhenotypeSearchResultWorker.ts";
 import { PhenotypeResultSkeleton } from "./PhenotypeResultSkeleton.tsx";
+import { usePhenotypeSearch } from "@/hooks/search-queries/phenotype-search.ts";
 
 type Props = {
   phenotype: PhenotypeSearchItem;
@@ -116,7 +115,7 @@ type PhenotypeResultsProps = {
   stale: boolean;
 };
 
-const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
+const PhenotypeResults = ({ query = "", stale }: PhenotypeResultsProps) => {
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [sortGenes, setSortGenes] = useState<"asc" | "desc" | null>(null);
   const updateSortByOntology = (value: "asc" | "desc") => {
@@ -129,28 +128,11 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
     setSortGenes(value);
   };
 
-  const { data, isLoading, isFetched } = usePhenotypeResultsQuery();
-
-  const { eventResult, sendMessage } = usePhenotypeSearchResultWorker();
-  const { indexLoaded, searchResultIds, noMatches, isSearching, sendQuery } =
-    useSearchWebWorker(eventResult, sendMessage);
-
-  useEffect(() => {
-    if (query) {
-      sendQuery(query);
-    }
-  }, [query]);
-
-  const filteredData = useMemo(() => {
-    if (noMatches) {
-      return [];
-    }
-    if (query && searchResultIds.length) {
-      return data?.filter((gene) => searchResultIds.includes(gene.mpId));
-    } else {
-      return data;
-    }
-  }, [data, query, searchResultIds, noMatches]);
+  const {
+    data: filteredData,
+    isLoading,
+    isFetched,
+  } = usePhenotypeSearch(query);
 
   const sortedData = useMemo(() => {
     if (!!sortGenes || !!sort) {
@@ -182,7 +164,7 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
       >
         <div
           className={classNames("search-overlay", {
-            active: stale || !indexLoaded || isSearching,
+            active: stale || isLoading,
           })}
         >
           <span>Loading results...</span>
@@ -203,72 +185,65 @@ const PhenotypeResults = ({ query, stale }: PhenotypeResultsProps) => {
             </small>
           </p>
         )}
-        {isLoading ? (
-          <div className="grey mt-3 mb-3">
-            Loading&nbsp;
-            <Spinner animation="border" size="sm" />
-          </div>
-        ) : (
-          <Pagination
-            data={sortedData}
-            additionalTopControls={
-              <div className="filtersWrapper">
-                Sort by:
-                <div className="filter">
-                  <strong>Ontology level:</strong>
-                  <FilterBadge
-                    isSelected={sort === "asc"}
-                    icon={faCaretUp}
-                    onClick={() => updateSortByOntology("asc")}
-                  >
-                    Asc.
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={sort === "desc"}
-                    icon={faCaretDown}
-                    onClick={() => updateSortByOntology("desc")}
-                  >
-                    Desc.
-                  </FilterBadge>
-                </div>
-                <div className="filter">
-                  <strong>No. of genes</strong>
-                  <FilterBadge
-                    isSelected={sortGenes === "asc"}
-                    icon={faCaretUp}
-                    onClick={() => updateSortByGenes("asc")}
-                  >
-                    Asc.
-                  </FilterBadge>
-                  <FilterBadge
-                    isSelected={sortGenes === "desc"}
-                    icon={faCaretDown}
-                    onClick={() => updateSortByGenes("desc")}
-                  >
-                    Desc.
-                  </FilterBadge>
-                </div>
+        <Pagination
+          data={sortedData}
+          additionalTopControls={
+            <div className="filtersWrapper">
+              Sort by:
+              <div className="filter">
+                <strong>Ontology level:</strong>
+                <FilterBadge
+                  isSelected={sort === "asc"}
+                  icon={faCaretUp}
+                  onClick={() => updateSortByOntology("asc")}
+                >
+                  Asc.
+                </FilterBadge>
+                <FilterBadge
+                  isSelected={sort === "desc"}
+                  icon={faCaretDown}
+                  onClick={() => updateSortByOntology("desc")}
+                >
+                  Desc.
+                </FilterBadge>
               </div>
-            }
-          >
-            {(pageData) => {
-              if (pageData.length === 0 && isFetched) {
-                return (
-                  <Alert variant="yellow">
-                    <p>No results found.</p>
-                  </Alert>
-                );
-              } else if (pageData.length === 0) {
-                return Array.from({ length: 10 }).map((_, index) => (
-                  <PhenotypeResultSkeleton isFirst={index === 0} />
-                ));
-              }
-              return pageData.map((p) => (
-                <PhenotypeResult phenotype={p} key={p.entityId} query={query} />
+              <div className="filter">
+                <strong>No. of genes</strong>
+                <FilterBadge
+                  isSelected={sortGenes === "asc"}
+                  icon={faCaretUp}
+                  onClick={() => updateSortByGenes("asc")}
+                >
+                  Asc.
+                </FilterBadge>
+                <FilterBadge
+                  isSelected={sortGenes === "desc"}
+                  icon={faCaretDown}
+                  onClick={() => updateSortByGenes("desc")}
+                >
+                  Desc.
+                </FilterBadge>
+              </div>
+            </div>
+          }
+        >
+          {(pageData) => {
+            if (pageData.length === 0 && isFetched) {
+              return (
+                <Alert variant="yellow">
+                  <p>No results found.</p>
+                </Alert>
+              );
+            } else if (pageData.length === 0) {
+              return Array.from({ length: 10 }).map((_, index) => (
+                <PhenotypeResultSkeleton isFirst={index === 0} />
               ));
-            }}
-          </Pagination>
-        )}
+            }
+            return pageData.map((p) => (
+              <PhenotypeResult phenotype={p} key={p.entityId} query={query} />
+            ));
+          }}
+        </Pagination>
       </Card>
     </Container>
   );
