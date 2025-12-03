@@ -2,6 +2,9 @@
 services:
   proxy-nginx:
     image: nginx:alpine
+    depends_on:
+      - website
+      - searchservice
     environment:
       PORT: 8080
     ports:
@@ -11,7 +14,7 @@ services:
 
   website:
     depends_on:
-      - proxy-nginx
+      - searchservice
     build:
       context: .
       dockerfile: Dockerfile
@@ -36,10 +39,15 @@ services:
   searchservice:
     image: mousephenotype/impc-search-service:latest
     depends_on:
-      - proxy-nginx
       - mongodb
     environment:
       XMS: "-Xms1024m"
       XMX: "-Xmx1024m"
       MONGODB_URL: "impc-spa:I5dVq9<8f8;5@mongodb:27017"
       ENVIRONMENT: "aws"
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health/liveness"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
