@@ -6,6 +6,7 @@ import {
   Row,
   Table,
   Alert,
+  Spinner,
 } from "react-bootstrap";
 import {
   faDownload,
@@ -27,6 +28,7 @@ import { usePublicationsQuery, useSearchWebWorker } from "@/hooks";
 import { DATA_SITE_BASE_PATH } from "@/shared";
 import { useConsortiumPublicationsSearchResultWorker } from "@/workers/useConsortiumPublicationsSearchResultWorker.ts";
 import { useAllPublicationsSearchResultWorker } from "@/workers/useAllPublicationsSearchResultWorker.ts";
+import classNames from "classnames";
 
 export type PublicationListProps = {
   onlyConsortiumPublications?: boolean;
@@ -170,6 +172,14 @@ const PublicationsList = (props: PublicationListProps) => {
 
   return (
     <Container>
+      <div
+        className={classNames("search-overlay", {
+          active: !indexLoaded || isSearching || isFetching,
+        })}
+      >
+        <span>Loading publication data...</span>
+        <Spinner animation="border" />
+      </div>
       <Row>
         <Col xs={6}>
           <p>Showing {filteredPublications?.length.toLocaleString()} entries</p>
