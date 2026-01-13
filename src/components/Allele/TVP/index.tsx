@@ -11,6 +11,7 @@ import { Link } from "react-router";
 import { Card, DownloadData, Pagination, SortableTable } from "@/components";
 import { AlleleTvp } from "@/models/allele/tvp";
 import { useAlleleTVPQuery } from "@/hooks";
+import { DATA_SITE_BASE_PATH } from "@/shared";
 
 const TargetingVector = ({
   mgiGeneAccessionId,
@@ -135,7 +136,7 @@ const TargetingVector = ({
                   <tr>
                     <td>
                       <Link
-                        to={`/designs/${p.designLink.split(":")[2]}`}
+                        to={`/${DATA_SITE_BASE_PATH}/designs/${p.designLink.split(":")[2]}`}
                         className="primary link"
                       >
                         {p.designOligos ?? "View design oligo"}{" "}
