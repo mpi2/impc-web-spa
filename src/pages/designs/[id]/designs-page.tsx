@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import styles from "./styles.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import { Image } from "react-bootstrap";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { Card, Search, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +14,7 @@ const Oligo = () => {
 
   const { data, isLoading } = useQuery({
     queryKey: ["alleles", "htgt", params.id],
-    queryFn: () => fetchAPI(`/api/v1/alleles/htgt/designId:${params.id}`),
+    queryFn: () => fetchData(`designs/${params.id}.json`),
     enabled: !!params.id,
   });
 
