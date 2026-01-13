@@ -3,8 +3,10 @@ services:
   proxy-nginx:
     image: nginx:alpine
     depends_on:
-      - website
-      - searchservice
+      website:
+        condition: service_healthy
+      searchservice:
+        condition: service_healthy
     environment:
       PORT: 8080
     ports:
@@ -47,7 +49,8 @@ services:
       ENVIRONMENT: "aws"
 
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health/liveness"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health/readiness"]
       interval: 10s
       timeout: 3s
       retries: 3
+      start_period: 20s
