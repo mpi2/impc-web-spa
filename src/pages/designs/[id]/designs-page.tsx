@@ -7,6 +7,7 @@ import { Card, Search, SortableTable } from "@/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router";
+import { BASE_PATH } from "@/shared";
 
 const Oligo = () => {
   const navigate = useNavigate();
@@ -83,7 +84,11 @@ const Oligo = () => {
             <strong>Design Oligos - High Throughput Gene Targeting</strong>
             <span> | Design Id: {params.id}</span>
           </h1>
-          <Image src="/images/target_design_trimmed.png" fluid alt="" />
+          <Image
+            src={`${BASE_PATH}images/target_design_trimmed.png`}
+            fluid
+            alt=""
+          />
         </Card>
         <Card>
           <h2>Oligos</h2>

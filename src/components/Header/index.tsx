@@ -87,7 +87,6 @@ const Header = () => {
       return await response.json();
     },
     placeholderData: [],
-    // TODO: to be removed after site is launched to production
     select: rewriteMenu,
   });
   const [activeMenuId, setActiveMenu] = useState(-1);
