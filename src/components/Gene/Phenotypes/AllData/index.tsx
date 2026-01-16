@@ -17,9 +17,7 @@ import {
 } from "./custom-cells";
 import { orderPhenotypedSelectionChannel } from "@/eventChannels";
 import { useGeneAllStatisticalResData } from "@/hooks";
-import { fetchAPI } from "@/api-service";
 import { SortType } from "@/models";
-import { buildURL } from "@/utils";
 import Skeleton from "react-loading-skeleton";
 import Footnotes from "../Footnotes";
 import { Alert } from "react-bootstrap";
