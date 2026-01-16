@@ -202,10 +202,12 @@ const AllData = (props: Props) => {
         topLevelPhenotypes,
         zygosity,
         procedureName,
+        procedureStableId,
+        parameterStableId,
       }) =>
         (!selectedAlleleSymbol || alleleSymbol === selectedAlleleSymbol) &&
         (!query ||
-          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""}`
+          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""} ${procedureStableId ?? ""} ${procedureName ?? ""} ${parameterStableId ?? ""} ${procedureName ?? ""}`
             .toLowerCase()
             .includes(query)) &&
         (!selectedTopLevelPhenotypeName ||
