@@ -1,18 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { Image } from "@/models/gene";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 export const useFlowCytometryQuery = (
   mgiGeneAccessionId: string,
   parameterStableId: string,
   enabled: boolean,
 ) => {
+  console.log("parameterStableId: ", parameterStableId);
   return useQuery({
-    queryKey: ['dataset', mgiGeneAccessionId, 'flow-cytometry', parameterStableId],
-    queryFn: () =>
-      fetchAPI(`/api/v1/images/findByMgiGeneAccessionIdOrControlAndParameterStableId?mgiGeneAccessionId=${mgiGeneAccessionId}&parameterStableId=${parameterStableId}`),
+    queryKey: [
+      "dataset",
+      mgiGeneAccessionId,
+      "flow-cytometry",
+      parameterStableId,
+    ],
+    queryFn: () => {
+      const chromosome: string = (geneChromosomeMap as Record<string, string>)[
+        mgiGeneAccessionId
+      ];
+      const id = mgiGeneAccessionId?.replace(":", "_");
+      return fetchData(`${chromosome}/${id}/flow-cytometry-images.json`);
+    },
     enabled,
-    select: data => data as Array<Image>,
+    select: (data: Array<any>) =>
+      data.filter(
+        (image) =>
+          image.parameterStableIdFromFilename === parameterStableId &&
+          image.omeroId !== "-1",
+      ) as Array<Image>,
     placeholderData: [],
   });
-}
+};
