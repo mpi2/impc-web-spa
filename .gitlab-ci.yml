@@ -91,3 +91,15 @@ trivy_container_scanning:
   artifacts:
     reports:
       container_scanning: gl-container-scanning-report.json
+
+pages:
+  stage: deploy
+  script:
+    - yarn install
+    - yarn run docker-build
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_PIPELINE_SOURCE === "web"'
+  environment: production
