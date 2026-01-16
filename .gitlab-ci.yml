@@ -15,6 +15,7 @@ include:
 stages:
   - build
   - test
+  - deploy
 
 build_image:
   stage: build
