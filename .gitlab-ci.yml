@@ -94,6 +94,7 @@ trivy_container_scanning:
       container_scanning: gl-container-scanning-report.json
 
 pages:
+  image: node:lts-bookworm
   stage: deploy
   script:
     - yarn install
