@@ -109,12 +109,14 @@ const Summary = ({}: SummaryProps) => {
               style={{ marginLeft: "0.3rem" }}
             />
           </a>
-          <Link
-            className="link primary"
-            to={`/${DATA_SITE_BASE_PATH}/genes/${gene?.mgiGeneAccessionId}/genome-browser`}
-          >
-            Genome Browser
-          </Link>
+          {gene?.mgiGeneAccessionId && (
+            <Link
+              className="link primary"
+              to={`/${DATA_SITE_BASE_PATH}/genes/${gene?.mgiGeneAccessionId}/genome-browser`}
+            >
+              Genome Browser
+            </Link>
+          )}
           {gene?.synonyms?.length > 0 && (
             <span>
               Synonyms: {displaySynonyms()}
