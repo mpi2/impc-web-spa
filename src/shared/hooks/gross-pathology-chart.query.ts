@@ -1,15 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import { GrossPathology, GrossPathologyDataset } from "@/models";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
 export const useGrossPathologyChartQuery = (
   mgiGeneAccessionId: string,
   grossPathParameterStableId: string,
-  routerIsReady: boolean
+  routerIsReady: boolean,
 ) => {
   return useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "gross-pathology"],
-    queryFn: () => fetchAPI(`/api/v1/genes/${mgiGeneAccessionId}/pathology`),
+    queryFn: () => {
+      const chromosome: string = (geneChromosomeMap as Record<string, string>)[
+        mgiGeneAccessionId
+      ];
+      const id = mgiGeneAccessionId?.replace(":", "_");
+      return fetchData(`/${chromosome}/${id}/pathology.json`);
+    },
     placeholderData: [],
     enabled: routerIsReady,
     select: (data: Array<GrossPathology>) => {
@@ -22,14 +29,14 @@ export const useGrossPathologyChartQuery = (
         byParameter.datasets.map((d) => ({
           ...d,
           anatomyTerm: byParameter.parameterName,
-        }))
+        })),
       );
 
       datasetsFiltered.forEach((dataset) => {
         specimens.add(dataset.externalSampleId);
         const isNormal = dataset.ontologyTerms.find(
           (ontologyTerm) =>
-            ontologyTerm.termName === "no abnormal phenotype detected"
+            ontologyTerm.termName === "no abnormal phenotype detected",
         );
         const key = `${dataset.zygosity}-${dataset.phenotypingCenter}-${
           isNormal ? "normal" : "abnormal"
@@ -44,7 +51,7 @@ export const useGrossPathologyChartQuery = (
           datasetsFiltered.map((d) => [
             JSON.stringify([d.zygosity, d.phenotypingCenter]),
             d,
-          ])
+          ]),
         ).values(),
       ];
       return datasetsFiltered.map((dataset) => {
