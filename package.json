@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev-docker": "vite --base=/",
     "build": "vite build && cp ./public/index.html ./public/404.html",
     "lint": "eslint .",
     "preview": "vite preview",
