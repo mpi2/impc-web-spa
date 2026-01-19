@@ -10,13 +10,9 @@ export const generateDatasetsEndpointUrl = (
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
   const id = mgiGeneAccessionId?.replace(":", "_");
-  let endpointUrl = !!params.mpTermId
+  return !!params.mpTermId
     ? `${chromosome}/${id}/significant_phenotypes/${params.mpTermId.replace(":", "_")}.json`
-    : `${chromosome}/${id}/datasets/${params.statisticalResultId}.json`;
-  if (!params.mpTermId && !!params.metadataGroup) {
-    endpointUrl += `&metadataGroup=${params.metadataGroup}`;
-  }
-  return endpointUrl;
+    : `${chromosome}/${id}/pipelines/${params.pipelineStableId}/${params.procedureStableId}.json`;
 };
 
 export const sortAndDeduplicateDatasets = (
@@ -48,11 +44,25 @@ export const useDatasetsQuery = (
   enabled: boolean,
 ) => {
   const apiUrl = generateDatasetsEndpointUrl(mgiGeneAccessionId, params);
+  const isSignificantPhenotypeChart = !!params.mpTermId;
   const { data, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
     queryFn: () => fetchData(apiUrl),
     enabled,
-    select: (data) => sortAndDeduplicateDatasets(data, params),
+    select: (data: Array<any>) => {
+      let tempData = data;
+      if (!isSignificantPhenotypeChart) {
+        tempData = tempData.filter(
+          (d) => d.parameterStableId === params.parameterStableId,
+        );
+        if (!!params.metadataGroup) {
+          tempData = tempData.filter(
+            (d) => d.metadataGroup === params.metadataGroup,
+          );
+        }
+      }
+      return sortAndDeduplicateDatasets(tempData, params);
+    },
     placeholderData: [],
   });
   return {
