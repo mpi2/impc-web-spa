@@ -8,7 +8,9 @@ export const generateDatasetsEndpointUrl = (
   mgiGeneAccessionId: string,
   params: ChartPageParamsObj,
 ) => {
-  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const chromosome: string = (geneChromosomeMap as Record<string, string>)[
+    mgiGeneAccessionId
+  ];
   const id = mgiGeneAccessionId?.replace(":", "_");
   return !!params.mpTermId
     ? `${chromosome}/${id}/significant_phenotypes/${params.mpTermId.replace(":", "_")}.json`
@@ -47,13 +49,15 @@ export const useDatasetsQuery = (
   const isSignificantPhenotypeChart = !!params.mpTermId;
   const { data, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, params.mpTermId, apiUrl, "dataset"],
-    queryFn: () => fetchData(apiUrl),
+    queryFn: () => fetchData<Array<Dataset>>(apiUrl),
     enabled,
-    select: (data: Array<any>) => {
+    select: (data: Array<Dataset>) => {
       let tempData = data;
       if (!isSignificantPhenotypeChart) {
         tempData = tempData.filter(
-          (d) => d.parameterStableId === params.parameterStableId,
+          (d) =>
+            d.parameterStableId === params.parameterStableId &&
+            d.zygosity === params.zygosity,
         );
         if (!!params.metadataGroup) {
           tempData = tempData.filter(
