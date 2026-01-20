@@ -100,8 +100,3 @@ export async function fetchLandingPageData(
   }
   return await response.json();
 }
-
-export async function fetchPublicationEndpoint(query: string) {
-  const endpointURL = PUBLICATIONS_ENDPOINT_URL + query;
-  return await fetchURL(endpointURL);
-}
