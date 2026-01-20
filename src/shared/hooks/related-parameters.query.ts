@@ -1,7 +1,8 @@
 import { Dataset } from "@/models";
-import { fetchAPI } from "@/api-service";
+import { fetchData } from "@/api-service";
 import _ from "lodash";
 import { useEffect, useState } from "react";
+import geneChromosomeMap from "@/static-data/chromosome-map.json";
 const clone = (obj: any) => JSON.parse(JSON.stringify(obj));
 
 export const useRelatedParametersQuery = (
@@ -23,38 +24,35 @@ export const useRelatedParametersQuery = (
     } = allDatasets[0];
     setIsLoading(true);
     const proceduresWithData = allDatasets.map((d) => d.parameterStableId);
-    const missingProcedures = allParametersList.filter(
-      (p) => !proceduresWithData.includes(p)
+    const missingParameters = allParametersList.filter(
+      (p) => !proceduresWithData.includes(p),
     );
-    const requests = missingProcedures.map((parameter) =>
-      fetchAPI(
-        `/api/v1/genes/dataset/find_by_multiple_parameter?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameter}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}`
-      )
+    const chromosome: string = (geneChromosomeMap as Record<string, string>)[
+      mgiGeneAccessionId
+    ];
+    const id = mgiGeneAccessionId?.replace(":", "_");
+    const allProcedureData = fetchData(
+      `${chromosome}/${id}/pipelines/${pipelineStableId}/${procedureStableId}.json`,
     );
-    Promise.allSettled(requests)
-      .then((responses) =>
-        responses
-          .filter((promiseRes) => promiseRes.status === "fulfilled")
-          .map(
-            (promiseRes) => (promiseRes as PromiseFulfilledResult<any>).value
-          )
+    allProcedureData
+      .then((allDatasets) =>
+        allDatasets.filter(
+          (ds) =>
+            ds.alleleAccessionId === alleleAccessionId &&
+            ds.zygosity === zygosity &&
+            ds.phenotypingCentre === phenotypingCentre &&
+            missingParameters.includes(ds.parameterStableId),
+        ),
       )
-      .then((responses) => {
-        const proceduresData = [];
-        responses.forEach((datasets) => {
-          const uniques = [];
-          datasets
-            .filter(ds => ds.metadataGroup === metadataGroup)
-            .forEach(({ id, ...ds }) => {
-              if (!uniques.find((d) => _.isEqual(d, ds))) {
-                uniques.push({ id, ...ds });
-              }
+      .then((allDatasets) => {
+        const proceduresData: Array<any> = [];
+        allDatasets
+          .filter((ds) => ds.metadataGroup === metadataGroup)
+          .forEach(({ id, ...ds }) => {
+            if (!proceduresData.find((d) => _.isEqual(d, ds))) {
+              proceduresData.push({ id, ...ds });
+            }
           });
-          const selectedDataset = uniques[0];
-          if (!!selectedDataset) {
-            proceduresData.push(selectedDataset);
-          }
-        });
         return proceduresData;
       })
       .then((missingProcedureData) => {
@@ -62,12 +60,12 @@ export const useRelatedParametersQuery = (
         const allData = clone(allDatasets);
         missingProcedureData.forEach((d) => allData.push(d));
         allData.sort((d1, d2) =>
-          d1.parameterStableId.localeCompare(d2.parameterStableId)
+          d1.parameterStableId.localeCompare(d2.parameterStableId),
         );
         onMissingProceduresFetched(missingProcedureData);
         setIsLoading(false);
         setDatasets(allData);
       });
   }, [allDatasets]);
-  return {datasets, datasetsAreLoading: isLoading};
-}
+  return { datasets, datasetsAreLoading: isLoading };
+};
