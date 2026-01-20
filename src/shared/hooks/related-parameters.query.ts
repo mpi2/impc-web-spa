@@ -3,7 +3,7 @@ import { fetchData } from "@/api-service";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
-const clone = (obj: any) => JSON.parse(JSON.stringify(obj));
+const clone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
 
 export const useRelatedParametersQuery = (
   allDatasets: Array<Dataset>,
@@ -31,7 +31,7 @@ export const useRelatedParametersQuery = (
       mgiGeneAccessionId
     ];
     const id = mgiGeneAccessionId?.replace(":", "_");
-    const allProcedureData = fetchData(
+    const allProcedureData = fetchData<Array<Dataset>>(
       `${chromosome}/${id}/pipelines/${pipelineStableId}/${procedureStableId}.json`,
     );
     allProcedureData
@@ -45,7 +45,7 @@ export const useRelatedParametersQuery = (
         ),
       )
       .then((allDatasets) => {
-        const proceduresData: Array<any> = [];
+        const proceduresData: Array<Dataset> = [];
         allDatasets
           .filter((ds) => ds.metadataGroup === metadataGroup)
           .forEach(({ id, ...ds }) => {
