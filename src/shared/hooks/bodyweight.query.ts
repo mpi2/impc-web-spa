@@ -13,27 +13,22 @@ export const useBodyWeightQuery = (
         mgiGeneAccessionId
       ];
       const id = mgiGeneAccessionId?.replace(":", "_");
-      const allData = await fetchData(
+      const allData = await fetchData<Array<any>>(
         `${chromosome}/${id}/bodyweight-curve.json`,
       );
-      const summariesRequest = await Promise.allSettled(
-        allData.map((dataset) =>
-          fetchData(`${chromosome}/${id}/datasets/${dataset.datasetId}.json`),
-        ),
+      const summariesRequest = await fetchData<Array<any>>(
+        `${chromosome}/${id}/bodyweight-datasets-metadata.json`,
       );
 
-      return summariesRequest
-        .filter((response) => response.status === "fulfilled")
-        .map((response: PromiseFulfilledResult<any>) => response.value[0])
-        .map((dataset) => {
-          const chartData = allData.find(
-            (d) => d.datasetId === dataset.datasetId,
-          );
-          return {
-            ...dataset,
-            chartData: chartData.dataPoints,
-          };
-        });
+      return summariesRequest.map((dataset) => {
+        const chartData = allData.find(
+          (d) => d.datasetId === dataset.datasetId,
+        );
+        return {
+          ...dataset,
+          chartData: chartData.dataPoints,
+        };
+      });
     },
     enabled: routerIsReady,
     placeholderData: [],
