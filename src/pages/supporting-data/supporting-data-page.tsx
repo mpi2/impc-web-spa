@@ -238,27 +238,6 @@ const GeneralChartPage = () => {
               &nbsp; Loading data
             </div>
           )}
-          {shouldDisplayPValueStatement && (
-            <div className="mb-4">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
-                <span>
-                  {allSummaries.length} parameter / zygosity / metadata group
-                  combinations tested, with the lowest p-value of&nbsp;
-                  <strong>
-                    {formatPValue(getSmallestPValue(allSummaries))}
-                  </strong>
-                </span>
-              </div>
-            </div>
-          )}
           {!isError && (
             <DataComparison
               data={allSummaries}

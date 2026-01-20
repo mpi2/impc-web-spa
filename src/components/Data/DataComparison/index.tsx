@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Pagination from "../../Pagination";
 import SortableTable from "../../SortableTable";
 import { orderBy, has } from "lodash";
-import { formatPValue, getIcon, getSexLabel } from "@/utils";
+import { formatPValue, getIcon, getSexLabel, getSmallestPValue } from "@/utils";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dataset, SortType, TableHeader } from "@/models";
@@ -168,12 +168,31 @@ const DataComparison = (props: Props) => {
   return (
     <>
       {displayPValueThreshold && (
-        <div style={{ color: "#797676", fontSize: "95%" }}>
-          <span>
-            P-Values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are
-            marked as significant.
-          </span>
-        </div>
+        <>
+          <div className="mb-4">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "1rem",
+              }}
+            >
+              <span>
+                {sorted.length} parameter / zygosity / metadata group
+                combinations tested, with the lowest p-value of&nbsp;
+                <strong>{formatPValue(getSmallestPValue(data))}</strong>
+              </span>
+            </div>
+          </div>
+          <div style={{ color: "#797676", fontSize: "95%" }}>
+            <span>
+              P-Values equal or lower to 10<sup>-4</sup> (P &lt; 0.0001) are
+              marked as significant.
+            </span>
+          </div>
+        </>
       )}
       <Pagination data={sorted}>
         {(pageData) => (
