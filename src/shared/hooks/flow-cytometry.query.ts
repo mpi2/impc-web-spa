@@ -8,7 +8,6 @@ export const useFlowCytometryQuery = (
   parameterStableId: string,
   enabled: boolean,
 ) => {
-  console.log("parameterStableId: ", parameterStableId);
   return useQuery({
     queryKey: [
       "dataset",
