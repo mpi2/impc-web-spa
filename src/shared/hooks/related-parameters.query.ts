@@ -1,6 +1,5 @@
 import { Dataset } from "@/models";
 import { fetchData } from "@/api-service";
-import _ from "lodash";
 import { useEffect, useState } from "react";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
 const clone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
@@ -49,7 +48,7 @@ export const useRelatedParametersQuery = (
         allDatasets
           .filter((ds) => ds.metadataGroup === metadataGroup)
           .forEach(({ id, ...ds }) => {
-            if (!proceduresData.find((d) => _.isEqual(d, ds))) {
+            if (!proceduresData.find((d) => d.datasetId === ds.datasetId)) {
               proceduresData.push({ id, ...ds });
             }
           });
