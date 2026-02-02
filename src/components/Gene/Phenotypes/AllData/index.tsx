@@ -22,6 +22,7 @@ import Skeleton from "react-loading-skeleton";
 import Footnotes from "../Footnotes";
 import { Alert } from "react-bootstrap";
 import { uniq } from "lodash";
+import Fuse from "fuse.js";
 
 type FilterOptions = {
   procedures: Array<string>;
@@ -80,6 +81,7 @@ const AllData = (props: Props) => {
   const [query, setQuery] = useState(queryFromURL);
   const [filterOptions, setFilterOptions] =
     useState<FilterOptions>(defaultFilterOptions);
+  const [fuse, setFuse] = useState<Fuse<GeneStatisticalResult> | null>(null);
 
   const initialSelectedValues = Object.assign(
     { ...defaultSelectedValues },
@@ -152,6 +154,24 @@ const AllData = (props: Props) => {
   }, [geneData]);
 
   useEffect(() => {
+    if (geneData) {
+      setFuse(
+        new Fuse(geneData, {
+          keys: [
+            "displayPhenotype.name",
+            "displayPhenotype.id",
+            "procedureStableId",
+            "procedureName",
+            "parameterStableId",
+            "zygosity",
+            "zygosity",
+          ],
+        }),
+      );
+    }
+  }, [geneData]);
+
+  useEffect(() => {
     const unsubscribeOnAlleleSelection = orderPhenotypedSelectionChannel.on(
       "onAlleleSelected",
       (newAllele) => {
@@ -192,22 +212,19 @@ const AllData = (props: Props) => {
       zygosity: selectedZygosity,
       alleleSymbol: selectedAlleleSymbol,
     } = selectedValues;
-    return geneData.filter(
+    let dataToBeSearched = geneData;
+    if (query && fuse) {
+      dataToBeSearched = fuse.search(query).map(({ item }) => item);
+    }
+    return dataToBeSearched.filter(
       ({
-        displayPhenotype,
         alleleSymbol,
         lifeStageName,
         topLevelPhenotypes,
         zygosity,
         procedureName,
-        procedureStableId,
-        parameterStableId,
       }) =>
         (!selectedAlleleSymbol || alleleSymbol === selectedAlleleSymbol) &&
-        (!query ||
-          `${displayPhenotype?.name ?? ""} ${displayPhenotype?.id ?? ""} ${procedureStableId ?? ""} ${procedureName ?? ""} ${parameterStableId ?? ""} ${procedureName ?? ""}`
-            .toLowerCase()
-            .includes(query)) &&
         (!selectedTopLevelPhenotypeName ||
           (topLevelPhenotypes ?? []).some(
             ({ name }) => name === selectedTopLevelPhenotypeName,
@@ -218,7 +235,7 @@ const AllData = (props: Props) => {
           procedureName.includes(selectedProcedureName) ||
           procedureName.includes(query)),
     );
-  }, [geneData, selectedValues, query]);
+  }, [geneData, selectedValues, query, fuse]);
 
   if (isGeneError && !geneData) {
     return (
