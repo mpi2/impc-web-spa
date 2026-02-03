@@ -86,10 +86,12 @@ const ImageInformation = ({
   image,
   inViewer = false,
   showAssocParam = false,
+  isControlColumn = false,
 }: {
   image: Image;
   inViewer?: boolean;
   showAssocParam?: boolean;
+  isControlColumn?: boolean;
 }) => {
   return (
     <div
@@ -106,13 +108,16 @@ const ImageInformation = ({
         <FontAwesomeIcon icon={getIcon(image.sex)} />
       </div>
       <div className={styles.indicatorsContainer}>
-        {inViewer ? (
-          <span>{image.zygosity}</span>
-        ) : (
+        {inViewer && !isControlColumn && <span>{image.zygosity}</span>}
+        {inViewer && (
           <div className={`${styles.common} ${styles.zygosityIndicator}`}>
             <FontAwesomeIcon
               icon={faCircle}
-              style={{ color: getZygosityColor(image.zygosity) }}
+              style={{
+                color: isControlColumn
+                  ? "#FFF"
+                  : getZygosityColor(image.zygosity),
+              }}
             />
           </div>
         )}
@@ -248,7 +253,11 @@ const Column = ({ images, selected, onSelection, showAssocParam }) => {
               width="100%"
               wrapperProps={{ style: { width: "100%" } }}
             />
-            <ImageInformation image={image} showAssocParam={showAssocParam} />
+            <ImageInformation
+              image={image}
+              showAssocParam={showAssocParam}
+              isControlColumn={type === "control"}
+            />
           </div>
         </Col>
       ))}
@@ -599,6 +608,7 @@ const ImagesCompare = () => {
                       <ImageInformation
                         image={controlImages[selectedWTImage]}
                         inViewer
+                        isControlColumn
                       />
                     )}
                   </div>
