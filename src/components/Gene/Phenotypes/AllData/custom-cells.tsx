@@ -70,10 +70,7 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
 
   let url = `/${DATA_SITE_BASE_PATH}/supporting-data?mgiGeneAccessionId=${mgiGeneAccessionId}&alleleAccessionId=${alleleAccessionId}&zygosity=${zygosity}&parameterStableId=${parameterStableId}&pipelineStableId=${pipelineStableId}&procedureStableId=${procedureStableId}&phenotypingCentre=${phenotypingCentre}&statisticalResultId=${statisticalResultId}`;
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;
-  if (isAssociatedToPWG) {
-    url =
-      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
-  }
+
   if (procedureName.includes("Histopathology")) {
     if (parameterName.includes("-")) {
       const tissue = parameterName.split("-")[0]?.trim().toLowerCase();
@@ -92,6 +89,10 @@ export const SupportingDataCell = <T extends GeneStatisticalResult>(
     )
   ) {
     url += `&metadataGroup=${metadataGroup}`;
+  }
+  if (isAssociatedToPWG) {
+    url =
+      "https://www.mousephenotype.org/publications/data-supporting-impc-papers/pain/";
   }
   return (
     <Link to={url} title={`view supporting data for ${parameterName}`}>
