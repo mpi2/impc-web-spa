@@ -3,24 +3,36 @@ import { fetchData } from "@/api-service";
 import { GenePhenotypeHits } from "@/models/gene";
 import geneChromosomeMap from "@/static-data/chromosome-map.json";
 
-const ABRProcedures = ["IMPC_ACS_001", "IMPC_ACS_002", "IMPC_ACS_003"];
+const ABRParameters = [
+  "IMPC_ABR_002_001",
+  "IMPC_ABR_004_001",
+  "IMPC_ABR_006_001",
+  "IMPC_ABR_008_001",
+  "IMPC_ABR_010_001",
+  "IMPC_ABR_012_001",
+];
 
 const PPIParameters = [
   "PPI1", // % PP1
   "PPI2", // % PP2
   "PPI3", // % PP3
   "PPI4", // % PP4
+  "IMPC_ACS_033_001", // % PP1
+  "IMPC_ACS_034_001", // % PP2
+  "IMPC_ACS_035_001", // % PP3
+  "IMPC_ACS_036_001", // % PP4
+  "IMPC_ACS_037_001", // % Global
 ];
 
 export const processGenePhenotypeHitsResponse = (
-  data: Array<GenePhenotypeHits>
+  data: Array<GenePhenotypeHits>,
 ) => {
   const group: Record<string, GenePhenotypeHits> = {};
   const significantData = data.filter(
     (phenotypeHit) =>
       (phenotypeHit.pValue < 0.0001 ||
         phenotypeHit.assertionType === "manual") &&
-      !!phenotypeHit.phenotype.id
+      !!phenotypeHit.phenotype.id,
   );
   significantData.forEach((item) => {
     const {
@@ -52,34 +64,41 @@ export const processGenePhenotypeHitsResponse = (
         id: item.phenotype.id,
         phenotypeId: item.phenotype.id,
         datasetsIds: [datasetId],
+        paramsTrackedIds: [item.parameterStableId],
       };
     } else if (group[key].datasetId !== datasetId) {
-      // check for PPI related parameters and only count the PPI1, PPI2, PPI3 and PPI4
+      // for PPI and ABR,
       if (
-        ABRProcedures.includes(group[key].procedureStableId) &&
-        PPIParameters.some((param) => item.parameterName.includes(param))
+        (item.procedureStableId.includes("ACS") ||
+          item.procedureStableId.includes("ABR")) &&
+        !group[key].paramsTrackedIds!.includes(item.parameterStableId)
       ) {
-        group[key].datasetsIds.push(datasetId);
-      } else if (!group[key].datasetsIds.includes(datasetId)) {
-        group[key].datasetsIds.push(datasetId);
+        if (
+          ABRParameters.includes(item.parameterStableId) ||
+          PPIParameters.includes(item.parameterStableId)
+        ) {
+          group[key].datasetsIds!.push(datasetId);
+          group[key].paramsTrackedIds!.push(item.parameterStableId);
+        }
+      } else if (!group[key].datasetsIds!.includes(datasetId)) {
+        group[key].datasetsIds!.push(datasetId);
       }
     }
   });
   return Object.values(group).filter(
-    (phenotype) => !phenotype.procedureStableId.includes("HIS")
+    (phenotype) => !phenotype.procedureStableId.includes("HIS"),
   );
 };
 
 export const useSignificantPhenotypesQuery = (
   mgiGeneAccessionId: string,
-  routerIsReady: boolean
+  routerIsReady: boolean,
 ) => {
   const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
   const id = mgiGeneAccessionId?.replace(":", "_");
   const { data, isLoading, isError, isFetching, ...rest } = useQuery({
     queryKey: ["genes", mgiGeneAccessionId, "phenotype-hits"],
-    queryFn: () =>
-      fetchData(`${chromosome}/${id}/phenotypehits.json`),
+    queryFn: () => fetchData(`${chromosome}/${id}/phenotypehits.json`),
     enabled: routerIsReady && !!id,
     select: (data: Array<GenePhenotypeHits>) =>
       processGenePhenotypeHitsResponse(data),
