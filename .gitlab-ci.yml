@@ -98,7 +98,7 @@ pages:
   stage: deploy
   script:
     - yarn install
-    - yarn run gl-pages
+    - yarn run gl-pages-build
   artifacts:
     paths:
       - public
