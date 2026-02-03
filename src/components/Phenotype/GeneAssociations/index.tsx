@@ -9,9 +9,9 @@ import {
 } from "@/components/SmartTable";
 import { PhenotypeGenotypes } from "@/models/phenotype";
 import { SortType, TableCellProps } from "@/models";
-import { AlleleSymbol, DownloadData } from "@/components";
+import { AlleleSymbol, DownloadData, FilterBox } from "@/components";
 import { formatAlleleSymbol } from "@/utils";
-import { get, orderBy } from "lodash";
+import { get, orderBy, uniq } from "lodash";
 import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { Alert } from "react-bootstrap";
@@ -85,6 +85,9 @@ export const SupportingDataCell = <T extends PhenotypeGenotypes>(
 
 const Associations = () => {
   const phenotype = useContext(PhenotypeContext);
+  const [query, setQuery] = useState("");
+  const [selectedZygosity, setSelectedZygosity] = useState("");
+  const [selectedLifeStageName, setSelectedLifeStageName] = useState("");
   const [sortOptions, setSortOptions] = useState<string>("");
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
   const { data, isFetching, isError } = usePhenotypeGeneAssociationsQuery(
@@ -93,19 +96,43 @@ const Associations = () => {
     sortOptions,
   );
 
-  const filterPhenotype = (
-    {
-      phenotypeName,
-      phenotypeId,
-      alleleSymbol,
-      mgiGeneAccessionId,
-    }: PhenotypeGenotypes,
-    query: string,
-  ) =>
-    !query ||
-    `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId}`
-      .toLowerCase()
-      .includes(query);
+  const { availableZygosities, availableLifestages } = useMemo(() => {
+    if (!data) {
+      return {
+        availableZygosities: [],
+        availableLifestages: [],
+      };
+    }
+    return {
+      availableZygosities: uniq(data.map((item) => item.zygosity)),
+      availableLifestages: uniq(data.map((item) => item.lifeStageName)),
+    };
+  }, [data]);
+
+  const filteredData = useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    return data.filter(
+      ({
+        phenotypeName,
+        phenotypeId,
+        alleleSymbol,
+        mgiGeneAccessionId,
+        zygosity,
+        lifeStageName,
+      }: PhenotypeGenotypes) => {
+        return (
+          (!query ||
+            `${mgiGeneAccessionId} ${alleleSymbol} ${phenotypeName} ${phenotypeId} `
+              .toLowerCase()
+              .includes(query.toLowerCase())) &&
+          (!selectedZygosity || selectedZygosity === zygosity) &&
+          (!selectedLifeStageName || selectedLifeStageName === lifeStageName)
+        );
+      },
+    );
+  }, [data, query, selectedZygosity, selectedLifeStageName]);
 
   const sortAssociations = (
     data: Array<PhenotypeGenotypes>,
@@ -146,15 +173,48 @@ const Associations = () => {
         {phenotype?.phenotypeName || <Skeleton inline width={150} />}
       </h2>
       <p>
-        Total number of significant genotype-phenotype associations:&nbsp;
-        {data?.length}
+        Number of significant genotype-phenotype associations:&nbsp;
+        {filteredData?.length}
       </p>
       <SmartTable<PhenotypeGenotypes>
-        data={data}
-        filterFn={filterPhenotype}
+        data={filteredData}
         defaultSort={defaultSort}
         customSortFunction={sortAssociations}
+        customFiltering
         showLoadingIndicator={isFetching}
+        additionalTopControls={
+          <>
+            <FilterBox
+              controlId="queryFilterAD"
+              hideLabel
+              value={query}
+              onChange={setQuery}
+              ariaLabel="Filter by parameters"
+              controlStyle={{ width: 150 }}
+              emitValueLowercase={false}
+            />
+            <FilterBox
+              controlId="zygosityFilterAD"
+              label="Zygosity"
+              value={selectedZygosity}
+              onChange={(value) => setSelectedZygosity(value)}
+              ariaLabel="Filter by zygosity"
+              options={availableZygosities}
+              controlStyle={{ width: 100, textTransform: "capitalize" }}
+              isLoading={isFetching}
+            />
+            <FilterBox
+              controlId="lifeStageFilterAD"
+              label="Life Stage"
+              value={selectedLifeStageName}
+              onChange={(value) => setSelectedLifeStageName(value)}
+              ariaLabel="Filter by life stage"
+              options={availableLifestages}
+              controlStyle={{ display: "inline-block", width: 100 }}
+              isLoading={isFetching}
+            />
+          </>
+        }
         additionalBottomControls={
           <DownloadData<PhenotypeGenotypes>
             data={data}

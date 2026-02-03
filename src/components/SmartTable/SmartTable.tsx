@@ -31,7 +31,7 @@ const SmartTable = <T extends Model>(props: {
   showLoadingIndicator?: boolean;
   customSortFunction?: (
     data: Array<T>,
-    field: string,
+    field: keyof T,
     order: "asc" | "desc",
   ) => Array<T>;
   highlightRowFunction?: (item: T) => boolean;

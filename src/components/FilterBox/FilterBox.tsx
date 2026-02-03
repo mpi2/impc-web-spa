@@ -1,5 +1,7 @@
 import { Form } from "react-bootstrap";
 import { CSSProperties } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 type LabelProps =
   | {
@@ -23,6 +25,7 @@ type CommonProps = {
   displayEvenWithOnlyOneOption?: boolean;
   emitValueLowercase?: boolean;
   prioritaseControlId?: boolean;
+  isLoading?: boolean;
 };
 
 type Props = CommonProps & LabelProps;
@@ -42,7 +45,9 @@ const FilterBox = (props: Props) => {
     displayEvenWithOnlyOneOption = false,
     emitValueLowercase = true,
     prioritaseControlId = false,
+    isLoading = false,
   } = props;
+  const testId = `filterbox-${prioritaseControlId ? controlId : label || controlId}`;
   const optionalControlProps: Record<string, string> = {};
   if (hideLabel) {
     optionalControlProps["aria-label"] = ariaLabel;
@@ -52,10 +57,16 @@ const FilterBox = (props: Props) => {
     return null;
   }
 
+  if (isLoading) {
+    return (
+      <div data-testid={testId}>
+        <Skeleton width={100} height={38} />
+      </div>
+    );
+  }
+
   return (
-    <div
-      data-testid={`filterbox-${prioritaseControlId ? controlId : label || controlId}`}
-    >
+    <div data-testid={testId}>
       {!hideLabel && (
         <label htmlFor={controlId} className="grey" style={labelStyle}>
           {label}:
