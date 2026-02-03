@@ -52,6 +52,9 @@ export const formatPValue = (pValue: number) => {
   if (pValue === null || pValue === undefined) {
     return null;
   }
+  if (pValue === 0) {
+    return 0;
+  }
   const pValueArray = Number.parseFloat(String(pValue))
     .toExponential(2)
     .split("e");

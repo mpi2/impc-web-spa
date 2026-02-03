@@ -6,7 +6,7 @@ import { useMemo } from "react";
 const SignificantPValue = <T extends Model>(
   props: TableCellProps<T> & {
     onRefHover?: (refNum: string, active: boolean) => void;
-  }
+  },
 ) => {
   const { onRefHover = (p1, p2) => {} } = props;
   const pValue = useMemo(() => {
@@ -14,7 +14,9 @@ const SignificantPValue = <T extends Model>(
     const value = formatPValue(get(props.value, props.field) as number);
     return zeroPValueDataTypes.includes(get(props.value, "dataType") as string)
       ? value
-      : value || "N/A";
+      : !!value
+        ? value
+        : "N/A";
   }, [props.value]);
   const isManualAssociation = get(props.value, "assertionType") === "manual";
   const isAssociatedToPWG = props.value?.["projectName"] === "PWG" || false;

@@ -111,9 +111,14 @@ export const SignificantPValueCell = <T extends GeneStatisticalResult>(
   const pValue = useMemo(() => {
     const zeroPValueDataTypes = ["unidimensional", "categorical"];
     const pValue = formatPValue(get(props.value, props.field) as number);
+    if (get(props.value, "status") === "NotProcessed") {
+      return "N/A";
+    }
     return zeroPValueDataTypes.includes(props.value.dataType)
       ? pValue
-      : pValue || "N/A";
+      : !!pValue
+        ? pValue
+        : "N/A";
   }, [props.value]);
 
   // TODO: update condition after assertionType is added
