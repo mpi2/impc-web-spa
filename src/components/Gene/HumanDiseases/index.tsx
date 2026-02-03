@@ -203,27 +203,37 @@ const Row = ({ rowData, data, isLoading }: RowProps) => {
   const [tooltipShow, setTooltipShow] = useState(false);
   const tooltipRef = useRef(null);
 
+  const getLink = () => {
+    const diseaseId = rowData.diseaseId;
+    const externalId = diseaseId.split(":")[1];
+
+    let href = "";
+    let title = "";
+
+    if (diseaseId.includes("ORPHA")) {
+      href = `https://www.orpha.net/en/disease/detail/${externalId}`;
+      title = `view ${rowData.diseaseTerm} details in Orphanet website`;
+    } else if (diseaseId.includes("OMIM")) {
+      href = `https://omim.org/entry/${externalId}`;
+      title = `view ${rowData.diseaseTerm} details in OMIM website`;
+    } else if (diseaseId.includes("DECIPHER")) {
+      href = `https://www.deciphergenomics.org/syndrome/${externalId}`;
+      title = `view ${rowData.diseaseTerm} details in DECIPHER website`;
+    }
+    return (
+      <a href={href} target="_blank" className="link primary" title={title}>
+        {diseaseId}{" "}
+        <FontAwesomeIcon className="grey" size="xs" icon={faExternalLinkAlt} />
+      </a>
+    );
+  };
   return (
     <>
       <tr>
         <td>
           <strong className={styles.link}>{rowData.diseaseTerm}</strong>
         </td>
-        <td>
-          <a
-            href={`http://omim.org/entry/${rowData.diseaseId.split(":")[1]}`}
-            target="_blank"
-            className="link primary"
-            title={`view ${rowData.diseaseTerm} details in OMIM website`}
-          >
-            {rowData.diseaseId}{" "}
-            <FontAwesomeIcon
-              className="grey"
-              size="xs"
-              icon={faExternalLinkAlt}
-            />
-          </a>
-        </td>
+        <td>{getLink()}</td>
         <td>
           <Scale ref={tooltipRef} toggleFocus={setTooltipShow}>
             {Math.round((rowData.phenodigmScore / 100) * 5)}
