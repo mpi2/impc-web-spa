@@ -140,14 +140,12 @@ const CardiovascularLandingPage = () => {
                     phenotypeData.map((row) => (
                       <tr key={row.id}>
                         <td>
-                          <a
-                            href={
-                              "http://www.mousephenotype.org/data/phenotypes/" +
-                              row.id
-                            }
+                          <Link
+                            className="link primary"
+                            to={`/phenotypes/${row.id}`}
                           >
                             {row.name}
-                          </a>
+                          </Link>
                         </td>
                         <td>
                           <a

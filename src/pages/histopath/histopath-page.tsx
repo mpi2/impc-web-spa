@@ -122,13 +122,13 @@ const HistopathLandingPage = () => {
       const mgiID = gene.mgiAccession;
       const allele = gene.allelesWithTissue[0].match(/\<(.+)\>/)[1];
       return (
-        <a
+        <Link
           title="fixed tissue link"
           className="link primary"
-          href={`/alleles/${mgiID}/${allele}#mice`}
+          to={`/${DATA_SITE_BASE_PATH}/alleles/${mgiID}/${allele}#mice`}
         >
           Yes
-        </a>
+        </Link>
       );
     } else if (gene.hasTissue && gene.allelesWithTissue.length > 1) {
       return (
