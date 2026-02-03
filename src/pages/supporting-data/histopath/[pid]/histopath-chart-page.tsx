@@ -332,7 +332,7 @@ const HistopathChartPage = () => {
                                 <a
                                   className="primary link"
                                   target="_blank"
-                                  href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId}`}
+                                  href={`https://ontobee.org/ontology/MA?iri=http://purl.obolibrary.org/obo/${image.maId?.replaceAll(":", "_")}`}
                                 >
                                   {image.maTerm}
                                 </a>
