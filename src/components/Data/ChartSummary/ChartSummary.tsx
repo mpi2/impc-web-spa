@@ -159,6 +159,22 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
             {datasetSummary["procedureName"]}
           </Link>
         </div>
+        {datasetSummary.procedureName === "Grip Strength" && (
+          <>
+            <div className={styles.label}>&nbsp;</div>
+            <div className="content">
+              For more information on how bodyweight is used in this analysis,
+              please read the&nbsp;
+              <Link
+                className="link primary"
+                to="https://www.mousephenotype.org/help/data-analysis/statistical-analysis#linear-mixed-model"
+              >
+                Statistical analysis
+              </Link>
+              &nbsp;help page
+            </div>
+          </>
+        )}
         <div className={styles.label}>Measured value</div>
         <div className="content">{datasetSummary["parameterName"]}</div>
         <div className={styles.label}>Testing environment</div>
