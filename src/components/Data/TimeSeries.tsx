@@ -33,7 +33,7 @@ ChartJS.register(
   Tooltip,
   Legend,
   BarElement,
-  BarController
+  BarController,
 );
 
 type ChartSeries = {
@@ -57,8 +57,8 @@ const getLabel = (sex, zygosity, sampleGroup) => {
     zygosity === "homozygote"
       ? "HOM"
       : zygosity === "hemizygote"
-      ? "HEM"
-      : "HET";
+        ? "HEM"
+        : "HET";
   const labelGroup = sampleGroup == "experimental" ? labelZyg : "WT";
   const order = labelGroup !== "WT" ? 1 : 2;
   const label = `${labelSex} ${labelGroup}`;
@@ -84,8 +84,8 @@ const calculateStats = (groupedData, valueKey, windowSize = 1) => {
     const sd = Math.sqrt(
       group.values.reduce(
         (sum, item) => sum + Math.pow(item[valueKey] - avg, 2),
-        0
-      ) / group.values.length
+        0,
+      ) / group.values.length,
     );
 
     return {
@@ -99,7 +99,7 @@ const calculateStats = (groupedData, valueKey, windowSize = 1) => {
 
 const countSpecimens = (series, sex: string, sampleGroup: string) => {
   const selectedSeries = series.find(
-    (s) => s.sampleGroup === sampleGroup && s.specimenSex === sex
+    (s) => s.sampleGroup === sampleGroup && s.specimenSex === sex,
   );
   if (!selectedSeries) return 0;
   return new Set(selectedSeries.observations.map((d) => d.specimenId)).size;
@@ -122,7 +122,7 @@ const TimeSeries = ({
 
     const seriesData =
       dataSeries.find(
-        (p) => p.sampleGroup === sampleGroup && p.specimenSex === sex
+        (p) => p.sampleGroup === sampleGroup && p.specimenSex === sex,
       )?.["observations"] || [];
 
     const groupedData = groupBy(seriesData, "discretePoint");
@@ -132,7 +132,7 @@ const TimeSeries = ({
         key,
         values: groupedData[key],
       })),
-      "dataPoint"
+      "dataPoint",
     )
       .map((p) => {
         const p2 = { ...p };
@@ -216,15 +216,15 @@ const TimeSeries = ({
       return seriesArray.filter((c) => c.sex === "male");
     }
     const validExperimentalSeries = seriesArray.filter(
-      (c) => c.sampleGroup === "experimental" && c.data.length > 0
+      (c) => c.sampleGroup === "experimental" && c.data.length > 0,
     );
     const validExperimentalSeriesSexes = validExperimentalSeries.map(
-      (c) => c.sex
+      (c) => c.sex,
     );
     const controlSeries = seriesArray.filter(
       (c) =>
         c.sampleGroup === "control" &&
-        validExperimentalSeriesSexes.includes(c.sex)
+        validExperimentalSeriesSexes.includes(c.sex),
     );
     return [...controlSeries, ...validExperimentalSeries];
   };
@@ -244,7 +244,9 @@ const TimeSeries = ({
         stddev: datasetSummary.summaryStatistics?.[stddevKey].toFixed(3) || 0,
         count:
           new Set(
-            serie.originalData.flatMap((d) => d.values).map((v) => v.specimenId)
+            serie.originalData
+              .flatMap((d) => d.values)
+              .map((v) => v.specimenId),
           ).size || 0,
       };
     });
@@ -264,25 +266,25 @@ const TimeSeries = ({
         dataSeries,
         "female",
         "control",
-        datasetSummary.zygosity
+        datasetSummary.zygosity,
       );
       const maleWTPoints = getLineSeries(
         dataSeries,
         "male",
         "control",
-        datasetSummary.zygosity
+        datasetSummary.zygosity,
       );
       const femaleHomPoints = getLineSeries(
         dataSeries,
         "female",
         "experimental",
-        datasetSummary.zygosity
+        datasetSummary.zygosity,
       );
       const maleHomPoints = getLineSeries(
         dataSeries,
         "male",
         "experimental",
-        datasetSummary.zygosity
+        datasetSummary.zygosity,
       );
       const chartSeries = filterChartSeries(datasetSummary.zygosity, [
         femaleWTPoints,
@@ -296,11 +298,11 @@ const TimeSeries = ({
         : null;
 
       const labels = Array.from(
-        new Set(chartSeries.flatMap((s) => s.data.map((d) => d.x)))
+        new Set(chartSeries.flatMap((s) => s.data.map((d) => d.x))),
       ).sort((a, b) => (a < b ? -1 : 1));
 
       const smaLabels = Array.from(
-        new Set(chartSeries.flatMap((s) => s.smaData.map((d) => d.x)))
+        new Set(chartSeries.flatMap((s) => s.smaData.map((d) => d.x))),
       ).sort((a, b) => (a < b ? -1 : 1));
 
       return {
@@ -313,7 +315,7 @@ const TimeSeries = ({
             femaleMutantCount: countSpecimens(
               dataSeries,
               "female",
-              "experimental"
+              "experimental",
             ),
             maleMutantCount: countSpecimens(dataSeries, "male", "experimental"),
             femaleControlCount: countSpecimens(dataSeries, "female", "control"),
@@ -332,7 +334,7 @@ const TimeSeries = ({
       .flatMap((s) =>
         s.originalData.map((d) => {
           return { ...d, id: s.label };
-        })
+        }),
       )
       .reduce((indexByTimePoint, item) => {
         indexByTimePoint[item.group] = indexByTimePoint[item.group]
@@ -345,7 +347,7 @@ const TimeSeries = ({
           : {};
         indexByTimePoint[item.group][item.id]["avg"] = item.y;
         indexByTimePoint[item.group][item.id]["count"] = new Set(
-          item.values.map((v) => v.specimenId)
+          item.values.map((v) => v.specimenId),
         ).size;
         return indexByTimePoint;
       }, {});
@@ -357,21 +359,23 @@ const TimeSeries = ({
         chartSeries.map((s) =>
           indexByTimePoint[timePoint][s.label]
             ? indexByTimePoint[timePoint][s.label]
-            : null
-        )
+            : null,
+        ),
       );
     });
     return {
       headers: [datasetSummary["unit"]["x"] || "Time point"].concat(
-        chartSeries.map((s) => s.label)
+        chartSeries.map((s) => s.label),
       ),
       rows,
     };
   };
 
-  const getCategoricalTableData = (series) => {
+  const getCategoricalTableData = (series, parameterStableId: string) => {
     if (!series) return;
 
+    const isICSPassiveRotationParameter =
+      parameterStableId === "ICS_ROT_003_001";
     // Flatten the observations from the series
     const observations = series.flatMap((s) =>
       s.observations.map((o) => ({
@@ -379,14 +383,14 @@ const TimeSeries = ({
         specimenSex: s.specimenSex,
         discretePoint: o.discretePoint,
         category: o.category,
-      }))
+      })),
     );
 
     // Group the observations by a composite key
     const compositeGroup = _.groupBy(
       observations,
       (item) =>
-        `${item.sampleGroup}-${item.specimenSex}-${item.discretePoint}-${item.category}`
+        `${item.sampleGroup}-${item.specimenSex}-${item.discretePoint}-${item.category}`,
     );
 
     // Create header labels and a mapping from composite keys to header indices
@@ -399,11 +403,11 @@ const TimeSeries = ({
           const label = getLabel(
             specimenSex,
             datasetSummary.zygosity,
-            sampleGroup
+            sampleGroup,
           );
           groupToHeaderIndex[k] = label;
           return label;
-        })
+        }),
       ),
     ];
 
@@ -412,19 +416,26 @@ const TimeSeries = ({
 
     // Define increments and categories
     const increments = [1, 2, 3];
-    const categories = ["f", "j", "p"];
+    const categories = isICSPassiveRotationParameter
+      ? ["yes", "no"]
+      : ["f", "j", "p"];
 
     // Generate the cross product of increments and categories
     const crossProductConcat = increments.flatMap((a) =>
-      categories.map((b) => `${a}-${b}`)
+      categories.map((b) => `${a}-${b}`),
     );
 
     // Define a display mapping for categories
-    const categoryDisplay = {
-      f: "Falling",
-      j: "Jumping",
-      p: "Passive rotation",
-    };
+    const categoryDisplay = isICSPassiveRotationParameter
+      ? {
+          yes: "Yes",
+          no: "No",
+        }
+      : {
+          f: "Falling",
+          j: "Jumping",
+          p: "Passive rotation",
+        };
     // Generate rows for the table
     const rows = crossProductConcat.map((g) => {
       const [increment, category] = g.split("-");
@@ -433,7 +444,7 @@ const TimeSeries = ({
       // Fill the row with the appropriate data from the composite group
       headers.forEach((header) => {
         const keys = Object.keys(groupToHeaderIndex).filter(
-          (k) => groupToHeaderIndex[k] === header
+          (k) => groupToHeaderIndex[k] === header,
         );
         keys.forEach((key) => {
           if (key && key.endsWith(`${increment}-${category}`)) {
@@ -458,7 +469,10 @@ const TimeSeries = ({
   };
 
   const tableData = data?.isCategorical
-    ? getCategoricalTableData(data.originalData.series)
+    ? getCategoricalTableData(
+        data.originalData.series,
+        datasetSummary.parameterStableId,
+      )
     : getTableData(data?.chartSeries || []);
 
   const chartOptions = {
