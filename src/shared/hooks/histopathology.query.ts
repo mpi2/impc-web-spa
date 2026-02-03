@@ -42,7 +42,9 @@ export const useHistopathologyQuery = (
   mgiGeneAccessionId: string,
   routerIsReady: boolean,
 ) => {
-  const chromosome: string = geneChromosomeMap[mgiGeneAccessionId];
+  const chromosome: string = (geneChromosomeMap as Record<string, string>)[
+    mgiGeneAccessionId
+  ];
   const id = mgiGeneAccessionId.replace(":", "_");
   return useQuery({
     queryKey: ["histopathology", mgiGeneAccessionId],

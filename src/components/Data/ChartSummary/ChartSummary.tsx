@@ -36,11 +36,23 @@ const ChartSummary = (props: PropsWithChildren<ChartSummaryProps>) => {
     },
     0,
   );
-
-  const metadataArray =
-    datasetSummary.metadataValues.length > 0
-      ? datasetSummary.metadataValues[0].split("|")
-      : [];
+  const metadataArray = useMemo(() => {
+    const valueToUse =
+      datasetSummary.metadataValues.length > 0
+        ? datasetSummary.metadataValues[0]
+        : "";
+    if (valueToUse && valueToUse.includes("| Post Fix")) {
+      let safeValue = valueToUse.replaceAll("| Post Fix", "_ Post Fix");
+      let explodedValue = safeValue.split("|");
+      return explodedValue.map((item) =>
+        item.replaceAll("_ Post Fix", "| Post Fix"),
+      );
+    } else if (valueToUse) {
+      return valueToUse.split("|");
+    } else {
+      return [];
+    }
+  }, [datasetSummary?.metadataValues]);
   const pValue = useMemo(
     () => getSmallestPValue([datasetSummary]),
     [datasetSummary],

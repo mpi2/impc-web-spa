@@ -11,12 +11,7 @@ import {
 } from "react-bootstrap";
 import { useGeneSummaryQuery, useHistopathologyQuery } from "@/hooks";
 import { PlainTextCell, SmartTable } from "@/components/SmartTable";
-import {
-  Histopathology,
-  HistopathologyResponse,
-  SortType,
-  TableCellProps,
-} from "@/models";
+import { Histopathology, SortType, TableCellProps } from "@/models";
 import { useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
