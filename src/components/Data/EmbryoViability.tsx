@@ -1,4 +1,4 @@
-import { Alert, Col, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import SortableTable from "../SortableTable";
 import { formatAlleleSymbol } from "@/utils";
 import PieChart from "../PieChart";
@@ -10,6 +10,7 @@ import { GeneralChartProps } from "@/models";
 import StatisticalAnalysisDownloadLink from "./StatisticalAnalysisDownloadLink";
 import { fetchDatasetFromS3 } from "@/api-service";
 import { Card } from "@/components";
+import { useMemo } from "react";
 
 const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
   const allele = formatAlleleSymbol(datasetSummary["alleleSymbol"]);
@@ -138,6 +139,38 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
     enabled: isVisible,
   });
 
+  const totalCountData = useMemo(
+    () =>
+      !!data?.series
+        ? [
+            {
+              label: "Total Embryos WTs",
+              value: data.series.find(
+                (d) =>
+                  d.parameterStableId == viabilityParameterMap?.wildtype.total,
+              )?.dataPoint,
+            },
+            {
+              label: "Total Embryos Homozygotes",
+              value: data.series.find(
+                (d) =>
+                  d.parameterStableId ==
+                  viabilityParameterMap?.homozygote.total,
+              )?.dataPoint,
+            },
+            {
+              label: "Total Embryos Heterozygotes",
+              value: data.series.find(
+                (d) =>
+                  d.parameterStableId ==
+                  viabilityParameterMap?.heterozygote.total,
+              )?.dataPoint,
+            },
+          ].filter((d) => d.value != 0)
+        : [],
+    [data],
+  );
+
   if (isLoading) return <Card>Loading...</Card>;
 
   if (isError)
@@ -149,27 +182,6 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
         </Alert>
       </Card>
     );
-
-  const totalCountData = [
-    {
-      label: "Total Embryos WTs",
-      value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.wildtype.total,
-      )?.dataPoint,
-    },
-    {
-      label: "Total Embryos Homozygotes",
-      value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.homozygote.total,
-      )?.dataPoint,
-    },
-    {
-      label: "Total Embryos Heterozygotes",
-      value: data.series.find(
-        (d) => d.parameterStableId == viabilityParameterMap?.heterozygote.total,
-      )?.dataPoint,
-    },
-  ].filter((d) => d.value != 0);
 
   return (
     <>
@@ -272,98 +284,102 @@ const EmbryoViability = ({ datasetSummary, isVisible }: GeneralChartProps) => {
               <tr>
                 <td>Dead</td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.wildtype.dead,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.wildtype.dead,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.heterozygote.dead,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.heterozygote.dead,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.homozygote.dead,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.homozygote.dead,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId == viabilityParameterMap?.na.dead,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId == viabilityParameterMap?.na.dead,
+                  )?.dataPoint || 0}
                 </td>
               </tr>
               <tr>
                 <td>Gross defects at dissection (alive or dead)</td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.wildtype.defect,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.wildtype.defect,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.heterozygote.defect,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.heterozygote.defect,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId ==
-                        viabilityParameterMap?.homozygote.defect,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId ==
+                      viabilityParameterMap?.homozygote.defect,
+                  )?.dataPoint || 0}
                 </td>
                 <td>
-                  {
-                    data.series.find(
-                      (d) =>
-                        d.parameterStableId == viabilityParameterMap?.na.defect,
-                    )?.dataPoint
-                  }
+                  {data.series.find(
+                    (d) =>
+                      d.parameterStableId == viabilityParameterMap?.na.defect,
+                  )?.dataPoint || 0}
                 </td>
               </tr>
             </SortableTable>
-            <div>
-              <p>
-                Number of Reabsorptions:{" "}
-                {
-                  data.series.find(
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+              }}
+            >
+              <div>
+                <p>
+                  Number of Reabsorptions:{" "}
+                  {
+                    data.series.find(
+                      (d) =>
+                        d.parameterStableId ==
+                        viabilityParameterMap?.reabsorptions,
+                    )?.dataPoint
+                  }
+                </p>
+                <p>
+                  Average litter size:{" "}
+                  {data.series.find(
                     (d) =>
-                      d.parameterStableId ==
-                      viabilityParameterMap?.reabsorptions,
-                  )?.dataPoint
-                }
-              </p>
-              <p>
-                Average litter size:{" "}
-                {data.series.find(
-                  (d) =>
-                    d.parameterStableId == viabilityParameterMap?.litterSize,
-                )?.dataPoint || "Not supplied"}
-              </p>
+                      d.parameterStableId == viabilityParameterMap?.litterSize,
+                  )?.dataPoint || "Not supplied"}
+                </p>
+              </div>
+              <div
+                style={{
+                  fontSize: "85%",
+                  flex: "1 0 100%",
+                  textAlign: "right",
+                }}
+              >
+                <span>
+                  The procedure does not allow recording of hemizygous males
+                  specifically so for X-linked lines hemizygous males are
+                  recorded as homozygotes.
+                </span>
+              </div>
             </div>
           </Card>
         </Col>
