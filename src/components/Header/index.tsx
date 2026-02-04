@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import { BASE_PATH, DATA_SITE_BASE_PATH } from "@/shared";
 
+const basePath = BASE_PATH.endsWith("/") ? BASE_PATH : `${BASE_PATH}/`;
+
 export interface MenuItem {
   name: string;
   link: string;
@@ -143,7 +145,7 @@ const Header = () => {
                 >
                   <img
                     className="header__logo"
-                    src={`${BASE_PATH}images/logo.svg`}
+                    src={`${basePath}images/logo.svg`}
                     alt="International Mouse Phenotyping Consortium Office Logo"
                     width={355}
                     height={105}
