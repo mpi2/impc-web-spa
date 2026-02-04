@@ -48,7 +48,7 @@ export const usePhenotypeGeneAssociationsQuery = (
   routerIsReady: boolean,
   sortOptions: string,
 ) => {
-  const id = phenotypeId?.replace(":", "-");
+  const id = phenotypeId?.replace(":", "_");
   return useQuery({
     queryKey: ["phenotype", phenotypeId, "genotype-hits"],
     queryFn: () => fetchData(`phenotypes/${id}/genotype-hits.json`),
