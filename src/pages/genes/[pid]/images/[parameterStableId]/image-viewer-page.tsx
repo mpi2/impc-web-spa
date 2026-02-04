@@ -234,7 +234,21 @@ const ImageViewer = ({ image, name, hasAvailableImages }: ImageViewerProps) => {
   );
 };
 
-const Column = ({ images, selected, onSelection, showAssocParam }) => {
+type ColumnProps = {
+  images: Array<Image>;
+  selected: number;
+  onSelection: (i: number) => void;
+  showAssocParam?: boolean;
+  type: "control" | "mutant";
+};
+
+const Column = ({
+  images,
+  selected,
+  onSelection,
+  showAssocParam,
+  type,
+}: ColumnProps) => {
   return (
     <Row className={styles.images}>
       {images?.map((image, i) => (
@@ -804,6 +818,7 @@ const ImagesCompare = () => {
                   images={controlImages}
                   showAssocParam={showAssocParam}
                   onSelection={(imageIndex) => setSelectedWTImage(imageIndex)}
+                  type="control"
                 />
               </Col>
               <Col sm={6}>
@@ -814,6 +829,7 @@ const ImagesCompare = () => {
                   onSelection={(imageIndex) =>
                     setSelectedMutantImage(imageIndex)
                   }
+                  type="mutant"
                 />
               </Col>
             </Row>
