@@ -59,8 +59,8 @@ const PhenotypeResult = ({
   const synonymsArray = synonyms.split(";");
   return (
     <>
-      <Row className={styles.result}>
-        <Link to={`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`}>
+      <Link to={`/${DATA_SITE_BASE_PATH}/phenotypes/${mpId}`}>
+        <Row className={styles.result}>
           <Col>
             <h4 className="mb-2 blue-dark">
               {surroundWithMarkEl(phenotypeName, query)}
@@ -103,8 +103,8 @@ const PhenotypeResult = ({
               />
             )}
           </Col>
-        </Link>
-      </Row>
+        </Row>
+      </Link>
       <hr className="mt-0 mb-0" />
     </>
   );
