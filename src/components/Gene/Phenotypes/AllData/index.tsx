@@ -166,6 +166,7 @@ const AllData = (props: Props) => {
             "zygosity",
             "zygosity",
           ],
+          threshold: 0.2,
         }),
       );
     }
