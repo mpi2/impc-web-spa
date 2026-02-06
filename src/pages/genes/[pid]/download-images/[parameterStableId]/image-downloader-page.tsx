@@ -51,7 +51,7 @@ const DownloadImagesPage = () => {
   const { parameterStableId = "" } = params;
   const pid = decodeURIComponent(params.pid);
   const chromosome: string = geneChromosomeMap[pid];
-  const id = pid.replace(":", "-");
+  const id = pid.replace(":", "_");
   const { data: mutantImages, isLoading: isMutantImagesLoading } = useQuery({
     queryKey: ["genes", pid, "images", parameterStableId],
     queryFn: () =>
@@ -100,13 +100,13 @@ const DownloadImagesPage = () => {
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 
   const { geneSymbol } = useMemo(() => {
-    if (mutantImages.length) {
+    if (mutantImages?.length) {
       return mutantImages[0];
     }
     return {
       geneSymbol: null,
     };
-  }, [mutantImages.length]);
+  }, [mutantImages]);
 
   return (
     <>
