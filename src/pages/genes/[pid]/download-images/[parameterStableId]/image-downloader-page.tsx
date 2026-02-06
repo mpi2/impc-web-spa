@@ -100,8 +100,8 @@ const DownloadImagesPage = () => {
   const defaultSort: SortType = useMemo(() => ["alleleSymbol", "asc"], []);
 
   const { geneSymbol } = useMemo(() => {
-    if (mutantImages?.length) {
-      return mutantImages[0];
+    if (mutantImages?.geneSymbol) {
+      return { geneSymbol: mutantImages.geneSymbol };
     }
     return {
       geneSymbol: null,
