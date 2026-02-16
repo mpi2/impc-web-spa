@@ -7,7 +7,6 @@ export function useFetchInterceptor() {
     // @ts-ignore
     (window["__APP_IS_READY"] as any) = !val;
     setIsReady(!val);
-    console.log("app is ready", !val);
   };
 
   useEffect(() => {
