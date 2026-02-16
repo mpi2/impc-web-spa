@@ -10,10 +10,13 @@ import "react-circular-progressbar/dist/styles.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "normalize.css/normalize.css";
 import { useHeartbeatService } from "@/hooks/heartbeat.ts";
+import { useFetchInterceptor } from "@/hooks/useFetchInterceptor.ts";
 config.autoAddCss = false;
 
 export default function RootLayout() {
   const { connectionIsStable } = useHeartbeatService();
+  const { appIsReady } = useFetchInterceptor();
+
   return (
     <>
       <script
