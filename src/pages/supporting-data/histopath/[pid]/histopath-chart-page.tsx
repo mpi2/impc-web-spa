@@ -136,7 +136,11 @@ const HistopathChartPage = () => {
               </Link>
             </span>
           </div>
-          <h1 className="mb-4 mt-2" data-testid="main-header">
+          <h1
+            id="chart-name-page"
+            className="mb-4 mt-2"
+            data-testid="main-header"
+          >
             <strong className="text-capitalize">
               Histopathology data for <i>{gene?.geneSymbol}</i>
             </strong>
