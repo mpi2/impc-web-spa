@@ -574,9 +574,9 @@ const TimeSeries = ({
                       {row.map((col, i) => (
                         <td key={i}>
                           {col
-                            ? col["avg"]
-                              ? `${col["avg"]} (${col["count"]})`
-                              : col
+                            ? typeof col == "string"
+                              ? col
+                              : `${col["avg"]} (${col["count"]})`
                             : null}
                         </td>
                       ))}
