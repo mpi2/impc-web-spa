@@ -165,6 +165,7 @@ const AllData = (props: Props) => {
             "parameterStableId",
             "zygosity",
             "zygosity",
+            "parameterName",
           ],
           threshold: 0.2,
         }),
