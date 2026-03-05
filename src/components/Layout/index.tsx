@@ -48,7 +48,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           </div>
         </div>
       </noscript>
-      <main>{children}</main>
+      <main style={{ paddingBottom: "2.5rem" }}>{children}</main>
       <Footer />
     </div>
   );
